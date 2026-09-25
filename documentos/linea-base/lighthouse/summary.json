@@ -1,0 +1,82 @@
+[
+  {
+    "page": "inicio",
+    "formFactor": "mobile",
+    "performance": 51,
+    "lcp": "12.3 s",
+    "inp": "—",
+    "cls": 0,
+    "jsTransferKb": 630,
+    "cssTransferKb": 644
+  },
+  {
+    "page": "inicio",
+    "formFactor": "desktop",
+    "performance": 55,
+    "lcp": "12.6 s",
+    "inp": "—",
+    "cls": 0,
+    "jsTransferKb": 630,
+    "cssTransferKb": 644
+  },
+  {
+    "page": "tienda",
+    "formFactor": "mobile",
+    "performance": 55,
+    "lcp": "9.5 s",
+    "inp": "—",
+    "cls": 0.013,
+    "jsTransferKb": 704,
+    "cssTransferKb": 946
+  },
+  {
+    "page": "tienda",
+    "formFactor": "desktop",
+    "performance": 55,
+    "lcp": "8.9 s",
+    "inp": "—",
+    "cls": 0.018,
+    "jsTransferKb": 704,
+    "cssTransferKb": 946
+  },
+  {
+    "page": "ficha",
+    "formFactor": "mobile",
+    "performance": 53,
+    "lcp": "8.5 s",
+    "inp": "—",
+    "cls": 0,
+    "jsTransferKb": 742,
+    "cssTransferKb": 759
+  },
+  {
+    "page": "ficha",
+    "formFactor": "desktop",
+    "performance": 55,
+    "lcp": "8.0 s",
+    "inp": "—",
+    "cls": 0.002,
+    "jsTransferKb": 742,
+    "cssTransferKb": 759
+  },
+  {
+    "page": "checkout",
+    "formFactor": "mobile",
+    "performance": 48,
+    "lcp": "12.3 s",
+    "inp": "—",
+    "cls": 0.084,
+    "jsTransferKb": 569,
+    "cssTransferKb": 630
+  },
+  {
+    "page": "checkout",
+    "formFactor": "desktop",
+    "performance": 55,
+    "lcp": "8.0 s",
+    "inp": "—",
+    "cls": 0.049,
+    "jsTransferKb": 569,
+    "cssTransferKb": 630
+  }
+]

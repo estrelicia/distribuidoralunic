@@ -1,0 +1,12 @@
+.distribuidora-lunic-settings .lunic-settings-card {
+	max-width: 40rem;
+	margin-top: 1.5rem;
+	padding: 1rem 1.25rem;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.distribuidora-lunic-settings .lunic-module-list {
+	margin: 0.5rem 0 0;
+}

@@ -1,0 +1,21 @@
+# Secretos y entorno local
+wp-config.php
+.env
+.env.*
+*.log
+debug.log
+
+# Medios y caché (no van al repositorio)
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup*/
+wp-content/backups/
+
+# Dependencias
+node_modules/
+documentos/node_modules/
+vendor/
+
+# Scripts de verificación de un solo uso
+documentos/_tmp_*.php

@@ -1,0 +1,1917 @@
+# Translation of Plugins - Prime Mover &#8211; Backup and Migration - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Prime Mover &#8211; Backup and Migration - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-08-05 07:44:36+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Prime Mover &#8211; Backup and Migration - Stable (latest release)\n"
+
+#: classes/PrimeMoverExporter.php:93
+msgid "Getting third party hooks.."
+msgstr "Obteniendo ganchos de terceros..."
+
+#: utilities/PrimeMoverImportUtilities.php:514
+msgid "to use all migration and backup options."
+msgstr "para utilizar todas las opciones de migración y copia de seguridad."
+
+#: utilities/PrimeMoverImportUtilities.php:533
+msgid "To be safe, make sure you have backups ready. For best results, please disable any active caching."
+msgstr "Para estar protegido, asegúrate de tener copias de seguridad. Para obtener los mejores resultados, desactiva cualquier tipo de caché activa."
+
+#: utilities/PrimeMoverFreemiusIntegration.php:223
+msgid "How to activate Prime Mover PRO license?"
+msgstr "¿Cómo activar la licencia Prime Mover PRO?"
+
+#: archiver/PrimeMoverArchiver.php:657
+msgid "ERROR: Missing root path - unable to add directory to archive."
+msgstr "ERROR: Falta la ruta raíz: no se puede agregar el directorio al archivo."
+
+#: archiver/PrimeMoverArchiver.php:653
+msgid "ERROR: Tar path undefined - unable to add directory to archive."
+msgstr "ERROR: Ruta de tar no definida: no se puede agregar el directorio al archivo."
+
+#: archiver/PrimeMoverArchiver.php:649
+msgid "ERROR: Missing file list - unable to add directory to archive."
+msgstr "ERROR: Falta la lista de archivos: no se ha podido añadir el directorio al archivo."
+
+#: compatibility/PrimeMoverFreemiusCompat.php:513
+msgid "Important notice"
+msgstr "Aviso importante"
+
+#: compatibility/PrimeMoverFreemiusCompat.php:525
+msgid "add a subsite for testing"
+msgstr "añade un subsitio para realizar pruebas"
+
+#: compatibility/PrimeMoverFreemiusCompat.php:509
+msgid "upgrade to the PRO version"
+msgstr "actualiza a la versión PRO"
+
+#: compatibility/PrimeMoverFreemiusCompat.php:528
+msgid "Yes, I understand"
+msgstr "Sí, lo entiendo"
+
+#. translators: %1$s: The plugin package title codename string, %2$s: Mapped
+#. landing page URL string path for testing subsites, %3$s: Localized action
+#. text phrase prompting plan upgrades (e.g. upgrade your plan)
+#: compatibility/PrimeMoverFreemiusCompat.php:518
+msgid "Thank you for using <strong>%1$s</strong>. To get started using the free version, you need to %2$s. Free version works on any number of multisite subsites. If you want to export and restore the multisite main site, you need to %3$s. Thanks!"
+msgstr ""
+"Gracias por usar <strong>%1$s</strong>. \n"
+"        Para empezar a utilizar la versión gratuita, es necesario %2$s. La versión gratuita funciona en cualquier número de subsitios multisitio.  \n"
+"        Si quieres exportar y restaurar el sitio principal del multisitio, necesitas %3$s. Gracias!"
+
+#. translators: %s: Usermeta table
+#: streams/PrimeMoverDatabaseUtilities.php:649
+msgid "%s database table is corrupted. umeta_id field is not using AUTO_INCREMENT. Please check this with your WordPress administrator or hosting company."
+msgstr "La tabla de la base de datos %s está dañada. El campo umeta_id no está usando AUTO_INCREMENT. Por favor, comprueba esto con tu administrador de WordPress o con tu empresa de alojamiento."
+
+#: compatibility/PrimeMoverCleanUp.php:474
+msgid "ERROR: Insufficient Disk Space. Please contact your host to increase disk space and try again."
+msgstr "ERROR: Espacio en disco insuficiente. Por favor, contacta con tu alojamiento para aumentar el espacio en disco y vuelve a intentarlo."
+
+#. translators: %s: file path to the package
+#: build/splitbrain/php-archive/src/Tar.php:517
+msgid "Could not open file for reading: %s"
+msgstr "No se pudo abrir el archivo para leer: %s"
+
+#: build/splitbrain/php-archive/src/Tar.php:506
+msgid "Archive has been closed, files can no longer be added"
+msgstr "El archivo se ha cerrado, los archivos ya no se pueden añadir"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:318
+msgid "Check this complete guide"
+msgstr "Comprueba esta guía completa"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:315
+msgid "Unable to activate license key?"
+msgstr "¿No se ha podido activar la clave de licencia?"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:219
+msgid "How to fix if I cannot activate license? Or if PRO features are not activated?"
+msgstr "¿Cómo corregirlo si no puedo activar la licencia? ¿O si las características PRO no están activadas?"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:216
+msgid "Account FAQ"
+msgstr "FAQ sobre la cuenta"
+
+#: users/PrimeMoverUserFunctions.php:373 users/PrimeMoverUserQueries.php:1003
+msgid "Error updating author"
+msgstr "Error al actualizar el autor"
+
+#: menus/PrimeMoverBackupMenuListTable.php:932
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: menus/PrimeMoverBackupMenuListTable.php:396
+msgid "By default, users are included in the package."
+msgstr "Por defecto, los usuarios se incluyen en el paquete."
+
+#: menus/PrimeMoverBackupMenuListTable.php:395
+msgid "This is the size of the package."
+msgstr "Este es el tamaño del paquete."
+
+#: menus/PrimeMoverBackupMenuListTable.php:394
+msgid "This is the date the package is created."
+msgstr "Esta es la fecha en que se crea el paquete."
+
+#: menus/PrimeMoverBackupMenuListTable.php:393
+msgid "This is the site title."
+msgstr "Este es el título del sitio."
+
+#: menus/PrimeMoverBackupMenuListTable.php:392
+msgid "This describes what is included in the package."
+msgstr "Esto describe lo que se incluye en el paquete."
+
+#: menus/PrimeMoverBackupMenuListTable.php:391
+msgid "This is the target subsite blog ID for a MULTISITE package. This is always '1' for a SINGLE SITE or if it's a MULTISITE MAIN SITE."
+msgstr "Este es el ID de Blog del subsitio de destino para un paquete MULTISITE. Esto siempre es '1' para un SOLO SITIO o si es un SITIO PRINCIPAL MULTISITIO."
+
+#: menus/PrimeMoverBackupMenuListTable.php:390
+msgid "This is MULTISITE if package targets multisite or SINGLE-SITE if package targets WordPress single site."
+msgstr "Esto es MULTISITIO si el paquete se dirige a multisitio o un SOLO SITIO si el paquete se dirige a WordPress un solo sitio."
+
+#: menus/PrimeMoverBackupMenuListTable.php:389
+msgid "File name of the package."
+msgstr "Nombre de archivo del paquete."
+
+#: menus/PrimeMoverBackupMenuListTable.php:399
+msgid "Download this package to your Desktop. You can also download using cPanel and FTP by going to the current site package path."
+msgstr "Descarga este paquete en tu escritorio. También puedes descargarlo usando cPanel y FTP yendo a la ruta del paquete del sitio actual."
+
+#: menus/PrimeMoverBackupMenuListTable.php:397
+msgid "Restore this package to this site."
+msgstr "Restaurar este paquete en este sitio"
+
+#: compatibility/PrimeMoverCleanUp.php:575
+msgid "TO :"
+msgstr "PARA:"
+
+#: compatibility/PrimeMoverCleanUp.php:577
+msgid ""
+"If you do not need these packages, please delete them. \n"
+"Prime Mover plugin will auto-delete this wrong export directory. Thank you!"
+msgstr ""
+"Si no necesitas estos paquetes, por favor, bórralos.\n"
+"El plugin Prime Mover borrará automáticamente este directorio de exportación erróneo. Gracias."
+
+#: compatibility/PrimeMoverCleanUp.php:571
+msgid ""
+"Prime Mover plugin detected incorrectly placed backup packages for this subsite. \n"
+"Please move WPRIME packages FROM: "
+msgstr ""
+"El plugin Prime Mover ha detectado paquetes de copia de seguridad mal colocados para este subsitio.\n"
+"Por favor, mueve los paquetes WPRIME DESDE:"
+
+#: classes/PrimeMoverHookedMethods.php:272
+msgid "EXPORT"
+msgstr "EXPORTAR"
+
+#: menus/PrimeMoverBackupMenus.php:679
+msgid "Restore Guide"
+msgstr "Guía de restauración"
+
+#: utilities/PrimeMoverImportUtilities.php:503
+msgid "Prime Mover -> Packages"
+msgstr "Prime Mover -> Paquetes"
+
+#: utilities/PrimeMoverImportUtilities.php:237
+msgid "RESTORE"
+msgstr "RESTAURAR"
+
+#: utilities/PrimeMoverComponentAuxiliary.php:567
+msgid "Restoring main site is a PRO feature. Please upgrade or activate license to use this feature."
+msgstr "La restauración del sitio principal es una característica PRO. Por favor, actualiza o activa la licencia para utilizar esta característica."
+
+#: menus/PrimeMoverBackupMenuListTable.php:815
+msgid "Restoring encrypted package is a PRO feature. Please upgrade or activate license to restore this package."
+msgstr "La restauración de paquetes cifrados es una característica PRO. Por favor, actualiza o activa la licencia para restaurar este paquete."
+
+#: utilities/PrimeMoverComponentAuxiliary.php:533
+msgid "Exporting main site is a PRO feature. Please upgrade or activate license to use this feature."
+msgstr "La exportación del sitio principal es una característica PRO. Por favor, actualiza o activa la licencia para utilizar esta característica."
+
+#: classes/PrimeMoverHookedMethods.php:330
+msgid "Upgrade or activate license to migrate/restore the main site."
+msgstr "Actualizar o activar la licencia para migrar/restaurar el sitio principal."
+
+#: classes/PrimeMoverHookedMethods.php:256
+msgid "Upgrade or activate license to create backup/export the main site."
+msgstr "Actualizar o activar la licencia para crear una copia de seguridad/exportar el sitio principal."
+
+#: compatibility/PrimeMoverCachingCompat.php:133
+msgid "Once completed, please refresh this page and restore again."
+msgstr "Una vez completado, por favor, actualiza esta página y restaura de nuevo."
+
+#: utilities/PrimeMoverImportUtilities.php:433
+msgid "Purge all cache if using caching plugin"
+msgstr "Purgar toda la caché si se utiliza el plugin de caché"
+
+#: compatibility/PrimeMoverCompatibility.php:311
+msgid "Remote URL migration requires PHP zip extension enabled if you are restoring a zip package."
+msgstr "La migración remota de URL requiere la extensión zip de PHP activada si está restaurando un paquete zip."
+
+#: classes/PrimeMoverSystemInitialization.php:2998
+msgid "The requested process requires PHP Zip extension enabled."
+msgstr "El proceso solicitado requiere la extensión PHP Zip activada."
+
+#: compatibility/PrimeMoverCompatibility.php:358
+msgid "You are restoring a zip package but your server does not have PHP ZIP extension installed. Please install and refresh this page to try again."
+msgstr "Estás restaurando un paquete zip pero tu servidor no tiene instalada la extensión ZIP de PHP. Por favor, instálala y actualiza esta página para volver a intentarlo."
+
+#: classes/PrimeMoverProgressHandlers.php:227
+msgid "Upload Google Drive progress"
+msgstr "Subir el progreso de Google Drive"
+
+#: classes/PrimeMoverHookedMethods.php:258
+#: classes/PrimeMoverHookedMethods.php:332
+#: engines/prime-mover-panel/utilities/PrimeMoverSettingsMarkups.php:98
+#: menus/PrimeMoverBackupMenuListTable.php:819
+#: menus/PrimeMoverBackupMenus.php:534 menus/PrimeMoverMigrationOptions.php:384
+#: utilities/PrimeMoverComponentAuxiliary.php:537
+#: utilities/PrimeMoverComponentAuxiliary.php:565
+#: utilities/PrimeMoverImportUtilities.php:509
+msgid "Upgrade to PRO"
+msgstr "Actualizar a PRO"
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:171
+msgid "Package mismatch error!"
+msgstr "¡Error de falta de coincidencia de paquetes!"
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:170
+msgid "It looks like you are restoring a single site package to a main site installation."
+msgstr "Parece que está restaurando un paquete de un solo sitio en una instalación de sitio principal."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:163
+msgid "It looks like you are restoring a {{SOURCE_PACKAGE_TYPE}} package to a {{TARGET_PACKAGE_TYPE}} installation."
+msgstr "Parece que está restaurando un paquete de {{SOURCE_PACKAGE_TYPE}} en una instalación {{TARGET_PACKAGE_TYPE}}."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:161
+msgid "It looks like you are restoring a multisite package to a single site installation."
+msgstr "Parece que está restaurando un paquete multisitio en una instalación de un solo sitio."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:160
+msgid "You are restoring a package with incorrect blog ID to a target subsite."
+msgstr "Está restaurando un paquete con un ID de blog incorrecto en un subsitio de destino."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:158
+msgid "Undefined blog ID. Please try clearing browser cache and try again."
+msgstr "ID de blog indefinido. Intente vaciar la caché del navegador e inténtelo de nuevo."
+
+#. translators: %s: Percent string
+#: classes/PrimeMoverImporter.php:1613
+msgid "Dropping custom tables, %s"
+msgstr "Eliminación de tablas personalizadas, %s"
+
+#: archiver/PrimeMoverArchiver.php:672
+msgid "Unable to create WPRIME archive resource, please check permissions."
+msgstr "No ha sido posible crear el recurso de archivo WPRIME, por favor, comprueba los permisos."
+
+#. translators: %s: Mode
+#: classes/PrimeMoverExporter.php:707
+msgid "%s files"
+msgstr "%s archivos"
+
+#. translators: %s: Mode
+#: classes/PrimeMoverExporter.php:704
+msgid "%s file"
+msgstr "%s archivo"
+
+#: archiver/PrimeMoverArchiver.php:527
+msgid "Incorrect time start configuration."
+msgstr "Configuración incorrecta de la hora de inicio."
+
+#: archiver/PrimeMoverArchiver.php:523
+msgid "Incomplete add file to WPRIME configuration."
+msgstr "Añadir archivo incompleto a la configuración de WPRIME."
+
+#: archiver/PrimeMoverArchiver.php:519 archiver/PrimeMoverArchiver.php:644
+msgid "Unauthorized to archive"
+msgstr "No autorizado para archivar"
+
+#: archiver/PrimeMoverArchiver.php:468
+msgid "This is a WPRIME archive created by WordPress Prime Mover Plugin (developer: Codexonics Ltd). This is not designed to be read or extracted by any third party software. Attempting to manually read and write this archive will result in data corruption errors."
+msgstr "Este es un archivo WPRIME creado por el plugin WordPress Prime Mover (desarrollador: Codexonics Ltd). No está diseñado para ser leído o extraído por ningún software de terceros. El intento de leer y escribir manualmente este archivo dará lugar a errores de corrupción de datos."
+
+#: archiver/PrimeMoverArchiver.php:455
+msgid "Corrupted package configuration. Aborting."
+msgstr "Configuración de paquete dañada. Abortando."
+
+#: archiver/PrimeMoverArchiver.php:427
+msgid "Undefined temp folder path for adding WPRIME config file."
+msgstr "Ruta de la carpeta temporal no definida para añadir el archivo de configuración de WPRIME."
+
+#: archiver/PrimeMoverArchiver.php:419
+msgid "Blog Id is not set for wprime package configuration."
+msgstr "El ID del blog no está establecido para la configuración del paquete wprime."
+
+#: archiver/PrimeMoverArchiver.php:415
+msgid "Insufficient parameters to add wprime package configuration."
+msgstr "Parámetros insuficientes para añadir la configuración del paquete wprime."
+
+#: archiver/PrimeMoverArchiver.php:280
+msgid "Incomplete wprime archive extraction parameters."
+msgstr "Parámetros de extracción del archivo wprime incompletos."
+
+#: utilities/PrimeMoverImportUtilities.php:530
+msgid "Encrypted package"
+msgstr "Paquete cifrado"
+
+#: utilities/PrimeMoverOpenSSLUtilities.php:378
+msgid "upgrade to Prime Mover PRO"
+msgstr "actualizar a Prime Mover PRO"
+
+#: menus/PrimeMoverBackupMenuListTable.php:784
+msgid "Unable to read encrypted package. A correct decryption key is required to restore this package."
+msgstr "No ha sido posible leer el paquete cifrado. Se requiere una clave de descifrado correcta para restaurar este paquete."
+
+#. translators: %s: Readable bytes
+#: classes/PrimeMoverExporter.php:1480
+msgid "Archiving database..%s bytes done."
+msgstr "Archivando base de datos..%s bytes hecho."
+
+#. translators: %s: Mode
+#: classes/PrimeMoverExporter.php:714
+msgid "Archiving %s, starting."
+msgstr "Archivando %s, comenzando."
+
+#: classes/PrimeMoverImporter.php:1146
+msgid "Media extraction..starting."
+msgstr "Extracción de medios... empezando."
+
+#. translators: %s: Readable file size
+#: classes/PrimeMoverImporter.php:1144
+msgid "Media extraction..%s bytes read."
+msgstr "Extracción de medios.. %s bytes leídos."
+
+#: classes/PrimeMoverImporter.php:724
+msgid "Package extraction..starting."
+msgstr "Extracción de paquetes.. empezando."
+
+#. translators: %s: Readable file size
+#: classes/PrimeMoverImporter.php:722
+msgid "Package extraction..%s bytes read."
+msgstr "Extracción de paquetes.. %s bytes leídos."
+
+#: archiver/PrimeMoverArchiver.php:533
+msgid "Unable to initialize WPRIME object. Please check capabilities."
+msgstr "No se ha podido inicializar el objeto WPRIME. Por favor, comprueba las capacidades."
+
+#: archiver/PrimeMoverArchiver.php:411
+msgid "Unable to write package configuration. Please check authorization."
+msgstr "No se puede escribir la configuración del paquete. Por favor, comprueba la autorización."
+
+#: archiver/PrimeMoverArchiver.php:463
+msgid "Unable to write package configuration. Please check permissions."
+msgstr "No se puede escribir la configuración del paquete. Por favor, comprueba los permisos."
+
+#: archiver/PrimeMoverArchiver.php:285
+msgid "Unable to open wprime, please check if WPRIME file exists."
+msgstr "No se puede abrir wprime, por favor, comprueba si el archivo WPRIME existe. "
+
+#. translators: %d: Number of files processed so far
+#: utilities/PrimeMoverImportUtilities.php:797
+msgid "%d files processed"
+msgstr "%d archivos procesados"
+
+#: utilities/PrimeMoverImportUtilities.php:794
+msgid "starting.."
+msgstr "empezando…"
+
+#: utilities/PrimeMoverImportUtilities.php:786
+msgid "Cannot create theme directory, please check permissions"
+msgstr "No se puede crear un directorio de temas, compruebe los permisos"
+
+#: utilities/PrimeMoverImportUtilities.php:564
+msgid "Unauthorize themes import"
+msgstr "Importación de temas no autorizada"
+
+#. translators: %s: Percent
+#: classes/PrimeMoverExporter.php:588
+msgid "List plugin files: %s done"
+msgstr "Lista de archivos del plugin: %s hecho"
+
+#. translators: %s: Percent
+#: classes/PrimeMoverExporter.php:373
+msgid "List theme files: %s done"
+msgstr "Lista de archivos de temas: %s hecho"
+
+#: classes/PrimeMoverSystemChecks.php:698
+msgid "Requisites not meet for zipping"
+msgstr "No se cumplen los requisitos para la compresión"
+
+#. translators: %s: Directory path
+#: streams/PrimeMoverIterators.php:144
+msgid "Unauthorized to generate files list in directory: %s. Please check credentials."
+msgstr "No estás autorizado para generar una lista de archivos en el directorio: %s. Por favor, comprueba las credenciales."
+
+#. translators: %s: Directory path
+#: streams/PrimeMoverIterators.php:176
+msgid "Unable to generate files list in directory: %s. Please check permissions."
+msgstr "No se puede generar la lista de archivos en el directorio: %s. Por favor, comprueba los permisos."
+
+#: utilities/PrimeMoverExportUtilities.php:166
+msgid "Awesome!"
+msgstr "¡Increíble!"
+
+#: utilities/PrimeMoverImportUtilities.php:427
+msgid "Hooray!"
+msgstr "¡Hurra!"
+
+#: classes/PrimeMoverImporter.php:2717
+msgid "Your site has been migrated successfully"
+msgstr "Su sitio se ha migrado correctamente"
+
+#: classes/PrimeMoverSystemProcessors.php:975
+msgid "Export completed."
+msgstr "Exportación completada."
+
+#: utilities/PrimeMoverExportUtilities.php:939
+msgid "Export as subsite backup"
+msgstr "Exportar como copia de seguridad del subsitio"
+
+#: utilities/PrimeMoverExportUtilities.php:171
+msgid "Package Manager."
+msgstr "Gestor de paquetes."
+
+#: utilities/PrimeMoverExportUtilities.php:170
+msgid "Or download it later in"
+msgstr "O descárgalo más tarde en"
+
+#: utilities/PrimeMoverImportUtilities.php:436
+msgid "review the Prime Mover plugin"
+msgstr "valora el plugin Prime Mover"
+
+#: utilities/PrimeMoverImportUtilities.php:436
+msgid "Optionally"
+msgstr "Opcionalmente"
+
+#: utilities/PrimeMoverImportUtilities.php:432
+msgid "to make sure site front end URL works"
+msgstr "para asegurarse de que la URL del sitio funciona"
+
+#: utilities/PrimeMoverImportUtilities.php:432
+msgid "Re-save permalinks"
+msgstr "Volver a guardar los enlaces permanentes"
+
+#: menus/PrimeMoverBackupMenus.php:743
+msgid "Are you sure you want restore this package?"
+msgstr "¿Estás seguro de que quieres restaurar este paquete?"
+
+#: menus/PrimeMoverBackupMenuListTable.php:810
+msgid "Use migration tools to upload package from Desktop. Use this button to restore backup within this site."
+msgstr "Utiliza las herramientas de migración para cargar el paquete desde el escritorio. Usa este botón para restaurar la copia de seguridad dentro de este sitio."
+
+#: menus/PrimeMoverBackupMenus.php:381
+msgid "Use this refresh button to scan newly added packages in your current site package path."
+msgstr "Utiliza este botón de actualización para escanear los paquetes recién añadidos en la ruta de paquetes de tu sitio actual."
+
+#: menus/PrimeMoverBackupMenus.php:700
+msgid "You can manually add or upload Prime Mover package zip in this path via SFTP."
+msgstr "Puedes añadir o cargar manualmente el paquete zip de Prime Mover en esta ruta a través de SFTP."
+
+#: utilities/PrimeMoverExportUtilities.php:167
+msgid "Your site has been exported successfully"
+msgstr "Tu sitio ha sido exportado correctamente"
+
+#: classes/PrimeMoverImporter.php:2652
+#: utilities/PrimeMoverImportUtilities.php:428
+msgid "Your site has been restored successfully"
+msgstr "Tu sitio ha sido restaurado correctamente"
+
+#: menus/PrimeMoverBackupMenus.php:739
+msgid "This will replace your subsite files and content."
+msgstr "Esto reemplazará los archivos y el contenido de tu subsitio."
+
+#: menus/PrimeMoverBackupMenus.php:737
+msgid "This will replace your website files and content."
+msgstr "Esto reemplazará los archivos y el contenido de tu web."
+
+#: menus/PrimeMoverBackupMenus.php:833
+#: utilities/PrimeMoverFreemiusIntegration.php:676
+msgid "Packages"
+msgstr "Paquetes"
+
+#: classes/PrimeMoverSystemProcessors.php:922
+#: engines/prime-mover-panel/app/PrimeMoverControlPanel.php:188
+#: menus/PrimeMoverBackupMenuListTable.php:376
+msgid "Download package"
+msgstr "Descargar paquete"
+
+#: menus/PrimeMoverBackupMenuListTable.php:191
+msgid "No packages found."
+msgstr "No se encontraron paquetes."
+
+#: menus/PrimeMoverBackupMenus.php:381
+msgid "Refresh packages"
+msgstr "Actualizar paquetes"
+
+#: menus/PrimeMoverBackupMenuListTable.php:375
+#: menus/PrimeMoverBackupMenuListTable.php:743
+#: menus/PrimeMoverBackupMenuListTable.php:811
+#: menus/PrimeMoverBackupMenus.php:532
+msgid "Restore package"
+msgstr "Restaurar paquete"
+
+#: classes/PrimeMoverHookedMethods.php:643
+msgid "Import package"
+msgstr "Importar paquete"
+
+#: classes/PrimeMoverSystemProcessors.php:976
+msgid "Package Saved !"
+msgstr "¡Paquete guardado!"
+
+#: menus/PrimeMoverBackupMenus.php:584
+msgid "Create new package"
+msgstr "Crear nuevo paquete"
+
+#: classes/PrimeMoverHookedMethods.php:625
+msgid "Go to package manager"
+msgstr "Ir al gestor de paquetes"
+
+#. translators: %d: Max allowed package target
+#: classes/PrimeMoverImporter.php:1907
+msgid "Error: Your MySQL server max_allowed_packet size is insufficient. Please consider increasing this above %d bytes."
+msgstr "Error: El tamaño máximo de paquete permitido de tu servidor MySQL es insuficiente. Por favor, considera aumentar este tamaño por encima de %d bytes."
+
+#: utilities/PrimeMoverFreemiusIntegration.php:683
+msgid "Go to Packages"
+msgstr "Ir a paquetes"
+
+#: classes/PrimeMoverHookedMethods.php:625
+#: utilities/PrimeMoverBackupUtilities.php:466
+msgid "Go to Package Manager"
+msgstr "Ir al gestor de paquetes"
+
+#: classes/PrimeMoverHookedMethods.php:660
+msgid "Any suggestions for improvement? Found a bug?"
+msgstr "¿Alguna sugerencia de mejora? ¿Has encontrado un fallo?"
+
+#: classes/PrimeMoverHookedMethods.php:658
+msgid "Contact Developers"
+msgstr "Contactar con los desarrolladores"
+
+#: classes/PrimeMoverExporter.php:974
+msgid "Runtime error, no MySQL database file being dumped."
+msgstr "Error de ejecución, no se ha volcado ningún archivo de base de datos MySQL."
+
+#. translators: %s: Formatted plugin title codename
+#: dependency-checks/PrimeMoverPHPCoreFunctionDependencies.php:231
+msgid "The %s plugin cannot be activated if these following PHP core extensions are missing"
+msgstr "El plugin %s no puede ser activado si faltan las siguientes extensiones del núcleo de PHP"
+
+#: classes/PrimeMoverHookedMethods.php:645
+msgid "Migrate a site package. Please do not refresh or navigate away from this page while import is ongoing."
+msgstr "Migrar un paquete de sitio. Por favor, no actualices o navegues fuera de esta página mientras la importación está en curso."
+
+#: classes/PrimeMoverHookedMethods.php:630
+msgid "Export this site to any format. Please do not refresh or navigate away from this page while export is ongoing."
+msgstr "Exportar este sitio a cualquier formato. Por favor, no actualices o navegues fuera de esta página mientras la exportación está en curso."
+
+#: dependency-checks/PrimeMoverPHPCoreFunctionDependencies.php:245
+msgid "Please contact your web hosting provider to enable these required PHP extensions for you."
+msgstr "Por favor, ponte en contacto con su proveedor de alojamiento web para que habilite estas extensiones PHP necesarias."
+
+#: engines/prime-mover-panel/app/PrimeMoverControlPanel.php:532
+#: menus/PrimeMoverAutoBackupEventViewer.php:174
+#: menus/PrimeMoverBackupMenus.php:676
+msgid "Visit Site"
+msgstr "Visitar sitio"
+
+#. translators: %s: Dynamic localized runtime progress counter text indicating
+#. total completed matches
+#: utilities/PrimeMoverUserUtilities.php:961
+msgid "Computing user equivalence.. %s"
+msgstr "Calculando la equivalencia del usuario.. %s"
+
+#. translators: %s: Dynamic localized runtime progress counters indicating
+#. users and metadata status
+#: utilities/PrimeMoverUserUtilities.php:588
+msgid "Importing users.. %s"
+msgstr "Importando usuarios... %s"
+
+#. translators: %d: Numerical count of users successfully imported so far
+#. translators: %d: Numerical count of users processed during equivalence
+#. matching so far
+#: utilities/PrimeMoverUserUtilities.php:566
+#: utilities/PrimeMoverUserUtilities.php:957
+msgid "%d completed."
+msgstr "%d completado."
+
+#: utilities/PrimeMoverUserUtilities.php:370
+msgid "Unable to open user import file."
+msgstr "No se puede abrir el archivo de importación del usuario."
+
+#. translators: %s: Dynamic localized runtime progress counter string
+#. indicating total completed user taxonomies
+#: users/PrimeMoverUserQueries.php:292
+msgid "Importing user taxonomies.. %s"
+msgstr "Importando taxonomías de usuario.. %s"
+
+#. translators: %s: Dynamic localized runtime progress counter string
+#. indicating total completed posts
+#: users/PrimeMoverUserFunctions.php:261
+msgid "Updating authors.. %s"
+msgstr "Actualizando autores.. %s"
+
+#: users/PrimeMoverUserFunctions.php:141
+msgid "Preparing user meta keys.."
+msgstr "Preparando las meta claves del usuario.."
+
+#: menus/PrimeMoverBackupMenuListTable.php:374
+msgid "Users exported"
+msgstr "Usuarios exportados"
+
+#: classes/PrimeMoverExporter.php:127
+msgid "Exporting user meta keys.."
+msgstr "Exportación de meta claves de usuario.."
+
+#. translators: %s: Users export progress
+#: classes/PrimeMoverUsers.php:910
+msgid "Exporting users.. %s"
+msgstr "Exportando usuarios.. %s"
+
+#. translators: %d: Users exported
+#. translators: %d: Number of directories updated
+#. translators: %d: Numerical count of database posts successfully updated with
+#. new authors so far
+#. translators: %d: Numerical count of database user taxonomy associations
+#. successfully updated so far
+#. translators: %d: Numerical count of database entities successfully updated
+#. with mapped user IDs so far
+#: classes/PrimeMoverUsers.php:906
+#: compatibility/PrimeMoverBuddyPressCompat.php:962
+#: users/PrimeMoverUserFunctions.php:258 users/PrimeMoverUserQueries.php:289
+#: users/PrimeMoverUserQueries.php:659
+msgid "%d completed"
+msgstr "%d completado"
+
+#: classes/PrimeMoverUsers.php:847
+msgid "Archiving user export files.."
+msgstr "Archivando los archivos de exportación de los usuarios.."
+
+#: menus/PrimeMoverBackupMenus.php:607
+msgid "You are not on a valid blog ID, you cannot create backups. Please enter blog ID."
+msgstr "No estás en un ID de blog válido, no puedes crear copias de seguridad. Por favor, introduce el ID del blog."
+
+#: utilities/PrimeMoverExportUtilities.php:496
+msgid "Invalid plugins data format - should be array."
+msgstr "Formato de datos de los plugins no válido - debería ser array."
+
+#: utilities/PrimeMoverExportUtilities.php:476
+msgid "Cannot create target plugins directory."
+msgstr "No se puede crear el directorio de plugins de destino."
+
+#: utilities/PrimeMoverExportUtilities.php:464
+msgid "Tmp folder path does not exist"
+msgstr "La ruta de la carpeta Tmp no existe"
+
+#: utilities/PrimeMoverExportUtilities.php:460
+msgid "Plugins array does not exists"
+msgstr "El array de plugins no existe"
+
+#: utilities/PrimeMoverDownloadUtilities.php:146
+msgid "Every 10 minutes"
+msgstr "Cada 10 minutos"
+
+#: engines/prime-mover-panel/app/PrimeMoverDisplayEncryptionSettings.php:226
+#: engines/prime-mover-panel/app/PrimeMoverReset.php:121
+#: engines/prime-mover-panel/utilities/PrimeMoverDeleteUtilities.php:130
+#: engines/prime-mover-panel/utilities/PrimeMoverTroubleshootingMarkup.php:643
+#: menus/PrimeMoverBackupMenus.php:726 menus/PrimeMoverBackupMenus.php:742
+msgid "Warning!"
+msgstr "¡Advertencia!"
+
+#: menus/PrimeMoverBackupMenuListTable.php:693
+msgid "YES"
+msgstr "SÍ"
+
+#: menus/PrimeMoverBackupMenuListTable.php:693
+#: menus/PrimeMoverBackupMenuListTable.php:696
+msgid "NO"
+msgstr "NO"
+
+#: menus/PrimeMoverBackupMenuListTable.php:432
+msgid "Delete"
+msgstr "Borrar"
+
+#: menus/PrimeMoverBackupMenuListTable.php:372
+msgid "Date created"
+msgstr "Fecha de creación"
+
+#: menus/PrimeMoverBackupMenuListTable.php:368
+msgid "Package type"
+msgstr "Tipo de paquete"
+
+#: menus/PrimeMoverBackupMenuListTable.php:367
+msgid "Package name"
+msgstr "Nombre del paquete"
+
+#: menus/PrimeMoverBackupMenuListTable.php:339
+msgid "Show more details"
+msgstr "Mostrar más detalles"
+
+#: menus/PrimeMoverBackupMenuListTable.php:333
+#: menus/PrimeMoverEventViewerListTable.php:373
+msgid "Blog ID"
+msgstr "Blog ID"
+
+#: menus/PrimeMoverBackupMenuListTable.php:296
+#: menus/PrimeMoverBackupMenuListTable.php:330
+#: menus/PrimeMoverBackupMenus.php:531
+msgid "Download"
+msgstr "Descargar"
+
+#: utilities/PrimeMoverImportUtilities.php:1728
+#: utilities/PrimeMoverImportUtilities.php:1731
+#: utilities/PrimeMoverImportUtilities.php:1742
+msgid "single-site"
+msgstr "sitio único"
+
+#: utilities/PrimeMoverImportUtilities.php:1726
+#: utilities/PrimeMoverImportUtilities.php:1733
+#: utilities/PrimeMoverImportUtilities.php:1738
+msgid "multisite"
+msgstr "multisitio"
+
+#: utilities/PrimeMoverImportUtilities.php:274
+msgid "Finalizing restore.."
+msgstr "Finalizando la restauración.."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:1276
+msgid "Invalid zip stream resource"
+msgstr "Recurso de flujo zip no válido"
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:1272
+msgid "Target path cannot be written"
+msgstr "No se puede escribir la ruta de destino"
+
+#: classes/PrimeMoverSystemFunctions.php:3511
+msgid "Recurse copy invalid input resource"
+msgstr "Recuperación no válida de copia del recurso de entrada"
+
+#: utilities/PrimeMoverDownloadUtilities.php:142
+msgid "Twice a week"
+msgstr "Dos veces por semana"
+
+#: menus/PrimeMoverBackupMenus.php:698
+msgid "This is the current site package path:"
+msgstr "Esta es la ruta del paquete del sitio actual:"
+
+#. translators: %d: Subsite numerical blog ID value
+#: menus/PrimeMoverBackupMenus.php:614
+msgid "Subsite with blog ID: %d does not exist, please create the subsite first."
+msgstr "Subsitio con ID de blog: %d no existe, cree primero el subsitio."
+
+#: menus/PrimeMoverBackupMenus.php:527
+msgid "Are you sure you want to delete these packages?"
+msgstr "¿Está seguro de que desea borrar estos paquetes?"
+
+#: menus/PrimeMoverGearBoxScreenOptions.php:337
+msgid "Show only sites containing backups"
+msgstr "Mostrar sólo los sitios que contienen copias de seguridad"
+
+#: utilities/PrimeMoverSystemUtilities.php:1327
+msgid "Clear value to select new site"
+msgstr "Borrar valor para seleccionar un nuevo sitio"
+
+#: utilities/PrimeMoverSystemUtilities.php:1295
+msgid "Select or Enter a blog ID"
+msgstr "Seleccionar o introducir un ID de blog"
+
+#: menus/PrimeMoverBackupMenuListTable.php:499
+msgid "Successfully deleted the following backups"
+msgstr "Se han borrado correctamente las siguientes copias de seguridad"
+
+#: menus/PrimeMoverBackupMenuListTable.php:370
+msgid "Package mode"
+msgstr "Modo de paquete"
+
+#: menus/PrimeMoverBackupMenuListTable.php:336
+msgid "Encrypted"
+msgstr "Cifrado"
+
+#: engines/prime-mover-panel/utilities/PrimeMoverBackupManagement.php:209
+#: menus/PrimeMoverBackupMenus.php:533
+msgid "Copy restore URL"
+msgstr "Copiar URL de restauración"
+
+#: menus/PrimeMoverBackupMenuListTable.php:311
+msgid "PRO version only"
+msgstr "Solo versión PRO"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:204
+msgid "%s is not a valid backups array."
+msgstr "%s no es un array de copias de seguridad válido."
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:200
+msgid "%s is not a valid merging zip path"
+msgstr "%s no es una ruta válida para fusionar zip"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:184
+msgid "%s is not a valid request method"
+msgstr "%s no es un método de solicitud válido"
+
+#: classes/PrimeMoverErrorHandlers.php:612
+#: classes/PrimeMoverProgressHandlers.php:514
+msgid "Report error"
+msgstr "Informar de un error"
+
+#: classes/PrimeMoverProgressHandlers.php:226
+msgid "Overall percent progress"
+msgstr "Progreso porcentual general"
+
+#: classes/PrimeMoverProgressHandlers.php:225
+msgid "File transfer progress"
+msgstr "Progreso de la transferencia de archivos"
+
+#: classes/PrimeMoverProgressHandlers.php:224
+msgid "Upload Dropbox progress"
+msgstr "Subir el progreso de Dropbox"
+
+#: classes/PrimeMoverProgressHandlers.php:223
+msgid "Download percent progress"
+msgstr "Porcentaje de progreso de descarga"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:788
+msgid "Please rate us in WordPress.org. Thank you!"
+msgstr "Por favor, valóranos en WordPress.org. Gracias!"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:681
+msgid "Manage your packages - download, export, restore, delete, etc."
+msgstr "Gestione tus paquetes: descarga, exporta, restaura, elimina, etc."
+
+#: menus/PrimeMoverBackupMenus.php:581
+msgid "Click to create new backup for this site."
+msgstr "Haz clic para crear una nueva copia de seguridad para este sitio."
+
+#: menus/PrimeMoverBackupMenuListTable.php:771
+msgid "Click to restore this package to this site."
+msgstr "Haz clic para restaurar este paquete en este sitio."
+
+#: menus/PrimeMoverBackupMenuListTable.php:296
+msgid "Download this package to your Desktop"
+msgstr "Descarga este paquete en tu escritorio"
+
+#: menus/PrimeMoverBackupMenuListTable.php:308
+msgid "Upgrade to PRO to save time migrating sites."
+msgstr "Actualiza a PRO para ahorrar tiempo en la migración de sitios."
+
+#. translators: %d: Blog id
+#: menus/PrimeMoverBackupMenuListTable.php:764
+msgid "Subsite with blog ID: %d does not exist, please create the site first."
+msgstr "El subsitio con el ID de blog: %d no existe, por favor, primero crea el sitio."
+
+#: utilities/PrimeMoverImportUtilities.php:933
+msgid "plugins"
+msgstr "plugins"
+
+#: utilities/PrimeMoverImportUtilities.php:931
+msgid "plugin"
+msgstr "plugin"
+
+#: classes/PrimeMoverImporter.php:684 classes/PrimeMoverImporter.php:1188
+#: classes/PrimeMoverImporter.php:1320 classes/PrimeMoverImporter.php:1477
+msgid "files"
+msgstr "archivos"
+
+#: classes/PrimeMoverImporter.php:682 classes/PrimeMoverImporter.php:1186
+#: classes/PrimeMoverImporter.php:1318 classes/PrimeMoverImporter.php:1475
+msgid "file"
+msgstr "archivo"
+
+#: dependency-checks/PrimeMoverCoreSaltDependencies.php:142
+msgid "unique security keys"
+msgstr "claves de seguridad únicas"
+
+#: classes/PrimeMoverImporter.php:806
+msgid "Main"
+msgstr "Principal"
+
+#: classes/PrimeMoverExporter.php:78 classes/PrimeMoverExporter.php:113
+#: classes/PrimeMoverExporter.php:145 classes/PrimeMoverExporter.php:180
+#: classes/PrimeMoverExporter.php:333 classes/PrimeMoverExporter.php:466
+#: classes/PrimeMoverExporter.php:548 classes/PrimeMoverExporter.php:615
+#: classes/PrimeMoverExporter.php:762 classes/PrimeMoverExporter.php:912
+#: classes/PrimeMoverExporter.php:1455 classes/PrimeMoverExporter.php:1504
+#: classes/PrimeMoverExporter.php:1596 classes/PrimeMoverExporter.php:1638
+#: classes/PrimeMoverExporter.php:1689 classes/PrimeMoverExporter.php:1836
+#: classes/PrimeMoverExporter.php:1927 classes/PrimeMoverExporter.php:1955
+#: classes/PrimeMoverExporter.php:1981 classes/PrimeMoverExporter.php:2029
+#: classes/PrimeMoverExporter.php:2217 classes/PrimeMoverImporter.php:156
+#: classes/PrimeMoverImporter.php:192 classes/PrimeMoverImporter.php:234
+#: classes/PrimeMoverImporter.php:277 classes/PrimeMoverImporter.php:330
+#: classes/PrimeMoverImporter.php:357 classes/PrimeMoverImporter.php:394
+#: classes/PrimeMoverImporter.php:439 classes/PrimeMoverImporter.php:531
+#: classes/PrimeMoverImporter.php:587 classes/PrimeMoverImporter.php:863
+#: classes/PrimeMoverImporter.php:924 classes/PrimeMoverImporter.php:1058
+#: classes/PrimeMoverImporter.php:1222 classes/PrimeMoverImporter.php:1367
+#: classes/PrimeMoverImporter.php:1569 classes/PrimeMoverImporter.php:1664
+#: classes/PrimeMoverImporter.php:2209 classes/PrimeMoverImporter.php:2285
+#: classes/PrimeMoverImporter.php:2459 classes/PrimeMoverImporter.php:2519
+#: classes/PrimeMoverImporter.php:2647 classes/PrimeMoverImporter.php:2755
+#: classes/PrimeMoverImporter.php:2808 users/PrimeMoverUserQueries.php:1094
+#: utilities/PrimeMoverImportUtilities.php:953
+msgid "Unauthorized"
+msgstr "No autorizado"
+
+#: classes/PrimeMoverImporter.php:680 classes/PrimeMoverImporter.php:1183
+#: classes/PrimeMoverImporter.php:1314 classes/PrimeMoverImporter.php:1472
+#: classes/PrimeMoverImporter.php:1610 classes/PrimeMoverImporter.php:2597
+#: utilities/PrimeMoverSearchReplace.php:1132
+msgid "done"
+msgstr "hecho"
+
+#: classes/PrimeMoverImporter.php:1709 classes/PrimeMoverImporter.php:2677
+#: utilities/PrimeMoverSearchReplace.php:1118
+msgid "Starting..."
+msgstr "Comenzando..."
+
+#. translators: %s: Percent string
+#: classes/PrimeMoverImporter.php:2565
+msgid "Table rows count. %s"
+msgstr "Recuento de filas de la tabla. %s"
+
+#. translators: %s: Percent
+#: classes/PrimeMoverImporter.php:1707
+msgid "%s completed"
+msgstr "%s completado"
+
+#: classes/PrimeMoverImporter.php:1452
+msgid "Target media import directory does not exist"
+msgstr "El directorio de importación de medios de destino no existe"
+
+#: classes/PrimeMoverImporter.php:1448
+msgid "Source media import directory does not exist"
+msgstr "El directorio de importación de medios de origen no existe"
+
+#: classes/PrimeMoverImporter.php:678 classes/PrimeMoverImporter.php:1181
+#: classes/PrimeMoverImporter.php:1309 classes/PrimeMoverImporter.php:1467
+#: classes/PrimeMoverImporter.php:1608 classes/PrimeMoverImporter.php:2559
+msgid "Starting.."
+msgstr "Empezando…"
+
+#: classes/PrimeMoverImporter.php:791 classes/PrimeMoverImporter.php:801
+msgid "Unzip failed. The package is not a Prime Mover site package."
+msgstr "Error al descomprimir. El paquete no es un paquete de sitio Prime Mover."
+
+#: classes/PrimeMoverImporter.php:555
+msgid "Processing files.."
+msgstr "Procesando archivos.."
+
+#: classes/PrimeMoverSystemProcessors.php:844
+msgid "Export nonce and other POST parameters not set."
+msgstr "Exportación de nonce y otros parámetros POST no establecidos."
+
+#: classes/PrimeMoverSystemProcessors.php:840
+msgid "Export requisites NOT meet."
+msgstr "Los requisitos de exportación NO se cumplen."
+
+#: classes/PrimeMoverSystemProcessors.php:719
+#: classes/PrimeMoverSystemProcessors.php:948
+msgid "An unknown error has occured"
+msgstr "Se ha producido un error desconocido"
+
+#: classes/PrimeMoverSystemProcessors.php:608
+msgid "Original handler NOT cleared during validation, aborting import."
+msgstr "El manejador original NO se vacia durante la validación, abortando la importación."
+
+#: classes/PrimeMoverSystemProcessors.php:602
+msgid "Package file for importing does not exist, aborting import."
+msgstr "El archivo de paquete para la importación no existe, anulando la importación."
+
+#: classes/PrimeMoverSystemProcessors.php:589
+msgid "Essential requisites is NOT meet during importing package."
+msgstr "Los requisitos esenciales NO se cumplen durante la importación del paquete."
+
+#: classes/PrimeMoverSystemProcessors.php:562
+msgid "Diff data continue variable is empty."
+msgstr "La variable Diff data continue está vacía."
+
+#: classes/PrimeMoverSystemProcessors.php:559
+msgid "Diff unzipped_directory and blog ID is not set."
+msgstr "Diff unzipped_directory y el ID del blog no está establecido."
+
+#: classes/PrimeMoverSystemProcessors.php:555
+msgid "Diff blog ID is invalid."
+msgstr "El ID del blog de Diff no es válido."
+
+#: classes/PrimeMoverExporter.php:1669
+msgid "Generating export files list.."
+msgstr "Generando lista de archivos de exportación.."
+
+#: classes/PrimeMoverExporter.php:1466
+msgid "Completed target dump zip path is not located for archiving."
+msgstr "No se ha localizado la ruta zip del volcado de destino para su archivo."
+
+#. translators: %s: Dump percent progress
+#: classes/PrimeMoverExporter.php:1060
+msgid "Dumping database %s done."
+msgstr "Volcado de la base de datos %s realizado."
+
+#: dependency-checks/PrimeMoverCoreSaltDependencies.php:184
+msgid "complete security keys"
+msgstr "claves de seguridad completas"
+
+#: utilities/PrimeMoverExportUtilities.php:965
+msgid "How to get multisite target blog ID ?"
+msgstr "¿Cómo obtener el ID de blog de destino multisitio?"
+
+#: utilities/PrimeMoverExportUtilities.php:921
+msgid "Export type (required)"
+msgstr "Tipo de exportación (obligatorio)"
+
+#. translators: %s: Current migration mode operational context tag label (e.g.
+#. Export or Import)
+#: utilities/PrimeMoverSystemCheckUtilities.php:1043
+msgid "%s Error opening zip path"
+msgstr "%s Error al abrir la ruta zip"
+
+#. translators: %s: Current migration mode operational context tag label (e.g.
+#. Media or Plugins)
+#: utilities/PrimeMoverSystemCheckUtilities.php:1360
+msgid "%s extraction path does not exist"
+msgstr "%s ruta de extracción no existe"
+
+#. translators: %s: Current migration mode operational context tag label (e.g.
+#. Media or Plugins)
+#: utilities/PrimeMoverSystemCheckUtilities.php:1355
+msgid "%s archive path does not exist"
+msgstr "%s ruta de archivo no existe"
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:1351
+msgid "Media"
+msgstr "Medio"
+
+#: utilities/PrimeMoverImportUtilities.php:987
+msgid "Failed to obtain plugin lock file."
+msgstr "No se ha podido obtener el archivo de bloqueo del plugin."
+
+#: utilities/PrimeMoverImportUtilities.php:968
+msgid "Failed to open plugins copy lock file."
+msgstr "No se ha podido abrir el archivo de bloqueo de copia de los plugins."
+
+#: classes/PrimeMoverExporter.php:815
+msgid "Unable to create temporary WPRIME archive. Check permission."
+msgstr "No se puede crear el archivo temporal WPRIME.  Comprueba los permisos."
+
+#. translators: %s: Securely permitted hyperlink anchor element pointing
+#. directly to the raw secret key api generator url page
+#: dependency-checks/PrimeMoverCoreSaltDependencies.php:151
+#: dependency-checks/PrimeMoverCoreSaltDependencies.php:202
+msgid "Please use this tool to re-generate all keys : %s . Clear your browser cache and re-activate the plugin again."
+msgstr "Por favor, usa esta herramienta para volver a generar todas las claves: %s . Borra la caché de tu navegador y vuelve a activar el plugin."
+
+#: utilities/PrimeMoverExportUtilities.php:734
+msgid "This might help resolve this issue when exporting large sites."
+msgstr "Esto podría ayudar a resolver este problema al exportar sitios grandes."
+
+#: utilities/PrimeMoverImportUtilities.php:154
+msgid "This might help resolve this issue when restoring/importing large sites."
+msgstr "Esto podría ayudar a resolver este problema al restaurar/importar sitios grandes."
+
+#. translators: %s: Invalid keys
+#: classes/PrimeMoverSystemFunctions.php:903
+msgid "Invalid footprint keys detected : %s"
+msgstr "Se han detectado claves de huella no válidas : %s"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:196
+msgid "%s is not a file inside tmp directory"
+msgstr "%s no es un archivo dentro del directorio tmp"
+
+#: classes/PrimeMoverImporter.php:449 classes/PrimeMoverImporter.php:1578
+#: classes/PrimeMoverImporter.php:1680 classes/PrimeMoverImporter.php:2217
+#: classes/PrimeMoverImporter.php:2297 classes/PrimeMoverImporter.php:2468
+#: classes/PrimeMoverImporter.php:2528 classes/PrimeMoverImporter.php:2658
+#: classes/PrimeMoverImporter.php:2764 classes/PrimeMoverImporter.php:2817
+msgid "Errors detected, alert user."
+msgstr "Errores detectados, alerta al usuario."
+
+#: classes/PrimeMoverSystemFunctions.php:912
+msgid "Error: Missing site URL, are you sure site is not misconfigured?"
+msgstr "Error: Falta la URL del sitio, ¿estás seguro de que el sitio no está mal configurado?"
+
+#: utilities/PrimeMoverUploadUtilities.php:116
+msgid "minute"
+msgstr "minuto"
+
+#: utilities/PrimeMoverUploadUtilities.php:115
+msgid "minutes"
+msgstr "minutos"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:474
+msgid "Prime Mover encounters fatal error and deactivated."
+msgstr "Prime Mover encuentra un error fatal y se desactiva."
+
+#: classes/PrimeMoverHookedMethods.php:499
+msgid "Analyzing resources.."
+msgstr "Analizando recursos.."
+
+#: classes/PrimeMoverProgressHandlers.php:666
+msgid "Administrators : Click this link if you want to DISABLE MAINTENANCE MODE NOW"
+msgstr "Administradores : Haz clic en este enlace si quieres DESACTIVAR EL MODO DE MANTENIMIENTO AHORA"
+
+#: dependency-checks/PrimeMoverPluginSlugDependencies.php:99
+msgid "After renaming the plugin folder name, re-activate again. Thank you"
+msgstr "Después de cambiar el nombre de la carpeta del plugin, vuelve a activarlo. Gracias"
+
+#: classes/PrimeMoverProgressHandlers.php:670
+msgid "Prime Mover Maintenance Mode is now disabled. PLEASE RELOAD THIS PAGE."
+msgstr "El modo de mantenimiento de Prime Mover está desactivado. POR FAVOR RECARGA ESTA PÁGINA."
+
+#: dependency-checks/PrimeMoverPluginSlugDependencies.php:92
+msgid "if you have a free version copy that comes from WordPress.org."
+msgstr "si tienes una copia de la versión gratuita que proviene de WordPress.org."
+
+#: dependency-checks/PrimeMoverPluginSlugDependencies.php:91
+msgid "if you have a pro version copy that is under active subscription, under active trial or expired subscription."
+msgstr "si tienes una copia de la versión pro que está bajo una suscripción activa, bajo una prueba activa o una suscripción caducada"
+
+#. translators: %s: Formatted plugin title codename string
+#: dependency-checks/PrimeMoverPluginSlugDependencies.php:75
+msgid "The %s plugin cannot be activated if it is using different plugin folder name other than the defaults. Please rename plugin folder name to :"
+msgstr "El plugin %s no se puede activar si utiliza un nombre de carpeta de plugin diferente al predeterminado. Por favor, cambia el nombre de la carpeta del plugin a:"
+
+#: classes/PrimeMoverExporter.php:1124
+msgid "Unable to parse DB_HOST for PDO connection."
+msgstr "No se puede analizar DB_HOST para la conexión PDO."
+
+#: classes/PrimeMoverExporter.php:1119
+msgid "ERROR: DB_HOST constant is undefined in wp-config.php."
+msgstr "ERROR: La constante DB_HOST no está definida en wp-config.php."
+
+#: classes/PrimeMoverSystemFunctions.php:1200
+msgid "Plugin"
+msgstr "Plugin"
+
+#: classes/PrimeMoverHookedMethods.php:489
+#: users/PrimeMoverUserFunctions.php:729
+#: utilities/PrimeMoverComponentAuxiliary.php:1119
+#: utilities/PrimeMoverImportUtilities.php:220
+msgid "No"
+msgstr "No"
+
+#: classes/PrimeMoverHookedMethods.php:494
+msgid "Processing"
+msgstr "Procesando"
+
+#: classes/PrimeMoverHookedMethods.php:487
+#: engines/prime-mover-panel/app/PrimeMoverControlPanel.php:435
+#: menus/PrimeMoverBackupMenus.php:528
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: utilities/PrimeMoverImportUtilities.php:549
+msgid "Warning"
+msgstr "Advertencia"
+
+#: classes/PrimeMoverHookedMethods.php:488
+#: engines/prime-mover-panel/app/PrimeMoverSettingsConfig.php:296
+#: engines/prime-mover-panel/app/PrimeMoverSettingsConfig.php:338
+#: engines/prime-mover-panel/app/PrimeMoverSettingsConfig.php:360
+#: engines/prime-mover-panel/app/PrimeMoverSettingsConfig.php:382
+#: menus/PrimeMoverBackupMenus.php:529 menus/PrimeMoverBackupMenus.php:530
+#: users/PrimeMoverUserFunctions.php:728
+#: utilities/PrimeMoverComponentAuxiliary.php:1117
+#: utilities/PrimeMoverImportUtilities.php:219
+msgid "Yes"
+msgstr "Sí"
+
+#: menus/PrimeMoverGearBoxScreenOptions.php:335
+msgid "Prime Mover"
+msgstr "Prime Mover"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: prime-mover.php
+msgid "https://codexonics.com/"
+msgstr "https://codexonics.com/"
+
+#. Author of the plugin
+#: prime-mover.php
+msgid "Codexonics"
+msgstr "Codexonics"
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:863
+msgid "Could not create directory."
+msgstr "No ha sido posible crear el directorio."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:851
+msgid "Could not copy file."
+msgstr "No se pudo copiar el archivo."
+
+#: utilities/PrimeMoverExportUtilities.php:880
+msgid "Export Options"
+msgstr "Exportar opciones"
+
+#: menus/PrimeMoverEventViewerListTable.php:375
+#: utilities/PrimeMoverImportUtilities.php:531
+msgid "Description"
+msgstr "Descripción"
+
+#: menus/PrimeMoverBackupMenuListTable.php:371
+#: utilities/PrimeMoverImportUtilities.php:527
+msgid "Site title"
+msgstr "Título del sitio"
+
+#: utilities/PrimeMoverImportUtilities.php:522
+msgid "Source"
+msgstr "Fuente"
+
+#: utilities/PrimeMoverUploadUtilities.php:169
+msgid "Import done."
+msgstr "Importación realizada."
+
+#: utilities/PrimeMoverExportUtilities.php:746
+#: utilities/PrimeMoverImportUtilities.php:166
+#: utilities/PrimeMoverSystemUtilities.php:663
+msgid "unknown"
+msgstr "desconocido"
+
+#: utilities/PrimeMoverSystemUtilities.php:264
+#: utilities/PrimeMoverSystemUtilities.php:545
+#: utilities/PrimeMoverSystemUtilities.php:546
+#: utilities/PrimeMoverSystemUtilities.php:556
+#: utilities/PrimeMoverSystemUtilities.php:640
+msgid "Not installed."
+msgstr "No determinado."
+
+#: utilities/PrimeMoverFreemiusIntegration.php:747
+msgid "Go to Settings"
+msgstr "Ir a los ajustes"
+
+#: engines/prime-mover-panel/app/PrimeMoverControlPanel.php:457
+#: utilities/PrimeMoverFreemiusIntegration.php:733
+msgid "Settings"
+msgstr "Ajustes"
+
+#. translators: %s: Destination text description label pointing to the target
+#. dashboard link area
+#: utilities/PrimeMoverFreemiusIntegration.php:674
+msgid "Go to %s"
+msgstr "Ir a %s"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:657
+msgid "Getting Started"
+msgstr "Empezando"
+
+#: classes/PrimeMoverHookedMethods.php:496
+msgid "Downloading package"
+msgstr "Descargando el paquete"
+
+#: classes/PrimeMoverHookedMethods.php:127
+msgid "Import Site"
+msgstr "Importar sitio"
+
+#: classes/PrimeMoverSystemProcessors.php:342
+msgid "Unauthorized request."
+msgstr "Solicitud no autorizada."
+
+#: classes/PrimeMoverSystemFunctions.php:1261
+#: classes/PrimeMoverSystemFunctions.php:1276
+#: classes/PrimeMoverSystemFunctions.php:1301
+#: classes/PrimeMoverSystemFunctions.php:1321
+msgid "version"
+msgstr "versión"
+
+#: classes/PrimeMoverSystemFunctions.php:1210
+#: classes/PrimeMoverSystemFunctions.php:1223
+msgid "Version"
+msgstr "Versión"
+
+#: classes/PrimeMoverSystemFunctions.php:1191
+msgid "NOT"
+msgstr "NO"
+
+#: classes/PrimeMoverProgressHandlers.php:675
+msgid "Maintenance Mode"
+msgstr "Modo de mantenimiento"
+
+#. translators: %s: Formatted plugin title codename
+#: dependency-checks/PrimeMoverPHPCoreFunctionDependencies.php:196
+msgid "The %s plugin cannot be activated if these following PHP core functions are missing"
+msgstr "El plugin %s no puede ser activado si faltan las siguientes funciones del núcleo de PHP"
+
+#. translators: %s: Formatted plugin title codename
+#: dependency-checks/PrimeMoverFileSystemDependencies.php:162
+msgid "The %s plugin cannot be activated if the following paths were not writable by WordPress"
+msgstr "El plugin %s no puede ser activado si las siguientes rutas no tienen permiso de escritura por WordPress"
+
+#: utilities/PrimeMoverUploadUtilities.php:313
+#: utilities/PrimeMoverUploadUtilities.php:488
+msgid "Unauthorized upload."
+msgstr "Subida no autorizada."
+
+#: utilities/PrimeMoverExportUtilities.php:960
+msgid "Multisite target blog ID should be an integer greater than 0"
+msgstr "El ID del blog de destino del multisitio debe ser un número entero mayor que 0"
+
+#: utilities/PrimeMoverExportUtilities.php:952
+msgid "Export to multisite format"
+msgstr "Exportar a formato multisitio"
+
+#: utilities/PrimeMoverExportUtilities.php:927
+msgid "Export to single-site format"
+msgstr "Exportar a formato de sitio único"
+
+#: utilities/PrimeMoverExportUtilities.php:916
+msgid "This is complete package. You need this option if you want to migrate everything including your plugins and themes. A example usage would be to perform a full-site migration from one server to another or if you want a full-site backup. This will create the largest package size."
+msgstr "Este es el paquete completo. Necesitas esta opción si quieres migrar todo, incluyendo tus plugins y temas. Un ejemplo de uso sería realizar una migración de todo el sitio de un servidor a otro o si desea una copia de seguridad de todo el sitio. Esto creará el paquete de mayor tamaño."
+
+#: utilities/PrimeMoverExportUtilities.php:915
+msgid "Export database, media files, plugins and themes."
+msgstr "Exportar base de datos, archivos de medios, plugins y temas."
+
+#: utilities/PrimeMoverExportUtilities.php:908
+msgid "Export package for WordPress debugging"
+msgstr "Exportar paquete para la depuración de WordPress"
+
+#: utilities/PrimeMoverExportUtilities.php:902
+msgid "Export database and media files ONLY"
+msgstr "Exportar archivos de base de datos y medios SOLAMENTE"
+
+#: utilities/PrimeMoverExportUtilities.php:896
+msgid "Export database ONLY"
+msgstr "Exportar base de datos SOLAMENTE"
+
+#: utilities/PrimeMoverExportUtilities.php:51
+msgid "Complete full backup (Database + Plugins/Themes + Media files)"
+msgstr "Copia de seguridad completa (base de datos + plugins/temas + archivos de medios)"
+
+#: utilities/PrimeMoverExportUtilities.php:50
+msgid "Debugging package"
+msgstr "Paquete de depuración"
+
+#: utilities/PrimeMoverExportUtilities.php:49
+msgid "Database + Media files backup only"
+msgstr "Copia de seguridad de base de datos + archivos de medios solamente"
+
+#: utilities/PrimeMoverExportUtilities.php:48
+msgid "Database backup only"
+msgstr "Copia de seguridad de la base de datos solamente"
+
+#: utilities/PrimeMoverOpenSSLUtilities.php:396
+msgid "Unable to read encrypted package database. A correct decryption key is required to restore this database."
+msgstr "No es posible leer paquete cifrado de base de datos. Se requiere una clave de descifrado correcta para restaurar esta base de datos."
+
+#: utilities/PrimeMoverOpenSSLUtilities.php:262
+msgid "Unable to read encrypted package."
+msgstr "No se puede leer el paquete cifrado."
+
+#: utilities/PrimeMoverImportUtilities.php:529
+msgid "Encrypted media files"
+msgstr "Archivos de medios cifrados"
+
+#: utilities/PrimeMoverImportUtilities.php:528
+msgid "Encrypted database"
+msgstr "Base de datos cifrada"
+
+#: menus/PrimeMoverBackupMenuListTable.php:369
+#: utilities/PrimeMoverImportUtilities.php:525
+msgid "Target blog ID"
+msgstr "ID del blog de destino"
+
+#: menus/PrimeMoverBackupMenuListTable.php:373
+#: utilities/PrimeMoverImportUtilities.php:523
+msgid "Package size"
+msgstr "Tamaño del paquete"
+
+#: utilities/PrimeMoverImportUtilities.php:521
+msgid "Restoration mode"
+msgstr "Modo de restauración"
+
+#: utilities/PrimeMoverImportUtilities.php:518
+msgid "Import process deletes old site and will be replaced with the imported package."
+msgstr "El proceso de importación borra el sitio antiguo y se reemplazará con el paquete importado."
+
+#: engines/prime-mover-panel/utilities/PrimeMoverToolBox.php:722
+#: engines/prime-mover-panel/utilities/PrimeMoverToolBox.php:757
+#: engines/prime-mover-panel/utilities/PrimeMoverToolBox.php:792
+#: engines/prime-mover-panel/utilities/PrimeMoverTroubleshootingMarkup.php:431
+#: utilities/PrimeMoverImportUtilities.php:473
+msgid "Heads Up!"
+msgstr "¡Cuidado!"
+
+#: utilities/PrimeMoverImportUtilities.php:393
+msgid "You cancel the import and temp file deleted. Nothing is changed on the server."
+msgstr "Se cancela la importación y se elimina el archivo temporal. No se cambia nada en el servidor."
+
+#: compatibility/PrimeMoverCachingCompat.php:105
+#: engines/prime-mover-panel/app/PrimeMoverSettings.php:458
+#: utilities/PrimeMoverImportUtilities.php:375
+#: utilities/PrimeMoverImportUtilities.php:409
+#: utilities/PrimeMoverImportUtilities.php:453
+#: utilities/PrimeMoverSystemCheckUtilities.php:172
+msgid "Error!"
+msgstr "¡Error!"
+
+#: utilities/PrimeMoverImportUtilities.php:358
+msgid "You cancel the import. Nothing is changed on the server."
+msgstr "Se cancela la importación. No se cambia nada en el servidor."
+
+#: utilities/PrimeMoverImportUtilities.php:357
+#: utilities/PrimeMoverImportUtilities.php:392
+msgid "Import Cancelled!"
+msgstr "¡Importación cancelada!"
+
+#: utilities/PrimeMoverImportUtilities.php:218
+msgid "Restore from a remote URL package"
+msgstr "Restaurar desde una URL de paquete remota"
+
+#: utilities/PrimeMoverImportUtilities.php:215
+msgid "Restore within server backup"
+msgstr "Restaurar dentro de la copia de seguridad del servidor"
+
+#: utilities/PrimeMoverImportUtilities.php:214
+msgid "Upload package"
+msgstr "Subir paquete"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:878
+msgid "Network Sites"
+msgstr "Sitios de red"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:864
+msgid "Technical support is included with Pro version"
+msgstr "El soporte técnico se incluye con la versión Pro"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:817
+msgid "Rate us"
+msgstr "Valóranos"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:764
+msgid "Support and Documentation"
+msgstr "Soporte y documentación"
+
+#: utilities/PrimeMoverFreemiusIntegration.php:690
+#: utilities/PrimeMoverFreemiusIntegration.php:724
+msgid "Upgrade to Pro Version"
+msgstr "Actualizar a la versión Pro"
+
+#: classes/PrimeMoverHookedMethods.php:623
+#: classes/PrimeMoverHookedMethods.php:682
+#: classes/PrimeMoverHookedMethods.php:683
+#: engines/prime-mover-panel/app/PrimeMoverControlPanel.php:533
+#: menus/PrimeMoverAutoBackupEventViewer.php:175
+#: menus/PrimeMoverBackupMenus.php:677
+#: utilities/PrimeMoverFreemiusIntegration.php:874
+msgid "Migration Tools"
+msgstr "Herramientas de migración"
+
+#: classes/PrimeMoverHookedMethods.php:600
+msgid "Prime Mover plugin is not yet ready to use. Error: Requires at least PHP 5.6.0."
+msgstr "El plugin Prime Mover aún no está listo para usar. Error: Requiere al menos PHP 5.6.0."
+
+#: classes/PrimeMoverHookedMethods.php:519
+#: utilities/PrimeMoverImportUtilities.php:454
+msgid "Invalid file type or corrupted package."
+msgstr "Tipo de archivo no válido o paquete dañado."
+
+#: classes/PrimeMoverHookedMethods.php:497
+msgid "Uploading to Dropbox"
+msgstr "Subiendo a Dropbox"
+
+#: classes/PrimeMoverHookedMethods.php:495
+msgid "Initializing download"
+msgstr "Inicializando descarga"
+
+#: classes/PrimeMoverHookedMethods.php:486
+msgid "Export now"
+msgstr "Exportar ahora"
+
+#: classes/PrimeMoverHookedMethods.php:485
+msgid "Import error!"
+msgstr "¡Error de importación!"
+
+#: classes/PrimeMoverHookedMethods.php:484
+msgid "Site successfully imported!"
+msgstr "¡Sitio importado correctamente!"
+
+#: classes/PrimeMoverHookedMethods.php:482
+msgid "Uploading in progress."
+msgstr "Subida en proceso"
+
+#: classes/PrimeMoverHookedMethods.php:228
+#: classes/PrimeMoverHookedMethods.php:628
+msgid "Export site"
+msgstr "Exportar sitio"
+
+#: classes/PrimeMoverHookedMethods.php:126
+msgid "Export Site"
+msgstr "Exportar sitio"
+
+#: classes/PrimeMoverSystemProcessors.php:931
+msgid "Export failed"
+msgstr "Exportación fallida"
+
+#: classes/PrimeMoverSystemProcessors.php:913
+msgid "Export saved !"
+msgstr "¡Exportación guardada!"
+
+#: classes/PrimeMoverSystemProcessors.php:862
+msgid "Starting export"
+msgstr "Comenzando exportación"
+
+#: classes/PrimeMoverSystemProcessors.php:706
+msgid "Import failed for unknown reason."
+msgstr "La importación ha fallado por una razón desconocida."
+
+#: classes/PrimeMoverSystemProcessors.php:622
+msgid "Starting import"
+msgstr "Comenzando la importación"
+
+#: classes/PrimeMoverSystemProcessors.php:407
+#: utilities/PrimeMoverUploadUtilities.php:317
+msgid "Chunk upload error."
+msgstr "Error de subida de fragmentos."
+
+#: classes/PrimeMoverSystemProcessors.php:379
+msgid "No file uploaded"
+msgstr "No se ha subido ningún archivo"
+
+#: classes/PrimeMoverSystemProcessors.php:163
+#: classes/PrimeMoverSystemProcessors.php:169
+msgid "Incorrect nonce"
+msgstr "Nonce incorrecto"
+
+#: classes/PrimeMoverSystemProcessors.php:148
+msgid "Unauthorized request"
+msgstr "Petición no autorizada."
+
+#: classes/PrimeMoverSystemFunctions.php:1324
+#: classes/PrimeMoverSystemFunctions.php:1332
+msgid "Target site child theme"
+msgstr "Tema hijo del sitio de destino"
+
+#: classes/PrimeMoverSystemFunctions.php:1310
+msgid "Target site theme"
+msgstr "Tema del sitio de destino"
+
+#: classes/PrimeMoverSystemFunctions.php:1307
+msgid "Target site parent theme"
+msgstr "Tema principal del sitio de destino"
+
+#: classes/PrimeMoverSystemFunctions.php:1284
+#: classes/PrimeMoverSystemFunctions.php:1330
+msgid "Not using child theme."
+msgstr "No se utiliza el tema hijo."
+
+#: classes/PrimeMoverSystemFunctions.php:1277
+#: classes/PrimeMoverSystemFunctions.php:1285
+msgid "Source site child theme"
+msgstr "Tema hijo del sitio de origen"
+
+#: classes/PrimeMoverSystemFunctions.php:1267
+msgid "Source site theme"
+msgstr "Tema del sitio de origen"
+
+#: classes/PrimeMoverSystemFunctions.php:1265
+msgid "Source site parent theme"
+msgstr "Tema principal del sitio de origen"
+
+#: classes/PrimeMoverSystemFunctions.php:1237
+msgid "Theme differences"
+msgstr "Diferencias del tema"
+
+#: classes/PrimeMoverSystemFunctions.php:1225
+msgid "Target site"
+msgstr "Sitio de destino"
+
+#: classes/PrimeMoverSystemFunctions.php:1212
+msgid "Source site"
+msgstr "Sitio de origen"
+
+#: classes/PrimeMoverSystemFunctions.php:1198
+msgid "Plugin differences"
+msgstr "Diferencias de plugins"
+
+#: classes/PrimeMoverExporter.php:2041
+msgid "Generate download URL"
+msgstr "Generar URL de descarga"
+
+#: classes/PrimeMoverExporter.php:1998
+msgid "Unable to delete temporary directory"
+msgstr "No se puede borrar el directorio temporal"
+
+#: classes/PrimeMoverExporter.php:1993
+msgid "Deleting temp folder"
+msgstr "Eliminando la carpeta temporal"
+
+#: classes/PrimeMoverExporter.php:1871
+msgid "Error putting footprint files."
+msgstr "Error al poner los archivos de la huella."
+
+#: classes/PrimeMoverExporter.php:1852
+msgid "Generating config"
+msgstr "Generando configuración"
+
+#: classes/PrimeMoverExporter.php:1665
+msgid "Uploads directory of this blog does not seem to exist."
+msgstr "El directorio de subidas de este blog no parece existir."
+
+#: classes/PrimeMoverExporter.php:1651 classes/PrimeMoverExporter.php:1702
+msgid "Error ! Export options not set."
+msgstr "¡Error! Las opciones de exportación no están establecidas."
+
+#: classes/PrimeMoverExporter.php:1109
+msgid "Unable to register encrypted stream filter."
+msgstr "No se puede registrar el filtro de flujo cifrado."
+
+#: classes/PrimeMoverExporter.php:1100
+msgid "Unauthorized dump."
+msgstr "Volcado no autorizado."
+
+#: classes/PrimeMoverExporter.php:1096
+msgid "Undefined execute dump in PHP parameters."
+msgstr "Volcado de ejecución no definido en parámetros PHP."
+
+#: classes/PrimeMoverExporter.php:938
+msgid "Unable to dump database, please check that your database is not empty or these tables exists."
+msgstr "No se puede volcar la base de datos, compruebe que su base de datos no está vacía o que estas tablas existen."
+
+#: classes/PrimeMoverExporter.php:1062
+msgid "Dumping database"
+msgstr "Volcando base de datos"
+
+#: classes/PrimeMoverExporter.php:820
+msgid "Unable to create export folder for WPRIME file. Check permission."
+msgstr "No se puede crear la carpeta de exportación para el archivo WPRIME. Compruebe el permiso."
+
+#: classes/PrimeMoverExporter.php:790
+msgid "Unable to create site export folders. Check permission."
+msgstr "No se pueden crear carpetas de exportación del sitio. Compruebe el permiso."
+
+#: classes/PrimeMoverExporter.php:782
+msgid "Creating temp folder"
+msgstr "Creando una carpeta temporal"
+
+#: classes/PrimeMoverExporter.php:773
+msgid "Blog ID is not defined"
+msgstr "El ID de blog no está definido"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:180
+msgid "%s is not a migration package format"
+msgstr "%s no es un formato de paquete de migración"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:176
+msgid "%s is not a valid float"
+msgstr "%s no es un float válido"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:172
+msgid "%s is not valid URL"
+msgstr "%s no es una URL válida."
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:168
+msgid "%s is not a sha512 string"
+msgstr "%s no es una cadena sha512"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:164
+msgid "%s is not boolean"
+msgstr "%s no es booleano"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:160
+msgid "%s is not a sha256 string"
+msgstr "%s no es una cadena sha256"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:156
+msgid "%s is not a directory"
+msgstr "%s no es un directorio"
+
+#: classes/PrimeMoverValidationHandlers.php:152
+msgid "Diff data is not a valid json format"
+msgstr "Los datos diff no son un formato json válido"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:149
+msgid "%s is not a valid migration package"
+msgstr "%s no es un paquete de migración válido"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:145
+msgid "%s is not a positive integer"
+msgstr "%s no es un número entero positivo"
+
+#. translators: %s: Maybe serialize output
+#: classes/PrimeMoverValidationHandlers.php:141
+msgid "%s is not a valid nonce format"
+msgstr "%s no es un formato nonce válido"
+
+#: utilities/PrimeMoverExportUtilities.php:731
+#: utilities/PrimeMoverImportUtilities.php:151
+msgid "Server Error : {{PROGRESSSERVERERROR}}"
+msgstr "Error del servidor: {{PROGRESSSERVERERROR}}"
+
+#: classes/PrimeMoverProgressHandlers.php:513
+msgid "Runtime error : "
+msgstr "Error de tiempo de ejecución: "
+
+#: classes/PrimeMoverErrorHandlers.php:611
+msgid "Runtime Error : "
+msgstr "Error de tiempo de ejecución: "
+
+#: classes/PrimeMoverImporter.php:2820
+msgid "Restoring uploads info.."
+msgstr "Restaurando información de las subidas.."
+
+#: classes/PrimeMoverImporter.php:2768
+msgid "Saving uploads info.."
+msgstr "Guardando información de subidas.."
+
+#. translators: %s: Percent string
+#: classes/PrimeMoverImporter.php:2690
+msgid "Search and replace. %s"
+msgstr "Buscar y reemplazar. %s"
+
+#: classes/PrimeMoverImporter.php:2220
+msgid "Activating plugins"
+msgstr "Activando plugins"
+
+#: classes/PrimeMoverImporter.php:2476
+msgid "Renaming dB prefix with target site."
+msgstr "Renombrando el prefijo dB por el sitio de destino."
+
+#: classes/PrimeMoverImporter.php:1777
+msgid "Unable to open database file."
+msgstr "No se puede abrir el archivo de base de datos."
+
+#: classes/PrimeMoverImporter.php:1695
+msgid "Unable to find the correct SQL path."
+msgstr "No se puede encontrar la ruta de acceso SQL correcta."
+
+#. translators: %s: Progress phrase
+#: classes/PrimeMoverImporter.php:1712
+msgid "Importing database tables. %s"
+msgstr "Importando tablas de base de datos. %s"
+
+#: classes/PrimeMoverImporter.php:1431
+msgid "Media path directory does not exist."
+msgstr "El directorio de ruta de medios no existe."
+
+#: classes/PrimeMoverImporter.php:1275 classes/PrimeMoverImporter.php:1421
+msgid "Unzipped directory is empty."
+msgstr "El directorio descomprimido está vacío."
+
+#: classes/PrimeMoverImporter.php:1415
+msgid "Blog id does not exist."
+msgstr "El identificador de blog no existe."
+
+#. translators: %s: Current migration mode operational context tag label (e.g.
+#. Export or Import)
+#: utilities/PrimeMoverSystemCheckUtilities.php:1049
+msgid "%s Extraction failed."
+msgstr "Error en la extracción %s."
+
+#: classes/PrimeMoverImporter.php:985
+msgid "System footprint of package is not found"
+msgstr "No se encuentra la huella del sistema del paquete"
+
+#: classes/PrimeMoverImporter.php:931
+msgid "Comparing system footprint"
+msgstr "Comparando la huella del sistema"
+
+#: classes/PrimeMoverImporter.php:893 classes/PrimeMoverImporter.php:896
+msgid "Corrupt package"
+msgstr "Paquete dañado"
+
+#: classes/PrimeMoverImporter.php:890
+msgid "Mismatch import!"
+msgstr "¡Desajuste en la importación!"
+
+#: classes/PrimeMoverImporter.php:870
+msgid "Checking import package"
+msgstr "Comprobando paquete de importación"
+
+#: classes/PrimeMoverImporter.php:614
+msgid "Import file does not seem to exist."
+msgstr "El archivo de importación no parece existir."
+
+#: classes/PrimeMoverImporter.php:899 classes/PrimeMoverImporter.php:1280
+#: classes/PrimeMoverImporter.php:1425
+msgid "Unzipped directory does not exist."
+msgstr "El directorio descomprimido no existe."
+
+#: utilities/PrimeMoverImportUtilities.php:533
+msgid "Are you sure you want to proceed?"
+msgstr "¿Seguro que quieres continuar?"
+
+#: utilities/PrimeMoverExportUtilities.php:963
+msgid "Enter multisite target blog ID (integers only)"
+msgstr "Introduce el ID del blog de destino del multisitio (solo números enteros)"
+
+#: classes/PrimeMoverImporter.php:1684
+msgid "Unzipped directory is missing. It is deleted while the import is ongoing. Please repeat again."
+msgstr "Falta el directorio descomprimido. Se ha borrado mientras la importación está en curso. Por favor, repite de nuevo."
+
+#: classes/PrimeMoverHookedMethods.php:498
+msgid "Unknown error occurred, please try again."
+msgstr "Se ha producido un error desconocido, por favor, inténtalo de nuevo."
+
+#: classes/PrimeMoverImporter.php:957
+msgid "WordPress root is not defined in this imported package, please re-generate the package at the source site."
+msgstr "La raíz de WordPress no está definida en este paquete importado, por favor vuelve a generar el paquete en el sitio de origen."
+
+#: classes/PrimeMoverImporter.php:965
+msgid "WordPress root is not defined in this site. Please check your multisite settings."
+msgstr "La raíz de WordPress no está definida en este sitio. Por favor, compreba los ajustes de tu multisitio."
+
+#: utilities/PrimeMoverSystemCheckUtilities.php:157
+msgid "Wrong import site package! Please check that the import zip package is correct for this site."
+msgstr "¡Paquete de importación del sitio incorrecto! Por favor, comprueba que el paquete zip de importación es correcto para este sitio."
+
+#: classes/PrimeMoverImporter.php:2695
+msgid "Unable to generate replaceables, could that your site package is corrupted. Please check."
+msgstr "No se pueden generar reemplazables, podría ser que el paquete de tu sitio esté dañado. Por favor, compruébalo."
+
+#: classes/PrimeMoverImporter.php:2490
+msgid "Unable to rename tables, please check that your database is not empty or these tables exists."
+msgstr "No se puede base de datos, no está vacía o que estas tablas existen. "
+
+#: classes/PrimeMoverHookedMethods.php:605
+msgid "Prime Mover plugin is not yet ready to use. Error: Requires mbstring PHP extension. Please enable it."
+msgstr "El plugin Prime Mover aún no está listo para ser utilizado. Error: Requiere la extensión de PHP mbstring. Por favor, habilítala."
+
+#: classes/PrimeMoverHookedMethods.php:595
+msgid "Prime Mover plugin is not yet ready to use. Error: Requires PHP Zip extension to be enabled. Please check with you web host."
+msgstr "El plugin Prime Mover aún no está listo para ser utilizado. Error: Requiere que la extensión de PHP Zip esté activada. Por favor, compruébalo con tu proveedor de alojamiento web."
+
+#: classes/PrimeMoverHookedMethods.php:520
+msgid "Restoring package beyond 4GB is not supported by browser uploads. Please upgrade to premium version and use remote URL restore feature."
+msgstr "La restauración de paquetes de más de 4 GB no es compatible con las cargas del navegador. Por favor, actualiza a la versión premium y utiliza la característica de restauración remota desde URLs."
+
+#: utilities/PrimeMoverExportUtilities.php:910
+msgid "This package should only be used for WordPress debugging purposes. This package does not include any media files. There might be some missing images at the target site. Do not use this option if you need all images to fully work at the target site."
+msgstr "Este paquete sólo debe utilizarse para la depuración de WordPress. Este paquete no incluye ningún archivo de medios. Pueden faltar algunas imágenes en el sitio de destino. No uses esta opción si necesitas que todas las imágenes funcionen completamente en el sitio de destino."
+
+#: classes/PrimeMoverHookedMethods.php:589
+msgid "Make sure WordPress is creating files as the same owner as the WordPress files."
+msgstr "Asegúrate de que WordPress está creando archivos con el mismo propietario que los archivos de WordPress."
+
+#: utilities/PrimeMoverExportUtilities.php:903
+msgid "Migrate only database and media. For example, you are doing some website redesign work on your local site that involves adding new pages, posts and new images. You can migrate this to the live site using this option. It is recommended to clean up uploads directory before creating this package."
+msgstr "Migrar solo la base de datos y los medios. Por ejemplo, estás haciendo un trabajo de rediseño de la web en tu sitio local que implica la adición de nuevas páginas, entradas y nuevas imágenes. Puedes migrar esto al sitio en producción usando esta opción. Se recomienda limpiar el directorio de subidas antes de crear este paquete."
+
+#: utilities/PrimeMoverExportUtilities.php:897
+msgid "Migrate only database. This is used if only database changes are needed in migration. For example, you want to test some new WordPress settings before pushing all these settings to the live site."
+msgstr "Migrar solo la base de datos. Se utiliza si solo se necesitan cambios en la base de datos en la migración. Por ejemplo, quieres probar algunos ajustes nuevos de WordPress antes de enviar todos estos ajustes al sitio en producción."
+
+#: dependency-checks/PrimeMoverPHPCoreFunctionDependencies.php:210
+msgid "Please contact your web hosting provider to enable these required PHP functions for you."
+msgstr "Por favor, contacta con tu proveedor de alojamiento web para que habilite estas funciones PHP necesarias."
+
+#: utilities/PrimeMoverExportUtilities.php:892
+msgid "Please select the export options for this site"
+msgstr "Por favor, selecciona las opciones de exportación para este sitio"
+
+#: classes/PrimeMoverImporter.php:953
+msgid "Site URL is not defined in this imported package, please re-generate the package at the source site."
+msgstr "La URL del sitio no está definida en este paquete importado, por favor vuelve a generar el paquete en el sitio de origen."
+
+#: classes/PrimeMoverImporter.php:961
+msgid "Site URL is not defined in this site. Please check your multisite settings."
+msgstr "La URL del sitio no está definida en este sitio. Por favor, comprueba la configuración de tu multisitio."
+
+#. translators: %s: NOT
+#: classes/PrimeMoverSystemFunctions.php:1188
+msgid "Some dependencies required for the imported site is not meet. Please review and do %s proceed if this can adversely affect your site"
+msgstr "Algunas dependencias necesarias para el sitio importado no se cumplen. Por favor, revisa y haz el proceso %s si esto puede afectar negativamente a tu sitio"
+
+#: classes/PrimeMoverSystemInitialization.php:2858
+msgid "This package cannot be restored because of media decryption error. To fix this, please upgrade Libzip version to 1.2.0 or higher."
+msgstr "Este paquete no se puede restaurar debido a un error de descifrado de medios. Para solucionarlo, por favor, actualiza la versión de Libzip a la 1.2.0 o superior."
+
+#: classes/PrimeMoverProgressHandlers.php:663
+msgid "Site is currently undergoing maintenance work. Please come back later."
+msgstr "El sitio se encuentra actualmente en trabajos de mantenimiento. Por favor, regresa más tarde."
+
+#: classes/PrimeMoverHookedMethods.php:571
+msgid ""
+"Prime Mover plugin is not yet ready to use. Error: Unable to create its own export folder. \n"
+"\t\t\t\t\tThis is required to export sites. Please make sure WordPress has permission to create folder in your uploads directory."
+msgstr ""
+"El plugin Prime Mover plugin aún no está listo para ser usado. Error: No se puede crear su propia carpeta de exportación. \n"
+"\t\t\t\t\tEsto es necesario para exportar sitios. Por favor, asegúrate de que WordPress tiene permisos para crear una carpeta en tu directorio de subidas."
+
+#: utilities/PrimeMoverFreemiusIntegration.php:700
+msgid "Migrate faster and secure your migration with database / media files encryption. Plus many more useful features you can get with Pro version. Click the button below to compare FREE and PRO plans."
+msgstr ""
+"Migra más rápido y asegura tu migración con la encriptación de bases de datos/medios. Además de muchas más funciones útiles que puedes obtener con la versión pro. \n"
+"                             Haz clic en el botón siguiente para comparar los planes FREE y PRO."
+
+#: classes/PrimeMoverHookedMethods.php:664
+#: utilities/PrimeMoverFreemiusIntegration.php:820
+msgid "Contact us"
+msgstr "Contacta con nosotros"
