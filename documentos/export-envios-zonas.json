@@ -1,0 +1,128 @@
+[
+    {
+        "zone": "CABA",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 39,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "Envío CABA",
+                    "shipping_section": "",
+                    "min_amount": "100000",
+                    "cost": "4700",
+                    "carry_section": "",
+                    "carry_enabled": "no",
+                    "carry_cost": "0",
+                    "carry_min_amount": "10000"
+                }
+            }
+        ]
+    },
+    {
+        "zone": "Primer Cordón",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 38,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "1er Cordón",
+                    "shipping_section": "",
+                    "min_amount": "5000000",
+                    "cost": "8000",
+                    "carry_section": "",
+                    "carry_enabled": "no",
+                    "carry_cost": "0",
+                    "carry_min_amount": "0"
+                }
+            }
+        ]
+    },
+    {
+        "zone": "Segundo Cordon",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 40,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "2do Cordón",
+                    "shipping_section": "",
+                    "min_amount": "5000000",
+                    "cost": "10000",
+                    "carry_section": "",
+                    "carry_enabled": "no",
+                    "carry_cost": "0",
+                    "carry_min_amount": "0"
+                }
+            }
+        ]
+    },
+    {
+        "zone": "Tercer Cordón",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 41,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "3er Cordón",
+                    "shipping_section": "",
+                    "min_amount": "5000000",
+                    "cost": "12000",
+                    "carry_section": "",
+                    "carry_enabled": "no",
+                    "carry_cost": "0",
+                    "carry_min_amount": "0"
+                }
+            }
+        ]
+    },
+    {
+        "zone": "Provincia de Buenos Aires",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 37,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "Provincia Buenos Aires",
+                    "shipping_section": "",
+                    "min_amount": "9999.97",
+                    "cost": "1000",
+                    "carry_section": "",
+                    "carry_enabled": "yes",
+                    "carry_cost": "4700",
+                    "carry_min_amount": "100000"
+                }
+            }
+        ]
+    },
+    {
+        "zone": "Nacional",
+        "methods": [
+            {
+                "id": "custom_shipping",
+                "instance_id": 36,
+                "enabled": "yes",
+                "settings": {
+                    "enabled": "yes",
+                    "title": "Envío Nacional",
+                    "shipping_section": "",
+                    "min_amount": "10000",
+                    "cost": "1000",
+                    "carry_section": "",
+                    "carry_enabled": "yes",
+                    "carry_cost": "4700",
+                    "carry_min_amount": "100000"
+                }
+            }
+        ]
+    }
+]

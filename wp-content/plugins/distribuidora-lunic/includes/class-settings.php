@@ -20,6 +20,7 @@ final class Settings {
     public function init(): void {
         add_action('admin_menu', [$this, 'register_menu']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
+        add_action('admin_post_lunic_save_settings', [$this, 'save']);
     }
 
     public function register_menu(): void {
@@ -44,6 +45,16 @@ final class Settings {
             [],
             DISTRIBUIDORA_LUNIC_VERSION
         );
+    }
+
+    public function save(): void {
+        if (!current_user_can('manage_woocommerce')) {
+            wp_die(esc_html__('No tenés permiso.', 'distribuidora-lunic'));
+        }
+        check_admin_referer('lunic_save_settings');
+        update_option('lunic_maintenance', isset($_POST['lunic_maintenance']) ? 1 : 0);
+        wp_safe_redirect(admin_url('admin.php?page=' . self::MENU_SLUG));
+        exit;
     }
 
     public function render_page(): void {
@@ -89,6 +100,17 @@ final class Settings {
                     </ul>
                 <?php endif; ?>
             </div>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <?php wp_nonce_field('lunic_save_settings'); ?>
+                <input type="hidden" name="action" value="lunic_save_settings" />
+                <p>
+                    <label>
+                        <input type="checkbox" name="lunic_maintenance" value="1" <?php checked((bool) get_option('lunic_maintenance')); ?> />
+                        <?php esc_html_e('Mostrar la pantalla de mantenimiento a quien no administra el sitio', 'distribuidora-lunic'); ?>
+                    </label>
+                </p>
+                <?php submit_button(__('Guardar', 'distribuidora-lunic')); ?>
+            </form>
         </div>
         <?php
     }

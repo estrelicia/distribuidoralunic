@@ -1,0 +1,131 @@
+/*
+Theme Name: Lunic
+Theme URI: https://distribuidoralunic.com.ar/
+Author: Distribuidora Lunic
+Description: Tema de la tienda. Header, páginas institucionales y plantillas WooCommerce.
+Version: 0.1.0
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: lunic
+*/
+
+:root {
+	--lunic-primary: #4b4b4b;
+	--lunic-accent: #aadb1f;
+	--lunic-text: #2f2f2f;
+	--lunic-green: #055902;
+	--lunic-pink: #e42886;
+	--lunic-font: Montserrat, "Segoe UI", sans-serif;
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+	color: var(--lunic-text);
+	font-family: var(--lunic-font);
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+:focus-visible {
+	outline: 2px solid var(--lunic-green);
+	outline-offset: 2px;
+}
+
+a { color: var(--lunic-green); }
+img { max-width: 100%; height: auto; }
+
+.lunic-wrap {
+	width: min(1120px, calc(100% - 2rem));
+	margin: 0 auto;
+}
+
+.lunic-header {
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	background: #fff;
+	border-bottom: 3px solid var(--lunic-accent);
+}
+
+.lunic-header__bar {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	min-height: 72px;
+}
+
+.lunic-header__logo img { max-height: 56px; width: auto; }
+
+.lunic-nav { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.lunic-nav a { color: var(--lunic-primary); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+
+.lunic-cart {
+	margin-left: auto;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--lunic-primary);
+}
+
+.lunic-menu-btn { display: none; min-height: 44px; }
+
+.lunic-panel {
+	display: none;
+	background: #fff;
+	border-top: 1px solid #eee;
+	padding: 1rem 0 1.5rem;
+}
+
+.lunic-panel.is-open { display: block; }
+
+.lunic-panel details { margin-bottom: 0.5rem; }
+.lunic-cats-menu { columns: 3; list-style: none; margin: 0; padding: 0; }
+.lunic-cats-menu a { display: block; min-height: 32px; color: inherit; text-decoration: none; }
+
+.lunic-footer {
+	margin-top: 3rem;
+	padding: 2rem 0;
+	background: var(--lunic-primary);
+	color: #fff;
+}
+.lunic-footer a { color: #fff; }
+
+.lunic-slider { position: relative; }
+.lunic-slider__track { display: flex; overflow: auto; scroll-snap-type: x mandatory; }
+.lunic-slider__track img { flex: 0 0 100%; scroll-snap-align: start; max-height: 420px; object-fit: cover; }
+.lunic-slider__btn { position: absolute; top: 50%; min-width: 44px; min-height: 44px; }
+
+.lunic-home-products ul.products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; list-style: none; padding: 0; }
+
+.lunic-buybar {
+	display: none;
+}
+
+@media (max-width: 781px) {
+	.lunic-nav--desktop { display: none; }
+	.lunic-menu-btn { display: inline-flex; align-items: center; }
+	.lunic-cats-menu { columns: 1; }
+	.lunic-home-products ul.products { grid-template-columns: repeat(2, 1fr); }
+	.lunic-buybar {
+		display: flex;
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 50;
+		gap: 0.75rem;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 1rem;
+		background: #fff;
+		border-top: 1px solid #ddd;
+	}
+	.lunic-buybar button { min-height: 44px; background: var(--lunic-accent); border: 0; padding: 0 1rem; font-weight: 700; }
+	.woocommerce table.shop_table_responsive tr { display: block; margin-bottom: 1rem; border: 1px solid #ddd; }
+	.woocommerce table.shop_table_responsive td { display: block; text-align: right; }
+	.woocommerce form.checkout { display: block; }
+	.col2-set .col-1, .col2-set .col-2 { width: 100% !important; float: none !important; }
+}

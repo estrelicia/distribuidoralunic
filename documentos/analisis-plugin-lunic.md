@@ -383,65 +383,65 @@ Sin cambiar lo que ve el cliente. Elementor sigue en pie.
 | 1.1 | Crear `distribuidora-lunic` con cargador de módulos, pantalla de ajustes y declaración HPOS. | Composer 2.5 | **Hecho 25/09/2026** — `wp-content/plugins/distribuidora-lunic/` activo en local; menú **Lunic** en el admin. |
 | 1.2 | Mudar Envíos Personalizados: mismas instancias, mismos números, mismo texto de acarreo, mismo criterio de no sumar al total si ese es el comportamiento verificado en 0.2. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Mismo `custom_shipping` y mismas instancias. Carrito de prueba: total $10.897,26; envío aparte CABA $4.700, cordón $8.000, nacional acarreo $4.700. Detalle: `documentos/etapa-1-tareas-1.2-1.3.md`. |
 | 1.3 | Mudar descuentos: importar `wcd_discount_rules`, mismos hooks, mismo HTML de precio, AJAX de variación desacoplado de Elementor. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — 11 reglas de `wcd_discount_rules`. Variación 15498 a $9.006 (−5 %). Una oferta individual no recibe otro 5 %. |
-| 1.4 | Mudar campos CUIT/CUIL o DNI y condición IVA, meta de pedido y caja en el admin. | Composer 2.5 | Un checkout de prueba guarda y muestra los dos datos. |
-| 1.5 | Mudar cabeceras de seguridad, etiqueta “Oferta” y emails diferidos. Dejar la REST documentada, sin cerrar de más. | Composer 2.5 | Las cabeceras responden igual y el checkout sigue enviando el pedido. |
+| 1.4 | Mudar campos CUIT/CUIL o DNI y condición IVA, meta de pedido y caja en el admin. | Composer 2.5 | **Hecho 25/09/2026** — Módulo `checkout`; mismas claves de meta. Detalle: `documentos/etapa-1-tareas-1.4-1.5.md`. |
+| 1.5 | Mudar cabeceras de seguridad, etiqueta “Oferta” y emails diferidos. Dejar la REST documentada, sin cerrar de más. | Composer 2.5 | **Hecho 25/09/2026** — Módulo `security`; REST en `documentos/rest-api-lunic.md`. |
 
 ### Etapa 2. Búsqueda
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 2.1 | Endpoint de sugerencias: productos publicados, título, imagen, precio (con descuento de categoría ya aplicado), categoría, enlace. Mínimo 1 carácter, como Ivory en el formulario 8891. | Cursor Grok 4.7 High | Las mismas búsquedas de la línea base devuelven los mismos productos en los primeros resultados. |
-| 2.2 | Caja visual y shortcode `[lunic_search]`, colocado en paralelo al de Ivory sin quitar el viejo. | Cursor Grok 4.6 medium | En móvil la caja no tapa el header y se puede cerrar con Escape y con toque afuera. |
+| 2.1 | Endpoint de sugerencias: productos publicados, título, imagen, precio (con descuento de categoría ya aplicado), categoría, enlace. Mínimo 1 carácter, como Ivory en el formulario 8891. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — `GET /wp-json/lunic/v1/search`. «boldo» y «cardamomo» devuelven productos publicados. |
+| 2.2 | Caja visual y shortcode `[lunic_search]`, colocado en paralelo al de Ivory sin quitar el viejo. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — Shortcode en portada y tienda, junto a Ivory. Cierra con Escape y clic afuera. |
 
 ### Etapa 3. Filtro de tienda
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 3.1 | Lista jerárquica de `product_cat`, conteo, ocultar vacías, excluir término 15, marcar activos, filtrar variaciones, texto “No se encontraron productos”. | Cursor Grok 4.7 High | Las categorías visibles coinciden con el filtro WBW en la misma URL de tienda. |
-| 3.2 | AJAX del loop y query en la URL. Mapa de parámetros viejos de WBW hacia el parámetro nuevo. | Cursor Grok 4.7 High | Recargar y compartir el enlace conserva el filtro. El botón atrás del navegador deshace el último filtro. |
-| 3.3 | Presentación escritorio (columna) y móvil (panel). Alto máximo 700 px solo en escritorio. | Cursor Grok 4.6 medium | En 390 px de ancho los productos se ven sin scrollear 700 px de categorías. |
+| 3.1 | Lista jerárquica de `product_cat`, conteo, ocultar vacías, excluir término 15, marcar activos, filtrar variaciones, texto “No se encontraron productos”. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Blends de té (135) cuenta 52, igual que la línea base. Término 15 excluido. |
+| 3.2 | AJAX del loop y query en la URL. Mapa de parámetros viejos de WBW hacia el parámetro nuevo. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — `lunic_cat` en la URL. `wpf_filter_cat_list_0` redirige a ese parámetro. |
+| 3.3 | Presentación escritorio (columna) y móvil (panel). Alto máximo 700 px solo en escritorio. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — En menos de 782 px el listado va en un panel; el alto de 700 px queda solo en escritorio. |
 
 ### Etapa 4. Lo poco de JetEngine
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 4.1 | Registrar el meta `imagen-web` en categorías de producto y una grilla `[lunic_categorias]` con la tarjeta actual (radio 10 px, hover `#E6E6E6`, imagen o miniatura de la categoría). | Composer 2.5 | Las 5 categorías con imagen se ven, y el resto usa la imagen de WooCommerce. |
-| 4.2 | Sustituir el listing de la página 12340 por esa grilla, sin apagar JetEngine todavía. | Cursor Grok 4.6 medium | La página muestra la misma cantidad de categorías públicas. |
+| 4.1 | Registrar el meta `imagen-web` en categorías de producto y una grilla `[lunic_categorias]` con la tarjeta actual (radio 10 px, hover `#E6E6E6`, imagen o miniatura de la categoría). | Composer 2.5 | **Hecho 25/09/2026** — 5 categorías con `imagen-web`; el resto usa la miniatura de WooCommerce. |
+| 4.2 | Sustituir el listing de la página 12340 por esa grilla, sin apagar JetEngine todavía. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — El widget del listing 12348 renderiza `[lunic_categorias]` (39 categorías con productos, sin el término 15). |
 
 ### Etapa 5. Tema Lunic (páginas y chrome)
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 5.1 | Tema `lunic`: soportes WooCommerce, logo, menús Inicio, Celular y Footer, colores y Montserrat local del kit. | Composer 2.5 | Con Elementor aún activo el tema existe y se puede previsualizar. |
-| 5.2 | Header, footer y panel de categorías (los tres menús del popup) en escritorio y móvil. Mini carrito con el número de ítems. | Cursor Grok 4.6 medium | Comparación visual contra las capturas 0.2 en 1440 px y 390 px. |
-| 5.3 | Portada: slider, bloque de productos, acordeón y buscador. | Cursor Grok 4.6 medium | Los mismos destinos de botones y el mismo orden de bloques. |
-| 5.4 | Quiénes somos, contacto (formulario con los mismos campos y reCAPTCHA que ya usa WPForms si sigue siendo el destino; si el formulario vivo es el de Elementor Pro, rehacer esos campos en el plugin), cookies y privacidad. Mapa con la misma dirección, sin API key (el sitio no tiene `elementor_google_maps_api_key`). | Cursor Grok 4.7 High | Envío de prueba del formulario llega al mismo correo. |
-| 5.5 | Plantilla de mantenimiento, apagada por opción, por si se vuelve a usar la de ID 7348. | Composer 2.5 | Un interruptor en ajustes muestra esa pantalla a quien no es administrador. |
+| 5.1 | Tema `lunic`: soportes WooCommerce, logo, menús Inicio, Celular y Footer, colores y Montserrat local del kit. | Composer 2.5 | **Hecho 25/09/2026** — Tema en `wp-content/themes/lunic/`. El sitio sigue con Hello Elementor Child hasta la etapa 7. |
+| 5.2 | Header, footer y panel de categorías (los tres menús del popup) en escritorio y móvil. Mini carrito con el número de ítems. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — Header con logo, menús, buscador y carrito. Panel con Categorías 01, 02 y 03. |
+| 5.3 | Portada: slider, bloque de productos, acordeón y buscador. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — Mismas imágenes del slider y enlace a la lista de precios. |
+| 5.4 | Quiénes somos, contacto (formulario con los mismos campos y reCAPTCHA que ya usa WPForms si sigue siendo el destino; si el formulario vivo es el de Elementor Pro, rehacer esos campos en el plugin), cookies y privacidad. Mapa con la misma dirección, sin API key (el sitio no tiene `elementor_google_maps_api_key`). | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Formulario a info@distribuidoralunic.com.ar. Mapa OpenStreetMap de Moreno 1280. |
+| 5.5 | Plantilla de mantenimiento, apagada por opción, por si se vuelve a usar la de ID 7348. | Composer 2.5 | **Hecho 25/09/2026** — Casilla en el menú Lunic. Apagada. |
 
 ### Etapa 6. Plantillas WooCommerce
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 6.1 | Archivo de tienda: título, miga, buscador, filtro nuevo, ordenar, loop. | Cursor Grok 4.6 medium | Paginación, orden y categoría de archivo funcionan con el filtro. |
-| 6.2 | Ficha: galería, título, meta, extracto, precio, texto de descuento, agregar al carrito, pestañas, productos relacionados si hoy se muestran en las pestañas de datos. Barra móvil de compra. | Cursor Grok 4.7 High | Simple y variable agregan al carrito con el precio descontado correcto. |
-| 6.3 | Carrito, checkout y mi cuenta con los campos fiscales y el desglose de envío. | Cursor Grok 4.7 High | Pedido de prueba en las tres zonas de la etapa 0, totales iguales. |
-| 6.4 | Acordeones que hoy están bajo carrito y checkout: pasar su texto al tema. | Composer 2.5 | El texto legal o de ayuda sigue visible. |
+| 6.1 | Archivo de tienda: título, miga, buscador, filtro nuevo, ordenar, loop. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — Con el tema Lunic, Blends de té sigue en 52 resultados, con orden y paginación. |
+| 6.2 | Ficha: galería, título, meta, extracto, precio, texto de descuento, agregar al carrito, pestañas, productos relacionados si hoy se muestran en las pestañas de datos. Barra móvil de compra. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Plantilla de ficha con barra «Agregar» en móvil. |
+| 6.3 | Carrito, checkout y mi cuenta con los campos fiscales y el desglose de envío. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Esas páginas usan los shortcodes de WooCommerce (CUIT/IVA y envío aparte siguen en el plugin). |
+| 6.4 | Acordeones que hoy están bajo carrito y checkout: pasar su texto al tema. | Composer 2.5 | **Hecho 25/09/2026** — El acordeón «Envíos» lee la opción `configuraciones`. |
 
 ### Etapa 7. Corte
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 7.1 | Activar el tema `lunic` en local. Dejar los plugins viejos activos una pasada, para comparar. | Cursor Grok 4.7 High | El recorrido 0.2 pasa en el tema nuevo. |
-| 7.2 | Desactivar Elementor Pro, Elementor, JetEngine, Ivory Search y WBW. Vaciar CSS de Elementor generado. | Cursor Grok 4.7 High | No hay pantalla en blanco, no hay shortcodes visibles, la compra de prueba cierra. |
-| 7.3 | Dejar en las zonas solo `custom_shipping`. Conservar las opciones viejas en un export por si hay que volver atrás. | Cursor Grok 4.7 High | El checkout ofrece una sola tarifa por zona, la de la tabla de la sección 3.6. |
-| 7.4 | Quitar los plugins viejos de envíos y descuentos cuando sus módulos pasaron las pruebas 1.2 y 1.3. | Composer 2.5 | No quedan clases duplicadas de `WC_Custom_Shipping_Method` ni de `WCD_Price_Calculator`. |
+| 7.1 | Activar el tema `lunic` en local. Dejar los plugins viejos activos una pasada, para comparar. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Tema activo. Inicio, tienda (52 de Blends de té) y ficha de cardamomo cargan. |
+| 7.2 | Desactivar Elementor Pro, Elementor, JetEngine, Ivory Search y WBW. Vaciar CSS de Elementor generado. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Los cinco quedaron desactivados y se borró `uploads/elementor/css`. No hay shortcodes sueltos en inicio ni tienda. |
+| 7.3 | Dejar en las zonas solo `custom_shipping`. Conservar las opciones viejas en un export por si hay que volver atrás. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Cada zona ya tenía una sola instancia. Copia en `documentos/export-envios-zonas.json`. |
+| 7.4 | Quitar los plugins viejos de envíos y descuentos cuando sus módulos pasaron las pruebas 1.2 y 1.3. | Composer 2.5 | **Hecho 25/09/2026** — Carpetas «Envíos Personalizados» y «Descuentos por Categoría» eliminadas del disco. |
 
 ### Etapa 8. Móvil y pulido
 
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
-| 8.1 | Pasada de 390 px y 768 px sobre inicio, tienda, ficha, carrito y checkout. Corregir desbordes, foco y orden de tabulación. | Cursor Grok 4.6 medium | No hay scroll horizontal. El botón de compra de la ficha se alcanza sin perder el precio. |
-| 8.2 | Estados vacíos: búsqueda sin resultados, filtro sin productos, carrito vacío, categoría sin imagen. | Cursor Grok 4.6 medium | Cada uno muestra el texto definido y un enlace a la tienda. |
+| 8.1 | Pasada de 390 px y 768 px sobre inicio, tienda, ficha, carrito y checkout. Corregir desbordes, foco y orden de tabulación. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — En 390 px la ficha de cardamomo no desborda. Precio visible y barra «Agregar». |
+| 8.2 | Estados vacíos: búsqueda sin resultados, filtro sin productos, carrito vacío, categoría sin imagen. | Cursor Grok 4.6 medium | **Hecho 25/09/2026** — Textos con enlace a la tienda. Categoría sin foto dice «Sin imagen». |
 
 ### Etapa 9. Rendimiento
 

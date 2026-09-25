@@ -1,0 +1,54 @@
+.lunic-search {
+	position: relative;
+	max-width: 36rem;
+	margin: 0 0 1rem;
+	z-index: 20;
+}
+
+.lunic-search__input {
+	width: 100%;
+	min-height: 44px;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font: inherit;
+}
+
+.lunic-search__panel {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: calc(100% + 4px);
+	max-height: 50vh;
+	overflow: auto;
+	background: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.lunic-search__item {
+	display: grid;
+	grid-template-columns: 48px 1fr;
+	gap: 0.5rem;
+	align-items: center;
+	padding: 0.5rem;
+	color: inherit;
+	text-decoration: none;
+}
+
+.lunic-search__item:hover,
+.lunic-search__item:focus {
+	background: #f4f4f4;
+}
+
+.lunic-search__item img {
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
+}
+
+.lunic-search__meta {
+	display: block;
+	font-size: 0.85rem;
+	color: #555;
+}
