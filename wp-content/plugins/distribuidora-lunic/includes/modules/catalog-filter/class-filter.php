@@ -9,11 +9,9 @@ class Filter {
     private static bool $printed = false;
 
     public function register(): void {
-        add_action('template_redirect', [$this, 'redirect_legacy_param']);
         add_action('pre_get_posts', [$this, 'apply_query']);
-        add_action('woocommerce_before_shop_loop', [$this, 'print_on_shop'], 4);
-        add_action('woocommerce_no_products_found', [$this, 'empty_notice'], 9);
         add_shortcode('lunic_filter', [$this, 'render']);
+        add_action('woocommerce_no_products_found', [$this, 'empty_notice'], 9);
         add_action('wp_enqueue_scripts', [$this, 'register_assets']);
     }
 
@@ -54,9 +52,10 @@ class Filter {
     }
 
     public function print_on_shop(): void {
-        if (is_shop()) {
-            echo $this->markup();
+        if (get_stylesheet() !== 'lunic' || !is_shop()) {
+            return;
         }
+        echo $this->markup();
     }
 
     public function render(): string {

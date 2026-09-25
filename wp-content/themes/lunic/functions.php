@@ -43,6 +43,14 @@ add_action('after_setup_theme', function () {
     }
 }, 20);
 
+add_action('elementor/theme/register_locations', function () {
+    if (get_stylesheet() !== 'lunic') {
+        return;
+    }
+    remove_all_actions('get_header');
+    remove_all_actions('get_footer');
+}, 100);
+
 add_filter('template_include', function ($template) {
     if (get_stylesheet() !== 'lunic') {
         return $template;
@@ -65,17 +73,10 @@ add_filter('template_include', function ($template) {
     return $template;
 }, 99999);
 
-add_action('wp', function () {
-    if (get_stylesheet() !== 'lunic' || !class_exists('\ElementorPro\Modules\ThemeBuilder\Module')) {
-        return;
-    }
-    $manager = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager();
-    remove_filter('template_include', [$manager, 'template_include'], 11);
-}, 0);
-
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.1.0');
-    wp_enqueue_script('lunic', get_template_directory_uri() . '/assets/theme.js', [], '0.1.0', true);
+    wp_enqueue_style('lunic-font', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap', [], null);
+    wp_enqueue_style('lunic', get_stylesheet_uri(), ['lunic-font'], '0.2.8');
+    wp_enqueue_script('lunic', get_template_directory_uri() . '/assets/theme.js', [], '0.2.2', true);
 });
 
 add_filter('template_include', function ($template) {
@@ -105,15 +106,28 @@ function lunic_logo(): void {
 
 function lunic_cart_link(): void {
     $count = (function_exists('WC') && WC()->cart) ? WC()->cart->get_cart_contents_count() : 0;
+    $total = (function_exists('WC') && WC()->cart) ? WC()->cart->get_cart_total() : '';
     $url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/carro/');
-    echo '<a class="lunic-cart" href="' . esc_url($url) . '">Carrito <span>' . (int) $count . '</span></a>';
+    echo '<a class="lunic-cart" href="' . esc_url($url) . '"><span class="lunic-cart__total">' . wp_kses_post($total) . '</span><span class="lunic-cart__icon" aria-hidden="true"></span><span class="lunic-cart__count">' . (int) $count . '</span><span class="screen-reader-text">Carrito</span></a>';
 }
 
 function lunic_envios_accordion(): void {
     $option = get_option('configuraciones');
     $html = is_array($option) && !empty($option['envios']) ? $option['envios'] : '';
-    echo '<details class="lunic-envios" open><summary>Envíos</summary><div>' . wp_kses_post($html) . '</div></details>';
+    echo '<details class="lunic-envios"><summary>Envíos</summary><div>' . wp_kses_post($html) . '</div></details>';
 }
+
+add_filter('wp_video_shortcode', function (string $output): string {
+    if (!function_exists('is_product') || !is_product() || str_contains($output, 'poster=')) {
+        return $output;
+    }
+    $thumb = get_post_thumbnail_id();
+    $poster = $thumb ? wp_get_attachment_image_url($thumb, 'large') : '';
+    if (!$poster) {
+        return $output;
+    }
+    return str_replace('<video ', '<video poster="' . esc_url($poster) . '" ', $output);
+});
 
 add_action('woocommerce_after_cart', 'lunic_envios_accordion');
 add_action('woocommerce_after_checkout_form', 'lunic_envios_accordion');
@@ -123,7 +137,7 @@ add_action('wp_footer', function () {
         return;
     }
     global $product;
-    if (!$product instanceof WC_Product) {
+    if (!$product instanceof WC_Product || !$product->is_purchasable() || !$product->is_in_stock()) {
         return;
     }
     echo '<div class="lunic-buybar"><span>' . wp_kses_post($product->get_price_html()) . '</span>';

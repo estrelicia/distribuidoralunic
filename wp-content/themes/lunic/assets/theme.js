@@ -7,6 +7,27 @@
 			button.setAttribute('aria-expanded', open ? 'true' : 'false');
 		});
 	}
+	var mega = document.getElementById('lunic-mega');
+	var cats = document.getElementById('lunic-panel-cats');
+	document.querySelectorAll('a[href="#menu_categorias"]').forEach(function (link) {
+		link.addEventListener('click', function (event) {
+			event.preventDefault();
+			if (window.matchMedia('(max-width: 781px)').matches) {
+				if (cats) cats.hidden = !cats.hidden;
+				if (panel && !panel.classList.contains('is-open') && button) button.click();
+				return;
+			}
+			if (mega) mega.hidden = !mega.hidden;
+		});
+	});
+	var footBtn = document.querySelector('.lunic-footer__toggle');
+	var footMenu = document.getElementById('lunic-footer-menu');
+	if (footBtn && footMenu) {
+		footBtn.addEventListener('click', function () {
+			var open = footMenu.classList.toggle('is-open');
+			footBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		});
+	}
 	var buy = document.querySelector('.lunic-buybar__btn');
 	if (buy) {
 		buy.addEventListener('click', function () {
@@ -17,18 +38,11 @@
 	document.querySelectorAll('.lunic-slider').forEach(function (slider) {
 		var track = slider.querySelector('.lunic-slider__track');
 		if (!track) return;
-		var prev = document.createElement('button');
-		var next = document.createElement('button');
-		prev.type = next.type = 'button';
-		prev.className = next.className = 'lunic-slider__btn';
-		prev.textContent = 'Anterior';
-		next.textContent = 'Siguiente';
-		prev.style.left = '0.5rem';
-		next.style.right = '0.5rem';
-		slider.appendChild(prev);
-		slider.appendChild(next);
-		function step(dir) { track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' }); }
-		prev.addEventListener('click', function () { step(-1); });
-		next.addEventListener('click', function () { step(1); });
+		var i = 0;
+		var slides = track.children.length;
+		setInterval(function () {
+			i = (i + 1) % slides;
+			track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+		}, 5000);
 	});
 })();

@@ -1,17 +1,30 @@
 .lunic-search {
 	position: relative;
-	max-width: 36rem;
+	display: flex;
+	max-width: none;
 	margin: 0 0 1rem;
 	z-index: 20;
 }
 
 .lunic-search__input {
+	flex: 1;
 	width: 100%;
 	min-height: 44px;
 	padding: 0.5rem 0.75rem;
 	border: 1px solid #ccc;
-	border-radius: 4px;
+	border-right: 0;
+	border-radius: 4px 0 0 4px;
 	font: inherit;
+	background: #fff;
+}
+
+.lunic-search__btn {
+	width: 46px;
+	min-height: 44px;
+	border: 1px solid #ccc;
+	border-radius: 0 4px 4px 0;
+	background: #f3f3f3;
+	cursor: pointer;
 }
 
 .lunic-search__panel {

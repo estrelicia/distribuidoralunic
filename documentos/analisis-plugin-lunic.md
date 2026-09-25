@@ -347,7 +347,7 @@ Medición: PageSpeed Insights y Lighthouse sobre inicio, una categoría, una fic
 
 | Riesgo | Cómo se evita |
 | --- | --- |
-| Apagar Pro demasiado pronto | El corte es la etapa 7, con las plantillas ya sirviendo el mismo HTML de compra. |
+| Apagar Pro demasiado pronto | El primer corte (7.2) se revirtió porque el tema no se veía igual. El segundo corte es la etapa 12, y solo después de la comparación 11.12. |
 | Dos métodos de envío a la vez | El módulo nuevo convive hasta la prueba; en el corte se desactivan `envio_fijo_descuento` y `table_rate`. |
 | El costo de envío “fuera del total” cambia el cobro | Se replica la lógica actual y se compara un pedido de prueba por zona (CABA, cordón, nacional con acarreo) contra un pedido igual hecho antes del cambio. |
 | Descuento doble en variaciones | Se portan los mismos hooks y la misma exclusión de ofertas individuales. Casos de prueba: simple con regla, variable con oferta, variable sin oferta, producto en dos categorías. |
@@ -432,7 +432,7 @@ Sin cambiar lo que ve el cliente. Elementor sigue en pie.
 | ID | Tarea | IA | Listo cuando |
 | --- | --- | --- | --- |
 | 7.1 | Activar el tema `lunic` en local. Dejar los plugins viejos activos una pasada, para comparar. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Tema activo. Inicio, tienda (52 de Blends de té) y ficha de cardamomo cargan. |
-| 7.2 | Desactivar Elementor Pro, Elementor, JetEngine, Ivory Search y WBW. Vaciar CSS de Elementor generado. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Los cinco quedaron desactivados y se borró `uploads/elementor/css`. No hay shortcodes sueltos en inicio ni tienda. |
+| 7.2 | Desactivar Elementor Pro, Elementor, JetEngine, Ivory Search y WBW. Vaciar CSS de Elementor generado. | Cursor Grok 4.7 High | **Hecho y después revertido, 25/09/2026.** El corte se ejecutó. El tema Lunic no reproducía el diseño, así que los cinco volvieron a activarse y el tema volvió a Hello. No se repite hasta cerrar la etapa 11. El segundo corte es la etapa 12. |
 | 7.3 | Dejar en las zonas solo `custom_shipping`. Conservar las opciones viejas en un export por si hay que volver atrás. | Cursor Grok 4.7 High | **Hecho 25/09/2026** — Cada zona ya tenía una sola instancia. Copia en `documentos/export-envios-zonas.json`. |
 | 7.4 | Quitar los plugins viejos de envíos y descuentos cuando sus módulos pasaron las pruebas 1.2 y 1.3. | Composer 2.5 | **Hecho 25/09/2026** — Carpetas «Envíos Personalizados» y «Descuentos por Categoría» eliminadas del disco. |
 
@@ -460,11 +460,48 @@ El plugin ya tiene módulos y ajustes. A partir de acá entran pedidos futuros (
 | --- | --- | --- | --- |
 | 10.1 | Documentar en el propio plugin cómo se registra un módulo (una página en `documentos/modulos.md`, solo cuando haga falta el primero). | Composer 2.5 | Un módulo de ejemplo vacío carga y aparece como pestaña apagada. |
 
+### Etapa 11. El mismo diseño
+
+Las etapas 5, 6 y 8 dejaron armadas las pantallas del tema `lunic`, pero con otra maquetación: otra cabecera, un pie oscuro, un inicio distinto, una tienda distinta y un contacto distinto. Por eso, al cumplir la 7.2, la tienda funcionaba y no se veía igual. Esta etapa no agrega funciones. Copia la apariencia que hoy dibujan Elementor Pro, JetEngine, Ivory Search y Product Filter.
+
+Mientras dura la etapa 11 el sitio público sigue con el tema Hello y con esos cuatro plugins activos. Son la referencia. El tema `lunic` se revisa en una vista aparte. No se activa en el sitio hasta que la comparación de la 11.12 coincida. No se copia el PHP, el JS ni el CSS de esos plugins (sección 5): se reescribe el HTML y el CSS del tema hasta medir y verse igual.
+
+Identidad que ya está medida y no se reinventa: Montserrat; primario `#4B4B4B`; acento `#AADB1F`; texto `#2F2F2F`; verde `#055902`; fucsia `#E42886`; logo adjunto 64. Cada superficie se compara con la plantilla indicada, en escritorio y en 390 px, contra una captura tomada con los cuatro plugins activos.
+
+Detalle de lo cerrado hasta la 11.7: `documentos/etapa-11-diseno.md`.
+
+| ID | Tarea | IA | Listo cuando |
+| --- | --- | --- | --- |
+| 11.1 | Capturas de referencia, con los cuatro plugins activos, de encabezado, megamenú, pie, inicio, tienda, ficha simple, ficha variable, carrito, checkout, Mi cuenta, Contacto, Quiénes somos, cookies, privacidad y la grilla de categorías. Escritorio y 390 px. | Cursor Grok 4.6 medium | **Hecho, 25/09/2026.** Escritorio y 390 px en `documentos/linea-base/diseno/`. El índice está en el README de esa carpeta. El carrito y el checkout de escritorio tienen un producto (Blend Nº 1, $9.006, envío $4.700). En 390 px el checkout redirige al carrito vacío. |
+| 11.2 | Encabezado como la plantilla 7432. Logo, menú Inicio, ítem actual con subrayado verde, ícono de WhatsApp, mini carrito con importe y cantidad, línea `#AADB1F`. En el teléfono: logo, botón verde de menú, pastilla del carrito y WhatsApp. | Cursor Grok 4.6 medium | **Hecho, 25/09/2026.** Escritorio: logo, menú, ítem actual con subrayado, carrito con importe y cantidad, WhatsApp y línea `#AADB1F`. En 390 px: logo, botón verde (pasa a X al abrirse) y WhatsApp, como la referencia. El carrito está en el panel. |
+| 11.3 | Megamenú como el popup 8261. Se abre desde Categorías, ancho 50 vw, tres columnas (menús 113, 114 y 115). En 390 px pasa al panel del encabezado, con los mismos ítems. | Cursor Grok 4.6 medium | **Hecho, 25/09/2026.** En escritorio se abre desde Categorías, a la derecha, 50 vw, tres columnas y los mismos ítems que el popup 8261. En 390 px el panel muestra Inicio, Categorías, Tienda, Quienes Somos, Contacto y Carrito; Categorías despliega los tres menús. |
+| 11.4 | Pie como la plantilla 7421. Barra completa `#AADB1F`, cuatro columnas: logo, menú vertical (Tienda, Mi cuenta), «Horario comercial» y «Contacto» con el teléfono `(011) 15 2354-5375`, el correo y Moreno 1280. | Cursor Grok 4.6 medium | **Hecho, 25/09/2026.** Barra `#AADB1F`, títulos `#055902`, Tienda y Mi cuenta, horario, contacto con WhatsApp, correo y Moreno 1280, franja `#4a4a4a`. En 390 px el logo queda centrado y Tienda / Mi cuenta se abren con el botón del pie, como la referencia. |
+| 11.5 | Inicio como la página 77. Mismas diapositivas y el mismo orden, botón «Descargá la Lista de Precios», acordeón «Envíos» con el texto de `configuraciones['envios']`, títulos «Productos de calidad», «Siempre al mejor precio» y «En oferta», fichas de producto como el widget actual, y el bloque «Buscador de productos» sobre la foto de almendras. El buscador es el del plugin, con la misma caja y el mismo comportamiento AJAX. | Cursor Grok 4.7 High | **Hecho, 25/09/2026.** Slider de 695 px y 100vh (56vh en el teléfono), las ocho diapositivas, botón verde, «+ Envíos» cerrado, títulos y lista «En oferta» de cinco productos en oferta. El buscador queda sobre la foto de almendras, con la caja y el botón de lupa. |
+| 11.6 | Tienda como el archivo 7825. Título verde, miga `INICIO / TIENDA` con regla verde, buscador, columna de categorías con conteo y scroll, fichas con borde verde, etiqueta fucsia «OFERTA», precio verde, «SIN IVA», botón verde «Seleccionar opciones», cantidad de resultados, orden y paginación. El filtro es el del plugin, presentado como el de WBW. | Cursor Grok 4.7 High | **Hecho, 25/09/2026.** En escritorio: título verde, miga, buscador con lupa, cuatro columnas, OFERTA arriba a la derecha y «Seleccionar opciones». En 390 px la lista de categorías queda a la vista, con Blends de té en 52. |
+| 11.7 | Ficha como la plantilla 7620. Miga, galería, título, meta, extracto, precio, texto de descuento, agregar al carrito, pestañas y relacionados. En 390 px, barra fija con precio y «Agregar». | Cursor Grok 4.7 High | **Hecho, 25/09/2026.** Ficha simple: miga, foto, título verde, categoría, video y precio tachado $29.800 / $28.310. Ficha variable sin stock: «Código No disponible», categorías y el aviso en rojo. En 390 px, barra fija con el precio y «Agregar». |
+| 11.8 | Carrito (página 7), checkout (página 8) y Mi cuenta (página 7575) con la misma composición que esas plantillas, incluido el acordeón de envíos. CUIT, condición frente al IVA y el costo de envío fuera del total siguen en el plugin. | Cursor Grok 4.7 High | **Carrito vacío listo, 25/09/2026.** «Tu carrito está vacío.», botón gris «Volver a la tienda» y «+ Envíos» cerrado. Faltan el carrito con productos, el checkout y Mi cuenta. |
+| 11.9 | Contacto como la página 53. Título verde, formulario con Nombre, Correo electrónico, Teléfono y Consulta, botón verde «Enviar», los cuatro datos con ícono (teléfono `(011) 15 3560-0573`, correo, dirección, horarios) y el mapa de Moreno 1280. Quiénes somos (45), cookies (1146) y privacidad (3) conservan sus bloques, imágenes y textos. | Cursor Grok 4.7 High | **Parcial, 25/09/2026.** Contacto tiene el título, los cuatro campos, «Enviar» a todo el ancho de la columna, los datos y el mapa. Quiénes somos se ve igual porque Elementor sigue pintando esa página en la vista previa. Faltan cookies y privacidad. |
+| 11.10 | Grilla de categorías de la página 12340. Mismas tarjetas: radio 10 px, hover `#E6E6E6`, imagen `imagen-web` o miniatura, cinco columnas en escritorio y dos en menos de 782 px. | Composer 2.5 | **Escritorio listo, 25/09/2026.** Tarjetas horizontales, imagen a la izquierda y cinco columnas. El término 15 no aparece. |
+| 11.11 | Montserrat en el tema, pesos 400, 700 y 900, `font-display: swap`. Botones, enlaces y fichas usan los colores del kit. Área táctil de al menos 44 px. | Composer 2.5 | Montserrat 400, 700 y 900 se carga desde Google Fonts con `display=swap`. Falta confirmar en el navegador que encabezado, título de ficha y botones computan esa familia. |
+| 11.12 | Comparación lado a lado de todas las capturas de 11.1 contra el tema `lunic`. Lista firmada de diferencias. Si una pantalla difiere, vuelve a su tarea de esta etapa. | Cursor Grok 4.7 High | **En curso, 25/09/2026.** El sitio público sigue en Hello, con Elementor, Elementor Pro, JetEngine, Ivory Search y WBW activos. La vista del tema es `?lunic_preview=1`. La 11.1 ya tiene las referencias de escritorio y de 390 px. Ya coinciden el encabezado, el megamenú, el pie, el inicio, la tienda, la ficha simple, la ficha variable y la grilla de categorías. Siguen abiertos el carrito con productos, el checkout, Mi cuenta, cookies y privacidad. |
+
+### Etapa 12. Segundo corte
+
+Solo empieza si la 11.12 cerró sin diferencias. Repite la 7.2 sobre un tema que ya se ve igual.
+
+| ID | Tarea | IA | Listo cuando |
+| --- | --- | --- | --- |
+| 12.1 | Activar el tema `lunic`. Desactivar Elementor Pro, JetEngine, Ivory Search y Product Filter. Desactivar también Elementor libre: es el motor de esas plantillas y, si queda activo, vuelve a pintar las páginas. No borrar las carpetas en este paso. | Cursor Grok 4.7 High | El HTML público no pide CSS ni JS de esos plugins. El buscador, el filtro y la grilla salen del plugin `distribuidora-lunic`. |
+| 12.2 | Repetir las capturas de 11.1 con los plugins apagados y compararlas con la referencia. Recorrer la prueba de la sección 14. | Cursor Grok 4.7 High | Cada pantalla coincide con su captura de referencia. Envíos, descuentos, CUIT e IVA dan los mismos importes de la línea base. |
+| 12.3 | Si una pantalla no coincide, reactivar los cuatro plugins y Elementor, volver el tema a Hello y devolver esa pantalla a la etapa 11. No se deja el sitio a medias. | Cursor Grok 4.7 High | O la 12.2 pasó, o el sitio público quedó otra vez como la referencia y la diferencia quedó anotada en la tarea 11 que corresponda. |
+
 ## 12. Orden y qué no hacer en paralelo
 
-Secuencia obligatoria: 0 → 1 → (2, 3 y 4 pueden ir en paralelo) → 5 → 6 → 7 → 8 → 9.
+Secuencia obligatoria: 0 → 1 → (2, 3 y 4 pueden ir en paralelo) → 5 → 6 → 7 → 8 → 11 → 12 → 9 → 10.
 
-No desactivar Elementor Pro en las etapas 1 a 6. No borrar tablas de Wordfence ni de WBW antes de la 9.3. No cambiar los importes de envío ni los porcentajes de descuento como “mejora”: eso es una decisión comercial, no técnica.
+La 7.2 no se repite antes de la 11.12. La etapa 9 no empieza con Elementor Pro, JetEngine, Ivory Search o Product Filter activos.
+
+No desactivar Elementor Pro, JetEngine, Ivory Search ni Product Filter en las etapas 1 a 6 ni durante la 11. No borrar tablas de Wordfence ni de WBW antes de la 9.3. No cambiar los importes de envío ni los porcentajes de descuento como “mejora”: eso es una decisión comercial, no técnica.
 
 ## 13. Línea base de PageSpeed
 
@@ -483,7 +520,9 @@ Medición **25/09/2026** en `https://distribuidoralunic.com.ar.dev/` con Lightho
 | Checkout (`/finalizar-comprar/`) | móvil | 48 | 12,3 s | — | 0,084 | 569 KB | 630 KB |
 | Checkout (`/finalizar-comprar/`) | escritorio | 55 | 8,0 s | — | 0,049 | 569 KB | 630 KB |
 
-## 14. Prueba de aceptación del corte (etapa 7)
+## 14. Prueba de aceptación del corte (etapa 12)
+
+La lista de abajo se ejecuta en la etapa 12, con el tema `lunic` y sin los cuatro plugins. Además, cada pantalla tiene que coincidir con la captura de la tarea 11.1. La etapa 7.2 ya se había ejecutado una vez; no vuelve a valer hasta que pase esta comparación.
 
 - Buscar un producto conocido y abrir la ficha desde la sugerencia.
 - Filtrar una categoría padre y una hija; el conteo y los productos coinciden con la línea base.

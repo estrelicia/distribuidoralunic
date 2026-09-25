@@ -9,21 +9,28 @@ $slides = [
     'Retiros-de-mercaderia.jpeg',
     'Retiro-de-mercaderia.jpeg',
     'Acarreo-Via-cargo.png',
-    '2022/12/pexels-kafeel-ahmed-3997459-1.jpg',
 ];
 echo '<section class="lunic-slider" aria-label="Destacados"><div class="lunic-slider__track">';
 foreach ($slides as $file) {
-    $url = content_url('uploads/' . $file);
-    echo '<img src="' . esc_url($url) . '" alt="">';
+    echo '<img src="' . esc_url(content_url('uploads/' . $file)) . '" alt="">';
 }
 echo '</div></section>';
 $catalog = 'https://onedrive.live.com/:x:/g/personal/6c9e34c688d4059c/IQCcBdSIxjSeIIBsDAIAAAAAARHT_yfCI4UwYDsBRQP6MAA?rtime=r7B14PcB30g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy82YzllMzRjNjg4ZDQwNTljL0lRQ2NCZFNJeGpTZUlJQnNEQUlBQUFBQUFSSFRfeWZDSTRVd1lEc0JSUVA2TUFBP2U9NjhpUFow';
-echo '<p><a class="button" href="' . esc_url($catalog) . '">Lista de precios</a></p>';
-echo '<section class="lunic-home-products"><h2>Productos</h2>';
-echo do_shortcode('[products limit="8" columns="4" orderby="date"]');
-echo '</section>';
+echo '<p class="lunic-home-cta"><a href="' . esc_url($catalog) . '">Descargá la Lista de Precios</a></p>';
 lunic_envios_accordion();
+echo '<section class="lunic-home-intro"><h2>Productos de calidad</h2><h3>Siempre al mejor precio</h3>';
+the_widget('WC_Widget_Products', [
+    'title' => 'En oferta',
+    'number' => 5,
+    'show' => 'onsale',
+    'orderby' => 'rand',
+    'order' => 'desc',
+    'hide_free' => 1,
+]);
+echo '</section>';
+echo '<section class="lunic-searchband"><h2>Buscador de productos</h2>';
 if (shortcode_exists('lunic_search')) {
-    echo '<h2>Buscar</h2>' . do_shortcode('[lunic_search]');
+    echo do_shortcode('[lunic_search]');
 }
+echo '</section>';
 get_footer();

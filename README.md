@@ -1,6 +1,6 @@
 # Distribuidora Lunic
 
-Tienda WooCommerce de Distribuidora Lunic. El tema activo es Lunic. Elementor, JetEngine, Ivory Search y Product Filter quedaron desactivados en esta copia.
+Tienda WooCommerce de Distribuidora Lunic. El tema activo es Hello Elementor (hijo). Header, inicio, tienda, ficha, carrito y footer los sigue dibujando Elementor Pro, con JetEngine, Ivory Search y Product Filter, para conservar la apariencia anterior. Envíos, descuentos, campos de checkout y cabeceras de seguridad viven en el plugin `distribuidora-lunic`.
 
 ## Dónde está cada cosa
 

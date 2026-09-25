@@ -9,7 +9,6 @@ class Grid {
     public function register(): void {
         add_action('init', [$this, 'register_meta']);
         add_shortcode('lunic_categorias', [$this, 'render']);
-        add_filter('elementor/widget/render_content', [$this, 'replace_jet_listing'], 10, 2);
         add_action('wp_enqueue_scripts', [$this, 'register_assets']);
     }
 

@@ -1,6 +1,6 @@
 # Etapas 7 y 8 — corte y móvil
 
-Fecha: 25/09/2026. El tema activo es **Lunic**.
+Fecha: 25/09/2026. El corte visual se revirtió el mismo día: el tema activo volvió a ser **Hello Elementor (hijo)** y Elementor, Elementor Pro, JetEngine, Ivory Search y Product Filter quedaron activos otra vez, porque sin esas plantillas el sitio no se veía igual.
 
 ## 7. Corte
 

@@ -3,7 +3,7 @@ Theme Name: Lunic
 Theme URI: https://distribuidoralunic.com.ar/
 Author: Distribuidora Lunic
 Description: Tema de la tienda. Header, páginas institucionales y plantillas WooCommerce.
-Version: 0.1.0
+Version: 0.2.8
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: lunic
@@ -15,7 +15,7 @@ Text Domain: lunic
 	--lunic-text: #2f2f2f;
 	--lunic-green: #055902;
 	--lunic-pink: #e42886;
-	--lunic-font: Montserrat, "Segoe UI", sans-serif;
+	--lunic-font: Montserrat, sans-serif;
 }
 
 body {
@@ -24,97 +24,322 @@ body {
 	color: var(--lunic-text);
 	font-family: var(--lunic-font);
 	font-size: 16px;
+	font-weight: 400;
 	line-height: 1.5;
+	background: #fff;
 }
 
-:focus-visible {
-	outline: 2px solid var(--lunic-green);
-	outline-offset: 2px;
-}
-
-a { color: var(--lunic-green); }
+:focus-visible { outline: 2px solid var(--lunic-green); outline-offset: 2px; }
 img { max-width: 100%; height: auto; }
+a { color: var(--lunic-green); }
+button, .button, input, textarea { font-family: var(--lunic-font); }
 
-.lunic-wrap {
-	width: min(1120px, calc(100% - 2rem));
-	margin: 0 auto;
-}
-
+.elementor-popup-modal,
+.elementor-lightbox { display: none !important; }
 .lunic-header {
 	position: sticky;
 	top: 0;
 	z-index: 40;
 	background: #fff;
-	border-bottom: 3px solid var(--lunic-accent);
+	border-bottom: 4px solid var(--lunic-accent);
 }
-
 .lunic-header__bar {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	min-height: 72px;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0.4rem 1.25rem;
+	min-height: 92px;
 }
-
-.lunic-header__logo img { max-height: 56px; width: auto; }
-
-.lunic-nav { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
-.lunic-nav a { color: var(--lunic-primary); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-
-.lunic-cart {
-	margin-left: auto;
+.lunic-header__logo img, .custom-logo { max-height: 78px; width: auto; }
+.lunic-nav--desktop { flex: 1; display: flex; justify-content: center; }
+.lunic-menu, .lunic-footer__list, .lunic-mega__list { list-style: none; margin: 0; padding: 0; }
+.lunic-nav--desktop .lunic-menu { display: flex; flex-wrap: nowrap; gap: 1.35rem; align-items: center; }
+.lunic-nav--desktop .lunic-menu a {
+	color: #111;
+	text-decoration: none;
+	font-weight: 700;
 	min-height: 44px;
 	display: inline-flex;
 	align-items: center;
+	white-space: nowrap;
+	border-bottom: 3px solid transparent;
+}
+.lunic-nav--desktop .current-menu-item > a,
+.lunic-nav--desktop .current_page_item > a { color: var(--lunic-green); border-bottom-color: var(--lunic-accent); }
+.lunic-header__tools { display: flex; align-items: center; gap: 0.8rem; margin-left: 0.5rem; }
+.lunic-menu-btn {
+	display: none;
+	width: 44px;
+	height: 44px;
+	border: 0;
+	background: var(--lunic-accent);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.lunic-menu-btn span { display: block; width: 18px; height: 2px; background: #fff; transition: transform .15s ease, opacity .15s ease; }
+.lunic-menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.lunic-menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.lunic-menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.lunic-cart {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	min-height: 44px;
+	padding: 0.2rem 0.7rem;
+	border: 1px solid #d9d9d9;
+	border-radius: 8px;
+	color: #111;
+	text-decoration: none;
+	font-weight: 700;
+	background: #fff;
+}
+.lunic-cart__icon {
+	width: 18px;
+	height: 18px;
+	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23333' d='M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM6.2 6l.4 2h13.2l-1.6 7H8.1L6.2 6zM5.2 4H2V2h4l.4 2z'/></svg>") center/contain no-repeat;
+}
+.lunic-cart__count {
+	min-width: 1.1rem;
+	height: 1.1rem;
+	border-radius: 50%;
+	background: #e23b3b;
+	color: #fff;
+	font-size: 0.72rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.lunic-whatsapp { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; }
+.lunic-mega {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 45;
+	width: 50vw;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 10px 28px rgba(0,0,0,.16);
+	padding: 1.4rem 1.2rem 1.6rem;
+}
+.lunic-mega__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem 1rem; }
+.lunic-mega__list a { display: block; padding: 0.28rem 0; color: #111; text-decoration: none; font-weight: 700; line-height: 1.25; }
+.lunic-panel { display: none; background: #fff; padding: 0 0 1rem; }
+.lunic-panel.is-open { display: block; }
+.lunic-panel .lunic-menu a { display: flex; min-height: 44px; align-items: center; padding: 0 1.25rem; color: #111; text-decoration: none; font-weight: 700; }
+.lunic-panel .current-menu-item > a,
+.lunic-panel .current_page_item > a { background: var(--lunic-accent); color: #fff; }
+.lunic-panel__cats { background: #f7f7f7; }
+.lunic-panel__cats a { font-weight: 700; }
+
+.lunic-footer__bar {
+	display: grid;
+	grid-template-columns: 1.1fr 0.8fr 1.2fr 1.2fr;
+	gap: 1rem;
+	align-items: center;
+	background: var(--lunic-accent);
+	color: #1a1a1a;
+	padding: 2rem 4vw;
+}
+.lunic-footer h2 { margin: 0 0 0.4rem; font-size: 1.7rem; font-weight: 900; }
+.lunic-footer a { color: inherit; text-decoration: none; font-weight: 700; }
+.lunic-footer__list a { display: block; min-height: 36px; text-align: center; }
+.lunic-footer__end { height: 28px; background: #4a4a4a; }
+.lunic-footer__toggle { display: none; }
+.lunic-footer__phone { font-size: 1.05rem; }
+
+.lunic-slider { position: relative; width: min(695px, 100%); height: 100vh; margin: 0 auto; overflow: hidden; }
+.lunic-slider__track { display: flex; height: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
+.lunic-slider__track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; object-position: center center; scroll-snap-align: start; }
+.lunic-home-cta { text-align: center; margin: 1.5rem 0; }
+.lunic-home-cta a, .lunic-contact button, .woocommerce a.button, .woocommerce button.button, .woocommerce a.button.alt, .woocommerce button.button.alt {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: 0.55rem 1.4rem;
+	background: var(--lunic-accent);
+	color: var(--lunic-green);
+	border: 0;
+	border-radius: 6px;
 	font-weight: 700;
 	text-decoration: none;
-	color: var(--lunic-primary);
 }
-
-.lunic-menu-btn { display: none; min-height: 44px; }
-
-.lunic-panel {
-	display: none;
+.lunic-home-cta a { border-radius: 25px; background: var(--lunic-green); color: #fff; }
+.lunic-envios { max-width: 1100px; margin: 1rem auto 2rem; background: #b6e34a; }
+.lunic-envios summary { min-height: 44px; padding: 0.6rem 1rem; font-weight: 700; cursor: pointer; color: #163000; }
+.lunic-envios summary::marker { content: ""; }
+.lunic-envios[open] summary { border-bottom: 1px solid rgba(0,0,0,.08); }
+.lunic-footer__phone a { display: inline-flex; align-items: center; gap: 0.35rem; color: inherit; text-decoration: none; }
+.lunic-envios summary::before { content: "+ "; }
+.lunic-envios div { padding: 0.8rem 1rem 1rem; background: #fff; }
+.lunic-footer h2 { color: var(--lunic-green); }
+.lunic-home-intro {
+	position: relative;
+	text-align: right;
+	padding: 2.5rem 4vw 2rem;
 	background: #fff;
-	border-top: 1px solid #eee;
-	padding: 1rem 0 1.5rem;
+	overflow: hidden;
 }
+.lunic-home-intro::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: url('../../uploads/2023/01/fondeado.jpg') center/contain repeat;
+	opacity: 0.32;
+	pointer-events: none;
+}
+.lunic-home-intro > * { position: relative; }
+.lunic-home-intro h2 { margin: 0; color: #3f5600; font-weight: 900; font-size: 3rem; }
+.lunic-home-intro h3 { margin: 0.2rem 0 1rem; font-weight: 700; color: #54595f; font-size: 2rem; }
+.lunic-home-intro .widget-title { text-align: left; color: #000; font-size: 1.8rem; font-weight: 700; margin: 0.6rem 0; }
+.lunic-home-intro .product_list_widget { list-style: none; margin: 0; padding: 0; text-align: left; }
+.lunic-home-intro .product_list_widget img { display: none; }
+.lunic-home-intro .product_list_widget li { min-height: 56px; padding: 0.35rem 0; border-bottom: 1px solid #eee; }
+.lunic-home-intro .product_list_widget a { color: #333; text-decoration: none; font-weight: 700; }
+.lunic-searchband {
+	position: relative;
+	min-height: 366px;
+	padding: 3rem 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #c4a574 url('../../uploads/2022/12/pexels-kafeel-ahmed-3997459-1.jpg') center/cover no-repeat;
+	text-align: center;
+}
+.lunic-searchband h2 { color: #fff !important; font-size: 2rem; font-weight: 900; margin: 0 0 0.8rem; text-shadow: 0 1px 8px rgba(0,0,0,.35); }
+.lunic-searchband .lunic-search { width: min(860px, 100%); margin: 0 auto; }
 
-.lunic-panel.is-open { display: block; }
-
-.lunic-panel details { margin-bottom: 0.5rem; }
-.lunic-cats-menu { columns: 3; list-style: none; margin: 0; padding: 0; }
-.lunic-cats-menu a { display: block; min-height: 32px; color: inherit; text-decoration: none; }
-
-.lunic-footer {
-	margin-top: 3rem;
-	padding: 2rem 0;
-	background: var(--lunic-primary);
+.lunic-shop-page { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.lunic-shop { display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; align-items: start; }
+.lunic-shop-page h1,
+.lunic-shop-page .page-title,
+.lunic-page h1,
+.lunic-contact h1 { color: var(--lunic-green) !important; font-weight: 900; font-size: 2.4rem; margin: 0.2rem 0; }
+.lunic-contact h1 { text-align: center; }
+.woocommerce-breadcrumb { text-transform: uppercase; letter-spacing: .04em; border-bottom: 3px solid var(--lunic-accent); padding-bottom: 0.4rem; }
+.lunic-filter__list { max-height: 700px; }
+ul.products { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; list-style: none; margin: 0; padding: 0; width: 100%; }
+ul.products::before, ul.products::after { display: none !important; }
+ul.products li.product {
+	float: none !important;
+	width: auto !important;
+	margin: 0 !important;
+	padding: 10px 10px 14px;
+	border: 1px solid #c5d98a;
+	border-radius: 4px;
+	text-align: center;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,.04);
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	overflow: visible;
+	position: relative;
+	box-sizing: border-box;
+}
+ul.products li.product .button { width: 100%; max-width: 100%; margin-top: auto; box-sizing: border-box; }
+ul.products li.product img { border: 1px solid #d5e7a4; }
+ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product h2 { color: var(--lunic-green); font-size: 1.05rem; font-weight: 900; }
+ul.products .price, .summary .price { color: var(--lunic-green); font-weight: 700; }
+ul.products .onsale, .single-product .onsale {
+	background: var(--lunic-pink);
 	color: #fff;
+	font-weight: 900;
+	border-radius: 0;
+	min-height: 0;
+	padding: 0.2rem 0.45rem;
+	line-height: 1.2;
+	text-transform: uppercase;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	left: auto;
+	margin: 0;
 }
-.lunic-footer a { color: #fff; }
-
-.lunic-slider { position: relative; }
-.lunic-slider__track { display: flex; overflow: auto; scroll-snap-type: x mandatory; }
-.lunic-slider__track img { flex: 0 0 100%; scroll-snap-align: start; max-height: 420px; object-fit: cover; }
-.lunic-slider__btn { position: absolute; top: 50%; min-width: 44px; min-height: 44px; }
-
-.lunic-home-products ul.products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; list-style: none; padding: 0; }
-
-.lunic-buybar {
-	display: none;
+.return-to-shop a.button { width: auto; background: #e6e6e6 !important; color: #333 !important; }
+.lunic-footer h2 { color: var(--lunic-green) !important; }
+.woocommerce-result-count, .woocommerce-ordering { color: var(--lunic-green); font-weight: 700; }
+.lunic-search { display: flex; max-width: none; }
+.lunic-search input, .lunic-shop .lunic-search input {
+	flex: 1;
+	width: 100%;
+	min-height: 44px;
+	border: 1px solid #ddd;
+	border-right: 0;
+	border-radius: 4px 0 0 4px;
+	padding: 0 0.75rem;
+	background: #fff;
 }
+.lunic-search__btn { width: 46px; min-height: 44px; border: 1px solid #ddd; border-radius: 0 4px 4px 0; background: #f3f3f3; cursor: pointer; }
+.single-product div.product { max-width: 1100px; margin: 0 auto 3rem; padding: 0 1rem; }
+.single-product .woocommerce-breadcrumb { margin: 0.6rem auto; }
+.lunic-product { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.lunic-product .product_meta { margin: 0.35rem 0 0.8rem; font-weight: 700; display: flex; flex-wrap: wrap; gap: 0.35rem 1.2rem; }
+.lunic-product .sku_wrapper, .lunic-product .posted_in { display: inline; }
+.lunic-product .sku_wrapper { color: #666; font-weight: 400; }
+.stock.out-of-stock { color: #c00; }
+.lunic-product .woocommerce-product-gallery__image img { width: 100%; height: auto; display: block; }
+.lunic-product .product_title { color: var(--lunic-green); font-weight: 900; font-size: 1.7rem; margin-top: 0; }
+.lunic-product .summary,
+.lunic-product .images { float: none !important; width: auto !important; min-width: 0; }
+.lunic-product .summary img,
+.lunic-product .summary iframe,
+.lunic-product .summary video { max-width: 100%; height: auto; }
+.lunic-product .price,
+.lunic-product .price ins { color: var(--lunic-green); font-weight: 700; text-decoration: none; }
+.lunic-product .price del { color: #888; margin-right: 0.4rem; }
+.woocommerce div.product div.images { border: 1px solid #d5e7a4; border-radius: 8px; padding: 0.4rem; }
+.lunic-product .single_add_to_cart_button { background: var(--lunic-accent); color: var(--lunic-green); min-height: 44px; border: 0; font-weight: 700; padding: 0 1.2rem; }
+.lunic-page, .lunic-contact { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.lunic-contact__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; background: #fafafa; padding: 1.5rem; border-radius: 8px; }
+.lunic-contact label { color: var(--lunic-green); font-weight: 700; }
+.lunic-contact input, .lunic-contact textarea { width: 100%; border: 0; border-bottom: 1px solid #ccc; min-height: 44px; background: transparent; }
+.lunic-contact form button { width: 100%; }
+.lunic-contact__map { width: 100%; height: 360px; border: 0; margin-top: 1rem; }
+.lunic-cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.lunic-buybar { display: none; }
 
 @media (max-width: 781px) {
 	.lunic-nav--desktop { display: none; }
-	.lunic-menu-btn { display: inline-flex; align-items: center; }
-	.lunic-cats-menu { columns: 1; }
-	.lunic-home-products ul.products { grid-template-columns: repeat(2, 1fr); }
+	.lunic-menu-btn { display: flex; }
+	.lunic-header__bar { gap: 0.4rem; padding: 0.35rem 0.6rem; min-height: 72px; }
+	.lunic-header__logo { flex: 0 1 auto; min-width: 0; }
+	.lunic-header__logo img, .custom-logo { max-height: 48px; max-width: 150px; }
+	.lunic-header__tools { margin-left: auto; gap: 0.45rem; flex-shrink: 0; }
+	.lunic-header__bar .lunic-cart { display: none; }
+	.lunic-whatsapp svg { width: 36px; height: 36px; }
+	.lunic-slider { width: 100%; height: 56vh; }
+	.lunic-mega { display: none !important; }
+	.lunic-shop, .lunic-product, .lunic-contact__grid, .lunic-home-intro { display: block; text-align: left; }
+	.lunic-footer__bar { display: block; text-align: center; padding: 1.5rem 1rem 2rem; }
+	.lunic-footer__logo { display: flex; justify-content: center; }
+	.lunic-footer__toggle {
+		display: inline-flex;
+		width: 42px;
+		height: 42px;
+		margin: 0.6rem 0 1rem;
+		border: 0;
+		background: #d5d5d5;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+	}
+	.lunic-footer__toggle span { display: block; width: 18px; height: 2px; background: #333; }
+	.lunic-footer__menu { display: none; }
+	.lunic-footer__menu.is-open { display: block; margin-bottom: 1rem; }
+	.lunic-footer h2, .lunic-footer p { text-align: center; }
+	ul.products, .lunic-cats { grid-template-columns: repeat(2, 1fr); }
 	.lunic-buybar {
 		display: flex;
 		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		left: 0; right: 0; bottom: 0;
 		z-index: 50;
 		gap: 0.75rem;
 		align-items: center;
@@ -124,8 +349,4 @@ img { max-width: 100%; height: auto; }
 		border-top: 1px solid #ddd;
 	}
 	.lunic-buybar button { min-height: 44px; background: var(--lunic-accent); border: 0; padding: 0 1rem; font-weight: 700; }
-	.woocommerce table.shop_table_responsive tr { display: block; margin-bottom: 1rem; border: 1px solid #ddd; }
-	.woocommerce table.shop_table_responsive td { display: block; text-align: right; }
-	.woocommerce form.checkout { display: block; }
-	.col2-set .col-1, .col2-set .col-2 { width: 100% !important; float: none !important; }
 }

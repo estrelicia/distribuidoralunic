@@ -14,7 +14,7 @@
 
 defined('ABSPATH') || exit;
 
-define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.0');
+define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.2');
 define('DISTRIBUIDORA_LUNIC_FILE', __FILE__);
 define('DISTRIBUIDORA_LUNIC_PATH', plugin_dir_path(__FILE__));
 define('DISTRIBUIDORA_LUNIC_URL', plugin_dir_url(__FILE__));

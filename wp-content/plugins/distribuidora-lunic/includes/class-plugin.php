@@ -19,12 +19,32 @@ final class Plugin {
     }
 
     public function init(): void {
+        $this->maybe_preview_theme();
         $this->load_includes();
         $this->load_modules();
 
         if (is_admin()) {
             Settings::instance()->init();
         }
+    }
+
+    private function maybe_preview_theme(): void {
+        if (!isset($_GET['lunic_preview']) || $_GET['lunic_preview'] !== '1') {
+            return;
+        }
+        add_filter('pre_option_template', static function () {
+            return 'lunic';
+        });
+        add_filter('pre_option_stylesheet', static function () {
+            return 'lunic';
+        });
+        add_action('wp', static function () {
+            if (!class_exists('\ElementorPro\Modules\ThemeBuilder\Module')) {
+                return;
+            }
+            $manager = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager();
+            remove_filter('template_include', [$manager, 'template_include'], 11);
+        }, 0);
     }
 
     private function load_includes(): void {

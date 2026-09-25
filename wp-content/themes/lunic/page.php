@@ -1,7 +1,12 @@
 <?php
 get_header();
+echo '<article class="lunic-page">';
 while (have_posts()) {
     the_post();
+    if ((int) get_the_ID() === 12340 && shortcode_exists('lunic_categorias')) {
+        echo do_shortcode('[lunic_categorias]');
+        continue;
+    }
     echo '<h1>' . esc_html(get_the_title()) . '</h1>';
     if (function_exists('is_cart') && is_cart()) {
         echo do_shortcode('[woocommerce_cart]');
@@ -13,4 +18,5 @@ while (have_posts()) {
         the_content();
     }
 }
+echo '</article>';
 get_footer();
