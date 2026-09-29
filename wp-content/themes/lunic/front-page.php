@@ -11,8 +11,20 @@ $slides = [
     'Acarreo-Via-cargo.png',
 ];
 echo '<section class="lunic-slider" aria-label="Destacados"><div class="lunic-slider__track">';
-foreach ($slides as $file) {
-    echo '<img src="' . esc_url(content_url('uploads/' . $file)) . '" alt="">';
+foreach ($slides as $index => $file) {
+    if ($index === 0) {
+        $src = get_template_directory_uri() . '/assets/hero-1.webp';
+        $path = get_template_directory() . '/assets/hero-1.webp';
+    } else {
+        $src = content_url('uploads/' . $file);
+        $path = WP_CONTENT_DIR . '/uploads/' . $file;
+    }
+    $size = is_file($path) ? getimagesize($path) : false;
+    $wh = (is_array($size) && $size[0] && $size[1]) ? ' width="' . (int) $size[0] . '" height="' . (int) $size[1] . '"' : '';
+    $priority = $index === 0
+        ? ' fetchpriority="high" decoding="async"'
+        : ' loading="lazy" decoding="async"';
+    echo '<img src="' . esc_url($src) . '" alt=""' . $wh . $priority . '>';
 }
 echo '</div></section>';
 $catalog = 'https://onedrive.live.com/:x:/g/personal/6c9e34c688d4059c/IQCcBdSIxjSeIIBsDAIAAAAAARHT_yfCI4UwYDsBRQP6MAA?rtime=r7B14PcB30g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy82YzllMzRjNjg4ZDQwNTljL0lRQ2NCZFNJeGpTZUlJQnNEQUlBQUFBQUFSSFRfeWZDSTRVd1lEc0JSUVA2TUFBP2U9NjhpUFow';

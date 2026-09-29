@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Distribuidora Lunic
  * Description: Lógica de tienda Lunic: envíos, descuentos, checkout y módulos de catálogo.
- * Version: 0.1.0
+ * Version: 0.1.11
  * Author: Distribuidora Lunic
  * Text Domain: distribuidora-lunic
  * Domain Path: /languages
@@ -14,11 +14,14 @@
 
 defined('ABSPATH') || exit;
 
-define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.2');
+define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.11');
 define('DISTRIBUIDORA_LUNIC_FILE', __FILE__);
 define('DISTRIBUIDORA_LUNIC_PATH', plugin_dir_path(__FILE__));
 define('DISTRIBUIDORA_LUNIC_URL', plugin_dir_url(__FILE__));
 define('DISTRIBUIDORA_LUNIC_BASENAME', plugin_basename(__FILE__));
+
+require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-page-cache.php';
+\Distribuidora_Lunic\Page_Cache::serve();
 
 add_action('before_woocommerce_init', function () {
     if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {

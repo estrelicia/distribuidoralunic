@@ -1,6 +1,12 @@
 <?php
 defined('ABSPATH') || exit;
 get_header('shop');
+$lunic_shop = function_exists('lunic_elementor_slot') ? lunic_elementor_slot('shop') : '';
+if ($lunic_shop !== '') {
+    echo $lunic_shop;
+    get_footer('shop');
+    return;
+}
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 do_action('woocommerce_before_main_content');
 ?>

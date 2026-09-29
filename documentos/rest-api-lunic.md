@@ -26,6 +26,6 @@ Acceso REST completo según sus capacidades de WordPress.
 - Feeds RSS/Atom deshabilitados (`wp_die` en hooks `do_feed*`).
 - Pingbacks cerrados (`pings_open` → false).
 
-## Etapas futuras
+## Búsqueda
 
-Si en la etapa 2 se expone un endpoint propio de búsqueda (`/wp-json/lunic/v1/...`), habrá que **excluirlo** del filtro `rest_authentication_errors` para invitados o registrarlo con autenticación explícita documentada aquí.
+`/wp-json/lunic/v1/search` está abierto a invitados: son las sugerencias del buscador. No reabre `/wp/v2`.

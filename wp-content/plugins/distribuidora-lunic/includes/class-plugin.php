@@ -26,6 +26,8 @@ final class Plugin {
         if (is_admin()) {
             Settings::instance()->init();
         }
+
+        Page_Cache::capture();
     }
 
     private function maybe_preview_theme(): void {
@@ -49,6 +51,8 @@ final class Plugin {
 
     private function load_includes(): void {
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-settings.php';
+        require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-elementor-fallback.php';
+        Elementor_Fallback::register();
     }
 
     private function load_modules(): void {

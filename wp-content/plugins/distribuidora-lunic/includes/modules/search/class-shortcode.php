@@ -51,7 +51,7 @@ class Shortcode {
         ?>
         <form class="lunic-search" role="search" action="<?php echo esc_url(home_url('/')); ?>" method="get">
             <label class="screen-reader-text" for="lunic-search-input"><?php esc_html_e('Buscar productos', 'distribuidora-lunic'); ?></label>
-            <input id="lunic-search-input" class="lunic-search__input" type="search" name="s" autocomplete="off" placeholder="Search here..." />
+            <input id="lunic-search-input" class="lunic-search__input" type="search" name="s" autocomplete="off" placeholder="<?php echo esc_attr__('Buscar productos', 'distribuidora-lunic'); ?>" />
             <button class="lunic-search__btn" type="submit" aria-label="<?php esc_attr_e('Buscar', 'distribuidora-lunic'); ?>">
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#666" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.47 6.47 0 0 0 4.23-1.57l.27.28v.79L20 21.5 21.5 20l-6-6zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
             </button>

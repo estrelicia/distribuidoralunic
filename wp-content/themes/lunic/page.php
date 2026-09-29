@@ -7,7 +7,16 @@ while (have_posts()) {
         echo do_shortcode('[lunic_categorias]');
         continue;
     }
-    echo '<h1>' . esc_html(get_the_title()) . '</h1>';
+    $elementor = get_post_meta(get_the_ID(), '_elementor_edit_mode', true) === 'builder';
+    $woo_screen = function_exists('is_cart') && (is_cart() || is_checkout() || is_account_page());
+    $hide_title = false;
+    if ($elementor && class_exists('\Elementor\Plugin')) {
+        $document = \Elementor\Plugin::instance()->documents->get(get_the_ID());
+        $hide_title = $document && $document->get_settings('hide_title') === 'yes';
+    }
+    if ((!$elementor || !$hide_title) && !$woo_screen) {
+        echo '<h1 class="entry-title">' . esc_html(get_the_title()) . '</h1>';
+    }
     if (function_exists('is_cart') && is_cart()) {
         echo do_shortcode('[woocommerce_cart]');
     } elseif (function_exists('is_checkout') && is_checkout()) {

@@ -1,12 +1,30 @@
-.distribuidora-lunic-settings .lunic-settings-card {
-	max-width: 40rem;
-	margin-top: 1.5rem;
-	padding: 1rem 1.25rem;
-	background: #fff;
-	border: 1px solid #c3c4c7;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+.lunic-template-table {
+	max-width: 68rem;
+	margin-top: 1rem;
 }
 
-.distribuidora-lunic-settings .lunic-module-list {
-	margin: 0.5rem 0 0;
+.lunic-template-table select {
+	min-width: 18rem;
+}
+
+.lunic-template-table td a {
+	margin-left: 0.75rem;
+}
+
+.lunic-discount-table,
+.wcd-rules-table {
+	max-width: 68rem;
+	margin-top: 1rem;
+}
+
+.lunic-discount-table select,
+.lunic-discount-table input,
+.wcd-rules-table select,
+.wcd-rules-table input[type="number"] {
+	max-width: 100%;
+}
+
+.lunic-discount-table td,
+.wcd-rules-table td {
+	vertical-align: middle;
 }

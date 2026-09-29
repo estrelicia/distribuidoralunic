@@ -1,0 +1,908 @@
+# Translation of Plugins - White Label CMS - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - White Label CMS - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-11-22 12:08:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - White Label CMS - Stable (latest release)\n"
+
+#: includes/classes/Branding.php:180
+msgid "Howdy, %s"
+msgstr "Hola, %s"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:78
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:184
+msgid "This feature is primarily for people using other page builders. Please ensure your page does not use a header or footer, as it will be displayed in an iFrame on the dashboard. The links will be automatically modified to load correctly, so you don’t need to change the target."
+msgstr "Esta función es principalmente para personas que utilizan otros maquetadores de páginas. Asegúrate de que tu página no utiliza encabezado ni pie de página, ya que se mostrará en un iFrame en el escritorio. Los enlaces se modificarán automáticamente para que se carguen correctamente, por lo que no es necesario que cambies el destino."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:62
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:69
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:169
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:175
+msgid "Page"
+msgstr "Página"
+
+#: includes/classes/Login.php:39
+msgid "Sorry, you are not allowed to do this action."
+msgstr "Lo siento, no tienes permisos para realizar esta acción."
+
+#: view/admin/parts/branding-gutenberg.php:3
+msgid "Gutenberg Exit Button"
+msgstr "Botón de salida de Gutenberg"
+
+#: view/admin/parts/branding-gutenberg.php:13
+msgid "Custom Image"
+msgstr "Imagen personalizada"
+
+#: view/admin/parts/branding-gutenberg.php:13
+msgid "Max width and height 50px"
+msgstr "Ancho y alto máximo 50 px"
+
+#: view/admin/parts/branding-gutenberg.php:19
+msgid "Replace the WordPress logo on the Gutenberg Editor page with <span></span>"
+msgstr "Reemplaza el logotipo de WordPress en la página del editor Gutenberg con <span></span>"
+
+#: view/admin/parts/branding-wordpress.php:8
+msgid "You have selected no, so all custom branding images will be ignored"
+msgstr "Has seleccionado «no», por lo que se ignorarán todas las imágenes personalizadas de marca"
+
+#: view/admin/parts/branding.php:27
+msgid "Gutenberg Branding"
+msgstr "Marca de Gutenberg"
+
+#: view/admin/parts/branding-side-menu.php:14
+msgid "External links will open in a new window."
+msgstr "Los enlaces externos se abrirán en una ventana nueva."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:122
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:239
+msgid "Reset Dismissed Welcome Dashboard"
+msgstr "Restablecer el escritorio de bienvenida descartado"
+
+#: view/admin/parts/login-custom-js.php:6
+msgid "Completely customise the login page by entering your own Javascript code."
+msgstr "Personaliza completamente la página de acceso introduciendo tu propio código JavaScript."
+
+#: view/admin/parts/login.php:22
+msgid "Custom JavaScript"
+msgstr "JavaScript personalizado"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:118
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:235
+msgid "Dismissible"
+msgstr "Descartable"
+
+#: view/admin/settings.php:60
+msgid "Reset Plugin"
+msgstr "Restablecer el plugin"
+
+#: view/admin/settings.php:7
+msgid "Settings"
+msgstr "Ajustes"
+
+#: view/admin/settings.php:3
+msgid "Branding"
+msgstr "Marca"
+
+#: view/admin/parts/settings-custom-editor-stylesheet.php:7
+msgid "Create and upload a custom stylesheet with all style rules prefixed with .mceContentBody to your themes directory and enter the filename"
+msgstr "Crea y sube una hoja de estilos personalizada con todas las reglas de estilo prefijadas con .mceContentBody en tu directorio de temas e introduce el nombre de archivo"
+
+#: view/admin/parts/settings-custom-editor-stylesheet.php:2
+msgid "Custom Stylesheet URL"
+msgstr "URL de la hoja de estilos personalizada"
+
+#: view/admin/parts/login-logo-and-background.php:92
+msgid "Specify the CSS background-repeat."
+msgstr "Especifica el CSS de la repetición del fondo."
+
+#: view/admin/parts/login-logo-and-background.php:83
+msgid "Background Repeat"
+msgstr "Repetición del fondo"
+
+#: view/admin/parts/login-logo-and-background.php:78
+msgid "Specify the CSS background position."
+msgstr "Especifica la posición del CSS del fondo."
+
+#: view/admin/parts/login-logo-and-background.php:63
+msgid "Background Position"
+msgstr "Posición del fondo"
+
+#: view/admin/parts/login-logo-and-background.php:58
+msgid "Stretch the background image to appear full screen."
+msgstr "Estira la imagen de fondo para que aparezca a pantalla completa."
+
+#: view/admin/parts/login-logo-and-background.php:55
+msgid "Full Screen Background Image"
+msgstr "Imagen de fondo a pantalla completa"
+
+#: view/admin/parts/login-logo-and-background.php:49
+msgid "Adds a background image to the login page."
+msgstr "Añade una imagen de fondo a la página de acceso."
+
+#: view/admin/parts/login-logo-and-background.php:44
+msgid "Background color for the login page. Changing to White will help your logo standout."
+msgstr "Color de fondo para la página de acceso. Cambiarlo a blanco ayudará a que tu logotipo destaque."
+
+#: view/admin/parts/login-logo-and-background.php:34
+msgid "Add a bottom margin to your Login Logo."
+msgstr "Añade un margen inferior a tu logotipo de acceso."
+
+#: view/admin/parts/login-logo-and-background.php:24
+msgid "Add a height to your Login Logo."
+msgstr "Añade una altura a tu logotipo de acceso."
+
+#: view/admin/parts/login-logo-and-background.php:19
+msgid "Logo Height"
+msgstr "Altura del logotipo"
+
+#: view/admin/parts/login-logo-and-background.php:15
+msgid "Add a width to your Login Logo. Max width 320px"
+msgstr "Añade una anchura a tu logotipo de acceso. Anchura máxima 320px"
+
+#: view/admin/parts/login-logo-and-background.php:10
+msgid "Logo Width"
+msgstr "Anchura del logotipo"
+
+#: view/admin/parts/login-logo-and-background.php:2
+msgid "Replace the WordPress logo on the login page. Max width 320px"
+msgstr "Reemplaza el logotipo de WordPress en la página de acceso. Anchura máxima 320px"
+
+#: view/admin/parts/branding-admin-bar.php:32
+msgid "Replace the link to WordPress.org."
+msgstr "Sustituye el enlace a WordPress.org."
+
+#: view/admin/parts/branding-admin-bar.php:22
+msgid "Add a space to completely remove it from the admin bar. Or replace it with something like: \"Hi,\""
+msgstr "Añade un espacio para eliminarlo por completo de la barra de administración. O reemplázalo por algo como: «Hola,»"
+
+#: view/admin/parts/branding-admin-bar.php:12
+msgid "Replace the \"WordPress\" Alt text."
+msgstr "Reemplazar el texto «Alt» de «WordPress»."
+
+#: view/admin/parts/branding-admin-bar.php:7
+msgid "Admin Bar Alt Text"
+msgstr "Texto «Alt» de la barra de administración"
+
+#: view/admin/parts/branding-admin-bar.php:3
+msgid "Replace the WordPress logo in the admin bar. Max height 20px"
+msgstr "Reemplaza el logotipo de WordPress en la barra de administración. Altura máxima 20px"
+
+#: view/admin/parts/branding-admin-bar.php:3
+msgid "Admin Bar Logo"
+msgstr "Logotipo de la barra de administración"
+
+#: view/admin/wizard.php:17
+msgid "Quick Setup Wizard: Step 2 of 2 - Clients Branding"
+msgstr "Asistente de configuración rápida: Paso 2 de 2 - Marca de los clientes"
+
+#: view/admin/wizard.php:11
+msgid "Quick Setup Wizard: Step 1 of 2 - Developers Branding"
+msgstr "Asistente de configuración rápida: Paso 1 de 2 - Marca de los desarrolladores"
+
+#: view/admin/settings.php:59
+msgid "Export Settings"
+msgstr "Ajustes de exportación"
+
+#: view/admin/settings.php:5
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#: view/admin/settings.php:35 view/admin/wizard.php:20
+msgid "Save"
+msgstr "Guardar"
+
+#: view/admin/wizard.php:19
+msgid "Back to step 1"
+msgstr "Volver al paso 1"
+
+#: view/admin/wizard.php:14
+msgid "Next"
+msgstr "Siguiente"
+
+#: view/admin/wizard.php:13
+msgid "Skip"
+msgstr "Saltar"
+
+#: view/admin/parts/login-logo-and-background.php:49
+msgid "Background Image"
+msgstr "Imagen de fondo"
+
+#: view/admin/parts/login-logo-and-background.php:39
+msgid "Background Color"
+msgstr "Color del fondo"
+
+#: view/admin/parts/login-logo-and-background.php:29
+msgid "Logo Bottom Margin"
+msgstr "Margen inferior del logotipo"
+
+#: view/admin/parts/login-logo-and-background.php:2
+msgid "Login Logo"
+msgstr "Logotipo de acceso"
+
+#: view/admin/parts/branding-admin-bar.php:27
+msgid "Admin Bar URL"
+msgstr "Dirección URL de la barra de administración"
+
+#: view/admin/parts/branding-admin-bar.php:17
+msgid "Replace Howdy Text"
+msgstr "Reemplazar el texto «Hola»"
+
+#: view/admin/settings.php:4
+msgid "Login"
+msgstr "Acceso"
+
+#: view/admin/parts/import-settings.php:12
+msgid "To import the settings from another website"
+msgstr "Para importar los ajustes desde otra web"
+
+#: view/admin/parts/import-settings.php:4 view/admin/settings.php:58
+msgid "Import Settings"
+msgstr "Ajustes de importación"
+
+#: view/admin/parts/settings-admin-bar-setting.php:8
+msgid "This will disable the admin bar on the front-end for all logged in users"
+msgstr "Esto desactivará la barra de administración en la portada para todos los usuarios conectados"
+
+#: view/admin/parts/settings-admin-bar-setting.php:5
+msgid "Hide Front-end Admin Bar"
+msgstr "Ocultar la barra de administración en la portada"
+
+#: view/admin/parts/login-logo-and-background.php:6
+#: view/admin/parts/wizard-step-2.php:28
+msgid "Replace the Retina WordPress logo on the login page. Please make sure you use the standard retina format of x2"
+msgstr "Reemplaza el logotipo Retina de WordPress en la página de acceso. Asegúrate de utilizar el formato Retina estándar de x2"
+
+#: view/admin/parts/wizard-step-2.php:28
+msgid "Upload Login Logo"
+msgstr "Subir el logotipo del acceso"
+
+#: view/admin/parts/login-logo-and-background.php:6
+#: view/admin/parts/wizard-step-2.php:24
+msgid "Retina Login Logo"
+msgstr "Logotipo de acceso Retina"
+
+#: view/admin/parts/wizard-step-2.php:14
+msgid "For use in Admin Page Title and Dashboard Title."
+msgstr "Para su uso en el título de la página de administración y el título del escritorio."
+
+#: view/admin/parts/wizard-step-2.php:3
+msgid "Clients Branding"
+msgstr "Marca de los clientes"
+
+#: view/admin/parts/settings-custom-css-for-admin.php:5
+msgid "Override or add to any of the styles in the WordPress admin enter your own custom css here"
+msgstr "Anula o añade a cualquiera de los estilos de la administración de WordPress introduciendo aquí tu propio CSS personalizado"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:67
+msgid "Add introduction text to appear above the RSS items. You can use HTML."
+msgstr "Añade un texto de introducción para que aparezca encima de los elementos RSS. Puedes usar HTML."
+
+#: view/admin/parts/wizard-step-2.php:9
+msgid "Clients Business Name"
+msgstr "Nombre comercial de los clientes"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:62
+msgid "Introduction HTML"
+msgstr "Introducción HTML"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:55
+msgid "Show Post Contents"
+msgstr "Mostrar los contenidos de las entradas"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:23
+msgid "Add a logo to appear on the panel before the title."
+msgstr "Añade un logotipo para que aparezca en el panel antes del título."
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:23
+msgid "Add Your Logo"
+msgstr "Añadir tu logotipo"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:18
+msgid "The title of the RSS Panel"
+msgstr "El título del panel RSS"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:7
+msgid "This will appear on the dashboard. If you want your client to be kept up to date with what you are doing in your business, set up your RSS feed."
+msgstr "Esto aparecerá en el escritorio. Si quieres que tu cliente esté al día con lo que estás haciendo en su negocio, configura tu feed RSS."
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:4
+msgid "Add Your Own RSS  Panel"
+msgstr "Añadir tu propio panel RSS"
+
+#: view/admin/parts/branding-footer.php:31
+msgid ""
+"If you would like more control over what appears in the footer, add your own HTML.<br/>\n"
+"Note: this will overwrite anything set in the Footer Image, Footer Text and Footer URL."
+msgstr "Si te gustaría tener más control sobre lo que aparece en el pie de página, aáde tu propio HTML.<br/>Nota: esto anulará cualquier cosa establecida en la imagen, el texto y la URL del pie de página."
+
+#: view/admin/parts/branding-footer.php:26
+msgid "or use HTML"
+msgstr "o usa HTML"
+
+#: view/admin/parts/branding-footer.php:16
+msgid "Footer URL"
+msgstr "URL del pie de página"
+
+#: view/admin/parts/branding-footer.php:2
+msgid "Image which will appear in the footer replacing \"Thank you for creating with WordPress. Max height 50px"
+msgstr "Imagen que aparecerá en el pie de página reemplazando «Gracias por crear con WordPress». Altura máxima 50px"
+
+#: view/admin/parts/branding-footer.php:2
+msgid "Footer Image"
+msgstr "Imagen del pie de página"
+
+#: view/admin/parts/menus-white-label-cms-admin.php:40
+msgid "By selecting a White Label CMS Admin it means that only the selected Admins will be able to modify the settings for White Label CMS, as it won't be visible in the menu to anybody else. <a href=\"https://www.videousermanuals.com/white-label-cms/\" target=\"_blank\">Learn more about this feature</a>."
+msgstr "Al seleccionar un administrador de White Label CMS, significa que solo los administradores seleccionados podrán modificar la configuración de White Label CMS, ya que no será visible en el menú para nadie más. <a href=\"https://www.videousermanuals.com/white-label-cms/\" target=\"_blank\">Obtén más información sobre esta característica</a>."
+
+#: view/admin/parts/menus-white-label-cms-admin.php:11
+msgid "You are now a White Label CMS Admin. This allows you to modify the menus that other people will see."
+msgstr "Ahora tú eres un administrador de White Label CMS. Esto te permite modificar los menús que otras personas verán."
+
+#: view/admin/parts/login-live-preview.php:5
+msgid "Close Login"
+msgstr "Cerrar el acceso"
+
+#: view/admin/parts/live-preview.php:5
+msgid "Close Preview"
+msgstr "Cerrar la vista previa"
+
+#: view/admin/parts/settings.php:27
+msgid "Custom CSS for Admin"
+msgstr "CSS personalizado para la administración"
+
+#: view/admin/parts/settings.php:19
+msgid "Nag Messages"
+msgstr "Mensajes molestos"
+
+#: view/admin/parts/settings.php:11
+msgid "Admin Settings"
+msgstr "Ajustes de administración"
+
+#: view/admin/parts/settings.php:3
+msgid "Admin Bar"
+msgstr "Barra de administración"
+
+#: view/admin/parts/settings-nag-messages.php:7
+msgid "Nag Update Messages"
+msgstr "Actualizar los mensajes molestos"
+
+#: view/admin/parts/settings-nag-messages.php:3
+msgid "Nag Messages will be hidden to all User Roles up to and including Admins"
+msgstr "Los mensajes molestos se ocultarán a todos los perfiles de usuario hasta e incluyendo a los administradores"
+
+#: view/admin/parts/branding-footer.php:21
+#: view/admin/parts/branding-wordpress.php:31
+msgid "Replace WordPress in the page titles."
+msgstr "Reemplaza WordPress en los títulos de la página."
+
+#: view/admin/parts/branding-wordpress.php:18
+msgid "Hide WP Version"
+msgstr "Ocultar la versión de WP"
+
+#: view/admin/parts/branding-wordpress.php:21
+msgid "Hide version number of WordPress which appears in the footer."
+msgstr "Oculta el número de la versión de WordPress que aparece en el pie de página."
+
+#: view/admin/parts/branding-wordpress.php:11
+msgid "Hide mentions of WordPress and hide the links to WordPress.org."
+msgstr "Oculta las menciones de WordPress y oculta los enlaces a WordPress.org."
+
+#: view/admin/parts/branding-wordpress.php:5
+msgid "Hide WordPress Logo and Links"
+msgstr "Ocultar el logotipo y los enlaces de WordPress"
+
+#: view/admin/parts/login-advanced.php:117
+msgid "Hover color of the link text of Privacy Policy"
+msgstr "Color del texto del enlace a la política de privacidad al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:112
+msgid "Privacy Policy Link Hover Color"
+msgstr "Color del enlace a la política de privacidad al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:107
+msgid "Color of the link text of Privacy Policy"
+msgstr "Color del texto del enlace a la política de privacidad"
+
+#: view/admin/parts/login-advanced.php:102
+msgid "Privacy Policy Link Color"
+msgstr "Color del enlace a la política de privacidad"
+
+#: view/admin/parts/login-advanced.php:97
+msgid "Hover color of the link text of Back to / Register"
+msgstr "Color del texto del enlace de «Volver a» / «Registro» al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:92
+msgid "Back to / Register Link Hover Color"
+msgstr "Color del enlace de «Volver a» / «Registro» al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:87
+msgid "Color of the link text of Back to / Register"
+msgstr "Color del texto del enlace de «Volver a» / «Registro»"
+
+#: view/admin/parts/login-advanced.php:82
+msgid "Back to / Register Link Color"
+msgstr "Color del enlace de «Volver a» / «Registro»"
+
+#: view/admin/parts/login-advanced.php:77
+msgid "Hover color of the text on the button on the login form"
+msgstr "Color del texto del botón del formulario de acceso al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:72
+msgid "Form Button Text Hover Color"
+msgstr "Color del texto del botón del formulario al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:67
+msgid "Color of the text on the button on the login form"
+msgstr "Color del texto del botón en el formulario de acceso"
+
+#: view/admin/parts/login-advanced.php:62
+msgid "Form Button Text Color"
+msgstr "Color del texto del botón del formulario"
+
+#: view/admin/parts/login-advanced.php:57
+msgid "Hover color of the button on the login form"
+msgstr "Color del botón del formulario de acceso al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:52
+msgid "Form Button Hover Color"
+msgstr "Color del botón de formulario al pasar el cursor"
+
+#: view/admin/parts/login-advanced.php:47
+msgid "Color of the button on the login form"
+msgstr "Color del botón del formulario de acceso"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:48
+msgid "Number of RSS items to show."
+msgstr "Número de elementos RSS que se mostrarán."
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:37
+msgid "Number of Items to appear"
+msgstr "Número de elementos que aparecerán"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:13
+msgid "RSS Title"
+msgstr "Título RSS"
+
+#: view/admin/parts/menus-white-label-cms-admin.php:24
+msgid "Other Admins:"
+msgstr "Otros administradores:"
+
+#: view/admin/parts/menus-white-label-cms-admin.php:12
+msgid "You"
+msgstr "Tú"
+
+#: view/admin/parts/menus-white-label-cms-admin.php:6
+msgid "Want to hide menus for your client?"
+msgstr "¿Quieres ocultar los menús para tu cliente?"
+
+#: view/admin/parts/settings.php:35
+msgid "Custom Editor Stylesheet"
+msgstr "Hoja de estilos del editor personalizado"
+
+#: view/admin/parts/branding-wordpress.php:26
+msgid "Custom Page Titles"
+msgstr "Títulos de página personalizados"
+
+#. Description of the plugin
+#: wlcms-plugin.php
+msgid "A plugin that allows you to brand WordPress CMS as your own"
+msgstr "Un plugin que te permite marcar WordPress CMS como tuyo propio"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:135
+msgid "Add Second Panel"
+msgstr "Añadir un segundo panel"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:11
+msgid "Add Your Own Welcome Panel"
+msgstr "Añadir tu propio panel de bienvenida"
+
+#: view/admin/parts/dashboard-default-panels.php:14
+msgid "Add a logo to the Dashboard. Suggested height 40px"
+msgstr "Añade un logotipo al escritorio. Altura sugerida 40px"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:138
+msgid "Add a second custom panel to the Dashboard."
+msgstr "Añade un segundo panel personalizado al escritorio."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:7
+msgid "Add your own Welcome Panel to the Dashboard page. This will appear on the dashboard. We recommend providing your contact details and links to the help files you have made for your client."
+msgstr "Añade tu propio panel de bienvenida a la página del escritorio. Aparecerá en el escritorio. Te recomendamos que proporciones tus datos de contacto y enlaces a los archivos de ayuda que has creado para tu cliente."
+
+#: view/admin/parts/menus-admin-bar-menus.php:3
+msgid "Admin Bar Menus will be hidden to all User Roles up to and including Admins with the exception of White Label CMS Admins and Super Admins"
+msgstr "Los menús de la barra de administración se ocultarán a todos los perfiles de usuario hasta e incluyendo a los administradores, con la excepción de los administradores y superadministradores de White Label CMS"
+
+#: view/admin/parts/branding-side-menu.php:23
+msgid "Alt text for the Side Menu Image link."
+msgstr "Texto alternativo para el vínculo de la imagen de menú lateral."
+
+#: view/admin/parts/login-advanced.php:27
+msgid "Background color of the login form"
+msgstr "Color de fondo del formulario de acceso"
+
+#: view/admin/parts/dashboard-default-panels.php:23
+msgid "Change the heading for the Dashboard"
+msgstr "Cambiar el encabezado del escritorio"
+
+#: view/admin/parts/branding-side-menu.php:6
+msgid "Collapsed Side Menu Image"
+msgstr "Imagen del menú lateral contraída"
+
+#: view/admin/parts/login-advanced.php:37
+msgid "Color of the labels on the login form"
+msgstr "Color de las etiquetas en el formulario de acceso"
+
+#: view/admin/parts/login-custom-css.php:6
+msgid "Completely customise the login page by entering your own CSS."
+msgstr "Personaliza completamente la página de acceso introduciendo tu propio CSS."
+
+#: view/admin/parts/dashboard.php:11
+msgid "Custom Welcome Dashboard Panel"
+msgstr "Panel de bienvenida personalizado del escritorio"
+
+#: view/admin/parts/dashboard-default-panels.php:14
+msgid "Dashboard Icon"
+msgstr "Icono del escritorio"
+
+#: view/admin/parts/dashboard-default-panels.php:18
+msgid "Dashboard Title"
+msgstr "Titulo del escritorio"
+
+#: view/admin/parts/dashboard.php:3
+msgid "Default Panels"
+msgstr "Paneles por defecto"
+
+#: view/admin/parts/wizard-step-1.php:14
+msgid "Developer Branding"
+msgstr "Marca del desarrollador"
+
+#: view/admin/parts/branding-developer.php:37
+msgid "Developer Footer Icon"
+msgstr "Icono del pie de página del desarrollador"
+
+#: view/admin/parts/branding-developer.php:3
+#: view/admin/parts/wizard-step-1.php:19
+msgid "Developer Name"
+msgstr "Nombre del desarrollador"
+
+#: view/admin/parts/branding-developer.php:44
+msgid "Developer Side Menu Image"
+msgstr "Imagen del menú lateral del desarrollador"
+
+#: view/admin/parts/branding.php:35
+msgid "Footer Branding"
+msgstr "Marca del pie de página"
+
+#: view/admin/parts/branding-footer.php:6 view/admin/parts/wizard-step-1.php:39
+msgid "Footer Text"
+msgstr "Texto del pie de página"
+
+#: view/admin/parts/branding-developer.php:8
+#: view/admin/parts/wizard-step-1.php:24
+msgid "For use in footer and ALT text's."
+msgstr "Para usar en el pie de página y los textos «ALT»."
+
+#: view/admin/parts/branding-developer.php:18
+#: view/admin/parts/wizard-step-1.php:34
+msgid "For use in footer and admin bar."
+msgstr "Para usar en el pie de página y en la barra de administración."
+
+#: view/admin/parts/login-advanced.php:42
+msgid "Form Button Color"
+msgstr "Color del botón del formulario"
+
+#: view/admin/parts/login-advanced.php:14
+msgid "Hide \"Back to\" link"
+msgstr "Ocultar el enlace «Volver a»"
+
+#: view/admin/parts/login-advanced.php:5
+msgid "Hide \"Register / Lost your password?\" link"
+msgstr "Ocultar el enlace «Registro» / «¿Contraseña perdida?»"
+
+#: view/admin/parts/dashboard-default-panels.php:40
+msgid "Hide All Dashboard Panels"
+msgstr "Ocultar todos los paneles del escritorio"
+
+#: view/admin/parts/settings-admin-settings.php:5
+msgid "Hide Help Box"
+msgstr "Ocultar la caja de ayuda"
+
+#: view/admin/parts/settings-admin-settings.php:15
+msgid "Hide Screen Options"
+msgstr "Ocultar las opciones de pantalla"
+
+#: view/admin/parts/login-advanced.php:17
+msgid "Hide the \"Back to\" link which appears below the login form."
+msgstr "Oculte el enlace «Volver a» que aparece debajo del formulario de acceso."
+
+#: view/admin/parts/login-advanced.php:8
+msgid "Hide the \"Register / Lost your password?\" link which appears below the login form."
+msgstr "Ocultar el enlace «Registro» / «¿Contraseña perdida?» que aparece debajo del formulario de acceso."
+
+#: view/admin/parts/branding.php:11
+msgid "Admin Bar Branding"
+msgstr "Marca de la barra de administración"
+
+#: view/admin/parts/menus.php:20
+msgid "Admin Bar Menus"
+msgstr "Menús de la barra de administración"
+
+#: view/admin/parts/login.php:13
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:54
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:163
+msgid "Basic HTML"
+msgstr "HTML básico"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:59
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:167
+msgid "Beaver Builder Pro"
+msgstr "Beaver Builder Pro"
+
+#: view/admin/parts/login.php:31
+msgid "Custom CSS"
+msgstr "CSS personalizado"
+
+#: view/admin/parts/branding-developer.php:23
+msgid "Developer Icon"
+msgstr "Icono del desarrollador"
+
+#: view/admin/parts/branding-developer.php:13
+#: view/admin/parts/wizard-step-1.php:29
+msgid "Developer URL"
+msgstr "URL del desarrollador"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:57
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:165
+msgid "Elementor"
+msgstr "Elementor"
+
+#: view/admin/parts/login-custom-css.php:7
+#: view/admin/parts/login-custom-js.php:7
+msgid "For example"
+msgstr "Por ejemplo"
+
+#: view/admin/parts/login-advanced.php:22
+msgid "Form Background Color"
+msgstr "Color de fondo del formulario"
+
+#: view/admin/parts/login-advanced.php:32
+msgid "Form Label Color"
+msgstr "Color de la etiqueta del formulario"
+
+#: view/admin/parts/branding-developer.php:32
+msgid "If you wish to use a different image for the footer, you can."
+msgstr "Si deseas utilizar una imagen diferente para el pie de página, puedes."
+
+#: view/admin/parts/branding-side-menu.php:6
+msgid "Image will appear at the top of the side menu when it is collapsed. Max width 36px"
+msgstr "La imagen aparecerá en la parte superior del menú lateral cuando se contraiga. Anchura máxima 36px"
+
+#: view/admin/parts/branding-side-menu.php:2
+msgid "Image will appear at the top of the side menu. Max width 160px"
+msgstr "La imagen aparecerá en la parte superior del menú lateral. Anchura máxima 160px"
+
+#: view/admin/parts/menus-legacy.php:13
+msgid "In version 1 you could only change the menus for Editors."
+msgstr "En la versión 1 solo podías cambiar los menús para los editores."
+
+#: view/admin/parts/menus-menus.php:3
+msgid "Menus will be hidden to all User Roles up to and including Admins (with the exception of White Label CMS Admins and Super Admins)."
+msgstr "Los menús se ocultarán a todos los perfiles de usuario hasta e incluyendo administradores (con la excepción de los administradores y superadministradores de White Label CMS)."
+
+#: view/admin/parts/dashboard.php:19
+msgid "RSS Dashboard Panel"
+msgstr "Panel RSS del escritorio"
+
+#: view/admin/parts/dashboard-default-panels.php:75
+msgid "Remove Empty Dashboard Panel"
+msgstr "Eliminar los paneles vacíos del escritorio"
+
+#: view/admin/parts/dashboard-default-panels.php:27
+msgid "Select the Roles the Dashboard Panels Will Be Hidden To"
+msgstr "Selecciona los perfiles a los que se ocultarán los paneles del escritorio"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:18
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:142
+msgid "Select the Roles the Welcome Panel Will Be Visible To"
+msgstr "Selecciona los perfiles a los que será visible el panel de bienvenida"
+
+#: view/admin/parts/dashboard-default-panels.php:32
+msgid "Select the user roles this will be hidden to."
+msgstr "Selecciona los perfiles de usuario a los que se les ocultará esto."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:24
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:149
+msgid "Select the user roles this will be visible to."
+msgstr "Selecciona los perfiles de usuario para los que estará visible esto."
+
+#: view/admin/parts/menus-menus.php:4
+msgid "Select which menus you want to appear."
+msgstr "Selecciona qué menús quieres que aparezcan."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:109
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:226
+msgid "Show Title"
+msgstr "Mostrar el título"
+
+#: view/admin/parts/branding-side-menu.php:18
+msgid "Side Menu Alt Text"
+msgstr "Texto «Alt» de menú lateral"
+
+#: view/admin/parts/branding.php:19
+msgid "Side Menu Branding"
+msgstr "Marca del menú lateral"
+
+#: view/admin/parts/branding-side-menu.php:9
+msgid "Side Menu Link URL"
+msgstr "URL del enlace del menú lateral"
+
+#: view/admin/parts/branding-footer.php:11
+#: view/admin/parts/wizard-step-1.php:44
+msgid "Text which will appear to the right of the Footer Image."
+msgstr "Texto que aparecerá a la derecha de la imagen del pie de página."
+
+#: view/admin/parts/dashboard-default-panels.php:42
+msgid "This will hide all the WordPress default dashboard panels. Or you can specify which panels should appear."
+msgstr "Esto ocultará todos los paneles por defecto de escritorio de WordPress. O puedes especificar qué paneles deben aparecer."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:188
+msgid "Title of Second Panel"
+msgstr "Título del segundo panel"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:82
+msgid "Title of Welcome Panel"
+msgstr "Título del panel de bienvenida"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:193
+msgid "Title of the Second Panel"
+msgstr "Título del segundo panel"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:87
+msgid "Title of the Welcome Panel"
+msgstr "Título del panel de bienvenida"
+
+#: view/admin/parts/branding-developer.php:29
+msgid "Use Developer Icon in Footer"
+msgstr "Usar el icono del desarrollador en el pie de página"
+
+#: view/admin/parts/menus-legacy.php:18
+msgid "Use the new version"
+msgstr "Usar la nueva versión"
+
+#: view/admin/parts/branding-developer.php:23
+msgid "We recommend at 16 x 16 image"
+msgstr "Recomendamos una imagen de 16 x 16"
+
+#: view/admin/parts/menus-legacy.php:14
+msgid "We recommend using the new White Label CMS Admin to manage the menus and in order to do so you must reset the menus to the WordPress Defaults.  If you do this, this section will disappear."
+msgstr "Recomendamos usar la nueva administración de White Label CMS para gestionar los menús y, para hacerlo, debes restablecer los menús a los valores por defecto de WordPress. Si lo haces, esta sección desaparecerá."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:92
+msgid "Welcome Panel Description HTML"
+msgstr "Descripción HTML del panel de bienvenida"
+
+#: view/admin/parts/menus.php:4
+msgid "White Label CMS Admin"
+msgstr "Administración de White Label CMS"
+
+#: view/admin/parts/menus-legacy.php:7
+msgid "White Label CMS Legacy Menus"
+msgstr "Menús heredados de White Label CMS"
+
+#: view/admin/parts/branding.php:3
+msgid "WordPress Branding"
+msgstr "Marca de WordPress"
+
+#: view/admin/parts/menus-legacy.php:12
+msgid "You are seeing this because you have installed version 1 of the plugin in the past."
+msgstr "Estás viendo esto porque ya has instalado en el pasado la versión 1 del plugin."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:202
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:210
+msgid "You can add any HTML to the second panel."
+msgstr "Puede añadir cualquier HTML al segundo panel."
+
+#: view/admin/parts/settings-admin-settings.php:8
+msgid "Hide the help tab which appears in the top right"
+msgstr "Ocultar la pestaña de ayuda que aparece en la parte superior derecha"
+
+#: view/admin/parts/settings-admin-settings.php:18
+msgid "Hide the screen options which appear in the top right"
+msgstr "Ocultar las opciones de pantalla que aparecen en la parte superior derecha"
+
+#: view/admin/parts/login-advanced.php:121
+#: view/admin/parts/login-custom-css.php:21
+#: view/admin/parts/login-custom-js.php:13
+#: view/admin/parts/login-logo-and-background.php:96
+msgid "Live Preview"
+msgstr "Vista previa en vivo"
+
+#: view/admin/parts/login.php:3
+msgid "Logo and Background"
+msgstr "Logotipo y fondo"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:102
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:216
+msgid "Make full-width"
+msgstr "Hacer ancho completo"
+
+#: view/admin/parts/menus.php:12 view/admin/settings.php:6
+msgid "Menus"
+msgstr "Menús"
+
+#: view/admin/parts/login-custom-css.php:13
+msgid "Or if you want to get fancy"
+msgstr "O si quieres ponerte elegante"
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:27
+#: view/admin/parts/wizard-step-1.php:49
+msgid "RSS Feed"
+msgstr "Feed RSS"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:198
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:206
+msgid "Second Panel Description (HTML)"
+msgstr "Descripción del segundo panel (HTML)"
+
+#: view/admin/parts/branding-side-menu.php:2
+msgid "Side Menu Image"
+msgstr "Imagen del menú lateral"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:68
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:160
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:174
+msgid "Template"
+msgstr "Plantilla"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:51
+msgid "Template Type"
+msgstr "Tipo de plantilla"
+
+#. Plugin Name of the plugin
+#: wlcms-plugin.php includes/classes/Admin_Core.php:24
+#: includes/classes/Admin_Core.php:25 view/admin/settings.php:19
+#: view/admin/wizard.php:6
+msgid "White Label CMS"
+msgstr "White Label CMS"
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:14
+msgid "You can add your own welcome panel."
+msgstr "Puedes añadir tu propio panel de bienvenida."
+
+#: view/admin/parts/dashboard-custom-welcome-dashboard-panel.php:96
+msgid "You can add any HTML to the welcome panel."
+msgstr "Puedes añadir cualquier HTML al panel de bienvenida."
+
+#. Author of the plugin
+#: wlcms-plugin.php
+msgid "www.videousermanuals.com"
+msgstr "www.videousermanuals.com"
+
+#: view/admin/parts/wizard-step-1.php:17
+msgid "You can set up White Label CMS quickly by adding your details below, and on the next page it will ask you about your clients details. Or you can click the Skip button and add these details later."
+msgstr "Puedes configurar White Label CMS rápidamente añadiendo tus detalles a continuación y, en la siguiente página, te preguntará sobre los detalles de tus clientes. O puedes hacer clic en el botón «Saltar» y añadir estos detalles más adelante."
+
+#: view/admin/parts/dashboard-rss-dashboard-panel.php:32
+#: view/admin/parts/wizard-step-1.php:54
+msgid "The RSS feed address. For example "
+msgstr "La dirección del feed RSS. Por ejemplo, "
+
+#. Author URI of the plugin
+#: wlcms-plugin.php
+msgid "https://www.videousermanuals.com/?utm_campaign=wlcms&utm_medium=plugin&utm_source=readme-txt"
+msgstr "https://www.videousermanuals.com/?utm_campaign=wlcms&utm_medium=plugin&utm_source=readme-txt"
+
+#. Plugin URI of the plugin
+#: wlcms-plugin.php
+msgid "https://www.videousermanuals.com/white-label-cms/?utm_campaign=wlcms&utm_medium=plugin&utm_source=readme-txt"
+msgstr "https://www.videousermanuals.com/white-label-cms/?utm_campaign=wlcms&utm_medium=plugin&utm_source=readme-txt"

@@ -1,4 +1,9 @@
 (function () {
+	document.querySelectorAll('.single-product .elementor-widget-woocommerce-product-short-description').forEach(function (desc) {
+		var section = desc.closest('.elementor-inner-section');
+		var grid = section && section.querySelector(':scope > .elementor-container');
+		if (grid && desc.parentElement !== grid) grid.appendChild(desc);
+	});
 	var button = document.querySelector('.lunic-menu-btn');
 	var panel = document.getElementById('lunic-panel');
 	if (button && panel) {
@@ -28,12 +33,29 @@
 			footBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
 		});
 	}
+	var buybar = document.querySelector('.lunic-buybar');
 	var buy = document.querySelector('.lunic-buybar__btn');
-	if (buy) {
+	var formBtn = document.querySelector('form.cart .single_add_to_cart_button');
+	if (buy && formBtn) {
 		buy.addEventListener('click', function () {
-			var formBtn = document.querySelector('form.cart .single_add_to_cart_button');
-			if (formBtn) formBtn.click();
+			formBtn.click();
 		});
+	}
+	if (buybar && formBtn && 'IntersectionObserver' in window) {
+		var priceSlot = buybar.querySelector('.lunic-buybar__price');
+		var initialPrice = priceSlot ? priceSlot.innerHTML : '';
+		var syncPrice = function () {
+			if (!priceSlot) return;
+			var live = document.querySelector('.woocommerce-variation-price .price');
+			priceSlot.innerHTML = live && live.textContent.trim() ? live.innerHTML : initialPrice;
+		};
+		var form = formBtn.closest('form');
+		if (form) {
+			new MutationObserver(syncPrice).observe(form, { childList: true, subtree: true, characterData: true });
+		}
+		new IntersectionObserver(function (entries) {
+			buybar.classList.toggle('is-hidden', entries[0].isIntersecting);
+		}, { rootMargin: '0px 0px 0px 0px' }).observe(formBtn);
 	}
 	document.querySelectorAll('.lunic-slider').forEach(function (slider) {
 		var track = slider.querySelector('.lunic-slider__track');

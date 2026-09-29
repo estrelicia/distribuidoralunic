@@ -9,6 +9,7 @@ class Filter {
     private static bool $printed = false;
 
     public function register(): void {
+        add_action('template_redirect', [$this, 'redirect_legacy_param'], 1);
         add_action('pre_get_posts', [$this, 'apply_query']);
         add_shortcode('lunic_filter', [$this, 'render']);
         add_action('woocommerce_no_products_found', [$this, 'empty_notice'], 9);
@@ -83,12 +84,8 @@ class Filter {
             'arg' => Module::QUERY_ARG,
             'active' => $active,
         ]);
-        $terms = get_terms([
-            'taxonomy' => 'product_cat',
-            'hide_empty' => true,
-            'exclude' => [Module::EXCLUDE_TERM],
-        ]);
-        if (is_wp_error($terms)) {
+        $terms = Category_Tree::terms();
+        if ($terms === []) {
             return '';
         }
         $tree = $this->tree($terms);
@@ -129,7 +126,7 @@ class Filter {
         }
     }
 
-    /** @param \WP_Term[] $terms */
+    /** @param object[] $terms */
     private function tree(array $terms): array {
         $tree = [];
         foreach ($terms as $term) {

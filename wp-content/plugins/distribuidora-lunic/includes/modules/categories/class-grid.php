@@ -56,6 +56,8 @@ class Grid {
             'taxonomy' => 'product_cat',
             'hide_empty' => true,
             'exclude' => [15],
+            'orderby' => 'name',
+            'order' => 'DESC',
         ]);
         if (is_wp_error($terms) || !$terms) {
             return '';
@@ -67,13 +69,8 @@ class Grid {
                 continue;
             }
             $image = $this->image_url($term->term_id);
-            $missing = $image === '' || strpos($image, 'placeholder') !== false;
             $html .= '<a class="lunic-cats__card" href="' . esc_url($url) . '">';
-            if ($missing) {
-                $html .= '<span class="lunic-cats__empty">Sin imagen. <span>Ver en la tienda</span></span>';
-            } else {
-                $html .= '<img src="' . esc_url($image) . '" alt="' . esc_attr($term->name) . '" />';
-            }
+            $html .= '<img src="' . esc_url($image) . '" alt="' . esc_attr($term->name) . '" loading="lazy" />';
             $html .= '<span>' . esc_html($term->name) . '</span>';
             $html .= '</a>';
         }

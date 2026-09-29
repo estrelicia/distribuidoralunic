@@ -11,8 +11,17 @@ status_header(503);
 </head>
 <body>
 	<main class="lunic-wrap">
+		<?php
+		$lunic_maintenance = function_exists('lunic_elementor_slot') ? lunic_elementor_slot('maintenance') : '';
+		if ($lunic_maintenance !== '') {
+			echo $lunic_maintenance;
+		} else {
+			?>
 		<h1>En mantenimiento</h1>
 		<p>La tienda vuelve enseguida.</p>
+			<?php
+		}
+		?>
 	</main>
 	<?php wp_footer(); ?>
 </body>

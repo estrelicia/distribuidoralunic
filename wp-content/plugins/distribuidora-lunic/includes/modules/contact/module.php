@@ -14,9 +14,9 @@ class Module {
 
     public function render(): string {
         $sent = isset($_GET['contacto']) && $_GET['contacto'] === 'ok';
-        $html = '';
+        $html = '<div class="lunic-contact__form">';
         if ($sent) {
-            $html .= '<p>Recibimos tu consulta. Te respondemos a la brevedad.</p>';
+            $html .= '<p class="lunic-empty">Recibimos tu consulta. Te respondemos a la brevedad.</p>';
         }
         $html .= '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
         $html .= '<input type="hidden" name="action" value="lunic_contact" />';
@@ -25,7 +25,7 @@ class Module {
         $html .= '<p><label>Correo electrónico<br><input required name="email" type="email" /></label></p>';
         $html .= '<p><label>Teléfono<br><input name="telefono" type="text" /></label></p>';
         $html .= '<p><label>Consulta<br><textarea required name="consulta" rows="5"></textarea></label></p>';
-        $html .= '<p><button type="submit">Enviar</button></p></form>';
+        $html .= '<p><button type="submit">Enviar</button></p></form></div>';
         return $html;
     }
 

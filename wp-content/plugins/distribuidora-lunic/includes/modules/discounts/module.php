@@ -12,6 +12,10 @@ class Module {
         }
         require_once __DIR__ . '/class-calculator.php';
         Calculator::init();
+        if (is_admin()) {
+            require_once __DIR__ . '/class-admin.php';
+            (new Admin())->register();
+        }
         add_action('elementor/widgets/register', [$this, 'register_legacy_widget']);
     }
 

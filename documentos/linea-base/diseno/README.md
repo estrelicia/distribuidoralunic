@@ -1,6 +1,8 @@
-# Referencia visual de la etapa 11
+# Referencia visual
 
-Capturas del sitio público con Hello y los cuatro plugins activos. La vista del tema `lunic` va en los archivos `preview-*.png`, con `?lunic_preview=1`.
+Sigue vigente. El estado del proyecto está en `documentos/estado.md`.
+
+Las capturas `ref-*.png` son el sitio de referencia (Hello y los cuatro plugins, antes del corte). Las `preview-*.png` son el tema `lunic` con `?lunic_preview=1`, de cuando todavía no era el tema público. Desde el 26/09/2026 el sitio local usa `lunic` directo.
 
 Escritorio: 1440 px de ancho. Teléfono: 390 px de ancho.
 
@@ -26,4 +28,4 @@ El carrito y el checkout de escritorio se tomaron con un producto en el carrito:
 
 La ficha variable (Blend Nº 45) está sin stock y la miniatura no carga en el sitio actual.
 
-El sitio público no usa el tema Lunic. Estas imágenes son la barra de comparación de la tarea 11.12.
+Estas imágenes son la barra de comparación de la tarea 11.12. Desde el 26/09/2026 el sitio público usa el tema `lunic`.

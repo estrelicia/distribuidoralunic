@@ -8,7 +8,15 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="lunic-header">
+<?php
+$lunic_header = function_exists('lunic_elementor_slot') ? lunic_elementor_slot('header') : '';
+$lunic_categories = function_exists('lunic_elementor_slot') ? lunic_elementor_slot('categories') : '';
+echo '<header class="lunic-header">';
+if ($lunic_header !== '') {
+    echo $lunic_header;
+    echo '<button type="button" class="lunic-menu-btn" aria-expanded="false" aria-controls="lunic-panel" aria-label="Menú"><span></span><span></span><span></span></button>';
+} else {
+?>
 	<div class="lunic-header__bar">
 		<?php lunic_logo(); ?>
 		<nav class="lunic-nav lunic-nav--desktop" aria-label="Inicio">
@@ -18,16 +26,21 @@
 			<button type="button" class="lunic-menu-btn" aria-expanded="false" aria-controls="lunic-panel" aria-label="Menú"><span></span><span></span><span></span></button>
 			<?php lunic_cart_link(); ?>
 			<a class="lunic-whatsapp" href="https://wa.me/5491123545375" target="_blank" rel="noopener" aria-label="WhatsApp">
-				<svg viewBox="0 0 24 24" width="42" height="42" aria-hidden="true"><path fill="#368D00" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2zm5.76 14.15c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.81-.11-.41-.14-.95-.31-1.63-.61-2.87-1.24-4.74-4.13-4.88-4.32-.14-.19-1.16-1.54-1.16-2.94s.73-2.08 1-2.37c.24-.28.64-.41 1.02-.41.12 0 .23 0 .33.01.3.01.44-.03.68.52.24.58.83 2 .9 2.15.07.14.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.55.16.27.72 1.19 1.55 1.93 1.07.95 1.96 1.25 2.24 1.39.28.14.44.12.6-.07.16-.19.7-.81.88-1.09.19-.28.37-.23.62-.14.26.09 1.62.76 1.9.9.28.14.46.21.53.32.07.12.07.68-.17 1.36z"/></svg>
+				<svg viewBox="0 0 448 512" width="55" height="55" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
 			</a>
 		</div>
 	</div>
+<?php } ?>
 	<div id="lunic-mega" class="lunic-mega" hidden>
+		<?php if ($lunic_categories !== '') : ?>
+			<?php echo $lunic_categories; ?>
+		<?php else : ?>
 		<div class="lunic-mega__cols">
 			<nav aria-label="Categorías 01"><?php wp_nav_menu(['theme_location' => 'categorias-01', 'container' => false, 'menu_class' => 'lunic-mega__list', 'fallback_cb' => false]); ?></nav>
 			<nav aria-label="Categorías 02"><?php wp_nav_menu(['theme_location' => 'categorias-02', 'container' => false, 'menu_class' => 'lunic-mega__list', 'fallback_cb' => false]); ?></nav>
 			<nav aria-label="Categorías 03"><?php wp_nav_menu(['theme_location' => 'categorias-03', 'container' => false, 'menu_class' => 'lunic-mega__list', 'fallback_cb' => false]); ?></nav>
 		</div>
+		<?php endif; ?>
 	</div>
 	<div id="lunic-panel" class="lunic-panel">
 		<nav aria-label="Menú"><?php wp_nav_menu(['theme_location' => 'inicio', 'container' => false, 'menu_class' => 'lunic-menu', 'fallback_cb' => false]); ?></nav>

@@ -35,7 +35,8 @@
 	max-height: 50vh;
 	overflow: auto;
 	background: #fff;
-	border: 1px solid #ddd;
+	border: 1px solid #d5e7a4;
+	border-radius: 8px;
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
@@ -44,14 +45,16 @@
 	grid-template-columns: 48px 1fr;
 	gap: 0.5rem;
 	align-items: center;
-	padding: 0.5rem;
-	color: inherit;
+	min-height: 44px;
+	padding: 0.5rem 0.75rem;
+	color: #055902;
+	font-family: Montserrat, sans-serif;
 	text-decoration: none;
 }
 
 .lunic-search__item:hover,
 .lunic-search__item:focus {
-	background: #f4f4f4;
+	background: #f6f7f7;
 }
 
 .lunic-search__item img {

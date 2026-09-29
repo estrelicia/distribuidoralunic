@@ -60,14 +60,18 @@ class Suggestions {
             $image = wp_get_attachment_image_url((int) $product->get_image_id(), 'woocommerce_thumbnail');
             $items[] = [
                 'id' => (string) $product->get_id(),
-                'title' => $product->get_name(),
+                'title' => self::plain($product->get_name()),
                 'url' => $product->get_permalink(),
                 'image' => $image ? $image : '',
-                'price' => wp_strip_all_tags(wc_price(wc_get_price_to_display($product))),
-                'category' => $cats[0] ?? '',
+                'price' => self::plain(wc_price(wc_get_price_to_display($product))),
+                'category' => self::plain($cats[0] ?? ''),
             ];
         }
         wp_reset_postdata();
         return ['items' => $items];
+    }
+
+    private static function plain(string $html): string {
+        return html_entity_decode(wp_strip_all_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 }
