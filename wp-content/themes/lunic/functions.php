@@ -74,7 +74,7 @@ add_filter('template_include', function ($template) {
 }, 99999);
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.53');
+    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.57');
     wp_enqueue_script('lunic', get_template_directory_uri() . '/assets/theme.js', [], '0.2.4', true);
 });
 

@@ -1,6 +1,6 @@
 # Estado del proyecto
 
-**Fecha:** 28/09/2026.  
+**Fecha:** 29/09/2026.  
 **Entorno:** copia local `https://distribuidoralunic.com.ar.dev/`. No está publicado. El sitio en vivo no se tocó.
 
 Este archivo es el que hay que leer para seguir. El plan largo, las actas de cada etapa, las mediciones y las capturas viejas están en `documentos/archivo/`.
@@ -9,14 +9,16 @@ Este archivo es el que hay que leer para seguir. El plan largo, las actas de cad
 
 | Pieza | Estado |
 | --- | --- |
-| Tema | `lunic` **0.3.53** (`wp-content/themes/lunic/`) |
-| Plugin | `distribuidora-lunic` **0.1.11** |
+| Tema | `lunic` **0.3.57** (`wp-content/themes/lunic/`). El script sigue en **0.2.4**. |
+| Plugin | `distribuidora-lunic` **0.1.12** |
 | WooCommerce | Sigue. Moneda ARS. |
 | Elementor libre | Activo. Pinta el pie (7421), la tienda y la búsqueda (7825), la ficha (7620), Quiénes somos, cookies y privacidad. |
 | Elementor Pro, JetEngine, Ivory Search, Product Filter (WBW) | Apagados. Las carpetas siguen en disco. |
 | Easy WP SMTP, reSmush.it, Prime Mover, MainWP Child, White Label CMS | Fuera de esta migración. |
 
-La opción `lunic_theme_templates` no se borra: cabecera 7432, pie 7421, megamenú 8261, tienda 7825, ficha 7620.
+La opción `lunic_theme_templates` no se borra: cabecera 7432, pie 7421, megamenú 8261, tienda 7825, ficha 7620. El desplegable de Categorías ya no usa el megamenú 8261: lo arma el plugin.
+
+En el escritorio, el menú **Lunic** está en la posición 55.4, justo arriba de WooCommerce (55.5). Adentro están Plantillas, Descuentos por categoría, Menú de categorías y Texto de envíos. Las reglas siguen en la opción `wcd_discount_rules`.
 
 ## Qué se hizo
 
@@ -30,6 +32,73 @@ Etapas 0 a 12, cerradas entre el 25 y el 26/09/2026. El detalle está en `archiv
 6. Caché de página del tema, conteos de categoría en transient y limpieza de índices de plugins ya apagados (etapa 9). PageSpeed de laboratorio: inicio móvil 51 → 85, inicio escritorio 55 → 98. Números completos en `archivo/pagespeed-despues.md`.
 7. Etapa 13 (28/09/2026): una sola escala de tipo, botones, campos, tarjetas y cajas en todas las pantallas, en 1440 px y en 390 px. Tema al cerrar las tareas: 0.3.51. Acta: `archivo/etapa-13-rediseno-interfaz.md`.
 8. El mismo día, tema **0.3.53**: el carrito de escritorio se centra (máximo 820 px). Precio, cantidad y subtotal quedan bajo su título. En «Total de la compra» la etiqueta va a la izquierda y el importe a la derecha. La caja de totales mide lo mismo que la tabla.
+9. El 29/09/2026, checkout, envíos, menú de categorías, importación CSV y el menú de descuentos. Detalle abajo.
+
+## Checkout (29/09/2026, tema 0.3.54 a 0.3.56)
+
+La columna derecha se partía: el título «Tu pedido» quedaba arriba y el resumen empezaba recién al terminar la columna izquierda. El ancho también era el del carrito (820 px).
+
+- El checkout usa máximo 1140 px, centrado. Carrito y cuenta siguen en 820 px.
+- `woocommerce/checkout/form-checkout.php` envuelve el título y el resumen en `.lunic-checkout__summary`. Desde 900 px el formulario es una grilla de dos columnas y ese bloque ocupa la columna derecha, en la misma fila que los datos.
+- Bajo 782 px el formulario vuelve a una columna.
+- El país y la provincia ocupan el ancho del campo. El `select` oculto de Select2 no se fuerza a 100 %: si se le aplica, la página desborda.
+- «Realizar el pedido» ocupa todo el ancho de la caja de pago.
+
+Medido en `/finalizar-comprar/`: a 1440 px las dos columnas arrancan a la misma altura; a 390 px se apilan y no hay scroll horizontal. El carrito de prueba no se vació.
+
+## Envíos (29/09/2026, tema 0.3.57)
+
+El monto de cada zona ya era el configurado, pero se veía dos veces: una antes del IVA y otra después del total. El total de WooCommerce no lo incluía, y el resumen no cerraba.
+
+Si la zona solo tiene `custom_shipping`, la fila de antes del IVA queda oculta (`.lunic-shipping-silent` en `woocommerce/cart/cart-shipping.php`) y el precio se muestra una sola vez, debajo del total. Ese importe no entra en el total. El umbral de envío gratis se compara con el subtotal de productos, sin IVA.
+
+Si en la misma zona hay otro método, por ejemplo Andreani, se ven las dos opciones. El envío propio sigue fuera del total. La cotización de Andreani, si se elige, entra en el total. El plugin `andreani-shipping` está en el repositorio. En esta copia hay una instancia (43) con credenciales. El cotizador de ficha está en modo automático, posición flotante, y no se ve en la ficha: la plantilla de producto es Elementor y no dispara ese gancho. Queda pendiente mostrarlo al final de los precios.
+
+Carrito de prueba, sin cambiar el contenido:
+
+| Destino | Envío | Total WooCommerce |
+| --- | --- | --- |
+| CABA, CP 1424 | $4.700 | $10.897,26 |
+| Primer cordón, CP 1602 | $8.000 | $10.897,26 |
+| Córdoba, CP 5000 | Acarreo $4.700 | $10.897,26 |
+
+El texto público de envíos coincide en CABA, los tres cordones y el acarreo de interior y del resto de provincia. No está en el cálculo: el tope de 25 kg, los $500 por bulto extra y el acarreo gratis con Vía Cargo. La frase «no utilizamos Andreani» coincide con el checkout de hoy y deja de coincidir si Andreani se carga en una zona.
+
+El país del checkout no está fijo en el código. WooCommerce vende y envía solo a Argentina, y el país por defecto es CABA.
+
+## Menú de categorías (29/09/2026, plugin 0.1.12)
+
+El desplegable se editaba en Elementor. Ahora está en **Lunic → Menú de categorías**.
+
+Tres columnas, como el popup, y un grupo «Sin mostrar». Se arrastra cada categoría. Lo que queda en «Sin mostrar» no aparece. El orden de la columna es el orden del menú. Al guardar se escribe la opción `lunic_mega_menu` y se vacía la caché de página.
+
+Hasta el primer guardado, las columnas salen de los menús Categorías 01, 02 y 03 (113, 114 y 115). «Sin asignar» (término 15) no entra. El mismo orden se usa en el desplegable de escritorio y en el menú del celular. El módulo es `includes/modules/mega-menu/`.
+
+## Escritorio y CSV (29/09/2026)
+
+**Descuentos por categoría** pasó del menú WooCommerce a **Lunic → Descuentos por categoría**. La pantalla y la opción no cambiaron.
+
+La importación de productos por CSV acepta el tipo que Excel en Windows guarda como `application/vnd.ms-excel`, solo si el archivo termina en `.csv` y quien sube puede administrar WooCommerce. Un `.xlsx` sigue sin ser un CSV. El código está en `includes/class-csv-import.php`.
+
+## Plugin de CMS (plan, sin código)
+
+`documentos/implementacion-plugin-cms.md` describe **Megadruid CMS**: un plugin nuevo que reúna la marca de White Label CMS y la capa de Megadruid Seguridad. No está escrito. White Label CMS y Megadruid Seguridad siguen como están.
+
+## Pendiente
+
+- **Carrito vacío.** Al vaciarlo se ve el recuadro «Tu carrito está vacío», el botón «Volver a la tienda» y el acordeón de envíos. Tiene que volver solo a la tienda. No se vació el carrito de prueba.
+- **Cotizador Andreani.** En modo automático no aparece en la ficha. Tiene que quedar al final de los precios.
+
+## Cómo subir al live
+
+No importar un paquete de Prime Mover encima del live: reemplaza la base y se pierden los pedidos, clientes y stock posteriores a la copia. Prime Mover no fusiona.
+
+1. En el live, exportar con Prime Mover base, medios, plugins y temas. Ese paquete no se importa. Queda de respaldo.
+2. Subir solo `wp-content/themes/lunic`, `wp-content/plugins/distribuidora-lunic` y, si se quiere el plugin disponible, `wp-content/plugins/andreani-shipping`. No reemplazar la base ni `wp-content/uploads`.
+3. En el live, activar el tema `lunic` y el plugin `distribuidora-lunic`. Desactivar Elementor Pro, JetEngine, Ivory Search, el filtro WBW y el plugin viejo de envíos. Si ese último sigue activo, el envío nuevo no se registra.
+4. Confirmar que `lunic_theme_templates` exista con los mismos IDs. Esas páginas ya están en la base del live.
+
+Los cambios de productos hechos solo en el local no viajan con las carpetas. Andreani no cotiza hasta configurarlo en una zona del live.
 
 ## Marca
 
@@ -56,13 +125,14 @@ No son tareas abiertas. El plan las dejó anotadas el 28/09/2026.
 - **Quiénes somos.** El título lo pinta Elementor. A 390 px «Sobre Nosotros» mide 24 px; la escala del tema es 1.6rem.
 - **Categorías** (`/elementor-12340/`). La grilla está alineada (39 tarjetas). La página no muestra un título. En WordPress se llama «Elementor #12340».
 - **Ficha.** Los `????` de Hibiscus y los subtítulos de la descripción están en el contenido, no en el CSS del tema.
-- **Carrito vacío.** El recuadro, el botón gris «Volver a la tienda» y el acordeón de envíos abierto están en el HTML. No se abrió en el navegador con la sesión de prueba.
+- **Carrito vacío.** Sigue la pantalla vacía. El cambio a volver a la tienda está en Pendiente, más arriba.
 
 ## Dónde seguir leyendo
 
 | Para qué | Archivo |
 | --- | --- |
 | Este estado | `documentos/estado.md` |
+| Plan de Megadruid CMS | `documentos/implementacion-plugin-cms.md` |
 | Política REST | `documentos/rest-api-lunic.md` |
 | Capturas de referencia (1440 px y 390 px) | `documentos/linea-base/diseno/` |
 | Plan, actas, PageSpeed y capturas anteriores | `documentos/archivo/` |

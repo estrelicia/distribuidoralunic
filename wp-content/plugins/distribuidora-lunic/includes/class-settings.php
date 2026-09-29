@@ -33,7 +33,7 @@ final class Settings {
             self::MENU_SLUG,
             [$this, 'render_page'],
             'dashicons-store',
-            56
+            '55.4'
         );
         add_submenu_page(
             self::MENU_SLUG,

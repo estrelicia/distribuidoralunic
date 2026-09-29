@@ -32,7 +32,9 @@ if ($lunic_header !== '') {
 	</div>
 <?php } ?>
 	<div id="lunic-mega" class="lunic-mega" hidden>
-		<?php if ($lunic_categories !== '') : ?>
+		<?php if (class_exists(\Distribuidora_Lunic\Modules\MegaMenu\Menu::class)) : ?>
+			<?php echo \Distribuidora_Lunic\Modules\MegaMenu\Menu::desktop(); ?>
+		<?php elseif ($lunic_categories !== '') : ?>
 			<?php echo $lunic_categories; ?>
 		<?php else : ?>
 		<div class="lunic-mega__cols">
@@ -45,9 +47,13 @@ if ($lunic_header !== '') {
 	<div id="lunic-panel" class="lunic-panel">
 		<nav aria-label="Menú"><?php wp_nav_menu(['theme_location' => 'inicio', 'container' => false, 'menu_class' => 'lunic-menu', 'fallback_cb' => false]); ?></nav>
 		<div id="lunic-panel-cats" class="lunic-panel__cats" hidden>
+			<?php if (class_exists(\Distribuidora_Lunic\Modules\MegaMenu\Menu::class)) : ?>
+				<?php echo \Distribuidora_Lunic\Modules\MegaMenu\Menu::mobile(); ?>
+			<?php else : ?>
 			<nav aria-label="Categorías"><?php wp_nav_menu(['theme_location' => 'categorias-01', 'container' => false, 'menu_class' => 'lunic-menu', 'fallback_cb' => false]); ?></nav>
 			<nav aria-label="Categorías 02"><?php wp_nav_menu(['theme_location' => 'categorias-02', 'container' => false, 'menu_class' => 'lunic-menu', 'fallback_cb' => false]); ?></nav>
 			<nav aria-label="Categorías 03"><?php wp_nav_menu(['theme_location' => 'categorias-03', 'container' => false, 'menu_class' => 'lunic-menu', 'fallback_cb' => false]); ?></nav>
+			<?php endif; ?>
 		</div>
 	</div>
 </header>

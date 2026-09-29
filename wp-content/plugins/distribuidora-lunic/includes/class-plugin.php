@@ -52,7 +52,9 @@ final class Plugin {
     private function load_includes(): void {
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-settings.php';
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-elementor-fallback.php';
+        require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-csv-import.php';
         Elementor_Fallback::register();
+        (new Csv_Import())->register();
     }
 
     private function load_modules(): void {

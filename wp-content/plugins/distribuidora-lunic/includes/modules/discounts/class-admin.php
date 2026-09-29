@@ -21,7 +21,7 @@ class Admin {
 
     public function menu(): void {
         $hook = add_submenu_page(
-            'woocommerce',
+            \Distribuidora_Lunic\Settings::MENU_SLUG,
             __('Descuentos por Categoría', 'distribuidora-lunic'),
             __('Descuentos por Categoría', 'distribuidora-lunic'),
             'manage_woocommerce',

@@ -101,6 +101,7 @@ class Method extends \WC_Shipping_Method {
             'cost' => $cost,
             'package' => $package,
             'meta_data' => [
+                'zone_title' => $this->title,
                 'carry_mode' => true,
                 'carry_cost' => $cost,
                 'carry_free' => $free,
@@ -116,6 +117,7 @@ class Method extends \WC_Shipping_Method {
             'cost' => $free ? 0 : $this->cost,
             'package' => $package,
             'meta_data' => [
+                'zone_title' => $this->title,
                 'free_shipping' => $free,
                 'normal_cost' => $this->cost,
             ],

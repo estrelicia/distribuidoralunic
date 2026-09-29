@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Distribuidora Lunic
  * Description: Lógica de tienda Lunic: envíos, descuentos, checkout y módulos de catálogo.
- * Version: 0.1.11
+ * Version: 0.1.12
  * Author: Distribuidora Lunic
  * Text Domain: distribuidora-lunic
  * Domain Path: /languages
@@ -14,7 +14,7 @@
 
 defined('ABSPATH') || exit;
 
-define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.11');
+define('DISTRIBUIDORA_LUNIC_VERSION', '0.1.12');
 define('DISTRIBUIDORA_LUNIC_FILE', __FILE__);
 define('DISTRIBUIDORA_LUNIC_PATH', plugin_dir_path(__FILE__));
 define('DISTRIBUIDORA_LUNIC_URL', plugin_dir_url(__FILE__));
