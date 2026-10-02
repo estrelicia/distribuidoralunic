@@ -8,7 +8,9 @@ Plugin nuevo, código propio, que reúne lo que hoy hacen dos plugins distintos:
 - **White Label CMS** 2.7.14 (`wp-content/plugins/white-label-cms/`). Marca el escritorio, el login, los menús y el panel de bienvenida. Los ajustes viven en la opción `wlcms_options`.
 - **Megadruid Seguridad** 1.0.2 (`wp-content/plugins/megadruid-seguridad/`). Capa para un WordPress detrás de Cloudflare. Los ajustes viven en `wbs_settings`.
 
-Nombre propuesto del plugin: **Megadruid CMS**. Carpeta `wp-content/plugins/megadruid-cms/`. Text domain `megadruid-cms`. Opción única `mdcms_settings`. PHP 8.1. WordPress 6.0.
+Nombre del plugin: **Megadruid CMS**. Carpeta `wp-content/plugins/megadruid-cms/`. Text domain `megadruid-cms`. Opción única `mdcms_settings`. PHP 8.1. WordPress 6.0.
+
+**Avance en la copia local (02/10/2026):** versión **0.2.3**. Completadas las tareas **0.1–0.3**, **1.1–1.3**, **2.1–2.3**, **3.1–3.4**, **4.1–4.3**, **5.1–5.3**. Siguiente bloque: etapa **6** (JSON e importación desde plugins viejos). Detalle en `wp-content/plugins/megadruid-cms/README.md` y `documentos/estado.md`.
 
 No se copian archivos, CSS, JavaScript ni imágenes de White Label CMS. Se reescribe el comportamiento. Los dos plugins viejos siguen activos hasta la etapa 9. Si los dos están activos a la vez, las protecciones de seguridad no deben duplicar el bloqueo de login.
 
@@ -191,11 +193,11 @@ Hecho cuando el rol marcado navega la tienda sin barra y el administrador de mar
 Ocultar Ayuda y Opciones de pantalla. Quitar los avisos de actualización del núcleo. CSS extra solo en el admin, sanitizado. Hoja del editor por URL absoluta o ruta relativa al tema activo.  
 Hecho cuando las dos pestañas desaparecen, el aviso de actualización del núcleo no se muestra y el editor carga la hoja indicada.
 
-**5.2 Cajas de entradas y páginas.** Composer 2.5.  
+**5.2 Cajas de entradas y páginas.** Composer 2.5. **Hecho 02/10/2026** — `class-metaboxes.php`, pestaña Ajustes, claves `post_metabox_roles` y `page_metabox_roles`.  
 `remove_meta_box` para las cajas listadas arriba, solo en el rol marcado.  
 Hecho cuando «Extracto» desaparece en entradas y «Atributos de página» desaparece en páginas, y el resto de cajas sigue.
 
-**5.3 Asistente.** Composer 2.5.  
+**5.3 Asistente.** Composer 2.5. **Hecho 02/10/2026** — `class-wizard.php`, flag `wizard_completed`, enlace Ajustes en la lista de plugins.  
 Cuatro pasos: logo de login, nombre y pie, panel de bienvenida, confirmación. Escribe en las mismas claves que las pestañas. Se puede saltar.  
 Hecho cuando al terminar el asistente el login y el escritorio muestran lo elegido, sin una segunda opción en la base.
 

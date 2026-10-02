@@ -1,0 +1,70 @@
+.mdcms-side-logo {
+	display: block;
+	text-align: center;
+	padding: 8px 5px 4px;
+}
+
+.mdcms-side-logo a {
+	display: block;
+	text-decoration: none;
+}
+
+.mdcms-side-logo img.mdcms-side-logo__large {
+	display: block;
+	max-width: 150px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+.mdcms-side-logo img.mdcms-side-logo__small {
+	display: none;
+	max-width: 36px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+body.folded .mdcms-side-logo img.mdcms-side-logo__large {
+	display: none;
+}
+
+body.folded .mdcms-side-logo img.mdcms-side-logo__small {
+	display: block;
+	max-width: 25px;
+}
+
+@media only screen and (max-width: 960px) {
+	.mdcms-side-logo img.mdcms-side-logo__large {
+		display: none;
+	}
+
+	.mdcms-side-logo img.mdcms-side-logo__small {
+		display: block;
+	}
+}
+
+.mdcms-block-editor-exit svg,
+.mdcms-block-editor-exit .edit-post-fullscreen-mode-close_site-icon {
+	display: none !important;
+}
+
+.mdcms-block-editor-exit .mdcms-exit-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.mdcms-block-editor-exit .mdcms-exit-icon img {
+	display: block;
+	max-width: 24px;
+	max-height: 24px;
+	width: auto;
+	height: auto;
+}
+
+.mdcms-block-editor-exit .mdcms-exit-icon .dashicons {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+}

@@ -1,6 +1,6 @@
 # Estado del proyecto
 
-**Fecha:** 29/09/2026.  
+**Fecha:** 02/10/2026.  
 **Entorno:** copia local `https://distribuidoralunic.com.ar.dev/`. No está publicado. El sitio en vivo no se tocó.
 
 Este archivo es el que hay que leer para seguir. El plan largo, las actas de cada etapa, las mediciones y las capturas viejas están en `documentos/archivo/`.
@@ -80,9 +80,13 @@ Hasta el primer guardado, las columnas salen de los menús Categorías 01, 02 y 
 
 La importación de productos por CSV acepta el tipo que Excel en Windows guarda como `application/vnd.ms-excel`, solo si el archivo termina en `.csv` y quien sube puede administrar WooCommerce. Un `.xlsx` sigue sin ser un CSV. El código está en `includes/class-csv-import.php`.
 
-## Plugin de CMS (plan, sin código)
+## Megadruid CMS (en desarrollo local)
 
-`documentos/implementacion-plugin-cms.md` describe **Megadruid CMS**: un plugin nuevo que reúna la marca de White Label CMS y la capa de Megadruid Seguridad. No está escrito. White Label CMS y Megadruid Seguridad siguen como están.
+Plugin **`megadruid-cms` 0.2.3** en `wp-content/plugins/megadruid-cms/`. Ajustes en **Ajustes → Megadruid CMS**. Opción única `mdcms_settings`.
+
+En la copia local están hechas las etapas **0 a 5.3** del plan (`documentos/implementacion-plugin-cms.md`): esqueleto, marca, login, escritorio, menús, ayuda/CSS del admin, cajas del editor por rol y asistente de puesta en marcha. **Seguridad, importación JSON y migración desde White Label CMS / Megadruid Seguridad** (etapas 6–9) siguen pendientes.
+
+White Label CMS y Megadruid Seguridad **siguen activos** hasta el cierre de la etapa 8 del plan. Documentación del plugin: `wp-content/plugins/megadruid-cms/README.md`.
 
 ## Pendiente
 
