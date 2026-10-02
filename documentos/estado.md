@@ -14,7 +14,8 @@ Este archivo es el que hay que leer para seguir. El plan largo, las actas de cad
 | WooCommerce | Sigue. Moneda ARS. |
 | Elementor libre | Activo. Pinta el pie (7421), la tienda y la búsqueda (7825), la ficha (7620), Quiénes somos, cookies y privacidad. |
 | Elementor Pro, JetEngine, Ivory Search, Product Filter (WBW) | Apagados. Las carpetas siguen en disco. |
-| Easy WP SMTP, reSmush.it, Prime Mover, MainWP Child, White Label CMS | Fuera de esta migración. |
+| Easy WP SMTP, reSmush.it, Prime Mover, MainWP Child | Fuera de esta migración. |
+| White Label CMS, Megadruid Seguridad | **Desactivados** en local (02/10/2026). Carpetas y opciones siguen. Los reemplaza **Megadruid CMS 0.3.1**. |
 
 La opción `lunic_theme_templates` no se borra: cabecera 7432, pie 7421, megamenú 8261, tienda 7825, ficha 7620. El desplegable de Categorías ya no usa el megamenú 8261: lo arma el plugin.
 
@@ -82,9 +83,9 @@ La importación de productos por CSV acepta el tipo que Excel en Windows guarda 
 
 ## Megadruid CMS (en desarrollo local)
 
-Plugin **`megadruid-cms` 0.2.3** en `wp-content/plugins/megadruid-cms/`. Ajustes en **Ajustes → Megadruid CMS**. Opción única `mdcms_settings`.
+Plugin **`megadruid-cms` 0.3.1** en `wp-content/plugins/megadruid-cms/`. Ajustes en **Ajustes → Megadruid CMS**. Opción única `mdcms_settings`.
 
-En la copia local están hechas las etapas **0 a 5.3** del plan (`documentos/implementacion-plugin-cms.md`): esqueleto, marca, login, escritorio, menús, ayuda/CSS del admin, cajas del editor por rol y asistente de puesta en marcha. **Seguridad, importación JSON y migración desde White Label CMS / Megadruid Seguridad** (etapas 6–9) siguen pendientes.
+En la copia local están hechas las etapas **0 a 8**. White Label CMS y Megadruid Seguridad están **apagados**. El límite de login y el endurecimiento los aplica solo Megadruid CMS. Paquete para copiar: `documentos/paquete-megadruid-cms/`. Acta: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md`.
 
 White Label CMS y Megadruid Seguridad **siguen activos** hasta el cierre de la etapa 8 del plan. Documentación del plugin: `wp-content/plugins/megadruid-cms/README.md`.
 
@@ -137,6 +138,7 @@ No son tareas abiertas. El plan las dejó anotadas el 28/09/2026.
 | --- | --- |
 | Este estado | `documentos/estado.md` |
 | Plan de Megadruid CMS | `documentos/implementacion-plugin-cms.md` |
+| Paquete Megadruid CMS | `documentos/paquete-megadruid-cms/` |
 | Política REST | `documentos/rest-api-lunic.md` |
 | Capturas de referencia (1440 px y 390 px) | `documentos/linea-base/diseno/` |
 | Plan, actas, PageSpeed y capturas anteriores | `documentos/archivo/` |
