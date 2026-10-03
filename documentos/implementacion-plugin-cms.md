@@ -10,7 +10,7 @@ Plugin nuevo, código propio, que reúne lo que hoy hacen dos plugins distintos:
 
 Nombre del plugin: **Megadruid CMS**. Carpeta `wp-content/plugins/megadruid-cms/`. Text domain `megadruid-cms`. Opción única `mdcms_settings`. PHP 8.1. WordPress 6.0.
 
-**Avance en la copia local (02/10/2026):** versión **0.3.1**. Completadas las etapas **0 a 8**. White Label CMS y Megadruid Seguridad están desactivados en local (carpetas y opciones intactas). Paquete: `documentos/paquete-megadruid-cms/`. Acta: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md`.
+**Avance en la copia local (03/10/2026):** versión **0.3.19**. Completadas las etapas **0 a 8** (02/10/2026) y el ajuste de UI (paleta Megadruid, pestañas, paneles reales). White Label CMS y Megadruid Seguridad están desactivados en local (carpetas y opciones intactas). El código canónico es `wp-content/plugins/megadruid-cms/`. El paquete `documentos/paquete-megadruid-cms/` quedó en **0.3.1**. Actas: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md` y `documentos/archivo/acta-megadruid-cms-0.3.19.md`.
 
 No se copian archivos, CSS, JavaScript ni imágenes de White Label CMS. Se reescribe el comportamiento. Los dos plugins viejos siguen activos hasta la etapa 9. Si los dos están activos a la vez, las protecciones de seguridad no deben duplicar el bloqueo de login.
 
@@ -238,6 +238,20 @@ Hecho cuando solo Megadruid CMS aparece activo y el escritorio, el login y un `w
 **8.2 Recorrido de la tienda.** Composer 2.5. **Hecho 02/10/2026** — inicio, tienda, ficha, carrito y checkout; 390 px; REST usuarios 401.  
 Inicio, tienda, ficha, carrito y checkout en escritorio y en 390 px. No agregar al carrito, no hacer el pedido, no vaciar el carrito. Confirmar que el menú Lunic, WooCommerce y la REST pública de productos siguen.  
 Hecho cuando esas pantallas cargan y un anónimo no puede listar usuarios por REST.
+
+## Después del cierre (03/10/2026) — UI 0.3.17 a 0.3.19
+
+No es una etapa nueva del plan 0–8. Cambios en la copia local sobre el plugin ya cerrado:
+
+**Paleta y login (escritorio del plugin).** Fondo menta `#7FDDCF`, riel y textos violeta `#3D2468`, acento oro `#F5C400`, cards blancas. Se quitaron las barras negras de las tarjetas Login (miniaturas vacías con `display:block` encima de `[hidden]` y bordes 2 px `#111`).
+
+**Pestañas.** Ya no hay pestaña **Ajustes**. Login, Escritorio, Menús, Seguridad, Manual. `tab=general` abre Escritorio. En Escritorio: paneles, ayuda/avisos, JSON (fuera de Guardar). Sin UI de CSS extra ni de cajas del editor (las claves del esquema siguen existiendo).
+
+**Paneles.** No es una lista fija de cinco nativos. Se recuerdan los widgets reales del Escritorio de WordPress (`mdcms_dashboard_panels`) al visitar `index.php`. Quien administra la marca sigue viéndolos todos.
+
+**Aviso WLCMS/WBS.** `mdcms_legacy_import_notes` ya no se persiste: se borra al entrar al admin. La importación única usa el flag `mdcms_legacy_imported`.
+
+**JSON.** Botón «Elegir archivo» al estilo del plugin. «Guardar cambios» no queda pegado a la tarjeta Copia de ajustes.
 
 ## Orden y esfuerzo
 

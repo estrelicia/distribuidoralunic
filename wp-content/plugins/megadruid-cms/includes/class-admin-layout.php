@@ -22,17 +22,12 @@ final class Admin_Layout {
             'dashboard' => [
                 'label' => __('Escritorio', 'megadruid-cms'),
                 'icon' => 'dashicons-dashboard',
-                'intro' => __('Qué paneles nativos ve cada rol en el Escritorio.', 'megadruid-cms'),
+                'intro' => __('Todos los paneles del Escritorio, a quién se le ocultan, ayuda y copia de ajustes.', 'megadruid-cms'),
             ],
             'menus' => [
                 'label' => __('Menús', 'megadruid-cms'),
                 'icon' => 'dashicons-menu',
                 'intro' => __('Dos cosas distintas: menús del escritorio (wp-admin) y la barra negra cuando alguien mira la tienda.', 'megadruid-cms'),
-            ],
-            'general' => [
-                'label' => __('Ajustes', 'megadruid-cms'),
-                'icon' => 'dashicons-admin-generic',
-                'intro' => __('Cajas del editor, CSS extra, exportar e importar.', 'megadruid-cms'),
             ],
             'security' => [
                 'label' => __('Seguridad', 'megadruid-cms'),

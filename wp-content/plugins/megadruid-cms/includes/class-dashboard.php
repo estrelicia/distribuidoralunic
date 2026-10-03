@@ -5,9 +5,11 @@ namespace Megadruid_Cms;
 defined('ABSPATH') || exit;
 
 /**
- * Escritorio: caja Megadruid, título y paneles nativos.
+ * Escritorio: caja Megadruid, título y paneles (nativos y de otros plugins).
  */
 final class Dashboard {
+
+    public const CATALOG_OPTION = 'mdcms_dashboard_panels';
 
     public const PANELS = [
         'dashboard_right_now' => 'De un vistazo',
@@ -19,6 +21,7 @@ final class Dashboard {
 
     public function register(): void {
         add_action('wp_dashboard_setup', [$this, 'setup'], 999);
+        add_action('do_meta_boxes', [$this, 'late_catalog'], 9999, 3);
         add_filter('get_user_option_meta-box-order_dashboard', [$this, 'pin_shortcuts_first']);
         add_action('admin_enqueue_scripts', [$this, 'assets']);
         add_action('admin_footer', [$this, 'dashboard_title_script']);
@@ -26,7 +29,23 @@ final class Dashboard {
 
     public function setup(): void {
         $this->add_shortcuts_widget();
-        $this->hide_native_panels();
+        $this->remember_panels();
+        $this->hide_registered_panels();
+    }
+
+    /**
+     * @param mixed $screen
+     * @param mixed $context
+     * @param mixed $data
+     */
+    public function late_catalog($screen, $context, $data): void {
+        unset($context, $data);
+        $id = is_object($screen) ? (string) ($screen->id ?? '') : (string) $screen;
+        if ($id !== 'dashboard') {
+            return;
+        }
+        $this->remember_panels();
+        $this->hide_registered_panels();
     }
 
     private function add_shortcuts_widget(): void {
@@ -147,7 +166,8 @@ final class Dashboard {
         $map = isset($posted['dashboard_panel_roles']) && is_array($posted['dashboard_panel_roles'])
             ? $posted['dashboard_panel_roles']
             : [];
-        foreach (array_merge(array_keys(self::PANELS), ['all']) as $panel) {
+        $ids = array_merge(array_keys(self::panels_for_settings(false)), ['all']);
+        foreach ($ids as $panel) {
             if (!array_key_exists($panel, $map)) {
                 $map[$panel] = [];
             }
@@ -157,20 +177,63 @@ final class Dashboard {
         return $posted;
     }
 
+    /**
+     * @return array<string, string> id => título
+     */
+    public static function panels_for_settings(bool $bootstrap = true): array {
+        $labels = self::PANELS;
+        $live = $bootstrap ? self::bootstrap_catalog() : [];
+        foreach (array_merge(self::stored_catalog(), $live) as $id => $title) {
+            $id = sanitize_key((string) $id);
+            if ($id === '') {
+                continue;
+            }
+            $title = wp_strip_all_tags((string) $title);
+            $labels[$id] = $title !== '' ? $title : $id;
+        }
+        $saved = Settings::get('dashboard_panel_roles', []);
+        if (is_array($saved)) {
+            foreach (array_keys($saved) as $id) {
+                $id = sanitize_key((string) $id);
+                if ($id === '' || $id === 'all' || isset($labels[$id])) {
+                    continue;
+                }
+                $labels[$id] = $id;
+            }
+        }
+        $first = [];
+        if (isset($labels['mdcms_shortcuts'])) {
+            $first['mdcms_shortcuts'] = $labels['mdcms_shortcuts'];
+            unset($labels['mdcms_shortcuts']);
+        }
+        uasort($labels, static function (string $a, string $b): int {
+            return strnatcasecmp($a, $b);
+        });
+
+        return $first + $labels;
+    }
+
     public static function render_settings(): void {
         $map = Settings::get('dashboard_panel_roles', []);
         if (!is_array($map)) {
             $map = [];
         }
         $roles = wp_roles()->roles;
+        $rows = self::panels_for_settings();
         Admin_Layout::open_card(
-            __('Paneles nativos', 'megadruid-cms'),
-            __('El panel se oculta para los roles marcados. Quien administra la marca lo sigue viendo.', 'megadruid-cms'),
+            __('Paneles del Escritorio', 'megadruid-cms'),
+            __('Cada fila es un panel que existe ahora (nativos y de otros plugins). El panel se oculta para los roles marcados. Quien administra la marca lo sigue viendo.', 'megadruid-cms'),
             'dashicons-screenoptions',
             true
         );
+        $known = self::PANELS;
+        $known['mdcms_shortcuts'] = true;
+        $extra = array_diff_key($rows, $known);
+        if ($extra === []) {
+            echo '<p class="description">' . esc_html__('Si falta un panel de otro plugin, abrí el Escritorio de WordPress una vez y volvé a esta pantalla.', 'megadruid-cms') . '</p>';
+        }
         echo '<table class="form-table" role="presentation">';
-        $rows = self::PANELS + ['all' => __('Ocultar todos', 'megadruid-cms')];
+        $rows['all'] = __('Ocultar todos', 'megadruid-cms');
         foreach ($rows as $id => $label) {
             $marked = isset($map[$id]) && is_array($map[$id]) ? $map[$id] : [];
             echo '<tr><th scope="row">' . esc_html((string) $label) . '</th><td>';
@@ -203,13 +266,101 @@ final class Dashboard {
         return in_array($role, $all, true) || in_array($role, $own, true);
     }
 
-    private function hide_native_panels(): void {
-        foreach (array_keys(self::PANELS) as $id) {
+    /**
+     * @return array<string, string>
+     */
+    private static function collect_panels(): array {
+        global $wp_meta_boxes;
+        $out = [];
+        if (empty($wp_meta_boxes['dashboard']) || !is_array($wp_meta_boxes['dashboard'])) {
+            return $out;
+        }
+        foreach ($wp_meta_boxes['dashboard'] as $priorities) {
+            if (!is_array($priorities)) {
+                continue;
+            }
+            foreach ($priorities as $boxes) {
+                if (!is_array($boxes)) {
+                    continue;
+                }
+                foreach ($boxes as $id => $box) {
+                    if (!is_array($box)) {
+                        continue;
+                    }
+                    $id = sanitize_key((string) $id);
+                    if ($id === '') {
+                        continue;
+                    }
+                    $title = isset($box['title']) ? wp_strip_all_tags((string) $box['title']) : $id;
+                    $out[$id] = $title !== '' ? $title : $id;
+                }
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private static function stored_catalog(): array {
+        $stored = get_option(self::CATALOG_OPTION, []);
+        if (!is_array($stored)) {
+            return [];
+        }
+        $clean = [];
+        foreach ($stored as $id => $title) {
+            $id = sanitize_key((string) $id);
+            if ($id === '') {
+                continue;
+            }
+            $title = wp_strip_all_tags((string) $title);
+            $clean[$id] = $title !== '' ? $title : $id;
+        }
+
+        return $clean;
+    }
+
+    /**
+     * @param array<string, string> $panels
+     */
+    private static function store_catalog(array $panels): void {
+        if ($panels === []) {
+            return;
+        }
+        $merged = array_merge(self::stored_catalog(), $panels);
+        update_option(self::CATALOG_OPTION, $merged, false);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private static function bootstrap_catalog(): array {
+        $existing = self::collect_panels();
+        if ($existing !== []) {
+            self::store_catalog($existing);
+        }
+
+        return $existing;
+    }
+
+    private function remember_panels(): void {
+        self::store_catalog(self::collect_panels());
+    }
+
+    private function hide_registered_panels(): void {
+        $ids = array_unique(array_merge(
+            array_keys(self::collect_panels()),
+            array_keys(self::stored_catalog()),
+            array_keys(self::PANELS)
+        ));
+        foreach ($ids as $id) {
             if (!$this->hides_panel($id)) {
                 continue;
             }
-            remove_meta_box($id, 'dashboard', 'normal');
-            remove_meta_box($id, 'dashboard', 'side');
+            foreach (['normal', 'side', 'column3', 'column4'] as $context) {
+                remove_meta_box($id, 'dashboard', $context);
+            }
         }
     }
 }

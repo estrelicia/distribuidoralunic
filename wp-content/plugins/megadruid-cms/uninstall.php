@@ -10,3 +10,4 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 delete_option('mdcms_settings');
+delete_option('mdcms_dashboard_panels');

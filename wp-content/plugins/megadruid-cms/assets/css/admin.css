@@ -1,10 +1,10 @@
-/* Shell tipo dashboard: lima, riel negro, cards blancas compactas. */
+/* Shell tipo dashboard: menta, riel violeta, acento oro, cards blancas. */
 
 .mdcms-app-screen #wpcontent {
 	background:
-		radial-gradient(ellipse 80% 50% at 10% 0%, rgba(255, 255, 255, 0.28), transparent 55%),
-		radial-gradient(ellipse 60% 40% at 90% 100%, rgba(90, 140, 20, 0.12), transparent 50%),
-		#c8e84a;
+		radial-gradient(ellipse 80% 50% at 10% 0%, rgba(255, 255, 255, 0.35), transparent 55%),
+		radial-gradient(ellipse 60% 40% at 90% 100%, rgba(92, 45, 145, 0.12), transparent 50%),
+		#7fddcf;
 }
 
 .mdcms-app-screen #wpbody-content {
@@ -21,15 +21,15 @@
 }
 
 .mdcms-app {
-	--mdcms-ink: #17181a;
-	--mdcms-muted: #8b8f86;
-	--mdcms-paper: #f4f5f2;
+	--mdcms-ink: #3d2468;
+	--mdcms-muted: #6b4f8c;
+	--mdcms-paper: #e8faf6;
 	--mdcms-card: #ffffff;
-	--mdcms-line: #eceee8;
-	--mdcms-lime: #c8f000;
-	--mdcms-lime-2: #d4f531;
-	--mdcms-rail: #0c0c0c;
-	--mdcms-icon: #7a7e76;
+	--mdcms-line: #c8efe6;
+	--mdcms-lime: #f5c400;
+	--mdcms-lime-2: #ffd54a;
+	--mdcms-rail: #3d2468;
+	--mdcms-icon: #c4b0e0;
 	--mdcms-danger: #e23d3d;
 	--mdcms-radius: 22px;
 	--mdcms-font: Nunito, "Segoe UI", sans-serif;
@@ -41,7 +41,7 @@
 	background: var(--mdcms-paper);
 	border-radius: 28px;
 	overflow: hidden;
-	box-shadow: 0 18px 48px rgba(40, 60, 10, 0.18);
+	box-shadow: 0 18px 48px rgba(61, 36, 104, 0.18);
 }
 
 .mdcms-app__rail {
@@ -179,7 +179,7 @@
 	background: #fff;
 	cursor: pointer;
 	color: var(--mdcms-ink);
-	box-shadow: 0 6px 16px rgba(20, 30, 10, 0.08);
+	box-shadow: 0 6px 16px rgba(61, 36, 104, 0.08);
 }
 
 .mdcms-nav-toggle .dashicons {
@@ -250,7 +250,7 @@
 	background: #fff;
 	color: var(--mdcms-ink);
 	text-decoration: none;
-	box-shadow: 0 6px 14px rgba(20, 30, 10, 0.08);
+	box-shadow: 0 6px 14px rgba(61, 36, 104, 0.08);
 }
 
 .mdcms-icon-btn .dashicons {
@@ -275,11 +275,15 @@
 	gap: 12px;
 }
 
+.mdcms-stack--after-save {
+	margin-top: 8px;
+}
+
 .mdcms-card {
 	background: var(--mdcms-card);
 	border: 0;
 	border-radius: var(--mdcms-radius);
-	box-shadow: 0 8px 24px rgba(20, 30, 10, 0.05);
+	box-shadow: 0 8px 24px rgba(61, 36, 104, 0.08);
 }
 
 .mdcms-card__head {
@@ -297,14 +301,16 @@
 	width: 32px;
 	height: 32px;
 	border-radius: 50%;
-	background: #eef8c8;
-	color: #5a6b12;
+	background: #7fddcf;
+	color: #3d2468;
 	font-size: 16px;
 }
 
 .mdcms-card__title {
 	margin: 0;
 	padding: 0;
+	border: 0;
+	box-shadow: none;
 	font-size: 0.95rem;
 	font-weight: 800;
 	color: var(--mdcms-ink);
@@ -330,7 +336,8 @@
 .mdcms-app .form-table th,
 .mdcms-app .form-table td {
 	padding: 8px 0;
-	border-bottom: 1px solid var(--mdcms-line);
+	border: 0;
+	border-bottom: 0;
 	vertical-align: top;
 }
 
@@ -356,7 +363,7 @@
 .mdcms-app textarea {
 	border: 0;
 	border-radius: 12px;
-	background: #eef0ea;
+	background: #e8faf6;
 	color: var(--mdcms-ink);
 	min-height: 36px;
 	padding: 6px 12px;
@@ -374,7 +381,7 @@
 .mdcms-app select:focus,
 .mdcms-app textarea:focus {
 	border-color: transparent;
-	box-shadow: 0 0 0 3px rgba(200, 240, 0, 0.55);
+	box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.45);
 	outline: none;
 }
 
@@ -392,9 +399,9 @@
 	flex-wrap: wrap;
 	gap: 8px;
 	align-items: center;
-	margin: 8px 0 0;
-	padding: 10px 0 2px;
-	background: linear-gradient(180deg, rgba(244, 245, 242, 0) 0%, var(--mdcms-paper) 28%);
+	margin: 16px 0 28px;
+	padding: 12px 0 20px;
+	background: linear-gradient(180deg, rgba(232, 250, 246, 0) 0%, var(--mdcms-paper) 40%);
 }
 
 .mdcms-app .button:not(.wp-color-result):not(.wp-picker-clear):not(.wp-picker-default),
@@ -442,7 +449,7 @@
 .mdcms-app .button-secondary:hover,
 .mdcms-app .mdcms-btn--ghost:hover,
 .mdcms-app .button:not(.wp-color-result):not(.wp-picker-clear):not(.wp-picker-default):hover {
-	background: #2a2c28;
+	background: #2e1a52;
 	color: #fff;
 }
 
@@ -534,10 +541,59 @@
 	border-radius: 12px;
 }
 
+.mdcms-file {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+.mdcms-file__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.mdcms-file__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 36px;
+	padding: 0 16px;
+	border-radius: 999px;
+	background: var(--mdcms-ink);
+	color: #fff;
+	font-size: 13px;
+	font-weight: 800;
+	font-family: inherit;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.mdcms-file__btn:hover,
+.mdcms-file__btn:focus {
+	background: #2e1a52;
+	color: #fff;
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.45);
+}
+
+.mdcms-file__name {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--mdcms-muted);
+}
+
 .mdcms-app .button-delete {
 	background: #fff;
 	color: var(--mdcms-danger);
-	box-shadow: 0 6px 14px rgba(20, 30, 10, 0.08) !important;
+	box-shadow: 0 6px 14px rgba(61, 36, 104, 0.08) !important;
 }
 
 .mdcms-banner,
@@ -546,7 +602,7 @@
 	padding: 10px 14px;
 	border: 0;
 	border-radius: 16px;
-	background: #eef8c8;
+	background: #d4f3ec;
 	box-shadow: none;
 	color: var(--mdcms-ink);
 }
@@ -575,7 +631,7 @@
 	margin: 4px 8px 4px 0;
 	padding: 6px 10px;
 	border-radius: 999px;
-	background: #eef0ea;
+	background: #e8faf6;
 	border: 0;
 	font-size: 13px;
 	font-weight: 700;
@@ -592,7 +648,7 @@
 	margin-top: 8px;
 	padding: 10px 12px;
 	border-radius: 16px;
-	background: #eef0ea;
+	background: #e8faf6;
 	border: 0;
 }
 
@@ -612,8 +668,8 @@
 	margin: 0 0 20px;
 	padding: 12px 14px;
 	border-radius: 16px;
-	background: #e4e6e0;
-	border: 2px solid #111;
+	background: #e8faf6;
+	border: 0;
 }
 
 .mdcms-hide-who h3 {
@@ -624,13 +680,13 @@
 	margin: 8px 0 16px;
 	padding: 8px 12px;
 	border-radius: 16px;
-	background: #eef0ea;
+	background: #e8faf6;
 }
 
 .mdcms-sitemap ul {
 	margin: 2px 0 8px 0.5rem;
 	padding-left: 14px;
-	border-left: 2px solid #111;
+	border-left: 2px solid var(--mdcms-line);
 }
 
 .mdcms-sitemap li {
@@ -657,11 +713,11 @@
 	margin: 0 0 10px;
 	padding: 10px 12px;
 	border-radius: 16px;
-	background: #eef0ea;
+	background: #e8faf6;
 }
 
 .mdcms-menu-row--child {
-	background: #e4e6e0;
+	background: #d4f3ec;
 }
 
 .mdcms-menu-row__toggle {
@@ -695,8 +751,8 @@
 	gap: 6px;
 	padding: 4px 8px 4px 10px;
 	border-radius: 999px;
-	background: #111;
-	color: #c8f542;
+	background: var(--mdcms-rail);
+	color: var(--mdcms-lime);
 	font-size: 13px;
 	font-weight: 700;
 }
@@ -721,7 +777,7 @@
 .mdcms-role-add__pick {
 	flex: 1 1 12rem;
 	min-height: 36px;
-	border: 2px solid #111;
+	border: 0;
 	border-radius: 10px;
 	padding: 4px 8px;
 	background: #fff;
@@ -739,7 +795,7 @@
 .mdcms-app .widefat {
 	border: 0;
 	border-radius: 14px;
-	background: #eef0ea;
+	background: #e8faf6;
 	color: var(--mdcms-ink);
 }
 
@@ -759,9 +815,14 @@
 	max-height: 40px;
 	width: auto;
 	margin: 0 0 0.4em;
-	background: var(--mdcms-ink);
-	padding: 6px;
+	background: transparent;
+	padding: 0;
+	border: 0;
 	border-radius: 12px;
+}
+
+.mdcms-media__preview[hidden] {
+	display: none !important;
 }
 
 .mdcms-media__actions {

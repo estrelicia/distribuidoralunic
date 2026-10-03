@@ -45,18 +45,13 @@ final class Manual {
 
             <section class="mdcms-manual__section">
                 <h2><?php esc_html_e('Pestaña Escritorio', 'megadruid-cms'); ?></h2>
-                <p><?php esc_html_e('Ocultar paneles nativos por rol. En el Escritorio de WordPress está la caja «Megadruid accesos directos» con el portal del cliente y el contacto.', 'megadruid-cms'); ?></p>
+                <p><?php esc_html_e('Todos los paneles del Escritorio de WordPress (nativos y de otros plugins), a quién se le ocultan. En el Escritorio está la caja «Megadruid accesos directos» con el portal del cliente y el contacto. También: ocultar Ayuda y Opciones de pantalla, avisos de actualización, exportar/importar JSON (máximo 256 KB, sin PHP) y restablecer de fábrica.', 'megadruid-cms'); ?></p>
             </section>
 
             <section class="mdcms-manual__section">
                 <h2><?php esc_html_e('Pestaña Menús', 'megadruid-cms'); ?></h2>
                 <p><?php esc_html_e('Primero, quiénes ven wp-admin completo. Después, barra negra en la tienda (sitio público). Por último, en la misma tarjeta de menús del escritorio: a quién se le oculta y el mapa de casillas.', 'megadruid-cms'); ?></p>
                 <p><?php esc_html_e('Las cuentas tildadas como administradores completos no se recortan, aunque hayas agregado el perfil Administrador.', 'megadruid-cms'); ?></p>
-            </section>
-
-            <section class="mdcms-manual__section">
-                <h2><?php esc_html_e('Pestaña Ajustes', 'megadruid-cms'); ?></h2>
-                <p><?php esc_html_e('Ocultar Ayuda y Opciones de pantalla del núcleo, avisos de actualización, CSS extra del admin, hoja del editor, cajas de entradas y páginas, exportar/importar JSON (máximo 256 KB, sin PHP) y restablecer de fábrica.', 'megadruid-cms'); ?></p>
             </section>
 
             <section class="mdcms-manual__section">
@@ -70,7 +65,7 @@ final class Manual {
                 <h2><?php esc_html_e('Qué no hace este plugin', 'megadruid-cms'); ?></h2>
                 <ul>
                     <li><?php esc_html_e('Envíos, descuentos, menú de categorías ni checkout: eso es Distribuidora Lunic y el tema Lunic.', 'megadruid-cms'); ?></li>
-                    <li><?php esc_html_e('No borra White Label CMS ni Megadruid Seguridad ni sus opciones al desinstalarse. Solo borra mdcms_settings.', 'megadruid-cms'); ?></li>
+                    <li><?php esc_html_e('No borra White Label CMS ni Megadruid Seguridad ni sus opciones al desinstalarse. Solo borra mdcms_settings y mdcms_dashboard_panels.', 'megadruid-cms'); ?></li>
                     <li><?php esc_html_e('No sustituye Wordfence, 2FA ni las reglas del WAF de Cloudflare.', 'megadruid-cms'); ?></li>
                 </ul>
             </section>

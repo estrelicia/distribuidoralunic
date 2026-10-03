@@ -566,8 +566,12 @@ final class Settings {
             return [];
         }
         $clean = [];
-        foreach (array_merge(array_keys(Dashboard::PANELS), ['all']) as $panel) {
-            $clean[$panel] = self::sanitize_roles($value[$panel] ?? []);
+        foreach ($value as $panel => $roles) {
+            $id = sanitize_key((string) $panel);
+            if ($id === '') {
+                continue;
+            }
+            $clean[$id] = self::sanitize_roles($roles);
         }
 
         return $clean;

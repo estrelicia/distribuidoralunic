@@ -15,7 +15,17 @@ final class Legacy_Import {
     public const NOTES = 'mdcms_legacy_import_notes';
 
     public function register(): void {
+        add_action('admin_init', [$this, 'forget_stale_notes'], 1);
         add_action('admin_init', [$this, 'maybe_import'], 20);
+    }
+
+    /**
+     * El listado de claves no equivalentes no debe quedar clavado en cada visita.
+     */
+    public function forget_stale_notes(): void {
+        if (get_option(self::NOTES, false) !== false) {
+            delete_option(self::NOTES);
+        }
     }
 
     public function maybe_import(): void {
@@ -45,8 +55,10 @@ final class Legacy_Import {
         if ($patch !== []) {
             Settings::update($patch);
         }
-        update_option(self::NOTES, $ignored, false);
         update_option(self::FLAG, time(), false);
+        if ($ignored !== []) {
+            set_transient('mdcms_legacy_notice', 1, DAY_IN_SECONDS);
+        }
     }
 
     /**
@@ -252,12 +264,11 @@ final class Legacy_Import {
     }
 
     public static function render_notice(): void {
-        $notes = get_option(self::NOTES, []);
-        if (!is_array($notes) || $notes === [] || !get_option(self::FLAG, false)) {
+        if (!get_transient('mdcms_legacy_notice')) {
             return;
         }
-        echo '<div class="notice notice-info"><p>';
-        esc_html_e('Se copiaron ajustes de White Label CMS y Megadruid Seguridad. Las opciones viejas siguen en la base. Estas claves no tienen equivalente y no se guardaron:', 'megadruid-cms');
-        echo '</p><p><code>' . esc_html(implode(', ', array_map('strval', $notes))) . '</code></p></div>';
+        echo '<div class="notice notice-info is-dismissible"><p>';
+        esc_html_e('Se copiaron ajustes de White Label CMS y Megadruid Seguridad. Las opciones viejas siguen en la base. Lo que no tiene equivalente en este plugin no se trajo.', 'megadruid-cms');
+        echo '</p></div>';
     }
 }

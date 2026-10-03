@@ -1,21 +1,21 @@
 # Megadruid CMS
 
-Plugin de WordPress para marca del escritorio, login, panel de bienvenida, menús restringidos por rol y seguridad base detrás de Cloudflare. Reemplaza a White Label CMS y Megadruid Seguridad.
+Plugin de WordPress para marca del escritorio y login, menús para clientes y seguridad base detrás de Cloudflare. Reemplaza a White Label CMS y Megadruid Seguridad.
 
-- **Versión:** 0.3.15  
+- **Versión:** 0.3.19  
 - **Text domain:** `megadruid-cms`  
-- **Opción:** `mdcms_settings` (única)  
+- **Opciones:** `mdcms_settings` (ajustes) y `mdcms_dashboard_panels` (catálogo de widgets del Escritorio)  
 - **Requisitos:** PHP 8.1+, WordPress 6.0+
 
-El login usa el icono del sitio (cliente) y el estilo nativo de WordPress. Los logos pixel de Megadruid (`assets/img/`) quedan en la barra y en la caja del Escritorio.
+El login usa el logo del cliente y el estilo nativo de WordPress. Los logos pixel de Megadruid (`assets/img/`) quedan en la barra y en la caja del Escritorio.
 
 ## Instalación
 
-Copiar la carpeta a `wp-content/plugins/megadruid-cms/` y activar en el escritorio. Los ajustes están en **Ajustes → Megadruid CMS** (capability `manage_options`).
+Copiar la carpeta a `wp-content/plugins/megadruid-cms/` y activar. Los ajustes están en **Ajustes → Megadruid CMS** (capability `manage_options`).
 
 En la lista de plugins hay enlaces **Ajustes** y **Manual**.
 
-El manual en Markdown está en `docs/manual-de-usuario.md`. La misma guía se lee en la pestaña **Manual** del plugin.
+El manual está en `docs/manual-de-usuario.md` y en la pestaña **Manual**.
 
 ## Estructura
 
@@ -26,45 +26,50 @@ El manual en Markdown está en `docs/manual-de-usuario.md`. La misma guía se le
 | `includes/class-access.php` | Quién administra la marca y quién recibe recortes |
 | `includes/class-branding.php` | Barra y títulos |
 | `includes/class-login.php` | Pantalla de login y vista previa |
-| `includes/class-dashboard.php` | Escritorio, accesos Megadruid y paneles nativos |
+| `includes/class-dashboard.php` | Caja Megadruid, catálogo y ocultar paneles (nativos y de otros plugins) |
 | `includes/class-menus.php` | Ocultar ítems del menú y bloqueo por URL |
-| `includes/class-admin-ui.php` | Ayuda, opciones de pantalla, avisos, CSS admin y editor |
-| `includes/class-metaboxes.php` | Cajas del editor de entradas y páginas por rol |
+| `includes/class-admin-ui.php` | Ayuda, opciones de pantalla, avisos; CSS admin/editor si hay valor guardado |
+| `includes/class-metaboxes.php` | Cajas del editor por rol (sin pantalla; aplica valores ya guardados) |
 | `includes/class-transfer.php` | Exportar, importar y restablecer JSON |
 | `includes/class-legacy-import.php` | Copia única desde White Label CMS y Megadruid Seguridad |
 | `includes/class-client-ip.php` | IP real detrás de Cloudflare |
 | `includes/class-login-limit.php` | Límite de intentos de login por IP |
 | `includes/class-hardening.php` | XML-RPC, REST, feeds, cabeceras, etc. |
 | `includes/class-security.php` | Pantalla de la pestaña Seguridad |
-| `includes/class-admin-layout.php` | Pestañas, cajas `postbox` y Dashicons |
+| `includes/class-admin-layout.php` | Shell de pestañas y cards (sin postbox de WordPress) |
 | `includes/class-manual.php` | Manual en el escritorio y pestañas de Ayuda |
-| `includes/class-admin.php` | Pantalla de ajustes (pestañas) |
-| `assets/css/admin.css`, `assets/js/admin.js` | UI del admin del plugin |
+| `includes/class-admin.php` | Pantalla de ajustes |
+| `assets/css/admin.css`, `assets/js/admin.js` | UI: paleta menta/violeta/oro |
 
-## Pestañas de ajustes
+## Pestañas
 
 - **Login** — logo del cliente (320 × 84 px) e imagen de fondo (1920 × 1080 px)  
-- **Escritorio** — título, caja Megadruid, paneles nativos por rol  
+- **Escritorio** — todos los paneles del Escritorio por rol, ayuda/avisos, JSON  
 - **Menús** — wp-admin (a quién + mapa) y barra negra de la tienda, por separado  
-- **Ajustes** — ayuda/aviso/CSS, cajas del editor, JSON  
-- **Seguridad** — tabla de IP, casillas de endurecimiento, máximo de fallos y ventana en minutos. Si Megadruid Seguridad sigue activo, el límite y el endurecimiento los aplica ese plugin; al guardar aquí se sincroniza `wbs_settings`.
-- **Manual** — guía de uso (también en Ayuda de WordPress y en `docs/manual-de-usuario.md`)
+- **Seguridad** — IP, endurecimiento, máximo de fallos. Si Megadruid Seguridad sigue activo, el límite y el endurecimiento los aplica ese plugin; al guardar aquí se sincroniza `wbs_settings`.  
+- **Manual** — la misma guía que `docs/manual-de-usuario.md`
 
-## Cajas del editor (etapa 5.2)
+No hay pestaña Ajustes. Un enlace `tab=general` abre Escritorio.
 
-En **Ajustes**, tabla «Cajas del editor»: por cada caja (extracto, slug, atributos de página, etc.) se eligen los roles para los que se oculta con `remove_meta_box`. Quien **administra la marca** (`Access::manages_brand()`) sigue viendo todas las cajas.
+## Paneles del Escritorio
+
+Al abrir el Escritorio de WordPress se guardan id y título de cada widget. Esa lista se muestra en la pestaña Escritorio. Si falta un panel nuevo, hay que visitar `index.php` y volver. Quien **administra la marca** (`Access::manages_brand()`) sigue viendo todos.
 
 ## Progreso del plan
 
-Implementado en local hasta la **etapa 8**. White Label CMS y Megadruid Seguridad están desactivados en esta copia. Paquete: `documentos/paquete-megadruid-cms/`.
+Etapas **0 a 8** hechas en local. White Label CMS y Megadruid Seguridad desactivados en esta copia. UI de marca y pestañas: **0.3.19**.
 
-La importación desde `wlcms_options` y `wbs_settings` corre una sola vez en el escritorio y no borra esas opciones. Si Megadruid Seguridad sigue con el límite de login activo, Megadruid CMS no registra un segundo bloqueo.
+La importación desde `wlcms_options` y `wbs_settings` corre una sola vez (`mdcms_legacy_imported`) y no borra esas opciones. El aviso largo de claves sin equivalente no se guarda de forma permanente.
+
+Si Megadruid Seguridad sigue con el límite de login activo, Megadruid CMS no registra un segundo bloqueo.
 
 ## JSON
 
-En **Ajustes**: exportar, importar (máximo 256 KB, solo claves del esquema) y restablecer con confirmación. Un archivo con PHP o que no es JSON se rechaza.
+En **Escritorio**, tarjeta Copia de ajustes: exportar, importar (máximo 256 KB, solo claves del esquema) y restablecer con confirmación. Un archivo con PHP o que no es JSON se rechaza. Elige archivo con el botón del plugin, no el control nativo de Windows.
 
 ## Documentación del proyecto
 
-- Plan completo: `documentos/implementacion-plugin-cms.md`  
-- Estado general del sitio: `documentos/estado.md`
+- Plan: `documentos/implementacion-plugin-cms.md`  
+- Estado: `documentos/estado.md`  
+- Acta UI: `documentos/archivo/acta-megadruid-cms-0.3.19.md`  
+- Acta 0–8: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md`

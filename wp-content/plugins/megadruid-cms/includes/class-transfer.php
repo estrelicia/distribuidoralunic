@@ -44,7 +44,7 @@ final class Transfer {
             wp_die(esc_html__('No tenés permiso.', 'megadruid-cms'), '', ['response' => 403]);
         }
         check_admin_referer(self::IMPORT_ACTION);
-        $redirect = admin_url('options-general.php?page=' . Settings::PAGE_SLUG . '&tab=general');
+        $redirect = admin_url('options-general.php?page=' . Settings::PAGE_SLUG . '&tab=dashboard');
         $file = $_FILES['mdcms_import_file'] ?? null;
         if (!is_array($file) || (int) ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
             self::redirect_error($redirect, 'upload');
@@ -68,7 +68,7 @@ final class Transfer {
             wp_die(esc_html__('No tenés permiso.', 'megadruid-cms'), '', ['response' => 403]);
         }
         check_admin_referer(self::RESET_ACTION);
-        $redirect = admin_url('options-general.php?page=' . Settings::PAGE_SLUG . '&tab=general');
+        $redirect = admin_url('options-general.php?page=' . Settings::PAGE_SLUG . '&tab=dashboard');
         $confirm = isset($_POST['mdcms_reset_confirm']) && (string) $_POST['mdcms_reset_confirm'] === '1';
         if (!$confirm) {
             self::redirect_error($redirect, 'confirm');
@@ -117,7 +117,8 @@ final class Transfer {
         Admin_Layout::open_card(
             __('Copia de ajustes', 'megadruid-cms'),
             __('El archivo es JSON de mdcms_settings. Al importar solo se guardan claves conocidas. Un archivo que no es JSON, que trae PHP o que supera 256 KB se rechaza.', 'megadruid-cms'),
-            'dashicons-migrate'
+            'dashicons-migrate',
+            true
         );
         ?>
         <p>
@@ -126,8 +127,22 @@ final class Transfer {
         <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" enctype="multipart/form-data">
             <?php wp_nonce_field(self::IMPORT_ACTION); ?>
             <input type="hidden" name="action" value="<?php echo esc_attr(self::IMPORT_ACTION); ?>" />
-            <p>
-                <input type="file" name="mdcms_import_file" accept="application/json,.json" required />
+            <p class="mdcms-file">
+                <input
+                    id="mdcms_import_file"
+                    class="mdcms-file__input"
+                    type="file"
+                    name="mdcms_import_file"
+                    accept="application/json,.json"
+                    required
+                    data-mdcms-file
+                />
+                <label class="mdcms-file__btn" for="mdcms_import_file"><?php esc_html_e('Elegir archivo', 'megadruid-cms'); ?></label>
+                <span
+                    class="mdcms-file__name"
+                    data-mdcms-file-name
+                    data-empty="<?php echo esc_attr__('Ningún archivo elegido', 'megadruid-cms'); ?>"
+                ><?php esc_html_e('Ningún archivo elegido', 'megadruid-cms'); ?></span>
                 <?php submit_button(__('Importar JSON', 'megadruid-cms'), 'secondary', 'submit', false); ?>
             </p>
         </form>

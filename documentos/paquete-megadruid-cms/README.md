@@ -1,6 +1,6 @@
 # Paquete Megadruid CMS 0.3.1
 
-Copia autocontenida del plugin y de su documentación, para instalarlo en otro WordPress o archivarlo. El código canónico del sitio Lunic sigue en `wp-content/plugins/megadruid-cms/`.
+Copia autocontenida **congelada en 0.3.1** (cierre etapas 0–8). El código que se mantiene en Lunic es `wp-content/plugins/megadruid-cms/` (**0.3.19**). No actualizar esta carpeta a ciegas: es archivo, no el working copy.
 
 ## Contenido
 

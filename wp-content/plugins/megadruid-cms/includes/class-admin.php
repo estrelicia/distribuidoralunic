@@ -128,6 +128,9 @@ final class Admin {
 
         $tabs = Admin_Layout::tabs();
         $active = isset($_GET['tab']) ? sanitize_key((string) wp_unslash($_GET['tab'])) : 'login';
+        if ($active === 'general') {
+            $active = 'dashboard';
+        }
         if (!isset($tabs[$active])) {
             $active = 'login';
         }
@@ -135,7 +138,7 @@ final class Admin {
         $base_url = admin_url('options-general.php?page=' . Settings::PAGE_SLUG);
         $intro = (string) ($tabs[$active]['intro'] ?? '');
         $active_label = (string) ($tabs[$active]['label'] ?? '');
-        $saveable = in_array($active, ['login', 'dashboard', 'menus', 'general', 'security'], true);
+        $saveable = in_array($active, ['login', 'dashboard', 'menus', 'security'], true);
         ?>
         <div class="wrap mdcms-wrap">
             <div class="mdcms-app">
@@ -200,19 +203,20 @@ final class Admin {
                     <div class="mdcms-app__body">
             <?php if ($active === 'manual') : ?>
                 <?php Manual::render(); ?>
-            <?php elseif ($active === 'general') : ?>
+            <?php elseif ($active === 'dashboard') : ?>
                 <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="mdcms-form">
                     <?php wp_nonce_field(Settings::SAVE_ACTION, 'mdcms_nonce'); ?>
                     <input type="hidden" name="action" value="<?php echo esc_attr(Settings::SAVE_ACTION); ?>" />
-                    <input type="hidden" name="tab" value="general" />
+                    <input type="hidden" name="tab" value="dashboard" />
                     <div class="mdcms-stack">
+                        <?php Dashboard::render_settings(); ?>
                         <?php $this->render_general_options(); ?>
                     </div>
                     <div class="mdcms-actions">
                         <?php submit_button(__('Guardar cambios', 'megadruid-cms'), 'mdcms-btn mdcms-btn--primary', 'submit', false); ?>
                     </div>
                 </form>
-                <div class="mdcms-stack">
+                <div class="mdcms-stack mdcms-stack--after-save">
                     <?php Transfer::render_settings(); ?>
                 </div>
             <?php else : ?>
@@ -274,10 +278,11 @@ final class Admin {
             }
             $posted = Menus::fill_missing($posted);
         }
+        if ($tab_posted === 'general') {
+            $tab_posted = 'dashboard';
+        }
         if ($tab_posted === 'dashboard') {
             $posted = Dashboard::fill_missing($posted);
-        }
-        if ($tab_posted === 'general') {
             if (!array_key_exists('hide_help_box', $posted)) {
                 $posted['hide_help_box'] = 0;
             }
@@ -287,7 +292,6 @@ final class Admin {
             if (!array_key_exists('hide_nag_messages', $posted)) {
                 $posted['hide_nag_messages'] = 0;
             }
-            $posted = Metaboxes::fill_missing($posted);
         }
         if ($tab_posted === 'security') {
             $posted = Security::fill_missing($posted);
@@ -375,15 +379,11 @@ final class Admin {
             $this->render_login_tab();
             return;
         }
-        if ($tab === 'general') {
-            return;
-        }
         if ($tab === 'menus') {
             $this->render_menus_tab();
             return;
         }
         if ($tab === 'dashboard') {
-            Dashboard::render_settings();
             return;
         }
         if ($tab === 'security') {
@@ -503,8 +503,6 @@ final class Admin {
         $hide_help = (bool) Settings::get('hide_help_box', false);
         $hide_screen = (bool) Settings::get('hide_screen_options', false);
         $hide_nags = (bool) Settings::get('hide_nag_messages', false);
-        $admin_css = (string) Settings::get('admin_custom_css', '');
-        $editor_css = (string) Settings::get('editor_stylesheet', '');
         Admin_Layout::open_card(
             __('Ayuda y avisos', 'megadruid-cms'),
             __('En esta pantalla la pestaña Ayuda de WordPress sigue visible, para que puedas leer el manual contextual.', 'megadruid-cms'),
@@ -532,43 +530,6 @@ final class Admin {
         </table>
         <?php
         Admin_Layout::close_card();
-        Admin_Layout::open_card(
-            __('CSS', 'megadruid-cms'),
-            __('El CSS extra no se carga en la tienda.', 'megadruid-cms'),
-            'dashicons-editor-code'
-        );
-        ?>
-        <table class="form-table" role="presentation">
-            <tr>
-                <th scope="row">
-                    <label for="mdcms_admin_custom_css"><?php esc_html_e('CSS extra del admin', 'megadruid-cms'); ?></label>
-                </th>
-                <td>
-                    <textarea class="large-text code" rows="6" id="mdcms_admin_custom_css" name="mdcms[admin_custom_css]"><?php echo esc_textarea($admin_css); ?></textarea>
-                    <p class="description"><?php esc_html_e('Solo en el escritorio. No se acepta PHP.', 'megadruid-cms'); ?></p>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <label for="mdcms_editor_stylesheet"><?php esc_html_e('Hoja del editor', 'megadruid-cms'); ?></label>
-                </th>
-                <td>
-                    <input
-                        type="text"
-                        class="regular-text"
-                        id="mdcms_editor_stylesheet"
-                        name="mdcms[editor_stylesheet]"
-                        value="<?php echo esc_attr($editor_css); ?>"
-                    />
-                    <p class="description">
-                        <?php esc_html_e('URL absoluta (https://…) o ruta relativa al tema activo, por ejemplo editor-style.css.', 'megadruid-cms'); ?>
-                    </p>
-                </td>
-            </tr>
-        </table>
-        <?php
-        Admin_Layout::close_card();
-        Metaboxes::render_settings();
     }
 
     private function render_security_tab(): void {

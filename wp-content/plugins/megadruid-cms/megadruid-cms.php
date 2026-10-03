@@ -3,7 +3,7 @@
  * Plugin Name: Megadruid CMS
  * Plugin URI: https://megadruid.com
  * Description: Marca del escritorio y login, menús para clientes y seguridad base para sitios detrás de Cloudflare.
- * Version: 0.3.16
+ * Version: 0.3.19
  * Requires at least: 6.0
  * Requires PHP: 8.1
  * Author: Megadruid agencia digital
@@ -19,7 +19,7 @@ if (defined('MDCMS_VERSION')) {
     return;
 }
 
-define('MDCMS_VERSION', '0.3.16');
+define('MDCMS_VERSION', '0.3.19');
 define('MDCMS_FILE', __FILE__);
 define('MDCMS_PATH', plugin_dir_path(__FILE__));
 define('MDCMS_URL', plugin_dir_url(__FILE__));

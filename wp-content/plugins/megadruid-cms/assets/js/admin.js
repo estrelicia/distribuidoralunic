@@ -224,4 +224,15 @@
 			}
 		});
 	});
+
+	document.querySelectorAll('[data-mdcms-file]').forEach(function (input) {
+		var name = input.parentElement ? input.parentElement.querySelector('[data-mdcms-file-name]') : null;
+		if (!name) {
+			return;
+		}
+		var empty = name.getAttribute('data-empty') || name.textContent;
+		input.addEventListener('change', function () {
+			name.textContent = input.files && input.files[0] ? input.files[0].name : empty;
+		});
+	});
 })();

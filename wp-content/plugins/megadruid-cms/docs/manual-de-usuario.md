@@ -4,7 +4,7 @@ Este texto es para quien administra el sitio. No hace falta saber PHP. Los cambi
 
 La misma guía vive dentro de WordPress: **Ajustes → Megadruid CMS → Manual**. En esa pantalla también está la pestaña **Ayuda** de WordPress (arriba a la derecha).
 
-**Versión del plugin:** 0.3.15  
+**Versión del plugin:** 0.3.19  
 **Dónde se guarda:** una sola opción, `mdcms_settings`.  
 **Quién puede entrar:** usuarios con la capacidad `gestionar opciones` (`manage_options`).
 
@@ -37,21 +37,19 @@ Solo dos cosas: **logo del cliente** (medida recomendada **320 × 84 px**, PNG o
 
 ## Pestaña Escritorio
 
-Ocultar paneles nativos por rol. En el Escritorio de WordPress está la caja **Megadruid accesos directos** (portal del cliente y contacto).
+Ocultar cada panel del Escritorio de WordPress (nativos y de otros plugins) por rol. En el Escritorio está la caja **Megadruid accesos directos** (portal del cliente y contacto).
+
+En la misma pestaña: ocultar Ayuda y Opciones de pantalla del núcleo y avisos de actualización.
+
+Exportar / importar JSON (máximo 256 KB, sin PHP) y restablecer de fábrica están **fuera** del botón Guardar: usan sus propios formularios para no mezclarse con el resto de la pestaña.
+
+En **esta** pantalla del plugin la pestaña Ayuda de WordPress no se oculta, aunque hayas marcado ocultarla en el resto del escritorio.
 
 ## Pestaña Menús
 
 1. Quiénes ven wp-admin completo.  
 2. **Barra negra en la tienda:** sitio público, persona logueada.  
 3. **Menús del escritorio:** primero a quién se le oculta; abajo el mapa (casillas). Lo tildado se esconde a esos perfiles y no se abre por URL. Este plugin no se puede ocultar a sí mismo.
-
-## Pestaña Ajustes
-
-Ocultar Ayuda y Opciones de pantalla del núcleo, avisos de actualización, CSS extra del admin, hoja del editor, cajas de entradas y páginas.
-
-Exportar / importar JSON (máximo 256 KB, sin PHP) y restablecer de fábrica están **fuera** del botón Guardar: usan sus propios formularios para no mezclarse con el resto de la pestaña.
-
-En **esta** pantalla del plugin la pestaña Ayuda de WordPress no se oculta, aunque hayas marcado ocultarla en el resto del escritorio.
 
 ## Pestaña Seguridad
 
@@ -66,5 +64,5 @@ Si Megadruid Seguridad sigue activo, al guardar esta pestaña se sincronizan las
 ## Qué no hace este plugin
 
 - Envíos, descuentos, menú de categorías ni checkout: eso es Distribuidora Lunic y el tema Lunic.
-- No borra White Label CMS ni Megadruid Seguridad ni sus opciones al desinstalarse. Solo borra `mdcms_settings`.
+- No borra White Label CMS ni Megadruid Seguridad ni sus opciones al desinstalarse. Solo borra `mdcms_settings` y `mdcms_dashboard_panels`.
 - No sustituye Wordfence, 2FA ni las reglas del WAF de Cloudflare.
