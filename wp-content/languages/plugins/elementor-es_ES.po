@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-25 08:10:57+0000\n"
+"PO-Revision-Date: 2026-09-30 16:43:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,21 @@ msgstr ""
 "X-Generator: GlotPress/4.1.0\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release)\n"
+
+#. translators: %s: XML tag name
+#: modules/mcp/abilities/build-composition/xml-parser.php:42
+msgid "Closing tag </%s> has no matching opening tag."
+msgstr "La etiqueta de cierre </%s> no tiene una etiqueta de apertura coincidente."
+
+#. translators: %s: CSS declarations that were not saved
+#: modules/mcp/abilities/appliers/style-applier.php:120
+msgid "These CSS properties or values are not supported and were not saved: %s"
+msgstr "Estas propiedades o valores CSS no se admiten y no se han guardado: %s"
+
+#. translators: %s: XML tag name
+#: modules/mcp/abilities/build-composition/xml-parser.php:47
+msgid "Element <%s> is not closed."
+msgstr "El elemento <%s> no está cerrado."
 
 #: app/modules/onboarding/features-usage.php:44
 msgid "There was a problem saving your selected features."
@@ -553,7 +568,7 @@ msgid "Page created."
 msgstr "Página creada."
 
 #. translators: %s: duplicate configuration-id value
-#: modules/mcp/abilities/build-composition/xml-parser.php:121
+#: modules/mcp/abilities/build-composition/xml-parser.php:137
 msgid "Duplicate configuration-id \"%s\". Each element must have a unique configuration-id."
 msgstr "configuration-id «%s» duplicado. Cada elemento debe tener un configuration-id único."
 
@@ -610,12 +625,12 @@ msgid "this V3 widget"
 msgstr "este widget V3"
 
 #. translators: %s: CSS snippet that could not be mapped
-#: modules/mcp/abilities/appliers/style-applier.php:204
+#: modules/mcp/abilities/appliers/style-applier.php:223
 msgid "Some CSS could not be mapped to V3 settings and was written to custom_css: %s"
 msgstr "Parte del CSS no se ha podido asignar a los settings de V3 y se ha escrito en custom_css: %s"
 
 #. translators: %s: CSS snippet that could not be mapped
-#: modules/mcp/abilities/appliers/style-applier.php:197
+#: modules/mcp/abilities/appliers/style-applier.php:216
 msgid "Some CSS could not be mapped to V3 settings and was dropped: %s"
 msgstr "Parte del CSS no se ha podido asignar a los settings de V3 y se ha descartado: %s"
 
@@ -883,7 +898,7 @@ msgstr "Accesibilidad web"
 msgid "Get more capabilities for less with exclusive discounts. Limited time only."
 msgstr "Consigue más capacidades a un precio menor con descuentos exclusivos. Solo por tiempo limitado."
 
-#: modules/promotions/module.php:133
+#: modules/promotions/module.php:137
 msgid "Sale!"
 msgstr "¡Oferta!"
 
@@ -2400,7 +2415,7 @@ msgstr "Para conectar tu sitio al planificador de sitios, necesitas generar una 
 msgid "Connect to Site Planner"
 msgstr "Conectar con el planificador de sitios"
 
-#: modules/ai/module.php:223 modules/ai/module.php:258
+#: modules/ai/module.php:219 modules/ai/module.php:254
 msgid "Animate With AI"
 msgstr "Animar con IA"
 
@@ -2514,11 +2529,11 @@ msgstr "Da vida a los titulares"
 msgid "Global Classes"
 msgstr "Clases globales"
 
-#: modules/ai/module.php:415
+#: modules/ai/module.php:411
 msgid "Image added successfully"
 msgstr "Imagen añadida correctamente"
 
-#: modules/ai/module.php:319 assets/js/ai-unify-product-images.js:30548
+#: modules/ai/module.php:315 assets/js/ai-unify-product-images.js:30548
 #: assets/js/ai-unify-product-images.strings.js:1
 msgid "Unify with Elementor AI"
 msgstr "Unifica con la lA de Elementor"
@@ -3819,7 +3834,7 @@ msgstr "Establece las ubicaciones y el ángulo de cada punto de ruptura para que
 msgid "Generate Variations"
 msgstr "Generar variaciones"
 
-#: includes/managers/controls.php:1270 modules/promotions/module.php:258
+#: includes/managers/controls.php:1270 modules/promotions/module.php:262
 #: assets/js/editor.js:37588
 #: assets/js/packages/editor-controls/editor-controls.js:35476
 #: assets/js/packages/editor-controls/editor-controls.strings.js:32
@@ -4993,7 +5008,7 @@ msgstr "Notas"
 #: modules/promotions/admin-menu-items/base-promotion-item.php:32
 #: modules/promotions/admin-menu-items/base-promotion-template.php:37
 #: modules/promotions/admin-menu-items/editor-one-popups-menu.php:25
-#: modules/promotions/module.php:133 modules/promotions/promotion-data.php:71
+#: modules/promotions/module.php:137 modules/promotions/promotion-data.php:71
 #: modules/promotions/promotion-data.php:88
 #: modules/promotions/promotion-data.php:105
 #: modules/promotions/promotion-data.php:122
@@ -5041,7 +5056,7 @@ msgstr "Actualizar ahora"
 #: assets/js/ai-unify-product-images.js:4980 assets/js/ai.js:1723
 #: assets/js/ai.js:4799 assets/js/ai.js:5075 assets/js/app-packages.js:5205
 #: assets/js/app.js:17288 assets/js/app.js:22520 assets/js/app.js:23038
-#: assets/js/app.js:48947 assets/js/e-react-promotions.js:43171
+#: assets/js/app.js:48947 assets/js/e-react-promotions.js:43179
 #: assets/js/editor.js:1736 assets/js/notes.js:239 assets/js/notes.strings.js:5
 #: assets/js/styleguide.js:1024
 msgid "Upgrade"
@@ -5214,8 +5229,8 @@ msgstr "Registro"
 msgid "Set your Google Maps API Key in Elementor's %1$sIntegrations Settings%3$s page. Create your key %2$shere.%3$s"
 msgstr "Establece tu clave de la API de Google Maps en la página de %1$sajustes de integraciones%3$s de Elementor. Crea tu clave %2$saquí.%3$s"
 
-#: core/editor/promotion.php:31 assets/js/e-react-promotions.js:42536
-#: assets/js/e-react-promotions.js:43171
+#: core/editor/promotion.php:31 assets/js/e-react-promotions.js:42544
+#: assets/js/e-react-promotions.js:43179
 #: assets/js/e-react-promotions.strings.js:1 assets/js/editor.js:1736
 #: assets/js/notes.js:239 assets/js/notes.strings.js:4
 #: assets/js/styleguide.js:1024
@@ -5538,7 +5553,7 @@ msgid "It seems like your site doesn't have any active Kit. The active Kit inclu
 msgstr "Parece que tu sitio no tiene ningún kit activo. El kit activo incluye todos los ajustes de tu sitio. Al volver a crear tu kit, podrás empezar a editar de nuevo los ajustes de tu sitio."
 
 #: includes/settings/tools.php:431 includes/settings/tools.php:434
-#: assets/js/editor.js:54189
+#: assets/js/editor.js:54196
 msgid "Recreate Kit"
 msgstr "Crear de nuevo el kit"
 
@@ -5882,7 +5897,7 @@ msgstr "Swap"
 #: assets/js/editor-v4-opt-in-alphachip.js:790
 #: assets/js/editor-v4-opt-in-alphachip.strings.js:4
 #: assets/js/editor-v4-opt-in.js:3179 assets/js/editor-v4-opt-in.strings.js:24
-#: assets/js/editor.js:53355
+#: assets/js/editor.js:53362
 #: assets/js/packages/unlock-v4-promo/unlock-v4-promo.js:146
 #: assets/js/packages/unlock-v4-promo/unlock-v4-promo.strings.js:8
 #: assets/js/packages/v4-activation-modal/v4-activation-modal.js:11615
@@ -6534,7 +6549,7 @@ msgstr "Los atributos te permiten añadir atributos HTML personalizados a cualqu
 msgid "Meet Our Attributes"
 msgstr "Conoce nuestros atributos"
 
-#: includes/managers/controls.php:1204 modules/promotions/module.php:252
+#: includes/managers/controls.php:1204 modules/promotions/module.php:256
 #: assets/js/packages/editor-controls/editor-controls.js:35515
 #: assets/js/packages/editor-controls/editor-controls.strings.js:31
 msgid "Attributes"
@@ -7458,7 +7473,7 @@ msgstr "Póster"
 msgid "Enter your URL"
 msgstr "Introduce tu URL"
 
-#: includes/widgets/inner-section.php:35 assets/js/editor.js:53364
+#: includes/widgets/inner-section.php:35 assets/js/editor.js:53371
 msgid "Inner Section"
 msgstr "Sección interior"
 
@@ -9308,8 +9323,8 @@ msgstr "Si quieres modificar el código fuente de tu tema, te recomendamos utili
 #: assets/js/app.js:6368 assets/js/app.js:7515 assets/js/app.js:7933
 #: assets/js/app.js:9471 assets/js/app.js:13932 assets/js/app.js:14324
 #: assets/js/app.js:23387 assets/js/app.js:24661 assets/js/editor.js:40817
-#: assets/js/editor.js:48423 assets/js/editor.js:53844
-#: assets/js/editor.js:53876 assets/js/editor.strings.js:31
+#: assets/js/editor.js:48423 assets/js/editor.js:53851
+#: assets/js/editor.js:53883 assets/js/editor.strings.js:31
 #: assets/js/element-manager-admin.js:2500
 #: assets/js/element-manager-admin.strings.js:2
 #: assets/js/packages/editor-app-bar/editor-app-bar.js:460
@@ -10202,7 +10217,7 @@ msgstr "Selecciona el icono"
 #: includes/editor-templates/templates.php:469 assets/js/app.js:23535
 #: assets/js/app.js:23804 assets/js/editor.js:9663 assets/js/editor.js:27858
 #: assets/js/editor.js:46416 assets/js/editor.js:46429
-#: assets/js/editor.js:46574 assets/js/editor.js:53602
+#: assets/js/editor.js:46574 assets/js/editor.js:53609
 #: assets/js/import-export-admin.js:156
 #: assets/js/import-export-customization-admin.js:1213
 #: assets/js/packages/editor-global-classes/editor-global-classes.js:2348
@@ -11151,7 +11166,7 @@ msgstr "Enlace"
 #: assets/js/editor-v4-opt-in.strings.js:12 assets/js/editor.js:26852
 #: assets/js/editor.js:27859 assets/js/editor.js:28740
 #: assets/js/editor.js:40790 assets/js/editor.js:44229
-#: assets/js/editor.js:48201 assets/js/editor.js:53603
+#: assets/js/editor.js:48201 assets/js/editor.js:53610
 #: assets/js/editor.strings.js:28 assets/js/element-manager-admin.js:1822
 #: assets/js/element-manager-admin.strings.js:7 assets/js/gutenberg.js:88
 #: assets/js/gutenberg.strings.js:6 assets/js/gutenberg.strings.js:11
@@ -11365,7 +11380,7 @@ msgstr "Guardar"
 #: assets/js/ai-gutenberg.js:28775 assets/js/ai-layout.js:4545
 #: assets/js/ai-media-library.js:28734
 #: assets/js/ai-unify-product-images.js:28737 assets/js/ai.js:28817
-#: assets/js/editor.js:53539
+#: assets/js/editor.js:53546
 #: assets/js/packages/editor-interactions/editor-interactions.js:1022
 #: assets/js/packages/editor-interactions/editor-interactions.strings.js:77
 msgid "Preview"
@@ -12097,7 +12112,7 @@ msgid "London Eye, London, United Kingdom"
 msgstr "London Eye, Londres, Reino Unido"
 
 #: core/experiments/manager.php:413 core/experiments/manager.php:706
-#: modules/element-cache/module.php:106 assets/js/editor.js:53351
+#: modules/element-cache/module.php:106 assets/js/editor.js:53358
 #: assets/js/element-manager-admin.js:1956
 #: assets/js/element-manager-admin.strings.js:32
 msgid "Inactive"
@@ -12110,7 +12125,7 @@ msgstr "Inactivo"
 #: modules/nested-accordion/widgets/nested-accordion.php:739
 #: modules/nested-tabs/widgets/nested-tabs.php:634
 #: modules/nested-tabs/widgets/nested-tabs.php:814
-#: modules/nested-tabs/widgets/nested-tabs.php:976 assets/js/editor.js:53352
+#: modules/nested-tabs/widgets/nested-tabs.php:976 assets/js/editor.js:53359
 #: assets/js/element-manager-admin.js:1956
 #: assets/js/element-manager-admin.strings.js:31
 msgid "Active"

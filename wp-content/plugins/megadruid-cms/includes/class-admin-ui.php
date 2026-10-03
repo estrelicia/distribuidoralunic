@@ -23,6 +23,9 @@ final class Admin_Ui {
             return;
         }
         $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        if ($screen && $screen->id === 'settings_page_' . Settings::PAGE_SLUG) {
+            return;
+        }
         if ($screen) {
             $screen->remove_help_tabs();
         }

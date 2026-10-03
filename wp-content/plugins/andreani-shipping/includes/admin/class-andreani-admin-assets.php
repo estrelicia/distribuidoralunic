@@ -205,6 +205,7 @@ class Andreani_Admin_Assets {
 			'nonce_products_table' => wp_create_nonce( 'andreani_products_table' ),
 			'nonce_save_dims'      => wp_create_nonce( 'andreani_save_product_dims' ),
 			'nonce_test_quote'     => wp_create_nonce( 'andreani_test_quote' ),
+			'nonce_preview_bultos' => wp_create_nonce( 'andreani_preview_bultos' ),
 			'nonce_toggle_sync'    => wp_create_nonce( 'andreani_toggle_tracking_sync' ),
 			'nonce_origen_sucursales' => wp_create_nonce( Andreani_Origen_Ajax::NONCE_SUCURSALES ),
 			'nonce_origen_default'    => wp_create_nonce( Andreani_Origen_Ajax::NONCE_DEFAULT ),
@@ -213,6 +214,12 @@ class Andreani_Admin_Assets {
 			'bigger_thresholds'    => class_exists( 'Andreani_Product_Bultos' )
 				? Andreani_Product_Bultos::get_bigger_thresholds()
 				: array( 'weight' => 50, 'sum_sides' => 300, 'max_side' => 165 ),
+			'thresholds_canonical' => class_exists( 'Andreani_Product_Bultos' )
+				? Andreani_Product_Bultos::get_canonical_thresholds()
+				: array( 'weight' => 50, 'sum_sides' => 300, 'max_side' => 165 ),
+			'kg_factor'            => class_exists( 'Andreani_Order_Mapper' )
+				? (float) Andreani_Order_Mapper::convert_weight_to_unit( 1, 'kg' )
+				: 1.0,
 			'units'                => array(
 				'weight'    => get_option( 'woocommerce_weight_unit', 'kg' ),
 				'dimension' => get_option( 'woocommerce_dimension_unit', 'cm' ),
@@ -270,6 +277,9 @@ class Andreani_Admin_Assets {
 				'origen_default'           => __( 'hoy tus envíos salen desde %s', 'andreani-shipping' ),
 				/* translators: %s: código postal cargado en la tienda. */
 				'origen_cp_traido'         => __( 'También actualizamos tu código postal de origen con el de la tienda (%s). Si despachás desde otro lugar, corregilo antes de guardar.', 'andreani-shipping' ),
+				'dispatch'                 => class_exists( 'Andreani_Product_Bultos' )
+					? Andreani_Product_Bultos::get_ui_strings()
+					: array(),
 			),
 		) ) );
 	}

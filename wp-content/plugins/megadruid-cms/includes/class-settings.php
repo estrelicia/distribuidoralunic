@@ -25,6 +25,10 @@ final class Settings {
                 'type' => 'roles',
                 'default' => ['editor'],
             ],
+            'full_access_admin_ids' => [
+                'type' => 'user_ids',
+                'default' => [],
+            ],
             'admin_bar_logo' => [
                 'type' => 'url',
                 'default' => '',
@@ -289,13 +293,17 @@ final class Settings {
                 'default' => '',
             ],
             'hidden_side_menus' => [
-                'type' => 'menu_map',
+                'type' => 'menu_slugs',
                 'source' => 'side',
                 'default' => [],
             ],
             'hidden_admin_bar' => [
-                'type' => 'menu_map',
+                'type' => 'menu_slugs',
                 'source' => 'bar',
+                'default' => [],
+            ],
+            'hide_menu_roles' => [
+                'type' => 'roles',
                 'default' => [],
             ],
             'hide_frontend_admin_bar_roles' => [
@@ -400,6 +408,12 @@ final class Settings {
                 'type' => 'bool',
                 'default' => false,
             ],
+            'brand_pack_version' => [
+                'type' => 'int',
+                'default' => 0,
+                'min' => 0,
+                'max' => 99,
+            ],
         ];
     }
 
@@ -412,7 +426,7 @@ final class Settings {
             $defaults[$key] = $field['default'];
         }
 
-        return $defaults;
+        return array_merge($defaults, Brand_Pack::factory());
     }
 
     /**
@@ -480,7 +494,9 @@ final class Settings {
             'enum' => self::sanitize_enum($value, $field),
             'panel_roles' => self::sanitize_panel_roles($value),
             'welcome' => self::sanitize_welcome($value),
-            'menu_map' => self::sanitize_menu_map($value, $field),
+            'user_ids' => self::sanitize_user_ids($value),
+            'menu_slugs' => self::sanitize_menu_slugs($value, $field),
+            'menu_map' => self::sanitize_menu_slugs($value, $field),
             'metabox_map' => self::sanitize_metabox_map($value, $field),
             'stylesheet' => self::sanitize_stylesheet($value),
             default => self::sanitize_text($value),
@@ -603,42 +619,55 @@ final class Settings {
     }
 
     /**
+     * Lista de slugs marcados. Acepta el mapa viejo ítem → roles (solo las claves).
+     *
      * @param array{source?: string} $field
-     * @return array<string, string[]>
+     * @return string[]
      */
-    private static function sanitize_menu_map(mixed $value, array $field): array {
+    private static function sanitize_menu_slugs(mixed $value, array $field): array {
         if (!is_array($value)) {
             return [];
         }
         if (!class_exists(Menus::class)) {
             require_once MDCMS_PATH . 'includes/class-menus.php';
         }
-        $source = ($field['source'] ?? '') === 'bar' ? 'bar' : 'side';
-        $known = $source === 'bar' ? Menus::known_bar_ids() : Menus::known_side_slugs();
-        $filter = $source === 'bar' ? 'mdcms_known_admin_bar' : 'mdcms_known_side_slugs';
-        $filtered = apply_filters($filter, $known);
-        if (is_array($filtered)) {
-            $known = $filtered;
-        }
-        $roles = array_keys(wp_roles()->roles);
         $clean = [];
-        foreach ($value as $role => $slugs) {
-            $role = sanitize_key((string) $role);
-            if (!in_array($role, $roles, true) || !is_array($slugs)) {
+        foreach ($value as $key => $item) {
+            if (is_array($item)) {
+                $slug = Menus::clean_slug((string) $key);
+            } else {
+                $slug = Menus::slug_from_posted((string) $item);
+            }
+            if ($slug === '' || str_contains($slug, 'megadruid-cms')) {
                 continue;
             }
-            $items = [];
-            foreach ($slugs as $slug) {
-                $slug = Menus::clean_slug((string) $slug);
-                if ($slug === '' || str_contains($slug, 'megadruid-cms') || !in_array($slug, $known, true)) {
-                    continue;
-                }
-                $items[] = $slug;
-            }
-            $clean[$role] = array_values(array_unique($items));
+            $clean[] = $slug;
         }
 
-        return $clean;
+        return array_values(array_unique($clean));
+    }
+
+    /**
+     * @return int[]
+     */
+    private static function sanitize_user_ids(mixed $value): array {
+        if (!is_array($value)) {
+            return [];
+        }
+        $ids = [];
+        foreach ($value as $id) {
+            $id = (int) $id;
+            if ($id <= 0) {
+                continue;
+            }
+            $user = get_userdata($id);
+            if (!$user instanceof \WP_User || !user_can($user, 'manage_options')) {
+                continue;
+            }
+            $ids[] = $id;
+        }
+
+        return array_values(array_unique($ids));
     }
 
     /**

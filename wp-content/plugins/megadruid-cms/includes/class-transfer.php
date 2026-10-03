@@ -114,9 +114,12 @@ final class Transfer {
 
     public static function render_settings(): void {
         $export = wp_nonce_url(admin_url('admin-post.php?action=' . self::EXPORT_ACTION), self::EXPORT_ACTION);
+        Admin_Layout::open_card(
+            __('Copia de ajustes', 'megadruid-cms'),
+            __('El archivo es JSON de mdcms_settings. Al importar solo se guardan claves conocidas. Un archivo que no es JSON, que trae PHP o que supera 256 KB se rechaza.', 'megadruid-cms'),
+            'dashicons-migrate'
+        );
         ?>
-        <h2 class="mdcms-section-title"><?php esc_html_e('Copia de ajustes', 'megadruid-cms'); ?></h2>
-        <p class="description"><?php esc_html_e('El archivo es JSON de mdcms_settings. Al importar solo se guardan claves conocidas. Un archivo que no es JSON, que trae PHP o que supera 256 KB se rechaza.', 'megadruid-cms'); ?></p>
         <p>
             <a class="button" href="<?php echo esc_url($export); ?>"><?php esc_html_e('Exportar JSON', 'megadruid-cms'); ?></a>
         </p>
@@ -140,5 +143,6 @@ final class Transfer {
             <?php submit_button(__('Restablecer', 'megadruid-cms'), 'delete', 'submit', false); ?>
         </form>
         <?php
+        Admin_Layout::close_card();
     }
 }

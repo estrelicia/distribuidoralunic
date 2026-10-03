@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - MainWP Child &#8211; Securely Connects to the MainWP Dashboard to Manage Multiple Sites - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10 09:55:51+0000\n"
+"PO-Revision-Date: 2026-09-30 16:40:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,24 @@ msgstr ""
 "X-Generator: GlotPress/4.1.0\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - MainWP Child &#8211; Securely Connects to the MainWP Dashboard to Manage Multiple Sites - Stable (latest release)\n"
+
+#. translators: %s: Branding title (e.g., "MainWP").
+#: class/class-mainwp-pages.php:804
+msgid "Copy this value into your %s Dashboard when connecting or reconnecting this site. Saving settings does not generate a new ID."
+msgstr "Copia este valor en tu escritorio de %s al conectar o reconectar este sitio. Guardar los ajustes no genera una nueva ID."
+
+#: class/class-mainwp-pages.php:764
+msgid "The Unique Security ID is generated automatically when you enable this option and save settings. Saving settings again keeps the same ID."
+msgstr "El ID de seguridad único se genera automáticamente cuando tu activas esta opción y guardas los ajustes. Si se vuelven a guardar los ajustes se mantiene el mismo ID."
+
+#. translators: %s: Branding title (e.g., "MainWP").
+#: class/class-mainwp-pages.php:769
+msgid "Depending on what is enabled here, your %s Dashboard may connect with an administrator password only, this Unique Security ID only, or both."
+msgstr "Dependiendo de lo que esté activado aquí, tu escritorio de %s puede conectarse utilizando solo la contraseña de administrador, solo este ID de seguridad, o ambos."
+
+#: class/class-mainwp-pages.php:765
+msgid "To generate a new Unique Security ID, turn this option off and save settings, then turn it back on and save again. If Password Authentication is disabled, enable it first so Unique Security ID can be turned off. If this site is already connected, update the Unique Security ID on your Dashboard after you generate a new one."
+msgstr "Para generar un nuevo ID de seguridad único, desactiva esta opción y guarda los ajustes, luego, vuelva a activarla y guarda de nuevo. Si la identificación por contraseña está desactivada, actívala primero para poder desactivar el ID de seguridad único. Si este sitio ya está conectado, actualiza el ID de seguridad único en tu escritorio después de generar uno nuevo."
 
 #: modules/system-monitor/class-mainwp-child-system-monitor-issues.php:144
 msgid "Scheduled tasks have not run recently."
@@ -27,21 +45,13 @@ msgstr "Las tareas programadas no se han ejecutado durante %s. WP‑Cron está d
 msgid "Every Minute"
 msgstr "Cada minuto"
 
-#: class/class-mainwp-utility.php:826
-msgid "Premium action request failed. Please try again later."
+#: class/class-mainwp-utility.php:803 class/class-mainwp-utility.php:822
+msgid "Premium update request failed. Please try again later."
 msgstr "La solicitud de acción Premium falló. Inténtalo de nuevo más tarde."
 
-#: class/class-mainwp-utility.php:825
-msgid "Premium action requested. Please wait a moment and sync the data again later."
-msgstr "Se solicitó una acción Premium. Espera un momento y sincroniza los datos de nuevo más tarde."
-
-#: class/class-mainwp-utility.php:745
+#: class/class-mainwp-utility.php:740
 msgid "Missing or invalid url"
 msgstr "Falta la URL o no es válida"
-
-#: class/class-mainwp-utility.php:741
-msgid "Unauthorized access"
-msgstr "Acceso no autorizado"
 
 #: class/class-mainwp-connect.php:782
 msgid "Bad signature data. Please try again."
@@ -71,11 +81,11 @@ msgstr "Error: updraftplus_admin está vacío"
 msgid "Error empty updraftplus"
 msgstr "Error: updraftplus está vacío"
 
-#: class/class-mainwp-child-updates.php:1261
+#: class/class-mainwp-child-updates.php:1246
 msgid "No items to update."
 msgstr "No hay elementos para actualizar."
 
-#: class/class-mainwp-child-callable.php:1340
+#: class/class-mainwp-child-callable.php:1346
 msgid "An error occurred while processing the premium updates. Please try again later."
 msgstr "Se produjo un error al procesar las actualizaciones Premium. Inténtalo de nuevo más tarde."
 
@@ -457,7 +467,7 @@ msgstr "No disponible en esta versión de BackWPup."
 msgid "WP Staging failed to load correctly on the child website."
 msgstr "WP Staging no se ha cargado correctamente en el sitio web hijo."
 
-#: class/class-mainwp-pages.php:775
+#: class/class-mainwp-pages.php:783
 msgid "Unique Security ID is required when Password Authentication is disabled."
 msgstr "Se requiere un ID de seguridad único cuando la autenticación por contraseña está desactivada."
 
@@ -479,7 +489,7 @@ msgstr "El ID de seguridad único está habilitado. Agrega este valor a tu panel
 msgid "Password Authentication is disabled, so this Unique Security ID is required when adding this site to your %s Dashboard."
 msgstr "La autenticación por contraseña está deshabilitada, por lo que se requiere este ID de seguridad único al agregar este sitio a tu Panel de control de %s."
 
-#: class/class-mainwp-pages.php:778
+#: class/class-mainwp-pages.php:786
 msgid "Save settings to generate the Unique Security ID before connecting without password authentication."
 msgstr "Guarda los ajustes para generar el ID de seguridad único antes de conectarte sin autenticación por contraseña."
 
@@ -547,7 +557,7 @@ msgstr "Para mayor seguridad, recomendamos crear una cuenta de administrador ded
 msgid "%1$s requests that you connect using an admin account and password for the initial setup. Rest assured, your password is never stored by your Dashboard and never sent to %2$s.com. Once this initial connection is complete, your %3$s Dashboard generates a secure Public and Private key pair (2048 bits) using OpenSSL, allowing future connections without needing your password again. For added security, you can even change this admin password once connected just be sure not to delete the admin account, as this would disrupt the connection."
 msgstr "%1$s solicita que te conectes usando una cuenta de administrador y una contraseña para la configuración inicial. Ten la seguridad de que tu contraseña nunca se almacena en tu Panel de Control ni se envía a %2$s.com. Una vez completada esta conexión inicial, tu Panel de Control de %3$s genera un par de claves seguras (pública y privada de 2048 bits) mediante OpenSSL, lo que permite futuras conexiones sin necesidad de volver a introducir tu contraseña. Para mayor seguridad, puedes cambiar la contraseña de administrador una vez conectado; solo asegúrate de no eliminar la cuenta de administrador, ya que esto interrumpiría la conexión."
 
-#: class/class-mainwp-pages.php:858
+#: class/class-mainwp-pages.php:874
 msgid "Are you sure you want to disconnect this site from your %s Dashboard?"
 msgstr "¿Estás seguro de que quieres desconectar esta página de tu panel de control de %s?"
 
@@ -1335,40 +1345,40 @@ msgstr "Tu versión actual del escritorio de MainWP no es compatible con el nuev
 msgid "Forced Reconnect requires Administrator Password authentication. Please enable Password Authentication in the MainWP Child Settings on the child site, or remove and re-add the site to resolve the issue."
 msgstr "La reconexión forzada requiere la identificación de la contraseña de administrador. Por favor, activa la identificación de contraseña en los ajustes de MainWP en el sitio hijo, o elimina y vuelve a añadir el sitio para resolver el problema."
 
-#: class/class-mainwp-pages.php:874
+#: class/class-mainwp-pages.php:890
 msgid "Clear Connection Data"
 msgstr "Vaciar los datos de conexión"
 
 #. translators: %s: Branding title (e.g., "MainWP").
-#: class/class-mainwp-pages.php:870
+#: class/class-mainwp-pages.php:886
 msgid "Click this button to disconnect this site from your %s Dashboard."
 msgstr "Haz clic en este botón para desconectar este sitio de tu escritorio de %s."
 
-#: class/class-mainwp-pages.php:852
+#: class/class-mainwp-pages.php:868
 msgid "Site Connection Management"
 msgstr "Gestión de conexión de sitios"
 
-#: class/class-mainwp-pages.php:817
+#: class/class-mainwp-pages.php:833
 msgid "Save Settings"
 msgstr "Guardar ajustes"
 
-#: class/class-mainwp-pages.php:808
+#: class/class-mainwp-pages.php:824
 msgid "Specify how long the plugin should stay active if a connection isn't established. Enter a value in minutes."
 msgstr "Especifica cuánto tiempo debe permanecer activo el plugin si no se establece una conexión. Introduce un valor en minutos."
 
-#: class/class-mainwp-pages.php:805
+#: class/class-mainwp-pages.php:821
 msgid "Set Connection Timeout"
 msgstr "Establecer el tiempo de espera"
 
-#: class/class-mainwp-pages.php:801
+#: class/class-mainwp-pages.php:817
 msgid "Define how long the plugin will remain active if no connection is established. After this period, the plugin will automatically deactivate for security."
 msgstr "Define cuánto tiempo permanecerá activo el plugin si no se ha establecido una conexión. Después de este periodo el plugin se desactivará automáticamente por cuestiones de seguridad."
 
-#: class/class-mainwp-pages.php:798
+#: class/class-mainwp-pages.php:814
 msgid "Connection Timeout"
 msgstr "Tiempo de espera de conexión"
 
-#: class/class-mainwp-pages.php:773
+#: class/class-mainwp-pages.php:781
 msgid "Enable this option for an added layer of protection when connecting this site."
 msgstr "Activa esta opción para añadir una capa adicional de protección al conectar este sitio."
 
@@ -1611,7 +1621,7 @@ msgctxt "Plugin/theme installation. 1: Type (plugin/theme), 2: Plugin/theme name
 msgid "Installed %1$s: %2$s %3$s"
 msgstr "Se ha instalado %1$s: %2$s %3$s"
 
-#: class/class-mainwp-child-updates.php:1341
+#: class/class-mainwp-child-updates.php:1326
 msgid "Another update is currently in progress."
 msgstr "En este momento hay otra actualización en marcha."
 
@@ -4036,10 +4046,10 @@ msgid "Password: %s"
 msgstr "Contraseña: %s"
 
 #: class/class-mainwp-child-updates.php:171
-#: class/class-mainwp-child-updates.php:327
-#: class/class-mainwp-child-updates.php:499
-#: class/class-mainwp-child-updates.php:579
-#: class/class-mainwp-child-updates.php:704 class/class-mainwp-clone.php:139
+#: class/class-mainwp-child-updates.php:312
+#: class/class-mainwp-child-updates.php:484
+#: class/class-mainwp-child-updates.php:564
+#: class/class-mainwp-child-updates.php:689 class/class-mainwp-clone.php:139
 msgid "Invalid request!"
 msgstr "¡Solicitud no válida!"
 
@@ -4143,7 +4153,7 @@ msgstr "La versión %s de PHP no es compatible."
 msgid "Cannot delete job"
 msgstr "No se puede borrar la tarea"
 
-#: class/class-mainwp-pages.php:790
+#: class/class-mainwp-pages.php:798
 msgid "Your unique security ID is:"
 msgstr "Tu ID único de seguridad es:"
 
@@ -4440,6 +4450,6 @@ msgstr "Carpeta temporal:"
 msgid "Temporary folder %s is not writable."
 msgstr "No se puede escribir en la carpeta temporal %s."
 
-#: class/class-mainwp-pages.php:768
+#: class/class-mainwp-pages.php:776
 msgid "Require Unique Security ID"
 msgstr "Requerir la ID única de seguridad"

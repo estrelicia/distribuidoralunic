@@ -17,13 +17,13 @@ final class Plugin {
 
     public function init(): void {
         require_once MDCMS_PATH . 'includes/class-access.php';
+        Brand_Pack::seed();
         require_once MDCMS_PATH . 'includes/class-branding.php';
         require_once MDCMS_PATH . 'includes/class-login.php';
         require_once MDCMS_PATH . 'includes/class-dashboard.php';
         require_once MDCMS_PATH . 'includes/class-menus.php';
         require_once MDCMS_PATH . 'includes/class-admin-ui.php';
         require_once MDCMS_PATH . 'includes/class-metaboxes.php';
-        require_once MDCMS_PATH . 'includes/class-wizard.php';
         require_once MDCMS_PATH . 'includes/class-client-ip.php';
         require_once MDCMS_PATH . 'includes/class-login-limit.php';
         require_once MDCMS_PATH . 'includes/class-transfer.php';
@@ -36,7 +36,6 @@ final class Plugin {
         (new Menus())->register();
         (new Admin_Ui())->register();
         (new Metaboxes())->register();
-        (new Wizard())->register();
         (new Client_Ip())->register();
         (new Login_Limit())->register();
         (new Transfer())->register();
@@ -44,6 +43,8 @@ final class Plugin {
         (new Hardening())->register();
 
         if (is_admin()) {
+            require_once MDCMS_PATH . 'includes/class-admin-layout.php';
+            require_once MDCMS_PATH . 'includes/class-manual.php';
             require_once MDCMS_PATH . 'includes/class-admin.php';
             (new Admin())->register();
         }
@@ -51,5 +52,6 @@ final class Plugin {
 
     public static function activate(): void {
         Settings::ensure_option_exists();
+        Brand_Pack::seed();
     }
 }

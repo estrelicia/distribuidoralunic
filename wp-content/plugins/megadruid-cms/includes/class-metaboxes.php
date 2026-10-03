@@ -101,8 +101,11 @@ final class Metaboxes {
             'page_attributes' => __('Atributos de página', 'megadruid-cms'),
             'slug' => __('Slug', 'megadruid-cms'),
         ];
-        echo '<h2 class="mdcms-section-title">' . esc_html__('Cajas del editor', 'megadruid-cms') . '</h2>';
-        echo '<p class="description">' . esc_html__('Solo aplica a los roles marcados en cada fila. Quien administra la marca sigue viendo todas las cajas.', 'megadruid-cms') . '</p>';
+        Admin_Layout::open_card(
+            __('Cajas del editor', 'megadruid-cms'),
+            __('Solo aplica a los roles marcados en cada fila. Quien administra la marca sigue viendo todas las cajas.', 'megadruid-cms'),
+            'dashicons-welcome-write-blog'
+        );
         echo '<table class="widefat striped mdcms-metabox-table"><thead><tr><th>' . esc_html__('Caja', 'megadruid-cms') . '</th><th>' . esc_html__('Ocultar para', 'megadruid-cms') . '</th></tr></thead><tbody>';
         foreach ($post_labels as $key => $label) {
             self::render_row('post_metabox_roles', $key, sprintf(__('Entrada: %s', 'megadruid-cms'), $label), $roles, $post_map[$key] ?? []);
@@ -111,6 +114,7 @@ final class Metaboxes {
             self::render_row('page_metabox_roles', $key, sprintf(__('Página: %s', 'megadruid-cms'), $label), $roles, $page_map[$key] ?? []);
         }
         echo '</tbody></table>';
+        Admin_Layout::close_card();
     }
 
     /**

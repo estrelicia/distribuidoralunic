@@ -22,7 +22,7 @@ final class Security {
             'block_rest_users' => __('Ocultar /wp-json/wp/v2/users salvo a quien pueda listar usuarios (list_users).', 'megadruid-cms'),
             'rest_auth_required' => __('REST anónima cerrada por completo. No activar en WooCommerce, Elementor o headless.', 'megadruid-cms'),
             'block_readme' => __('404 a readme.html y license.txt.', 'megadruid-cms'),
-            'hide_wp_version' => __('Ocultar versión de WordPress en HTML y ?ver= del núcleo (también en la pestaña Marca para el pie del admin).', 'megadruid-cms'),
+            'hide_wp_version' => __('Ocultar versión de WordPress en HTML y ?ver= del núcleo.', 'megadruid-cms'),
             'disable_feeds' => __('Desactivar feeds RSS/Atom.', 'megadruid-cms'),
             'disable_file_edit' => __('Desactivar el editor de archivos en el admin (DISALLOW_FILE_EDIT).', 'megadruid-cms'),
             'disable_app_passwords' => __('Desactivar contraseñas de aplicación. Desmarcar si usás Jetpack o apps oficiales.', 'megadruid-cms'),
@@ -78,10 +78,12 @@ final class Security {
         $country = Client_Ip::country();
         $from_cf = $remote !== '' && Client_Ip::is_cloudflare_addr($remote);
         $legacy = Login_Limit::delegated_to_legacy();
+        Admin_Layout::open_card(
+            __('Estado de esta visita', 'megadruid-cms'),
+            __('Capa base para WordPress detrás de Cloudflare. No sustituye el WAF ni el 2FA.', 'megadruid-cms'),
+            'dashicons-info'
+        );
         ?>
-        <p class="description">
-            <?php esc_html_e('Capa base para WordPress detrás de Cloudflare. No sustituye el WAF ni el 2FA. Si Megadruid Seguridad sigue activo, los cambios de esta pestaña también se copian a ese plugin hasta desactivarlo.', 'megadruid-cms'); ?>
-        </p>
         <table class="widefat striped mdcms-security-status">
             <tbody>
                 <tr>
@@ -113,6 +115,14 @@ final class Security {
         <?php if ($legacy) : ?>
             <p class="description"><?php esc_html_e('Megadruid Seguridad sigue aplicando el límite de login; los números de abajo se guardan aquí y se sincronizan allí.', 'megadruid-cms'); ?></p>
         <?php endif; ?>
+        <?php
+        Admin_Layout::close_card();
+        Admin_Layout::open_card(
+            __('Endurecimiento', 'megadruid-cms'),
+            __('Si Megadruid Seguridad sigue activo, estas casillas también se copian a ese plugin.', 'megadruid-cms'),
+            'dashicons-shield-alt'
+        );
+        ?>
         <table class="form-table" role="presentation">
             <?php
             foreach (self::checkbox_fields() as $key => $label) {
@@ -153,14 +163,17 @@ final class Security {
             </tr>
         </table>
         <?php
+        Admin_Layout::close_card();
     }
 
     private static function render_checkbox_row(string $key, string $label): void {
         $checked = (bool) Settings::get($key, false);
         $id = 'mdcms_' . $key;
+        $titles = self::checkbox_titles();
+        $title = $titles[$key] ?? $key;
         ?>
         <tr>
-            <th scope="row"><?php echo esc_html($key); ?></th>
+            <th scope="row"><label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($title); ?></label></th>
             <td>
                 <label for="<?php echo esc_attr($id); ?>">
                     <input type="checkbox" id="<?php echo esc_attr($id); ?>" name="mdcms[<?php echo esc_attr($key); ?>]" value="1" <?php checked($checked); ?> />
@@ -169,5 +182,27 @@ final class Security {
             </td>
         </tr>
         <?php
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private static function checkbox_titles(): array {
+        return [
+            'trust_cloudflare' => __('Cloudflare', 'megadruid-cms'),
+            'login_limit' => __('Límite de login', 'megadruid-cms'),
+            'generic_login_errors' => __('Mensaje genérico', 'megadruid-cms'),
+            'disable_xmlrpc' => __('XML-RPC', 'megadruid-cms'),
+            'block_author_enum' => __('Autores', 'megadruid-cms'),
+            'block_rest_users' => __('Usuarios REST', 'megadruid-cms'),
+            'rest_auth_required' => __('REST anónima', 'megadruid-cms'),
+            'block_readme' => __('readme.html', 'megadruid-cms'),
+            'hide_wp_version' => __('Versión', 'megadruid-cms'),
+            'disable_feeds' => __('Feeds', 'megadruid-cms'),
+            'disable_file_edit' => __('Editor de archivos', 'megadruid-cms'),
+            'disable_app_passwords' => __('Contraseñas de app', 'megadruid-cms'),
+            'security_headers' => __('Cabeceras', 'megadruid-cms'),
+            'send_hsts' => __('HSTS', 'megadruid-cms'),
+        ];
     }
 }
