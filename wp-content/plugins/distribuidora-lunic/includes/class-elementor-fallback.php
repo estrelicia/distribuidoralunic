@@ -51,7 +51,7 @@ final class Elementor_Fallback {
         if ($filled === '') {
             return $content;
         }
-        if (trim((string) $content) === '') {
+        if ($name === 'woocommerce-product-data-tabs' || trim((string) $content) === '') {
             return $filled;
         }
         return $content;

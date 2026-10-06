@@ -1,6 +1,6 @@
 # Estado del proyecto
 
-**Fecha:** 03/10/2026.  
+**Fecha:** 06/10/2026.  
 **Entorno:** copia local `https://distribuidoralunic.com.ar.dev/`. No está publicado. El sitio en vivo no se tocó.
 
 Este archivo es el que hay que leer para seguir. El plan largo, las actas de cada etapa, las mediciones y las capturas viejas están en `documentos/archivo/`.
@@ -9,7 +9,7 @@ Este archivo es el que hay que leer para seguir. El plan largo, las actas de cad
 
 | Pieza | Estado |
 | --- | --- |
-| Tema | `lunic` **0.3.57** (`wp-content/themes/lunic/`). El script sigue en **0.2.4**. |
+| Tema | `lunic` **0.3.59** (`wp-content/themes/lunic/`). El script sigue en **0.2.4**. |
 | Plugin | `distribuidora-lunic` **0.1.12** |
 | WooCommerce | Sigue. Moneda ARS. |
 | Elementor libre | Activo. Pinta el pie (7421), la tienda y la búsqueda (7825), la ficha (7620), Quiénes somos, cookies y privacidad. |
@@ -99,6 +99,25 @@ Documentación viva:
 
 El paquete `documentos/paquete-megadruid-cms/` es una copia de **0.3.1**. El código que se edita y se instala en esta copia es `wp-content/plugins/megadruid-cms/`.
 
+## Ficha: pestaña Descripción (06/10/2026, tema 0.3.59)
+
+En el Blend Nº 39 (y en cualquier ficha con descripción) la pestaña **Descripción** volvía a pintar la plantilla Elementor 7620 y el pie 7421: hueco enorme, barras verdes y el texto mezclado con el footer.
+
+Causa: el template de WooCommerce usa `the_content()`. Con Theme Builder, Elementor toma el ID de la plantilla 7620 y mete otra vez la ficha completa dentro de la pestaña. En **48 productos** publicados ese HTML ya está guardado en `post_content` (el resto de descripciones no vacías son texto normal; hay 245 con contenido).
+
+Qué hace el tema ahora:
+
+- No llama `the_content()` en esa pestaña. Callback `lunic_print_product_description_tab` (filtro `woocommerce_product_tabs`, prioridad 99) y override `woocommerce/single-product/tabs/description.php`.
+- Lee `post_content` del producto en la base y deja solo etiquetas de texto (`p`, listas, negritas, etc.). Si el campo trae un dump de Elementor, se ve el copy y no el layout.
+- `lunic_elementor_slot()` no reentra: si la ficha 7620 se está pintando, no se vuelve a pedir el mismo documento.
+- El fallback de Elementor (`woocommerce-product-data-tabs` en `distribuidora-lunic`) usa siempre el markup de WooCommerce, no el HTML anidado del widget.
+
+Comprobado en local: Blend Nº 39 (`…/blend-no-39-hierbas-para-mate-…`) y Blend Nº 37. El carrito de prueba no se tocó.
+
+Acta: `documentos/archivo/acta-ficha-producto-descripcion-0.3.59.md`.
+
+No hace falta Prime Mover ni reescribir productos en la base para que deje de romperse la pantalla. Subir el tema (y el fallback del plugin) alcanza. Limpiar las 48 descripciones en el editor de WooCommerce es opcional y aparte.
+
 ## Pendiente
 
 - **Carrito vacío.** Al vaciarlo se ve el recuadro «Tu carrito está vacío», el botón «Volver a la tienda» y el acordeón de envíos. Tiene que volver solo a la tienda. No se vació el carrito de prueba.
@@ -107,6 +126,10 @@ El paquete `documentos/paquete-megadruid-cms/` es una copia de **0.3.1**. El có
 ## Cómo subir al live
 
 No importar un paquete de Prime Mover encima del live: reemplaza la base y se pierden los pedidos, clientes y stock posteriores a la copia. Prime Mover no fusiona.
+
+Para un cambio de código (como la ficha 0.3.59) alcanza **Git**: `git pull` en el servidor, o copiar las carpetas del tema y del plugin. No hay que migrar la base.
+
+Si el live todavía no corre sobre este repo:
 
 1. En el live, exportar con Prime Mover base, medios, plugins y temas. Ese paquete no se importa. Queda de respaldo.
 2. Subir solo `wp-content/themes/lunic`, `wp-content/plugins/distribuidora-lunic` y, si se quiere el plugin disponible, `wp-content/plugins/andreani-shipping`. No reemplazar la base ni `wp-content/uploads`.
@@ -139,7 +162,7 @@ No son tareas abiertas. El plan las dejó anotadas el 28/09/2026.
 
 - **Quiénes somos.** El título lo pinta Elementor. A 390 px «Sobre Nosotros» mide 24 px; la escala del tema es 1.6rem.
 - **Categorías** (`/elementor-12340/`). La grilla está alineada (39 tarjetas). La página no muestra un título. En WordPress se llama «Elementor #12340».
-- **Ficha.** Los `????` de Hibiscus y los subtítulos de la descripción están en el contenido, no en el CSS del tema.
+- **Ficha.** Los `????` de Hibiscus y los subtítulos de la descripción están en el contenido, no en el CSS del tema. El desborde de la pestaña Descripción (plantilla 7620 anidada) quedó resuelto en el tema 0.3.59.
 - **Carrito vacío.** Sigue la pantalla vacía. El cambio a volver a la tienda está en Pendiente, más arriba.
 
 ## Dónde seguir leyendo
@@ -150,6 +173,7 @@ No son tareas abiertas. El plan las dejó anotadas el 28/09/2026.
 | Plan de Megadruid CMS | `documentos/implementacion-plugin-cms.md` |
 | Manual Megadruid CMS | `wp-content/plugins/megadruid-cms/docs/manual-de-usuario.md` |
 | Acta UI 0.3.19 | `documentos/archivo/acta-megadruid-cms-0.3.19.md` |
+| Acta ficha Descripción 0.3.59 | `documentos/archivo/acta-ficha-producto-descripcion-0.3.59.md` |
 | Paquete Megadruid CMS (0.3.1) | `documentos/paquete-megadruid-cms/` |
 | Política REST | `documentos/rest-api-lunic.md` |
 | Capturas de referencia (1440 px y 390 px) | `documentos/linea-base/diseno/` |

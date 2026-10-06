@@ -74,7 +74,7 @@ add_filter('template_include', function ($template) {
 }, 99999);
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.57');
+    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.59');
     wp_enqueue_script('lunic', get_template_directory_uri() . '/assets/theme.js', [], '0.2.4', true);
 });
 
@@ -100,8 +100,12 @@ function lunic_theme_template_id(string $slot): int {
 
 function lunic_elementor_slot(string $slot): string {
     static $cache = [];
+    static $rendering = [];
     if (array_key_exists($slot, $cache)) {
         return $cache[$slot];
+    }
+    if (!empty($rendering[$slot])) {
+        return '';
     }
     $id = lunic_theme_template_id($slot);
     if ($id < 1 || !class_exists('\Elementor\Plugin')) {
@@ -113,7 +117,9 @@ function lunic_elementor_slot(string $slot): string {
         $cache[$slot] = '';
         return '';
     }
+    $rendering[$slot] = true;
     $html = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($id);
+    $rendering[$slot] = false;
     $cache[$slot] = is_string($html) ? $html : '';
     return $cache[$slot];
 }
@@ -323,6 +329,91 @@ add_filter('wp_video_shortcode', function (string $output): string {
     }
     return str_replace('<video ', '<video poster="' . esc_url($poster) . '" ', $output);
 });
+
+function lunic_front_product_id(): int {
+    if (isset($GLOBALS['product']) && $GLOBALS['product'] instanceof WC_Product) {
+        return (int) $GLOBALS['product']->get_id();
+    }
+    if (function_exists('is_product') && is_product()) {
+        $id = (int) get_queried_object_id();
+        if ($id > 0 && get_post_type($id) === 'product') {
+            return $id;
+        }
+    }
+    return 0;
+}
+
+function lunic_sanitize_product_description(string $raw): string {
+    if ($raw === '') {
+        return '';
+    }
+    $raw = preg_replace('#<(script|style|form|nav)[^>]*>.*?</\1>#is', '', $raw) ?? $raw;
+    $html = wp_kses($raw, [
+        'p' => [],
+        'br' => [],
+        'hr' => [],
+        'strong' => [],
+        'b' => [],
+        'em' => [],
+        'i' => [],
+        'u' => [],
+        'ul' => [],
+        'ol' => [],
+        'li' => [],
+        'h2' => [],
+        'h3' => [],
+        'h4' => [],
+        'blockquote' => [],
+        'span' => [],
+        'a' => [
+            'href' => true,
+            'target' => true,
+            'rel' => true,
+        ],
+        'img' => [
+            'src' => true,
+            'alt' => true,
+            'width' => true,
+            'height' => true,
+        ],
+    ]);
+    $html = preg_replace('/(?:<p>\s*(?:&nbsp;|\xc2\xa0|\s)*<\/p>\s*)+/i', '', $html) ?? $html;
+    $html = trim($html);
+    if ($html !== '' && (str_contains($raw, 'elementor') || !preg_match('/<(p|ul|ol|h[2-4])\b/i', $html))) {
+        $html = wpautop($html);
+        $html = preg_replace('/(?:<p>\s*(?:&nbsp;|\xc2\xa0|\s)*<\/p>\s*)+/i', '', $html) ?? $html;
+    }
+    return trim($html);
+}
+
+function lunic_product_description_html(): string {
+    $id = lunic_front_product_id();
+    if ($id < 1) {
+        return '';
+    }
+    global $wpdb;
+    $raw = (string) $wpdb->get_var($wpdb->prepare(
+        "SELECT post_content FROM {$wpdb->posts} WHERE ID = %d AND post_type = %s LIMIT 1",
+        $id,
+        'product'
+    ));
+    return lunic_sanitize_product_description($raw);
+}
+
+function lunic_print_product_description_tab(): void {
+    $heading = apply_filters('woocommerce_product_description_heading', __('Description', 'woocommerce'));
+    if ($heading) {
+        echo '<h2>' . esc_html($heading) . '</h2>';
+    }
+    echo '<div class="lunic-product-description">' . lunic_product_description_html() . '</div>';
+}
+
+add_filter('woocommerce_product_tabs', function ($tabs) {
+    if (isset($tabs['description'])) {
+        $tabs['description']['callback'] = 'lunic_print_product_description_tab';
+    }
+    return $tabs;
+}, 99);
 
 add_action('woocommerce_after_cart', 'lunic_envios_accordion');
 add_action('woocommerce_after_checkout_form', 'lunic_envios_accordion');

@@ -3,7 +3,7 @@ Theme Name: Lunic
 Theme URI: https://distribuidoralunic.com.ar/
 Author: Distribuidora Lunic
 Description: Tema de la tienda. Header, páginas institucionales y plantillas WooCommerce.
-Version: 0.3.57
+Version: 0.3.59
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: lunic
@@ -860,14 +860,41 @@ body.theme-lunic .lunic-search__btn svg path { fill: var(--lunic-green); }
 .single-product .elementor-widget-woocommerce-product-add-to-cart { order: 5; }
 .single-product .elementor-widget-woocommerce-product-short-description { order: 6; }
 .single-product .woocommerce-product-details__short-description,
-.single-product .woocommerce-Tabs-panel--description { font-size: 0.875rem; line-height: 1.4; }
+.single-product .woocommerce-Tabs-panel--description,
+.single-product .lunic-product-description {
+	font-size: 0.875rem;
+	line-height: 1.4;
+	max-width: 100%;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+.single-product .woocommerce-Tabs-panel--description .elementor-location-single,
+.single-product .woocommerce-Tabs-panel--description .elementor-location-header,
+.single-product .woocommerce-Tabs-panel--description .elementor-location-footer {
+	display: none !important;
+}
+.single-product .woocommerce-Tabs-panel--description img,
+.single-product .woocommerce-Tabs-panel--description table,
+.single-product .woocommerce-Tabs-panel--description iframe,
+.single-product .woocommerce-Tabs-panel--description video,
+.single-product .lunic-product-description img,
+.single-product .lunic-product-description table {
+	max-width: 100%;
+	height: auto;
+}
 .single-product .woocommerce-product-details__short-description p,
-.single-product .woocommerce-Tabs-panel--description p { margin: 0.3rem 0; }
+.single-product .woocommerce-Tabs-panel--description p,
+.single-product .lunic-product-description p { margin: 0.3rem 0; }
+.single-product .lunic-product-description p:has(> strong:only-child) { margin: 0.15rem 0; }
 .single-product .woocommerce-product-details__short-description h2,
-.single-product .woocommerce-Tabs-panel--description h2 { font-size: 1.05rem; line-height: 1.25; margin: 0.55rem 0 0.2rem; }
+.single-product .woocommerce-Tabs-panel--description h2,
+.single-product .lunic-product-description h2 { font-size: 1.05rem; line-height: 1.25; margin: 0.55rem 0 0.2rem; }
 .single-product .woocommerce-product-details__short-description h3,
-.single-product .woocommerce-Tabs-panel--description h3 { font-size: 0.95rem; line-height: 1.25; margin: 0.45rem 0 0.15rem; }
-.single-product .woocommerce-product-details__short-description > :first-child { margin-top: 0; }
+.single-product .woocommerce-Tabs-panel--description h3,
+.single-product .lunic-product-description h3 { font-size: 0.95rem; line-height: 1.25; margin: 0.45rem 0 0.15rem; }
+.single-product .woocommerce-product-details__short-description > :first-child,
+.single-product .lunic-product-description > :first-child { margin-top: 0; }
 .single-product .product_meta { margin: 0.1rem 0 0.25rem !important; font-weight: 700; }
 .single-product .sku_wrapper { color: #666; font-weight: 400; margin-right: 1rem; }
 @media (min-width: 782px) {
