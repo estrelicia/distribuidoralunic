@@ -51,7 +51,7 @@ final class Manual {
             <section class="mdcms-manual__section">
                 <h2><?php esc_html_e('Pestaña Menús', 'megadruid-cms'); ?></h2>
                 <p><?php esc_html_e('Primero, quiénes ven wp-admin completo. Después, barra negra en la tienda (sitio público). Por último, en la misma tarjeta de menús del escritorio: a quién se le oculta y el mapa de casillas.', 'megadruid-cms'); ?></p>
-                <p><?php esc_html_e('Las cuentas tildadas como administradores completos no se recortan, aunque hayas agregado el perfil Administrador.', 'megadruid-cms'); ?></p>
+                <p><?php esc_html_e('Las cuentas tildadas como administradores completos son las únicas que ven este plugin en WordPress (Ajustes, lista de plugins). El resto no lo ve ni puede abrir la URL. Esas mismas cuentas no se recortan, aunque hayas agregado el perfil Administrador. Si la lista está vacía, cualquiera con gestionar opciones ve el plugin (para no quedar afuera).', 'megadruid-cms'); ?></p>
             </section>
 
             <section class="mdcms-manual__section">
@@ -84,7 +84,7 @@ final class Manual {
             ],
             [
                 'title' => __('Roles', 'megadruid-cms'),
-                'content' => '<p>' . esc_html__('El recorte de menús de wp-admin va en la tarjeta «Menús del escritorio» (a quién y qué). La barra negra de la tienda es independiente.', 'megadruid-cms') . '</p>',
+                'content' => '<p>' . esc_html__('Solo las cuentas tildadas en Menús ven este plugin. El recorte de menús de wp-admin va en la tarjeta «Menús del escritorio» (a quién y qué). La barra negra de la tienda es independiente.', 'megadruid-cms') . '</p>',
             ],
         ];
     }

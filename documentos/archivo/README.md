@@ -8,6 +8,7 @@ Los textos de adentro siguen diciendo rutas `documentos/...`. Esas rutas eran la
 | --- | --- |
 | `analisis-plugin-lunic.md` | Plan de migración (25–26/09/2026) y reglas de envío, descuento y corte. |
 | `acta-megadruid-cms-0.3.19.md` | UI Megadruid CMS 0.3.19 (03/10/2026): paleta, pestañas, paneles reales. |
+| `acta-megadruid-cms-0.3.20.md` | Megadruid CMS 0.3.20 (06/10/2026): el plugin solo lo ven los administradores tildados. |
 | `acta-ficha-producto-descripcion-0.3.59.md` | Ficha WooCommerce: la pestaña Descripción ya no anida Elementor (06/10/2026, tema 0.3.59). |
 | `etapa-*.md` | Actas de las etapas 0 a 13, ya cerradas. |
 | `pagespeed-despues.md` | Lighthouse después de la etapa 9 (26/09/2026). |

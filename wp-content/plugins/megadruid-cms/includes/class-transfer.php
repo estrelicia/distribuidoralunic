@@ -24,7 +24,7 @@ final class Transfer {
     }
 
     public function export(): void {
-        if (!current_user_can('manage_options')) {
+        if (!Access::can_see_plugin()) {
             wp_die(esc_html__('No tenés permiso.', 'megadruid-cms'), '', ['response' => 403]);
         }
         check_admin_referer(self::EXPORT_ACTION);
@@ -40,7 +40,7 @@ final class Transfer {
     }
 
     public function import(): void {
-        if (!current_user_can('manage_options')) {
+        if (!Access::can_see_plugin()) {
             wp_die(esc_html__('No tenés permiso.', 'megadruid-cms'), '', ['response' => 403]);
         }
         check_admin_referer(self::IMPORT_ACTION);
@@ -64,7 +64,7 @@ final class Transfer {
     }
 
     public function reset(): void {
-        if (!current_user_can('manage_options')) {
+        if (!Access::can_see_plugin()) {
             wp_die(esc_html__('No tenés permiso.', 'megadruid-cms'), '', ['response' => 403]);
         }
         check_admin_referer(self::RESET_ACTION);

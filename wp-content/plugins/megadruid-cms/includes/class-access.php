@@ -37,7 +37,7 @@ final class Access {
 
     /**
      * Administradores elegidos en Menús. Si la lista está vacía, cualquiera
-     * con manage_options ve el escritorio completo.
+     * con manage_options ve el plugin y el escritorio completo.
      */
     public static function sees_full_admin(?\WP_User $user = null): bool {
         $user = self::user($user);
@@ -50,6 +50,21 @@ final class Access {
         }
 
         return in_array((int) $user->ID, array_map('intval', $ids), true);
+    }
+
+    /**
+     * Menú, ajustes, lista de plugins y desactivar/borrar este plugin.
+     */
+    public static function can_see_plugin(?\WP_User $user = null): bool {
+        return self::sees_full_admin($user);
+    }
+
+    public static function deny_plugin(): void {
+        wp_die(
+            esc_html__('No tenés permiso para ver este plugin.', 'megadruid-cms'),
+            esc_html__('Permiso denegado', 'megadruid-cms'),
+            ['response' => 403]
+        );
     }
 
     public static function manages_brand(?\WP_User $user = null): bool {

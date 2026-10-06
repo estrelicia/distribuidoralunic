@@ -10,10 +10,13 @@ final class Admin {
 
     public function register(): void {
         add_action('admin_menu', [$this, 'menu']);
+        add_action('admin_init', [$this, 'guard']);
         add_action('admin_enqueue_scripts', [$this, 'assets']);
         add_filter('admin_body_class', [$this, 'body_class']);
         add_action('admin_post_' . Settings::SAVE_ACTION, [$this, 'save']);
         add_filter('plugin_action_links_' . MDCMS_BASENAME, [$this, 'action_links']);
+        add_filter('all_plugins', [$this, 'hide_from_plugins_list']);
+        add_filter('site_transient_update_plugins', [$this, 'hide_updates']);
     }
 
     public function body_class(string $classes): string {
@@ -30,7 +33,7 @@ final class Admin {
      * @return string[]
      */
     public function action_links(array $links): array {
-        if (!current_user_can('manage_options')) {
+        if (!Access::can_see_plugin()) {
             return $links;
         }
         $url = admin_url('options-general.php?page=' . Settings::PAGE_SLUG);
@@ -44,7 +47,70 @@ final class Admin {
         return $links;
     }
 
+    public function guard(): void {
+        $page = isset($_GET['page']) ? sanitize_key((string) wp_unslash($_GET['page'])) : '';
+        if ($page === Settings::PAGE_SLUG && !Access::can_see_plugin()) {
+            Access::deny_plugin();
+        }
+        if (!$this->request_targets_this_plugin()) {
+            return;
+        }
+        $action = isset($_REQUEST['action']) ? (string) wp_unslash($_REQUEST['action']) : '';
+        if ($action === '-1' && isset($_REQUEST['action2'])) {
+            $action = (string) wp_unslash($_REQUEST['action2']);
+        }
+        if (in_array($action, ['activate', 'activate-selected', 'deactivate', 'deactivate-selected', 'delete-selected'], true)
+            && !Access::can_see_plugin()
+        ) {
+            Access::deny_plugin();
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $plugins
+     * @return array<string, mixed>
+     */
+    public function hide_from_plugins_list(array $plugins): array {
+        if (!is_user_logged_in() || Access::can_see_plugin()) {
+            return $plugins;
+        }
+        unset($plugins[MDCMS_BASENAME]);
+
+        return $plugins;
+    }
+
+    /**
+     * @param mixed $transient
+     * @return mixed
+     */
+    public function hide_updates($transient) {
+        if (!is_object($transient) || !is_user_logged_in() || Access::can_see_plugin()) {
+            return $transient;
+        }
+        unset($transient->response[MDCMS_BASENAME], $transient->no_update[MDCMS_BASENAME]);
+
+        return $transient;
+    }
+
+    private function request_targets_this_plugin(): bool {
+        $plugin = isset($_REQUEST['plugin']) ? (string) wp_unslash($_REQUEST['plugin']) : '';
+        if ($plugin === MDCMS_BASENAME) {
+            return true;
+        }
+        $checked = isset($_REQUEST['checked']) && is_array($_REQUEST['checked']) ? $_REQUEST['checked'] : [];
+        foreach ($checked as $slug) {
+            if ((string) wp_unslash($slug) === MDCMS_BASENAME) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function menu(): void {
+        if (!Access::can_see_plugin()) {
+            return;
+        }
         $hook = add_options_page(
             __('Megadruid CMS', 'megadruid-cms'),
             __('Megadruid CMS', 'megadruid-cms'),
@@ -122,8 +188,8 @@ final class Admin {
     }
 
     public function render_page(): void {
-        if (!current_user_can('manage_options')) {
-            return;
+        if (!Access::can_see_plugin()) {
+            Access::deny_plugin();
         }
 
         $tabs = Admin_Layout::tabs();
@@ -245,12 +311,8 @@ final class Admin {
     }
 
     public function save(): void {
-        if (!current_user_can('manage_options')) {
-            wp_die(
-                esc_html__('No tenés permiso para guardar estos ajustes.', 'megadruid-cms'),
-                esc_html__('Permiso denegado', 'megadruid-cms'),
-                ['response' => 403]
-            );
+        if (!Access::can_see_plugin()) {
+            Access::deny_plugin();
         }
         check_admin_referer(Settings::SAVE_ACTION, 'mdcms_nonce');
 
@@ -568,7 +630,7 @@ final class Admin {
         <?php
         Admin_Layout::open_card(
             __('Administradores con escritorio completo', 'megadruid-cms'),
-            __('Solo estas cuentas ven wp-admin completo. El resto, aunque sea administrador, se recorta si su perfil está abajo en «A quién se le oculta». No podés sacarte a vos mismo. Un administrador nuevo no entra acá hasta que lo marques.', 'megadruid-cms'),
+            __('Solo estas cuentas ven Megadruid CMS (Ajustes, lista de plugins) y el escritorio completo. El resto, aunque sea administrador, no ve el plugin y se recorta si su perfil está abajo en «A quién se le oculta». No podés sacarte a vos mismo. Un administrador nuevo no entra acá hasta que lo marques.', 'megadruid-cms'),
             'dashicons-unlock',
             true
         );

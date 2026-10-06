@@ -10,7 +10,7 @@ Plugin nuevo, código propio, que reúne lo que hoy hacen dos plugins distintos:
 
 Nombre del plugin: **Megadruid CMS**. Carpeta `wp-content/plugins/megadruid-cms/`. Text domain `megadruid-cms`. Opción única `mdcms_settings`. PHP 8.1. WordPress 6.0.
 
-**Avance en la copia local (03/10/2026):** versión **0.3.19**. Completadas las etapas **0 a 8** (02/10/2026) y el ajuste de UI (paleta Megadruid, pestañas, paneles reales). White Label CMS y Megadruid Seguridad están desactivados en local (carpetas y opciones intactas). El código canónico es `wp-content/plugins/megadruid-cms/`. El paquete `documentos/paquete-megadruid-cms/` quedó en **0.3.1**. Actas: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md` y `documentos/archivo/acta-megadruid-cms-0.3.19.md`.
+**Avance en la copia local (06/10/2026):** versión **0.3.20**. Completadas las etapas **0 a 8** (02/10/2026), el ajuste de UI (03/10/2026) y la visibilidad del plugin (solo administradores tildados). White Label CMS y Megadruid Seguridad están desactivados en local (carpetas y opciones intactas). El código canónico es `wp-content/plugins/megadruid-cms/`. El paquete `documentos/paquete-megadruid-cms/` quedó en **0.3.1**. Actas: `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md`, `documentos/archivo/acta-megadruid-cms-0.3.19.md` y `documentos/archivo/acta-megadruid-cms-0.3.20.md`.
 
 No se copian archivos, CSS, JavaScript ni imágenes de White Label CMS. Se reescribe el comportamiento. Los dos plugins viejos siguen activos hasta la etapa 9. Si los dos están activos a la vez, las protecciones de seguridad no deben duplicar el bloqueo de login.
 
@@ -252,6 +252,10 @@ No es una etapa nueva del plan 0–8. Cambios en la copia local sobre el plugin 
 **Aviso WLCMS/WBS.** `mdcms_legacy_import_notes` ya no se persiste: se borra al entrar al admin. La importación única usa el flag `mdcms_legacy_imported`.
 
 **JSON.** Botón «Elegir archivo» al estilo del plugin. «Guardar cambios» no queda pegado a la tarjeta Copia de ajustes.
+
+## Después del cierre (06/10/2026) — visibilidad 0.3.20
+
+No es una etapa nueva del plan 0–8. El panel del plugin (menú, Plugins, URL, JSON, desactivar) queda solo para `full_access_admin_ids`. Lista vacía: cualquiera con `manage_options`. La marca del escritorio no se oculta.
 
 ## Orden y esfuerzo
 

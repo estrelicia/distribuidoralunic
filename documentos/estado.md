@@ -15,7 +15,7 @@ Este archivo es el que hay que leer para seguir. El plan largo, las actas de cad
 | Elementor libre | Activo. Pinta el pie (7421), la tienda y la búsqueda (7825), la ficha (7620), Quiénes somos, cookies y privacidad. |
 | Elementor Pro, JetEngine, Ivory Search, Product Filter (WBW) | Apagados. Las carpetas siguen en disco. |
 | Easy WP SMTP, reSmush.it, Prime Mover, MainWP Child | Fuera de esta migración. |
-| White Label CMS, Megadruid Seguridad | **Desactivados** en local (02/10/2026). Carpetas y opciones siguen. Los reemplaza **Megadruid CMS 0.3.19**. |
+| White Label CMS, Megadruid Seguridad | **Desactivados** en local (02/10/2026). Carpetas y opciones siguen. Los reemplaza **Megadruid CMS 0.3.20**. |
 
 La opción `lunic_theme_templates` no se borra: cabecera 7432, pie 7421, megamenú 8261, tienda 7825, ficha 7620. El desplegable de Categorías ya no usa el megamenú 8261: lo arma el plugin.
 
@@ -83,9 +83,11 @@ La importación de productos por CSV acepta el tipo que Excel en Windows guarda 
 
 ## Megadruid CMS (en desarrollo local)
 
-Plugin **`megadruid-cms` 0.3.19** en `wp-content/plugins/megadruid-cms/`. Ajustes en **Ajustes → Megadruid CMS**. Opción `mdcms_settings`. Catálogo de paneles del Escritorio: opción `mdcms_dashboard_panels` (se arma al visitar el Escritorio de WordPress).
+Plugin **`megadruid-cms` 0.3.20** en `wp-content/plugins/megadruid-cms/`. Ajustes en **Ajustes → Megadruid CMS**. Opción `mdcms_settings`. Catálogo de paneles del Escritorio: opción `mdcms_dashboard_panels` (se arma al visitar el Escritorio de WordPress).
 
-Etapas **0 a 8** cerradas el 02/10/2026. El 03/10/2026 quedó la UI de marca Megadruid y el recorte de pestañas (sin pestaña Ajustes). White Label CMS y Megadruid Seguridad están **apagados**. El límite de login y el endurecimiento los aplica solo Megadruid CMS.
+Solo las cuentas tildadas en **Menús → Administradores con escritorio completo** ven el plugin (menú, lista de Plugins, URL). El resto no. Si la lista está vacía, cualquiera con gestionar opciones lo ve. La marca del escritorio y el login siguen para todos.
+
+Etapas **0 a 8** cerradas el 02/10/2026. El 03/10/2026 quedó la UI de marca Megadruid y el recorte de pestañas (sin pestaña Ajustes). El 06/10/2026, visibilidad 0.3.20. White Label CMS y Megadruid Seguridad están **apagados**. El límite de login y el endurecimiento los aplica solo Megadruid CMS.
 
 Documentación viva:
 
@@ -96,6 +98,7 @@ Documentación viva:
 | Manual de uso | `wp-content/plugins/megadruid-cms/docs/manual-de-usuario.md` (también pestaña Manual) |
 | Acta etapas 0–8 | `documentos/paquete-megadruid-cms/documentacion/acta-cierre-etapa-8.md` |
 | Acta UI 0.3.19 | `documentos/archivo/acta-megadruid-cms-0.3.19.md` |
+| Acta visibilidad 0.3.20 | `documentos/archivo/acta-megadruid-cms-0.3.20.md` |
 
 El paquete `documentos/paquete-megadruid-cms/` es una copia de **0.3.1**. El código que se edita y se instala en esta copia es `wp-content/plugins/megadruid-cms/`.
 
@@ -173,6 +176,7 @@ No son tareas abiertas. El plan las dejó anotadas el 28/09/2026.
 | Plan de Megadruid CMS | `documentos/implementacion-plugin-cms.md` |
 | Manual Megadruid CMS | `wp-content/plugins/megadruid-cms/docs/manual-de-usuario.md` |
 | Acta UI 0.3.19 | `documentos/archivo/acta-megadruid-cms-0.3.19.md` |
+| Acta visibilidad 0.3.20 | `documentos/archivo/acta-megadruid-cms-0.3.20.md` |
 | Acta ficha Descripción 0.3.59 | `documentos/archivo/acta-ficha-producto-descripcion-0.3.59.md` |
 | Paquete Megadruid CMS (0.3.1) | `documentos/paquete-megadruid-cms/` |
 | Política REST | `documentos/rest-api-lunic.md` |

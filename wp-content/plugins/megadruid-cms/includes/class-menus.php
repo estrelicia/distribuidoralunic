@@ -88,6 +88,9 @@ final class Menus {
         }
         $page = isset($_GET['page']) ? self::clean_slug((string) wp_unslash($_GET['page'])) : '';
         if ($page === 'megadruid-cms' || str_contains($page, 'megadruid-cms')) {
+            if (!Access::can_see_plugin()) {
+                Access::deny_plugin();
+            }
             return;
         }
         $hidden = $this->hidden_for_current('hidden_side_menus');
