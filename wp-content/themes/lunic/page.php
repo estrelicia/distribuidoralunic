@@ -17,7 +17,9 @@ while (have_posts()) {
     if ((!$elementor || !$hide_title) && !$woo_screen) {
         echo '<h1 class="entry-title">' . esc_html(get_the_title()) . '</h1>';
     }
-    if (function_exists('is_cart') && is_cart()) {
+    if ($elementor) {
+        the_content();
+    } elseif (function_exists('is_cart') && is_cart()) {
         echo do_shortcode('[woocommerce_cart]');
     } elseif (function_exists('is_checkout') && is_checkout()) {
         echo do_shortcode('[woocommerce_checkout]');

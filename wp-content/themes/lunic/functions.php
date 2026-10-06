@@ -44,15 +44,29 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 add_action('elementor/theme/register_locations', function () {
-    if (get_stylesheet() !== 'lunic') {
+    if (get_stylesheet() !== 'lunic' || lunic_is_elementor_canvas()) {
         return;
     }
     remove_all_actions('get_header');
     remove_all_actions('get_footer');
 }, 100);
 
+function lunic_is_elementor_canvas(): bool {
+    if (isset($_GET['elementor-preview']) || isset($_GET['elementor_library'])) {
+        return true;
+    }
+    if (!class_exists('\Elementor\Plugin')) {
+        return false;
+    }
+    $plugin = \Elementor\Plugin::instance();
+    if (isset($plugin->preview) && method_exists($plugin->preview, 'is_preview_mode') && $plugin->preview->is_preview_mode()) {
+        return true;
+    }
+    return isset($plugin->editor) && method_exists($plugin->editor, 'is_edit_mode') && $plugin->editor->is_edit_mode();
+}
+
 add_filter('template_include', function ($template) {
-    if (get_stylesheet() !== 'lunic') {
+    if (get_stylesheet() !== 'lunic' || lunic_is_elementor_canvas()) {
         return $template;
     }
     $dir = get_template_directory();
@@ -74,7 +88,7 @@ add_filter('template_include', function ($template) {
 }, 99999);
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.59');
+    wp_enqueue_style('lunic', get_stylesheet_uri(), [], '0.3.61');
     wp_enqueue_script('lunic', get_template_directory_uri() . '/assets/theme.js', [], '0.2.4', true);
 });
 
@@ -248,9 +262,6 @@ function lunic_renders_elementor(): bool {
     if (!is_singular('page') || is_front_page()) {
         return false;
     }
-    if (function_exists('is_cart') && (is_cart() || is_checkout() || is_account_page())) {
-        return false;
-    }
     $post = get_queried_object();
     if (!$post instanceof WP_Post) {
         return false;
@@ -415,8 +426,21 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
     return $tabs;
 }, 99);
 
-add_action('woocommerce_after_cart', 'lunic_envios_accordion');
-add_action('woocommerce_after_checkout_form', 'lunic_envios_accordion');
+function lunic_maybe_envios_accordion(): void {
+    $page = 0;
+    if (function_exists('is_cart') && is_cart() && function_exists('wc_get_page_id')) {
+        $page = wc_get_page_id('cart');
+    } elseif (function_exists('is_checkout') && is_checkout() && !is_order_received_page() && function_exists('wc_get_page_id')) {
+        $page = wc_get_page_id('checkout');
+    }
+    if ($page && get_post_meta($page, '_elementor_edit_mode', true) === 'builder') {
+        return;
+    }
+    lunic_envios_accordion();
+}
+
+add_action('woocommerce_after_cart', 'lunic_maybe_envios_accordion');
+add_action('woocommerce_after_checkout_form', 'lunic_maybe_envios_accordion');
 
 add_action('wp_footer', function () {
     if (!function_exists('is_product') || !is_product()) {

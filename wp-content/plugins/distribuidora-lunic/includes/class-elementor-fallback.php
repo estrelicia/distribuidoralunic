@@ -13,7 +13,40 @@ final class Elementor_Fallback {
     public static function register(): void {
         add_filter('elementor/widget/render_content', [self::class, 'render_content'], 10, 2);
         add_filter('elementor/frontend/the_content', [self::class, 'fix_whatsapp']);
-        add_action('elementor/widgets/register', [self::class, 'register_missing_widgets'], 20);
+        add_action('elementor/elements/categories_registered', [self::class, 'register_category']);
+        add_action('elementor/widgets/register', [self::class, 'register_missing_widgets'], 100);
+        add_action('elementor/preview/enqueue_styles', [self::class, 'preview_styles']);
+        add_action('elementor/editor/after_enqueue_styles', [self::class, 'preview_styles']);
+        add_action('admin_init', [self::class, 'migrate_pro_woo_widgets']);
+        add_shortcode('lunic_notices', [self::class, 'notices_shortcode']);
+    }
+
+    public static function register_category($elements_manager): void {
+        if (!is_object($elements_manager) || !method_exists($elements_manager, 'add_category')) {
+            return;
+        }
+        $elements_manager->add_category('woocommerce-elements', [
+            'title' => 'WooCommerce',
+            'icon' => 'eicon-woocommerce',
+        ]);
+    }
+
+    public static function preview_styles(): void {
+        wp_enqueue_style(
+            'lunic-elementor-preview',
+            DISTRIBUIDORA_LUNIC_URL . 'assets/css/elementor-preview.css',
+            [],
+            DISTRIBUIDORA_LUNIC_VERSION
+        );
+    }
+
+    public static function notices_shortcode(): string {
+        if (!function_exists('woocommerce_output_all_notices')) {
+            return '';
+        }
+        ob_start();
+        woocommerce_output_all_notices();
+        return (string) ob_get_clean();
     }
 
     public static function register_missing_widgets($widgets_manager): void {
@@ -21,12 +54,117 @@ final class Elementor_Fallback {
             return;
         }
         require_once __DIR__ . '/class-elementor-fallback-widgets.php';
-        if (!$widgets_manager->get_widget_types('woofilters')) {
-            $widgets_manager->register(new Elementor_Filter_Widget());
+        $widgets = [
+            'woofilters' => Elementor_Filter_Widget::class,
+            'wc-archive-products' => Elementor_Archive_Widget::class,
+            'woocommerce-cart' => Elementor_Woo_Cart_Widget::class,
+            'woocommerce-checkout' => Elementor_Woo_Checkout_Widget::class,
+            'woocommerce-checkout-page' => Elementor_Woo_Checkout_Page_Widget::class,
+            'woocommerce-my-account' => Elementor_Woo_Account_Widget::class,
+            'woocommerce-notices' => Elementor_Woo_Notices_Widget::class,
+        ];
+        foreach ($widgets as $name => $class) {
+            if (method_exists($widgets_manager, 'unregister')) {
+                $widgets_manager->unregister($name);
+            }
+            $widgets_manager->register(new $class());
         }
-        if (!$widgets_manager->get_widget_types('wc-archive-products')) {
-            $widgets_manager->register(new Elementor_Archive_Widget());
+    }
+
+    public static function migrate_pro_woo_widgets(): void {
+        if (get_option('lunic_elementor_pro_woo_migrated') === '3') {
+            return;
         }
+        if (php_sapi_name() !== 'cli' && !current_user_can('edit_pages')) {
+            return;
+        }
+        global $wpdb;
+        $ids = $wpdb->get_col(
+            "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_elementor_data' AND ("
+            . "meta_value LIKE '%woocommerce-cart%' OR meta_value LIKE '%woocommerce-notices%' OR "
+            . "meta_value LIKE '%woocommerce-checkout%' OR meta_value LIKE '%woocommerce-my-account%' OR "
+            . "meta_value LIKE '%woocommerce_cart%')"
+        );
+        foreach ($ids as $id) {
+            self::convert_pro_woo_widgets((int) $id);
+        }
+        update_option('lunic_elementor_pro_woo_migrated', '3', false);
+        if (class_exists('\Elementor\Plugin')) {
+            \Elementor\Plugin::instance()->files_manager->clear_cache();
+        }
+    }
+
+    private static function convert_pro_woo_widgets(int $post_id): void {
+        $raw = get_post_meta($post_id, '_elementor_data', true);
+        $data = json_decode((string) $raw, true);
+        if (!is_array($data)) {
+            return;
+        }
+        $from_shortcode = [
+            'woocommerce_cart' => 'woocommerce-cart',
+            'woocommerce_checkout' => 'woocommerce-checkout-page',
+            'woocommerce_my_account' => 'woocommerce-my-account',
+            'lunic_notices' => 'woocommerce-notices',
+        ];
+        $changed = false;
+        $walk = static function (array &$els) use (&$walk, $from_shortcode, &$changed): void {
+            $keep = [];
+            $has_cart = false;
+            $has_notices = false;
+            foreach ($els as $el) {
+                if (!is_array($el)) {
+                    continue;
+                }
+                $type = (string) ($el['widgetType'] ?? '');
+                $code = (string) ($el['settings']['shortcode'] ?? '');
+                if ($type === 'shortcode') {
+                    foreach ($from_shortcode as $tag => $widget) {
+                        if (!str_contains($code, $tag)) {
+                            continue;
+                        }
+                        $el['widgetType'] = $widget;
+                        $el['elType'] = 'widget';
+                        $el['settings'] = [];
+                        $el['elements'] = [];
+                        $type = $widget;
+                        $changed = true;
+                        break;
+                    }
+                }
+                if ($type === 'woocommerce-notices') {
+                    $has_notices = true;
+                }
+                if ($type === 'woocommerce-cart') {
+                    $has_cart = true;
+                }
+                if (!empty($el['elements']) && is_array($el['elements'])) {
+                    $walk($el['elements']);
+                }
+                $keep[] = $el;
+            }
+            if ($has_cart && !$has_notices) {
+                array_unshift($keep, [
+                    'id' => substr(bin2hex(random_bytes(4)), 0, 7),
+                    'elType' => 'widget',
+                    'widgetType' => 'woocommerce-notices',
+                    'settings' => [],
+                    'elements' => [],
+                ]);
+                $changed = true;
+            }
+            $els = $keep;
+        };
+        $walk($data);
+        if (!$changed) {
+            return;
+        }
+        $json = wp_json_encode($data);
+        if (!is_string($json) || $json === '') {
+            return;
+        }
+        update_post_meta($post_id, '_elementor_data', wp_slash($json));
+        delete_post_meta($post_id, '_elementor_css');
+        delete_post_meta($post_id, '_elementor_controls_usage');
     }
 
     /**
@@ -45,6 +183,10 @@ final class Elementor_Fallback {
             $code = (string) ($settings['shortcode'] ?? '');
             if (str_contains($code, 'ivory-search') || str_contains((string) $content, '[ivory-search')) {
                 return shortcode_exists('lunic_search') ? do_shortcode('[lunic_search]') : $content;
+            }
+            $editing = class_exists('\Elementor\Plugin') && \Elementor\Plugin::$instance->editor->is_edit_mode();
+            if ($editing && (str_contains($code, 'woocommerce_cart') || str_contains($code, 'woocommerce_checkout') || str_contains($code, 'woocommerce_my_account') || str_contains($code, 'lunic_notices'))) {
+                return '<div class="lunic-el-woo-ph"><strong>WooCommerce</strong><span>Seleccioná este bloque para moverlo. El contenido se ve en la tienda.</span></div>';
             }
         }
         $filled = self::markup($name, $settings);
@@ -117,6 +259,15 @@ final class Elementor_Fallback {
                 return self::product_part('woocommerce_template_single_add_to_cart');
             case 'woocommerce-product-data-tabs':
                 return self::product_part('woocommerce_output_product_data_tabs');
+            case 'woocommerce-cart':
+                return shortcode_exists('woocommerce_cart') ? do_shortcode('[woocommerce_cart]') : '';
+            case 'woocommerce-checkout':
+            case 'woocommerce-checkout-page':
+                return shortcode_exists('woocommerce_checkout') ? do_shortcode('[woocommerce_checkout]') : '';
+            case 'woocommerce-my-account':
+                return shortcode_exists('woocommerce_my_account') ? do_shortcode('[woocommerce_my_account]') : '';
+            case 'woocommerce-notices':
+                return do_shortcode('[lunic_notices]');
             case 'wcd_category_discount':
                 return self::discount_label();
             case 'wc-archive-products':

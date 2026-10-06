@@ -3,7 +3,7 @@ Theme Name: Lunic
 Theme URI: https://distribuidoralunic.com.ar/
 Author: Distribuidora Lunic
 Description: Tema de la tienda. Header, páginas institucionales y plantillas WooCommerce.
-Version: 0.3.59
+Version: 0.3.61
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: lunic
@@ -94,8 +94,8 @@ img { max-width: 100%; height: auto; }
 a { color: var(--lunic-green); }
 button, .button, input, textarea { font-family: var(--lunic-font); }
 
-.elementor-popup-modal,
-.elementor-lightbox { display: none !important; }
+body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-popup-modal,
+body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lightbox { display: none !important; }
 .lunic-header {
 	position: sticky;
 	top: 0;
