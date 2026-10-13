@@ -22,4 +22,4 @@ Los textos de adentro pueden citar rutas `documentos/...` de cuando se escribier
 | `export-envios-zonas.json` | Export de zonas de envío usado en la mudanza al plugin. |
 | `scripts/` | Utilidades de una corrida. No forman parte del sitio. |
 
-Megadruid CMS (plugin, paquete 0.3.1, manual y actas) está en `documentos/megadruid-cms/` y **no se commitea**.
+Megadruid CMS está en `documentos/megadruid-cms/` y Megadruid Seguridad en `documentos/megadruid-seguridad/`. **No se commitean**.

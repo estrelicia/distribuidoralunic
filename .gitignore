@@ -20,6 +20,8 @@ vendor/
 # Scripts de verificación de un solo uso
 documentos/_tmp_*.php
 
-# Megadruid CMS: no forma parte del repo Lunic (carpeta local + plugin activo)
+# Megadruid CMS y Seguridad: no forman parte del repo Lunic
 documentos/megadruid-cms/
 wp-content/plugins/megadruid-cms/
+documentos/megadruid-seguridad/
+wp-content/plugins/megadruid-seguridad/

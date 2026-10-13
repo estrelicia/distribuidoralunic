@@ -47,6 +47,10 @@ Opción `lunic_theme_templates` (cabecera, pie, tienda, ficha, mantenimiento). O
 
 Plugin **0.3.20** activo en disco (`wp-content/plugins/megadruid-cms/`). **No se versiona** en este repo: código, paquete y actas están en `documentos/megadruid-cms/` (ignorado por Git).
 
+## Megadruid Seguridad
+
+Plugin **1.0.2** en disco (`wp-content/plugins/megadruid-seguridad/`), **apagado** en local. **No se versiona**: copia en `documentos/megadruid-seguridad/`.
+
 ## REST
 
 Visitantes: no se bloquea la Store API de WooCommerce (`/wp-json/wc/store/`). El endurecimiento de rutas de núcleo sigue en Megadruid CMS. Detalle: `documentos/rest-api-lunic.md`.
@@ -66,6 +70,7 @@ Visitantes: no se bloquea la Store API de WooCommerce (`/wp-json/wc/store/`). El
 | Manual del cliente (Lunic) | `documentos/manual-cliente-lunic.md` |
 | Subida al live | `documentos/subida-live.md` |
 | Megadruid CMS (fuera del repo) | `documentos/megadruid-cms/` |
+| Megadruid Seguridad (fuera del repo) | `documentos/megadruid-seguridad/` |
 | Política REST | `documentos/rest-api-lunic.md` |
 | Capturas de diseño | `documentos/linea-base/diseno/` |
 | Planes y actas cerrados | `documentos/archivo/` |
