@@ -37,7 +37,7 @@ class Category_Tree {
         $terms = get_terms([
             'taxonomy' => 'product_cat',
             'hide_empty' => true,
-            'exclude' => [Module::EXCLUDE_TERM],
+            'exclude' => array_filter([Module::excluded_term()]),
         ]);
         if (is_wp_error($terms) || !is_array($terms)) {
             return [];

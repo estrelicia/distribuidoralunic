@@ -35,7 +35,7 @@ class Suggestions {
 
     /** @return array{items: array<int, array<string, string>>} */
     public function query(string $term): array {
-        $term = trim($term);
+        $term = mb_substr(trim($term), 0, 80);
         if (mb_strlen($term) < 2) {
             return ['items' => []];
         }
@@ -51,6 +51,7 @@ class Suggestions {
             's' => $term,
             'posts_per_page' => 8,
             'no_found_rows' => true,
+            'tax_query' => [self::hidden_products_clause()],
         ]);
 
         $items = [];
@@ -74,6 +75,20 @@ class Suggestions {
         $result = ['items' => $items];
         set_transient($cache_key, $result, 5 * MINUTE_IN_SECONDS);
         return $result;
+    }
+
+    /** @return array<string, mixed> */
+    private static function hidden_products_clause(): array {
+        $hidden = ['exclude-from-search'];
+        if (get_option('woocommerce_hide_out_of_stock_items') === 'yes') {
+            $hidden[] = 'outofstock';
+        }
+        return [
+            'taxonomy' => 'product_visibility',
+            'field' => 'name',
+            'terms' => $hidden,
+            'operator' => 'NOT IN',
+        ];
     }
 
     private static function plain(string $html): string {

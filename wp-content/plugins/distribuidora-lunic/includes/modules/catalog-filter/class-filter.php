@@ -27,7 +27,7 @@ class Filter {
         }
         $term = absint($_GET['wpf_filter_cat_list_0']);
         $url = remove_query_arg(['wpf_filter_cat_list_0', 'wpf_fbv']);
-        if ($term && $term !== Module::EXCLUDE_TERM) {
+        if ($term && $term !== Module::excluded_term()) {
             $url = add_query_arg(Module::QUERY_ARG, $term, $url);
         }
         wp_safe_redirect($url);
@@ -129,8 +129,9 @@ class Filter {
     /** @param object[] $terms */
     private function tree(array $terms): array {
         $tree = [];
+        $excluded = Module::excluded_term();
         foreach ($terms as $term) {
-            if ((int) $term->parent === Module::EXCLUDE_TERM) {
+            if ($excluded && (int) $term->parent === $excluded) {
                 continue;
             }
             $tree[(int) $term->parent][] = $term;
@@ -140,6 +141,6 @@ class Filter {
 
     private function active_term(): int {
         $term = isset($_GET[Module::QUERY_ARG]) ? absint($_GET[Module::QUERY_ARG]) : 0;
-        return $term === Module::EXCLUDE_TERM ? 0 : $term;
+        return $term === Module::excluded_term() ? 0 : $term;
     }
 }

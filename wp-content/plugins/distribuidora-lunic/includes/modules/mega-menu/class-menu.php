@@ -8,7 +8,9 @@ class Menu {
 
     public const OPTION = 'lunic_mega_menu';
 
-    private const EXCLUDED_TERM = 15;
+    private static function excluded_term(): int {
+        return (int) get_option('default_product_cat', 0);
+    }
 
     /**
      * @return array<int, array<int, int>>
@@ -32,7 +34,7 @@ class Menu {
             $ids = isset($columns[$index]) && is_array($columns[$index]) ? $columns[$index] : [];
             foreach ($ids as $id) {
                 $id = absint($id);
-                if ($id < 1 || $id === self::EXCLUDED_TERM || isset($seen[$id])) {
+                if ($id < 1 || $id === self::excluded_term() || isset($seen[$id])) {
                     continue;
                 }
                 $term = get_term($id, 'product_cat');
@@ -53,7 +55,7 @@ class Menu {
         $terms = get_terms([
             'taxonomy' => 'product_cat',
             'hide_empty' => false,
-            'exclude' => [self::EXCLUDED_TERM],
+            'exclude' => array_filter([self::excluded_term()]),
         ]);
         if (!is_array($terms)) {
             return [];

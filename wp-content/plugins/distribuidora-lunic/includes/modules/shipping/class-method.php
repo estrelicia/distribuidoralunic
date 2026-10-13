@@ -102,7 +102,7 @@ class Method extends \WC_Shipping_Method {
     }
 
     private function add_carry_rate(float $cart_total, array $package): void {
-        $free = $cart_total >= $this->carry_min_amount;
+        $free = $this->carry_min_amount > 0 && $cart_total >= $this->carry_min_amount;
         $cost = $free ? 0 : $this->carry_cost;
         $label = $free
             ? __('Acarreo hasta la empresa de transporte', 'distribuidora-lunic')
@@ -126,7 +126,7 @@ class Method extends \WC_Shipping_Method {
     }
 
     private function add_normal_rate(float $cart_total, array $package): void {
-        $free = $cart_total >= $this->min_amount;
+        $free = $this->min_amount > 0 && $cart_total >= $this->min_amount;
         $this->add_rate([
             'id' => $this->get_rate_id(),
             'label' => $free ? __('Gratuito', 'distribuidora-lunic') : wc_price($this->cost),

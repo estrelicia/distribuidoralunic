@@ -27,14 +27,13 @@ class Hardening {
         }
         header('X-Frame-Options: SAMEORIGIN');
         header('X-Content-Type-Options: nosniff');
-        header('X-XSS-Protection: 1;mode=block');
-        header('Referrer-Policy: no-referrer-when-downgrade');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
         header('Content-Security-Policy: upgrade-insecure-requests;');
         $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '') === '443');
         if ($https || (function_exists('is_ssl') && is_ssl())) {
             header('Strict-Transport-Security: max-age=31536000;');
         }
-        header('Permissions-Policy: geolocation=(); midi=();notifications=();push=();sync-xhr=();accelerometer=(); gyroscope=(); magnetometer=(); camera=(); microphone=();usb=(); xr=();speaker=(self);vibrate=();fullscreen=(self);');
+        header('Permissions-Policy: geolocation=(), microphone=(), camera=()');
         header_remove('x-powered-by');
     }
 

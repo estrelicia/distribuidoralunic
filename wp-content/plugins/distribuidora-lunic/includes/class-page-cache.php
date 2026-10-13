@@ -121,7 +121,9 @@ class Page_Cache {
         if (is_shop() || is_product() || is_product_taxonomy()) {
             return true;
         }
-        return is_page(12340);
+        $site = get_option('lunic_site', []);
+        $page = is_array($site) ? (int) ($site['categories_page'] ?? 0) : 0;
+        return $page > 0 && is_page($page);
     }
 
     private static function has_private_cookie(): bool {

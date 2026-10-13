@@ -55,7 +55,7 @@ class Grid {
         $terms = get_terms([
             'taxonomy' => 'product_cat',
             'hide_empty' => true,
-            'exclude' => [15],
+            'exclude' => array_filter([(int) get_option('default_product_cat', 0)]),
             'orderby' => 'name',
             'order' => 'DESC',
         ]);

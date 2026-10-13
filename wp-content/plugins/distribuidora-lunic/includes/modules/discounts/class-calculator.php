@@ -18,7 +18,7 @@ class Calculator {
         add_filter('woocommerce_product_get_price', [self::class, 'apply_category_discount'], 10, 2);
         add_filter('woocommerce_product_variation_get_price', [self::class, 'apply_category_discount'], 10, 2);
         add_filter('woocommerce_get_price_html', [self::class, 'display_discount_price'], 999, 2);
-        add_filter('woocommerce_variation_prices_price', [self::class, 'apply_variation_discount'], 10, 3);
+        add_filter('woocommerce_variation_prices_price', [self::class, 'apply_variation_discount'], 10, 3);        add_filter('woocommerce_get_variation_prices_hash', [self::class, 'variation_prices_hash']);
         add_filter('woocommerce_show_variation_price', '__return_true');
         add_action('wp_ajax_wcd_get_variation_discount', [self::class, 'ajax_variation_discount']);
         add_action('wp_ajax_nopriv_wcd_get_variation_discount', [self::class, 'ajax_variation_discount']);
@@ -45,6 +45,16 @@ class Calculator {
             return $price;
         }
         return self::apply_category_discount($price, $variation);
+    }
+
+    /**
+     * WooCommerce guarda los precios de variaciones en un transient por producto.
+     * Sin la regla en el hash, al cambiar un descuento sigue mostrando el rango viejo.
+     */
+    public static function variation_prices_hash($hash) {
+        $hash = (array) $hash;
+        $hash['lunic_discounts'] = md5((string) wp_json_encode(self::rules()));
+        return $hash;
     }
 
     public static function display_discount_price($price_html, $product) {
@@ -100,13 +110,13 @@ class Calculator {
         if ($info && !empty($info['has_category_discount'])) {
             $amount = $info['amount'];
             if ($info['type'] === 'discount' && $info['amount_type'] === 'percentage') {
-                return sprintf(__('-%d%% de descuento', 'distribuidora-lunic'), $amount);
+                return sprintf(__('-%s%% de descuento', 'distribuidora-lunic'), wc_format_localized_decimal((float) $amount));
             }
             if ($info['type'] === 'discount') {
                 return sprintf(__('-$%s de descuento', 'distribuidora-lunic'), number_format((float) $amount, 2));
             }
             if ($info['amount_type'] === 'percentage') {
-                return sprintf(__('Recargo %d%%', 'distribuidora-lunic'), $amount);
+                return sprintf(__('Recargo %s%%', 'distribuidora-lunic'), wc_format_localized_decimal((float) $amount));
             }
             return sprintf(__('Recargo +$%s', 'distribuidora-lunic'), number_format((float) $amount, 2));
         }
@@ -193,8 +203,6 @@ class Calculator {
     }
 
     private static function sale_differs($product): bool {
-        $sale = $product->get_sale_price();
-        $regular = $product->get_regular_price();
-        return $sale !== '' && $sale !== null && (string) $sale !== (string) $regular;
+        return $product->is_on_sale();
     }
 }

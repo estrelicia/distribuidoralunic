@@ -11,6 +11,9 @@ final class Visitor {
             $ip = \Megadruid_Cms\Client_Ip::client_ip();
             return is_string($ip) && $ip !== '' ? $ip : '0.0.0.0';
         }
+        if (class_exists(\WBS_IP::class)) {
+            return \WBS_IP::client_ip();
+        }
         $remote = isset($_SERVER['REMOTE_ADDR']) ? (string) wp_unslash($_SERVER['REMOTE_ADDR']) : '';
         $remote = preg_replace('/[^0-9a-fA-F:.%]/', '', $remote) ?? '';
         return filter_var($remote, FILTER_VALIDATE_IP) ? $remote : '0.0.0.0';

@@ -25,6 +25,8 @@ class Module {
             $html .= '<p class="lunic-empty">Esperá unos minutos antes de enviar otra consulta.</p>';
         } elseif ($code === 'vacio') {
             $html .= '<p class="lunic-empty">Completá el nombre y la consulta.</p>';
+        } elseif ($code === 'error') {
+            $html .= '<p class="lunic-empty">No pudimos enviar la consulta. Probá de nuevo o escribinos por WhatsApp.</p>';
         }
         $html .= '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
         $html .= '<input type="hidden" name="action" value="lunic_contact" />';
@@ -54,8 +56,13 @@ class Module {
         $telefono = isset($_POST['telefono']) ? sanitize_text_field(wp_unslash($_POST['telefono'])) : '';
         $consulta = isset($_POST['consulta']) ? sanitize_textarea_field(wp_unslash($_POST['consulta'])) : '';
         $body = "Nombre: {$nombre}\nCorreo: {$email}\nTeléfono: {$telefono}\n\n{$consulta}";
-        wp_mail('info@distribuidoralunic.com.ar', 'Consulta desde la web', $body, ['Reply-To: ' . $email]);
-        $this->redirect('ok');
+        $site = get_option('lunic_site', []);
+        $to = is_array($site) ? sanitize_email((string) ($site['email'] ?? '')) : '';
+        if ($to === '') {
+            $to = (string) get_option('admin_email');
+        }
+        $sent = wp_mail($to, 'Consulta desde la web', $body, ['Reply-To: ' . $email]);
+        $this->redirect($sent ? 'ok' : 'error');
     }
 
     public function rejection(): string {
