@@ -8,7 +8,8 @@ Los textos de adentro pueden citar rutas `documentos/...` de cuando se escribier
 | --- | --- |
 | `auditoria-tema-y-plugin-lunic.md` | Auditoría y plan de tareas 1.1–6.2 (13/10/2026). Cerrado. |
 | `plan-etapas-lunic.md` | Tabla de etapas y modelos de Cursor. Cerrado. |
-| `acta-cierre-etapas-1-6-2026-10-13.md` | Cierre local 13/10/2026 y lista de subida al live. |
+| `acta-cierre-etapas-1-6-2026-10-13.md` | Cierre local 13/10/2026 y lista de subida al live. Los zip que nombra se sacaron del repo en la limpieza posterior. |
+| `acta-plugin-0.1.32-2026-10-13.md` | Plugin 0.1.29 a 0.1.32: carrito, Andreani, buscador y caché. El tema sigue en 0.3.68. |
 | `envios-diagnostico.md` | Diagnóstico de tarifas 13/10/2026. |
 | `analisis-plugin-lunic.md` | Plan de migración (25–26/09/2026). |
 | `acta-ficha-producto-descripcion-0.3.59.md` | Pestaña Descripción sin Elementor anidado. |

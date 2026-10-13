@@ -16,6 +16,28 @@ class Shipping_Address {
         add_action('woocommerce_customer_save_address', [$this, 'refresh_session_address'], 20, 4);
         add_filter('woocommerce_cart_shipping_packages', [$this, 'packages_from_billing']);
         add_action('woocommerce_before_calculate_totals', [$this, 'fill_session_shipping'], 5);
+        add_action('woocommerce_checkout_init', [$this, 'align_andreani_postcode'], 5);
+    }
+
+    /**
+     * Andreani guarda el último código postal cotizado y en el checkout lo copia
+     * sobre facturación y envío. Si el cliente ya tiene código postal, manda el suyo.
+     */
+    public function align_andreani_postcode(): void {
+        if (!function_exists('WC') || !WC()->session || !WC()->customer) {
+            return;
+        }
+        $quoted = (string) WC()->session->get('andreani_cp_destino', '');
+        if ($quoted === '') {
+            return;
+        }
+        $customer = WC()->customer;
+        $own = $this->ships_to_billing_by_default()
+            ? (string) $customer->get_billing_postcode()
+            : (string) $customer->get_shipping_postcode();
+        if ($own !== '' && $own !== $quoted) {
+            WC()->session->set('andreani_cp_destino', $own);
+        }
     }
 
     /**
@@ -96,6 +118,9 @@ class Shipping_Address {
             }
         }
         $session->save();
+        if (WC()->session && WC()->session->get('andreani_cp_destino', '') !== '') {
+            WC()->session->set('andreani_cp_destino', (string) $source->{'get_' . $type . '_postcode'}());
+        }
         $this->flush_shipping_session();
     }
 

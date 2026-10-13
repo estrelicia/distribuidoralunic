@@ -1,5 +1,7 @@
 # Diagnóstico de envíos (13/10/2026)
 
+Seguimiento del mismo día, con el plugin 0.1.32: `acta-plugin-0.1.32-2026-10-13.md`. Andreani no aparece si al producto le faltan peso o medidas, aunque el método esté activo en la zona.
+
 ## Cómo está armado
 
 | Qué | Dónde se edita | Qué hace |

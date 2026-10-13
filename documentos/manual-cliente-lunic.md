@@ -1,7 +1,7 @@
 # Manual del cliente — Distribuidora Lunic
 
 **Fecha:** 13/10/2026.  
-**Tema:** `lunic` 0.3.68. **Plugin:** `distribuidora-lunic` 0.1.27.
+**Tema:** `lunic` 0.3.68. **Plugin:** `distribuidora-lunic` 0.1.32.
 
 Este archivo es la guía de uso. El estado técnico está en `documentos/estado.md`.
 
@@ -29,7 +29,9 @@ Cambiar uno no cambia el otro.
 1. **Lunic → Texto de envíos** — texto del acordeón. No mueve importes.
 2. **WooCommerce → Ajustes → Envío** — en cada zona, método **Envío personalizado**: precio, mínimo para envío gratis y acarreo.
 
-El importe del envío personalizado se muestra **debajo del total** y **se abona aparte** (no entra en el total de WooCommerce ni en una pasarela). Andreani, si cotiza en la misma zona, sí entra en el total.
+El importe del envío personalizado se muestra **debajo del total** y **se abona aparte** (no entra en el total de WooCommerce ni en una pasarela). Andreani, si cotiza en la misma zona, sí entra en el total y se ve en la lista de envíos.
+
+Andreani cotiza solo si **todos** los productos del carrito tienen, en la ficha de WooCommerce, peso y las tres medidas (alto, ancho y largo). Si a uno le falta cualquiera, Andreani no ofrece opción y queda el acarreo. Esas medidas se cargan en el producto o en cada variación, no en Lunic. CABA y los tres cordones no tienen Andreani; Provincia de Buenos Aires y el envío nacional sí.
 
 En el checkout hace falta país Argentina, provincia del desplegable, ciudad y código postal. Sin dirección, WooCommerce no muestra tarifas.
 
@@ -38,6 +40,6 @@ En el checkout hace falta país Argentina, provincia del desplegable, ciudad y c
 Subir **juntas** las carpetas:
 
 - `wp-content/themes/lunic/` (0.3.68)
-- `wp-content/plugins/distribuidora-lunic/` (0.1.27)
+- `wp-content/plugins/distribuidora-lunic/` (0.1.32)
 
 Después: entrar al escritorio una vez, vaciar `wp-content/cache/lunic/`, completar **Lunic → Datos del sitio** y revisar **WooCommerce → Envío** (mínimos de envío gratis en cada zona). Recorrer inicio, tienda, ficha, carrito, checkout, cuenta y contacto, en escritorio y en celular.

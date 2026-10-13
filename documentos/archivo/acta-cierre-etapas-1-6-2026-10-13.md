@@ -7,7 +7,7 @@ Trabajo en la copia local. **El live no se publicó.**
 - Tema `lunic` **0.3.68**
 - Plugin `distribuidora-lunic` **0.1.27**
 
-Paquetes: `documentos/paquete-tema-lunic-0.3.68.zip` y `documentos/paquete-distribuidora-lunic-0.1.27.zip`.
+Esos paquetes zip se armaron para este cierre y después se sacaron del repositorio. No están en el repo.
 
 ## Tarea 6.1 — subida (lista para el live, no ejecutada)
 
@@ -27,4 +27,5 @@ Paquetes: `documentos/paquete-tema-lunic-0.3.68.zip` y `documentos/paquete-distr
 
 ## Documentos archivados en este cierre
 
-`auditoria-tema-y-plugin-lunic.md`, `plan-etapas-lunic.md`, `subida-plugin-0.1.16-tarea-1.1.md`, `envios-donde-se-edita.md`, `envios-diagnostico.md`, `seguridad-plantillas-elementor.md`, `implementacion-plugin-cms.md` (duplicado del paquete Megadruid), `paquete-distribuidora-lunic-0.1.16.zip` (reemplazado por 0.1.27).
+Siguen en `archivo/`: `auditoria-tema-y-plugin-lunic.md`, `plan-etapas-lunic.md`, `envios-diagnostico.md`.  
+Se sacaron del repo en la limpieza posterior y no hay que buscarlos: `subida-plugin-0.1.16-tarea-1.1.md`, `envios-donde-se-edita.md`, `seguridad-plantillas-elementor.md`, `implementacion-plugin-cms.md` y los zip de paquetes.

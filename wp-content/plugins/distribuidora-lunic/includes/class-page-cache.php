@@ -47,12 +47,17 @@ class Page_Cache {
         add_action('update_option_wcd_discount_rules', [self::class, 'flush']);
     }
 
+    /**
+     * Al subir el plugin o el tema por FTP no corre ningún hook de actualización.
+     * Sin esto, las páginas guardadas siguen con el HTML viejo y los JS/CSS nuevos.
+     */
     public static function maybe_rekey(): void {
-        if (get_option('lunic_page_cache_key') === '2') {
+        $key = DISTRIBUIDORA_LUNIC_VERSION . '|' . wp_get_theme()->get('Version');
+        if (get_option('lunic_page_cache_key') === $key) {
             return;
         }
         self::flush();
-        update_option('lunic_page_cache_key', '2', false);
+        update_option('lunic_page_cache_key', $key, false);
     }
 
     public static function start(): void {
@@ -195,6 +200,6 @@ class Page_Cache {
     private static function file(): string {
         $parts = self::canonical_parts();
         $prefix = $parts === null ? 'invalid' : $parts['scheme'] . '://' . $parts['host'];
-        return self::dir() . '/' . md5($prefix . self::path()) . '.html';
+        return self::dir() . '/' . md5($prefix . self::path() . '|' . DISTRIBUIDORA_LUNIC_VERSION) . '.html';
     }
 }

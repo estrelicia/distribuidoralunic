@@ -15,8 +15,6 @@ class Hardening {
         add_filter('auto_plugin_update_send_email', '__return_false');
         add_filter('auto_theme_update_send_email', '__return_false');
         add_filter('pings_open', '__return_false');
-        add_filter('woocommerce_sale_flash', [$this, 'sale_flash_oferta'], 10, 1);
-        add_filter('woocommerce_defer_transactional_emails', '__return_true');
         add_filter('the_generator', [$this, 'empty_generator']);
         $this->disable_feeds();
     }

@@ -57,10 +57,18 @@
 	background: #f6f7f7;
 }
 
-.lunic-search__item img {
+.lunic-search__thumb {
+	display: block;
 	width: 48px;
 	height: 48px;
 	object-fit: cover;
+	border-radius: 4px;
+	background: #f3f5ef;
+}
+
+.lunic-search__item strong {
+	display: block;
+	font: 600 0.95rem/1.3 Montserrat, sans-serif;
 }
 
 .lunic-search__meta {

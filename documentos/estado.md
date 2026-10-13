@@ -1,7 +1,7 @@
 # Estado del proyecto
 
 **Fecha:** 13/10/2026.  
-**Entorno:** copia local. El sitio en vivo **no se tocó** en este cierre.
+**Entorno:** copia local. Esta copia **no publica** al sitio en vivo: el plugin se copia a mano.
 
 Este archivo es el que hay que leer para seguir. El plan de etapas 1–6 de octubre 2026 quedó cerrado y archivado.
 
@@ -10,7 +10,7 @@ Este archivo es el que hay que leer para seguir. El plan de etapas 1–6 de octu
 | Pieza | Versión |
 | --- | --- |
 | Tema `lunic` | **0.3.68** (`wp-content/themes/lunic/`). Script `theme.js` 0.2.4. |
-| Plugin `distribuidora-lunic` | **0.1.27** |
+| Plugin `distribuidora-lunic` | **0.1.32** |
 | WooCommerce | 11.2. Moneda ARS. |
 | Elementor libre | Activo. Plantillas asignadas en Lunic → Plantillas. |
 | Elementor Pro, JetEngine, Ivory Search, Product Filter (WBW) | Apagados. Las carpetas siguen en disco. |
@@ -28,13 +28,24 @@ Trabajo hecho en local según `documentos/archivo/auditoria-tema-y-plugin-lunic.
 - Plantillas WooCommerce con `@version`. Descripción del producto con `get_post_field`. Traducciones de WooCommerce limitadas a carrito, checkout y `wc-ajax`.
 
 Lista de subida: `documentos/subida-live.md`. Manual: `documentos/manual-cliente-lunic.md`.  
-Acta: `documentos/archivo/acta-cierre-etapas-1-6-2026-10-13.md`.
+Acta de etapas 1 a 6: `documentos/archivo/acta-cierre-etapas-1-6-2026-10-13.md`.  
+Acta del plugin 0.1.29 a 0.1.32: `documentos/archivo/acta-plugin-0.1.32-2026-10-13.md`.
+
+## Seguimiento 13/10/2026 (plugin 0.1.29 a 0.1.32)
+
+El tema **no cambió**: sigue en **0.3.68**. La fila de envío del carrito (`woocommerce/cart/cart-shipping.php`) oculta el importe solo cuando el único método es el envío propio. Si Andreani u otro método cotiza, la fila se muestra y ese importe entra en el total.
+
+- **0.1.29.** Revisión del plugin: envío gratis solo si el mínimo es mayor que 0; descuentos en el hash de precios de variaciones; IP real si está Megadruid Seguridad; contacto con el correo de Lunic; categoría y página de categorías desde ajustes; búsqueda sin productos ocultos; cabeceras `Referrer-Policy` y `Permissions-Policy` válidas.
+- **0.1.30.** Con envío a facturación, el carrito completa provincia y código postal en la sesión y puede cotizar. No se reescribe la dirección guardada en la cuenta.
+- **0.1.32.** Andreani ya no pisa el código postal de la cuenta con el último que cotizó. El buscador engancha todos los formularios y reserva el lugar de la foto. La caché de página cambia de clave al subir plugin o tema. Se sacó de `Hardening` una llamada a un método que no existe: en el live, sin Megadruid CMS, tumbaba `/tienda`.
+
+Andreani cotiza solo si **cada** producto del carrito tiene peso y alto, ancho y largo. El plugin Lunic no esconde esas tarifas. En el live, las variantes que en esta copia tienen medidas (Eucalipto de 1 kg y otras) figuran con peso y medidas en «N/D»: hay que cargarlas en WooCommerce del live. CABA y los tres cordones no tienen método Andreani; Provincia de Buenos Aires y Nacional sí.
 
 ## Envíos (comprobado en local)
 
 El plugin **no guarda precios**: lee cada instancia de **Envío personalizado**. Con provincia y CP, CABA, cordones e interior coinciden con WooCommerce. El checkout necesita el código de provincia de WooCommerce (si llega el nombre, se normaliza con `get_states('AR')`).
 
-En cordones, el mínimo de envío gratis se corrige en **WooCommerce → Envío**, no en el código. Andreani es otro plugin: si no cotiza, no aparece como opción.
+En cordones, el mínimo de envío gratis se corrige en **WooCommerce → Envío**, no en el código. Andreani es otro plugin. Si no cotiza, no aparece como opción: hace falta peso y las tres medidas en cada producto del carrito, y la zona tiene que tener el método Andreani activo.
 
 ## Escritorio Lunic
 
