@@ -40,6 +40,4 @@ Subir **juntas** las carpetas:
 - `wp-content/themes/lunic/` (0.3.68)
 - `wp-content/plugins/distribuidora-lunic/` (0.1.27)
 
-Paquetes locales: `documentos/paquete-tema-lunic-0.3.68.zip` y `documentos/paquete-distribuidora-lunic-0.1.27.zip`.
-
 Después: entrar al escritorio una vez, vaciar `wp-content/cache/lunic/`, completar **Lunic → Datos del sitio** y revisar **WooCommerce → Envío** (mínimos de envío gratis en cada zona). Recorrer inicio, tienda, ficha, carrito, checkout, cuenta y contacto, en escritorio y en celular.

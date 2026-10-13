@@ -9,10 +9,6 @@ El sitio en vivo **no se tocó** desde esta copia. Hacer backup de base y de `wp
 | Tema | **0.3.68** | `wp-content/themes/lunic/` |
 | Plugin | **0.1.27** | `wp-content/plugins/distribuidora-lunic/` |
 
-Paquetes locales (si se usan zip): `documentos/paquete-tema-lunic-0.3.68.zip` y `documentos/paquete-distribuidora-lunic-0.1.27.zip`.
-
-No subir el zip viejo `paquete-distribuidora-lunic-0.1.16.zip` (archivo).
-
 ## Pasos
 
 1. Copia de la base y de las dos carpetas en el live.

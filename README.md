@@ -7,9 +7,8 @@ Elementor Pro, JetEngine, Ivory Search y Product Filter están apagados. Element
 ## Dónde está cada cosa
 
 - Estado actual y reglas que siguen: `documentos/estado.md`
-- Megadruid CMS y Megadruid Seguridad viven fuera de este repo (`documentos/megadruid-cms/` y `documentos/megadruid-seguridad/`; WordPress carga las carpetas en `wp-content/plugins/`)
+- Megadruid CMS y Megadruid Seguridad no se versionan acá. Archivo: `c:\laragon\www\megadruid\documentos\`. WordPress de Lunic carga `wp-content/plugins/megadruid-cms/` (activo) y `megadruid-seguridad/` (apagado).
 - Política REST: `documentos/rest-api-lunic.md`
-- Capturas de referencia: `documentos/linea-base/diseno/`
 - Plan y actas ya cerradas: `documentos/archivo/`
 - Plugin: `wp-content/plugins/distribuidora-lunic/`
 - Tema: `wp-content/themes/lunic/`

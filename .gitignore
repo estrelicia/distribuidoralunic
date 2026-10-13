@@ -21,7 +21,6 @@ vendor/
 documentos/_tmp_*.php
 
 # Megadruid CMS y Seguridad: no forman parte del repo Lunic
-documentos/megadruid-cms/
+# Archivo canónico: c:\laragon\www\megadruid\documentos\
 wp-content/plugins/megadruid-cms/
-documentos/megadruid-seguridad/
 wp-content/plugins/megadruid-seguridad/

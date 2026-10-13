@@ -27,7 +27,6 @@ Trabajo hecho en local según `documentos/archivo/auditoria-tema-y-plugin-lunic.
 - Datos de contacto, WhatsApp y lista de precios en **Lunic → Datos del sitio**. Menús solo en Apariencia → Menús. CSS de plantillas por `.lunic-slot--*`.
 - Plantillas WooCommerce con `@version`. Descripción del producto con `get_post_field`. Traducciones de WooCommerce limitadas a carrito, checkout y `wc-ajax`.
 
-Paquetes para el live: `documentos/paquete-tema-lunic-0.3.68.zip` y `documentos/paquete-distribuidora-lunic-0.1.27.zip`.  
 Lista de subida: `documentos/subida-live.md`. Manual: `documentos/manual-cliente-lunic.md`.  
 Acta: `documentos/archivo/acta-cierre-etapas-1-6-2026-10-13.md`.
 
@@ -45,11 +44,11 @@ Opción `lunic_theme_templates` (cabecera, pie, tienda, ficha, mantenimiento). O
 
 ## Megadruid CMS
 
-Plugin **0.3.20** activo en disco (`wp-content/plugins/megadruid-cms/`). **No se versiona** en este repo: código, paquete y actas están en `documentos/megadruid-cms/` (ignorado por Git).
+Plugin **0.3.20** activo en disco (`wp-content/plugins/megadruid-cms/`). **No se versiona** en este repo. Archivo: `c:\laragon\www\megadruid\documentos\megadruid-cms\`.
 
 ## Megadruid Seguridad
 
-Plugin **1.0.2** en disco (`wp-content/plugins/megadruid-seguridad/`), **apagado** en local. **No se versiona**: copia en `documentos/megadruid-seguridad/`.
+Plugin **1.0.2** en disco (`wp-content/plugins/megadruid-seguridad/`), **apagado** en local. **No se versiona**. Archivo: `c:\laragon\www\megadruid\documentos\megadruid-seguridad\`.
 
 ## REST
 
@@ -69,8 +68,7 @@ Visitantes: no se bloquea la Store API de WooCommerce (`/wp-json/wc/store/`). El
 | Este estado | `documentos/estado.md` |
 | Manual del cliente (Lunic) | `documentos/manual-cliente-lunic.md` |
 | Subida al live | `documentos/subida-live.md` |
-| Megadruid CMS (fuera del repo) | `documentos/megadruid-cms/` |
-| Megadruid Seguridad (fuera del repo) | `documentos/megadruid-seguridad/` |
+| Megadruid CMS (fuera de este proyecto) | `c:\laragon\www\megadruid\documentos\megadruid-cms\` |
+| Megadruid Seguridad (fuera de este proyecto) | `c:\laragon\www\megadruid\documentos\megadruid-seguridad\` |
 | Política REST | `documentos/rest-api-lunic.md` |
-| Capturas de diseño | `documentos/linea-base/diseno/` |
 | Planes y actas cerrados | `documentos/archivo/` |
