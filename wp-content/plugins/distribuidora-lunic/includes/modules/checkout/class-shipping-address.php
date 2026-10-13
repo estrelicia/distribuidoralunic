@@ -15,6 +15,35 @@ class Shipping_Address {
         add_action('woocommerce_checkout_update_customer', [$this, 'normalize_customer'], 5, 2);
         add_action('woocommerce_customer_save_address', [$this, 'refresh_session_address'], 20, 4);
         add_filter('woocommerce_cart_shipping_packages', [$this, 'packages_from_billing']);
+        add_action('woocommerce_before_calculate_totals', [$this, 'fill_session_shipping'], 5);
+    }
+
+    /**
+     * El carrito solo cotiza si la dirección de envío de la sesión tiene país,
+     * provincia y código postal. Un cliente que solo cargó facturación ve
+     * “Ingresá tu dirección” aunque la tienda envíe a facturación.
+     * Se completa solo la sesión; la dirección guardada en la cuenta no cambia.
+     */
+    public function fill_session_shipping(): void {
+        if (!$this->ships_to_billing_by_default() || $this->posted_ships_elsewhere()) {
+            return;
+        }
+        if (!function_exists('WC') || !WC()->customer) {
+            return;
+        }
+        $customer = WC()->customer;
+        if ($customer->get_shipping_country() !== '' && $customer->get_shipping_postcode() !== '' && $customer->get_shipping_state() !== '') {
+            return;
+        }
+        if ($customer->get_billing_country() === '' || $customer->get_billing_postcode() === '') {
+            return;
+        }
+        $customer->set_shipping_country($customer->get_billing_country());
+        $customer->set_shipping_state(self::normalize_ar_state((string) $customer->get_billing_state()));
+        $customer->set_shipping_postcode($customer->get_billing_postcode());
+        $customer->set_shipping_city($customer->get_billing_city());
+        $customer->set_shipping_address_1($customer->get_billing_address_1());
+        $customer->set_shipping_address_2($customer->get_billing_address_2());
     }
 
     /**
