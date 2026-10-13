@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-30 16:43:10+0000\n"
+"PO-Revision-Date: 2026-10-05 20:40:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -519,17 +519,13 @@ msgstr "widget_type es obligatorio."
 msgid "Get Elementor Widget Schema"
 msgstr "Obtener el esquema del widget de Elementor"
 
-#: modules/mcp/abilities/get-structure-ability.php:114
+#: modules/mcp/abilities/get-structure-ability.php:117
 msgid "Element not found in this document."
 msgstr "Elemento no encontrado en este documento."
 
-#: modules/mcp/abilities/get-structure-ability.php:103
+#: modules/mcp/abilities/get-structure-ability.php:104
 msgid "include_content requires element_id."
 msgstr "include_content requiere element_id."
-
-#: modules/mcp/abilities/get-structure-ability.php:40
-msgid "Returns a lean Elementor element tree skeleton (id, elType, widgetType, version, title, nested elements) for a single post or page ID. Each node is tagged with version=3 (legacy) or version=4 (atomic). Only version=4 nodes can be modified via elementor/manage-elements or referenced by elementor/build-composition element_config; version=3 nodes are returned for context only and must be edited directly in the Elementor editor. Optionally scope to a subtree via element_id. Set include_content=true (requires element_id) to also return each V4 node's settings, styles (as { __style_id, css } where css is a raw CSS string round-trippable to manage-elements.update.style / build-composition.style in replace mode), interactions, its rendered HTML tag when known, and default_styles (a raw CSS string of the widget base layer followed by the kit's site-wide default layer for that tag, in browser cascade order — includes selectors, @media(--breakpoint) blocks, and pseudo-states as the frontend renders them). V3 nodes are returned with empty settings and styles. Only works for posts that were saved with Elementor."
-msgstr "Devuelve un esqueleto ligero del árbol de elementos de Elementor (id, elType, widgetType, version, title, elementos anidados) para un único ID de entrada o página. Cada nodo se etiqueta con version=3 (heredado) o version=4 (atómico). Solo los nodos version=4 se pueden modificar mediante elementor/manage-elements o referenciar mediante elementor/build-composition element_config; los nodos version=3 se devuelven solo como contexto y deben editarse directamente en el editor de Elementor. Opcionalmente, limita el alcance a un subárbol mediante element_id. Establece include_content=true (requiere element_id) para devolver también los settings de cada nodo V4, sus estilos (como { __style_id, css }, donde css es una cadena CSS sin procesar que se puede volver a pasar a manage-elements.update.style / build-composition.style en modo replace), sus interacciones, su etiqueta HTML representada cuando se conoce y sus default_styles (una cadena CSS sin procesar de la capa base del widget seguida de la capa predeterminada de todo el sitio del kit para esa etiqueta, en el orden de cascada del navegador — incluye selectores, bloques @media(--breakpoint) y pseudo-estados tal como los representa el front-end). Los nodos V3 se devuelven con settings y estilos vacíos. Solo funciona con entradas guardadas con Elementor."
 
 #: modules/mcp/abilities/get-default-styles-ability.php:78
 msgid "The provided tag is not an allowed HTML wrapper tag."
@@ -542,6 +538,10 @@ msgstr "Se requiere una etiqueta."
 #: modules/mcp/abilities/get-default-styles-ability.php:27
 msgid "Returns the active kit's site-wide default styles for a single HTML wrapper tag (h1..h6, p, a, section, div, button, ...) as a raw CSS string. Includes selectors, @media(--breakpoint) blocks, and &:hover/&:focus/&:active pseudo-states as the frontend renders them. Widget-specific base styles are NOT included — this is only the kit's site-wide default layer."
 msgstr "Devuelve los estilos predeterminados de todo el sitio del kit activo para una única etiqueta envoltorio HTML (h1..h6, p, a, section, div, button, ...) como una cadena CSS sin procesar. Incluye selectores, bloques @media(--breakpoint) y pseudo-estados &:hover/&:focus/&:active tal como los representa el front-end. NO se incluyen los estilos base específicos de cada widget — esto es solo la capa predeterminada de todo el sitio del kit."
+
+#: modules/mcp/abilities/get-structure-ability.php:41
+msgid "Returns a lean Elementor element tree skeleton (id, elType, widgetType, version, title, nested elements) for a single post or page ID. Each node is tagged with version=3 (legacy) or version=4 (atomic). Only version=4 nodes can be modified via elementor/manage-elements or referenced by elementor/build-composition element_config; version=3 nodes are returned for context only and must be edited directly in the Elementor editor. Optionally scope to a subtree via element_id. Set include_content=true (requires element_id) to also return each V4 node's settings in the plain shape that manage-elements.update.settings / build-composition.element_config accept, so a value can be sent back as-is, styles (as { __style_id, css } where css is a raw CSS string round-trippable to manage-elements.update.style / build-composition.style in replace mode), interactions, its rendered HTML tag when known, and default_styles (a raw CSS string of the widget base layer followed by the kit's site-wide default layer for that tag, in browser cascade order — includes selectors, @media(--breakpoint) blocks, and pseudo-states as the frontend renders them). V3 nodes are returned with empty settings and styles. Only works for posts that were saved with Elementor."
+msgstr "Devuelve un esqueleto ligero del árbol de elementos de Elementor (id, elType, widgetType, version, title, elementos anidados) para un único ID de entrada o página. Cada nodo está etiquetado con version=3 (heredado) o version=4 (atómico). Solo los nodos version=4 se pueden modificar mediante elementor/manage-elements o referenciar mediante element_config de elementor/build-composition; los nodos version=3 se devuelven solo como contexto y debes editarlos directamente en el editor de Elementor. Opcionalmente, puedes limitar el alcance a un subárbol mediante element_id. Establece include_content=true (requiere element_id) para devolver también los ajustes de cada nodo V4 con la forma simple que aceptan manage-elements.update.settings / build-composition.element_config, de modo que un valor se pueda enviar de vuelta tal cual, los estilos (como { __style_id, css }, donde css es una cadena CSS sin procesar que se puede enviar de ida y vuelta a manage-elements.update.style / build-composition.style en modo replace), las interacciones, su etiqueta HTML renderizada cuando se conoce, y default_styles (una cadena CSS sin procesar de la capa base del widget seguida de la capa predeterminada de todo el sitio del kit para esa etiqueta, en el orden de cascada del navegador — incluye selectores, bloques @media(--breakpoint) y pseudoestados tal como los renderiza la parte pública). Los nodos V3 se devuelven con ajustes y estilos vacíos. Solo funciona para entradas que se hayan guardado con Elementor."
 
 #: core/admin/admin.php:247 modules/gutenberg/module.php:100
 msgid "Edit with WordPress"
@@ -834,11 +834,11 @@ msgstr "Elemento padre no encontrado."
 msgid "Agents"
 msgstr "Agentes"
 
-#: core/experiments/manager.php:396
+#: core/experiments/manager.php:414
 msgid "Keeps external CSS files available and consistent for sites behind page caching or a CDN."
 msgstr "Mantiene los archivos CSS externos disponibles y coherentes para sitios detrás de una caché de páginas o una CDN."
 
-#: core/experiments/manager.php:394
+#: core/experiments/manager.php:412
 msgid "Optimized CSS Files"
 msgstr "Archivos CSS optimizados"
 
@@ -848,7 +848,7 @@ msgstr "Compartir en X"
 
 #. translators: 1: Link opening tag, 2: Link closing tag, 3: Link opening tag,
 #. 4: Link closing tag
-#: core/experiments/manager.php:358
+#: core/experiments/manager.php:376
 msgid "Create advanced layouts and responsive designs with %1$sFlexbox%2$s and %3$sGrid%4$s container elements."
 msgstr "Crea diseños avanzados y adaptables con los elementos contenedores %1$sFlexbox%2$s y %3$sGrid%4$s."
 
@@ -927,7 +927,7 @@ msgstr "¡Oferta! Actualiza ya"
 msgid "Recalculate"
 msgstr "Recalcular"
 
-#: modules/mcp/module.php:78
+#: modules/mcp/module.php:170
 msgid "Elementor page builder data, global classes, and variables."
 msgstr "Datos del constructor de páginas de Elementor, clases globales y variables."
 
@@ -939,11 +939,11 @@ msgstr "No se han podido guardar los ajustes del documento."
 msgid "The settings object is required."
 msgstr "El objeto de ajustes es obligatorio."
 
-#: modules/mcp/abilities/get-structure-ability.php:325
+#: modules/mcp/abilities/get-structure-ability.php:345
 msgid "Sorry, you are not allowed to access this document."
 msgstr "Lo siento, no tienes permisos para acceder a este documento"
 
-#: modules/mcp/abilities/get-structure-ability.php:317
+#: modules/mcp/abilities/get-structure-ability.php:337
 #: modules/mcp/abilities/publish-document-ability.php:67
 #: modules/mcp/abilities/update-settings-ability.php:69
 msgid "A valid post_id is required."
@@ -954,11 +954,11 @@ msgid "Update Elementor Page Settings"
 msgstr "Actualizar los ajustes de página de Elementor"
 
 #: modules/mcp/abilities/create-preview-link-ability.php:125
-#: modules/mcp/abilities/get-structure-ability.php:347
+#: modules/mcp/abilities/get-structure-ability.php:367
 msgid "This post is not built with Elementor."
 msgstr "Esta publicación no está construida con Elementor."
 
-#: modules/mcp/abilities/get-structure-ability.php:355
+#: modules/mcp/abilities/get-structure-ability.php:375
 #: modules/mcp/abilities/update-settings-ability.php:83
 msgid "Sorry, you are not allowed to edit this document."
 msgstr "Lo siento, no tienes permiso para editar este documento."
@@ -967,7 +967,7 @@ msgstr "Lo siento, no tienes permiso para editar este documento."
 msgid "Updates Elementor document-level settings for a post (for example page layout, title visibility, or custom page settings). Pass only the keys you want to change. Ask the user for the URL or post ID. Use get-page-structure when you also need the element tree. Requires permission to edit the target post."
 msgstr "Actualiza la configuración de Elementor a nivel de documento de una entrada (por ejemplo, el diseño de la página, la visibilidad del título o la configuración personalizada de la página). Pasa solo las claves que quieras cambiar. Pide al usuario la URL o el ID de la entrada. Usa «get-page-structure» cuando también necesites el árbol de elementos. Requiere permiso para editar la entrada de destino."
 
-#: modules/mcp/abilities/get-structure-ability.php:39
+#: modules/mcp/abilities/get-structure-ability.php:40
 msgid "Get Elementor Page Structure"
 msgstr "Obtener la estructura de página de Elementor"
 
@@ -1621,7 +1621,7 @@ msgstr "Google ya no es compatible con el esquema FAQ; sin embargo, aún puede t
 msgid "Document not found for preview."
 msgstr "No se ha encontrado el documento para la vista previa."
 
-#: modules/atomic-widgets/elements/div-block/div-block.php:44
+#: modules/atomic-widgets/elements/div-block/div-block.php:46
 msgid "Div block"
 msgstr "Bloque div"
 
@@ -1964,13 +1964,13 @@ msgid "Lazy load"
 msgstr "Carga diferida"
 
 #: modules/atomic-widgets/elements/atomic-youtube/atomic-youtube.php:90
-#: assets/js/packages/editor-controls/editor-controls.js:14676
+#: assets/js/packages/editor-controls/editor-controls.js:14678
 #: assets/js/packages/editor-controls/editor-controls.strings.js:243
 msgid "End time"
 msgstr "Hora de finalización"
 
 #: modules/atomic-widgets/elements/atomic-youtube/atomic-youtube.php:89
-#: assets/js/packages/editor-controls/editor-controls.js:14675
+#: assets/js/packages/editor-controls/editor-controls.js:14677
 #: assets/js/packages/editor-controls/editor-controls.strings.js:242
 msgid "Start time"
 msgstr "Hora de inicio"
@@ -1995,7 +1995,7 @@ msgstr "URL de Youtube"
 #: modules/atomic-widgets/elements/atomic-tabs/atomic-tabs-menu/atomic-tabs-menu.php:79
 #: modules/atomic-widgets/elements/atomic-tabs/atomic-tabs/atomic-tabs.php:102
 #: modules/atomic-widgets/elements/atomic-youtube/atomic-youtube.php:110
-#: modules/atomic-widgets/elements/div-block/div-block.php:144
+#: modules/atomic-widgets/elements/div-block/div-block.php:146
 #: modules/atomic-widgets/elements/flexbox/flexbox.php:148
 #: modules/atomic-widgets/elements/grid/grid.php:142
 msgid "ID"
@@ -2287,7 +2287,7 @@ msgstr "Vista de cuadrícula"
 #: modules/atomic-widgets/elements/atomic-paragraph/atomic-paragraph.php:113
 #: modules/atomic-widgets/elements/atomic-svg/atomic-svg.php:89
 #: modules/atomic-widgets/elements/atomic-youtube/atomic-youtube.php:86
-#: modules/atomic-widgets/elements/div-block/div-block.php:138
+#: modules/atomic-widgets/elements/div-block/div-block.php:140
 #: modules/atomic-widgets/elements/flexbox/flexbox.php:142
 #: modules/atomic-widgets/elements/grid/grid.php:136
 msgid "Type or paste your URL"
@@ -2805,7 +2805,7 @@ msgid "CTA link"
 msgstr "Enlace CTA"
 
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:285
-#: assets/js/packages/editor-controls/editor-controls.js:35638
+#: assets/js/packages/editor-controls/editor-controls.js:35640
 #: assets/js/packages/editor-controls/editor-controls.strings.js:33
 msgid "Add item"
 msgstr "Añadir elemento"
@@ -3374,7 +3374,7 @@ msgid "Chat Box"
 msgstr "Caja de chat"
 
 #: modules/floating-buttons/base/widget-contact-button-base.php:1799
-#: assets/js/packages/editor-controls/editor-controls.js:35363
+#: assets/js/packages/editor-controls/editor-controls.js:35365
 #: assets/js/packages/editor-controls/editor-controls.strings.js:134
 msgid "Time"
 msgstr "Hora"
@@ -3472,7 +3472,7 @@ msgstr "+"
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:476
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:716
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:718
-#: assets/js/packages/editor-controls/editor-controls.js:35318
+#: assets/js/packages/editor-controls/editor-controls.js:35320
 #: assets/js/packages/editor-controls/editor-controls.strings.js:118
 msgid "Message"
 msgstr "Mensaje"
@@ -3595,11 +3595,11 @@ msgstr "Modo de visualización"
 msgid "Panel"
 msgstr "Panel"
 
-#: core/experiments/manager.php:383
+#: core/experiments/manager.php:401
 msgid "Reduce the DOM size by eliminating HTML tags in various elements and widgets. This experiment includes markup changes so it might require updating custom CSS/JS code and cause compatibility issues with third party plugins."
 msgstr "Reduce el tamaño del DOM eliminando etiquetas HTML en varios elementos y widgets. Este experimento incluye cambios en el marcado, por lo que podría requerir la actualización de código CSS/JS personalizado y causar problemas de compatibilidad con plugins de terceros."
 
-#: core/experiments/manager.php:381
+#: core/experiments/manager.php:399
 msgid "Optimized Markup"
 msgstr "Marcado optimizado"
 
@@ -3836,7 +3836,7 @@ msgstr "Generar variaciones"
 
 #: includes/managers/controls.php:1270 modules/promotions/module.php:262
 #: assets/js/editor.js:37588
-#: assets/js/packages/editor-controls/editor-controls.js:35476
+#: assets/js/packages/editor-controls/editor-controls.js:35478
 #: assets/js/packages/editor-controls/editor-controls.strings.js:32
 msgid "Display Conditions"
 msgstr "Condiciones de visualización"
@@ -4032,7 +4032,7 @@ msgstr "Gestor de elementos"
 msgid "Image Resolution"
 msgstr "Resolución de la imagen"
 
-#: core/experiments/manager.php:373
+#: core/experiments/manager.php:391
 msgid "Container-based content will be hidden from your site and may not be recoverable in all cases."
 msgstr "El contenido basado en contenedores se ocultará de tu sitio y puede que no sea recuperable en todos los casos."
 
@@ -4132,7 +4132,7 @@ msgstr "Sombra de texto"
 
 #: includes/controls/groups/image-size.php:380
 #: modules/atomic-widgets/utils/image/image-sizes.php:39
-#: assets/js/packages/editor-controls/editor-controls.js:12145
+#: assets/js/packages/editor-controls/editor-controls.js:12147
 #: assets/js/packages/editor-controls/editor-controls.strings.js:94
 msgid "Full"
 msgstr "Lleno"
@@ -4535,7 +4535,7 @@ msgstr "Diapositiva anterior"
 #: includes/controls/groups/background.php:99 assets/js/ai-admin.js:5326
 #: assets/js/ai-gutenberg.js:5389 assets/js/ai-media-library.js:5332
 #: assets/js/ai-unify-product-images.js:5348 assets/js/ai.js:5443
-#: assets/js/packages/editor-controls/editor-controls.js:12183
+#: assets/js/packages/editor-controls/editor-controls.js:12185
 #: assets/js/packages/editor-controls/editor-controls.strings.js:98
 msgid "Gradient"
 msgstr "Gradiente"
@@ -4660,7 +4660,7 @@ msgstr "Filas"
 
 #: includes/controls/gaps.php:58
 #: includes/controls/groups/grid-container.php:118
-#: assets/js/packages/editor-controls/editor-controls.js:11268
+#: assets/js/packages/editor-controls/editor-controls.js:11270
 #: assets/js/packages/editor-controls/editor-controls.strings.js:172
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3800
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4090
@@ -4706,20 +4706,20 @@ msgstr "Una etiqueta generator es un metaelemento que indica los atributos utili
 msgid "Generator Tag"
 msgstr "Etiqueta generator"
 
-#: core/experiments/manager.php:562
+#: core/experiments/manager.php:580
 msgid "Deactivate All"
 msgstr "Desactivar todo"
 
-#: core/experiments/manager.php:561
+#: core/experiments/manager.php:579
 msgid "Activate All"
 msgstr "Activar todo"
 
 #. translators: %1$s Link open tag, %2$s: Link close tag.
-#: core/experiments/manager.php:544
+#: core/experiments/manager.php:562
 msgid "Personalize your Elementor experience by controlling which features and experiments are active on your site. Help make Elementor better by %1$ssharing your experience and feedback with us%2$s."
 msgstr "Personaliza tu experiencia con Elementor controlando qué características y experimentos están activos en tu sitio. Ayuda a mejorar Elementor %1$scompartiendo tu experiencia y tus comentarios con nosotros%2$s."
 
-#: core/experiments/manager.php:538
+#: core/experiments/manager.php:556
 msgid "Experiments and Features"
 msgstr "Experimentos y características"
 
@@ -4781,7 +4781,7 @@ msgstr "Elementos anidados"
 
 #: includes/widgets/video.php:599
 #: modules/atomic-widgets/elements/atomic-self-hosted-video/atomic-self-hosted-video.php:41
-#: assets/js/packages/editor-controls/editor-controls.js:35357
+#: assets/js/packages/editor-controls/editor-controls.js:35359
 #: assets/js/packages/editor-controls/editor-controls.strings.js:132
 msgid "Metadata"
 msgstr "Metadatos"
@@ -4871,7 +4871,7 @@ msgctxt "Typography Control"
 msgid "(Thin)"
 msgstr "(Fina)"
 
-#: core/experiments/manager.php:634
+#: core/experiments/manager.php:652
 msgid "Requires"
 msgstr "Necesita"
 
@@ -4910,8 +4910,8 @@ msgid "Container Padding"
 msgstr "Relleno del contenedor"
 
 #: core/common/modules/finder/categories/settings.php:64
-#: core/experiments/manager.php:326 core/experiments/manager.php:382
-#: core/experiments/manager.php:395 includes/settings/settings.php:296
+#: core/experiments/manager.php:344 core/experiments/manager.php:400
+#: core/experiments/manager.php:413 includes/settings/settings.php:296
 #: includes/settings/settings.php:299
 #: assets/js/packages/editor-audits/editor-audits.js:106
 #: assets/js/packages/editor-audits/editor-audits.strings.js:197
@@ -5056,9 +5056,11 @@ msgstr "Actualizar ahora"
 #: assets/js/ai-unify-product-images.js:4980 assets/js/ai.js:1723
 #: assets/js/ai.js:4799 assets/js/ai.js:5075 assets/js/app-packages.js:5205
 #: assets/js/app.js:17288 assets/js/app.js:22520 assets/js/app.js:23038
-#: assets/js/app.js:48947 assets/js/e-react-promotions.js:43179
-#: assets/js/editor.js:1736 assets/js/notes.js:239 assets/js/notes.strings.js:5
-#: assets/js/styleguide.js:1024
+#: assets/js/app.js:48947 assets/js/e-react-promotions.js:43175
+#: assets/js/editor.js:1736 assets/js/mcp-analytics-registrar.strings.js:6
+#: assets/js/mcp-promotion-registrar.js:89
+#: assets/js/mcp-promotion-registrar.strings.js:6 assets/js/notes.js:239
+#: assets/js/notes.strings.js:5 assets/js/styleguide.js:1024
 msgid "Upgrade"
 msgstr "Actualizar"
 
@@ -5130,7 +5132,7 @@ msgstr "Para conseguir un contenedor de altura completa, utiliza %s."
 msgid "Add New Container"
 msgstr "Añadir nuevo contenedor"
 
-#: core/experiments/manager.php:355 includes/elements/container.php:72
+#: core/experiments/manager.php:373 includes/elements/container.php:72
 #: includes/elements/container.php:359
 #: modules/library/documents/container.php:52 assets/js/editor.js:6927
 #: assets/js/editor.js:7211 assets/js/editor.js:17755 assets/js/editor.js:45991
@@ -5139,7 +5141,7 @@ msgid "Container"
 msgstr "Contenedor"
 
 #: includes/controls/groups/typography.php:153
-#: assets/js/packages/editor-controls/editor-controls.js:35002
+#: assets/js/packages/editor-controls/editor-controls.js:35004
 #: assets/js/packages/editor-controls/editor-controls.strings.js:20
 msgid "Bold"
 msgstr "Negrita"
@@ -5229,8 +5231,8 @@ msgstr "Registro"
 msgid "Set your Google Maps API Key in Elementor's %1$sIntegrations Settings%3$s page. Create your key %2$shere.%3$s"
 msgstr "Establece tu clave de la API de Google Maps en la página de %1$sajustes de integraciones%3$s de Elementor. Crea tu clave %2$saquí.%3$s"
 
-#: core/editor/promotion.php:31 assets/js/e-react-promotions.js:42544
-#: assets/js/e-react-promotions.js:43179
+#: core/editor/promotion.php:31 assets/js/e-react-promotions.js:42540
+#: assets/js/e-react-promotions.js:43175
 #: assets/js/e-react-promotions.strings.js:1 assets/js/editor.js:1736
 #: assets/js/notes.js:239 assets/js/notes.strings.js:4
 #: assets/js/styleguide.js:1024
@@ -5246,24 +5248,24 @@ msgstr "Color del trazo"
 msgid "Text Stroke"
 msgstr "Trazo del texto"
 
-#: core/experiments/manager.php:567
+#: core/experiments/manager.php:585
 msgid "Ongoing Experiments"
 msgstr "Experimentos en curso"
 
-#: core/experiments/manager.php:524
+#: core/experiments/manager.php:542
 msgid "Stable Features"
 msgstr "Características estables"
 
 #: includes/base/element-base.php:1018
-#: assets/js/packages/editor-controls/editor-controls.js:13182
+#: assets/js/packages/editor-controls/editor-controls.js:13184
 #: assets/js/packages/editor-controls/editor-controls.strings.js:255
 msgid "Perspective"
 msgstr "Perspectiva"
 
 #: includes/base/element-base.php:892
-#: assets/js/packages/editor-controls/editor-controls.js:13090
-#: assets/js/packages/editor-controls/editor-controls.js:13265
-#: assets/js/packages/editor-controls/editor-controls.js:13364
+#: assets/js/packages/editor-controls/editor-controls.js:13092
+#: assets/js/packages/editor-controls/editor-controls.js:13267
+#: assets/js/packages/editor-controls/editor-controls.js:13366
 #: assets/js/packages/editor-controls/editor-controls.strings.js:262
 #: assets/js/packages/editor-controls/editor-controls.strings.js:263
 #: assets/js/packages/editor-controls/editor-controls.strings.js:273
@@ -5281,33 +5283,33 @@ msgid "X Anchor Point"
 msgstr "Punto de anclaje X"
 
 #: includes/base/element-base.php:1232
-#: assets/js/packages/editor-controls/editor-controls.js:12971
+#: assets/js/packages/editor-controls/editor-controls.js:12973
 #: assets/js/packages/editor-controls/editor-controls.strings.js:254
 msgid "Skew Y"
 msgstr "Inclinación Y"
 
 #: includes/base/element-base.php:1210
-#: assets/js/packages/editor-controls/editor-controls.js:12967
+#: assets/js/packages/editor-controls/editor-controls.js:12969
 #: assets/js/packages/editor-controls/editor-controls.strings.js:253
 msgid "Skew X"
 msgstr "Inclinación X"
 
 #: includes/base/element-base.php:1198
-#: assets/js/packages/editor-controls/editor-controls.js:13101
-#: assets/js/packages/editor-controls/editor-controls.js:13163
+#: assets/js/packages/editor-controls/editor-controls.js:13103
+#: assets/js/packages/editor-controls/editor-controls.js:13165
 #: assets/js/packages/editor-controls/editor-controls.strings.js:267
 #: assets/js/packages/editor-controls/editor-controls.strings.js:271
 msgid "Skew"
 msgstr "Inclinación"
 
 #: includes/base/element-base.php:1174
-#: assets/js/packages/editor-controls/editor-controls.js:12937
+#: assets/js/packages/editor-controls/editor-controls.js:12939
 #: assets/js/packages/editor-controls/editor-controls.strings.js:251
 msgid "Scale Y"
 msgstr "Escalar Y"
 
 #: includes/base/element-base.php:1152
-#: assets/js/packages/editor-controls/editor-controls.js:12932
+#: assets/js/packages/editor-controls/editor-controls.js:12934
 #: assets/js/packages/editor-controls/editor-controls.strings.js:250
 msgid "Scale X"
 msgstr "Escalar X"
@@ -5325,13 +5327,13 @@ msgid "Offset X"
 msgstr "Separación X"
 
 #: includes/base/element-base.php:995
-#: assets/js/packages/editor-controls/editor-controls.js:12872
+#: assets/js/packages/editor-controls/editor-controls.js:12874
 #: assets/js/packages/editor-controls/editor-controls.strings.js:248
 msgid "Rotate Y"
 msgstr "Rotación Y"
 
 #: includes/base/element-base.php:972
-#: assets/js/packages/editor-controls/editor-controls.js:12867
+#: assets/js/packages/editor-controls/editor-controls.js:12869
 #: assets/js/packages/editor-controls/editor-controls.strings.js:247
 msgid "Rotate X"
 msgstr "Rotación X"
@@ -5352,7 +5354,7 @@ msgstr "Voltear verticalmente"
 msgid "Flip Horizontal"
 msgstr "Voltear horizontalmente"
 
-#: core/experiments/manager.php:325
+#: core/experiments/manager.php:343
 msgid "Inline Font Icons"
 msgstr "Fuentes de iconos integradas"
 
@@ -5364,7 +5366,7 @@ msgstr "Título no válido"
 msgid "Elementor Experiments"
 msgstr "Experimentos de Elementor"
 
-#: core/experiments/manager.php:329
+#: core/experiments/manager.php:347
 msgid "The “Inline Font Icons” will render the icons as inline SVG without loading the Font-Awesome and the eicons libraries and its related CSS files and fonts."
 msgstr "La opción «Fuentes de iconos integradas» mostrará los iconos como SVG integrados sin necesidad de cargar las bibliotecas Font-Awsome y eicons y sus archivos CSS y fuentes relacionadas."
 
@@ -5432,7 +5434,7 @@ msgstr "Las plantillas te ayudan a %1$strabajar eficientemente%2$s"
 msgid "In order for Theme Style to affect all relevant Elementor elements, please disable Default Colors and Fonts from the %1$sSettings Page%2$s."
 msgstr "Para que el estilo del tema afecte a todos los elementos importantes de Elementor, por favor, desactiva los colores y fuentes por defecto desde la %1$spágina de ajustes%2$s."
 
-#: core/experiments/manager.php:342
+#: core/experiments/manager.php:360
 msgid "Additional Custom Breakpoints"
 msgstr "Puntos de ruptura personalizados adicionales"
 
@@ -5452,7 +5454,7 @@ msgstr "Pantalla"
 
 #: includes/elements/column.php:453 includes/elements/container.php:866
 #: includes/elements/section.php:721 includes/widgets/heading.php:335
-#: assets/js/packages/editor-controls/editor-controls.js:12158
+#: assets/js/packages/editor-controls/editor-controls.js:12160
 #: assets/js/packages/editor-controls/editor-controls.strings.js:95
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3251
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:101
@@ -5492,7 +5494,7 @@ msgstr "Saturación"
 msgid "Luminosity"
 msgstr "Luminosidad"
 
-#: core/experiments/manager.php:345
+#: core/experiments/manager.php:363
 msgid "Get pixel-perfect design for every screen size. You can now add up to 6 customizable breakpoints beyond the default desktop setting: mobile, mobile extra, tablet, tablet extra, laptop, and widescreen."
 msgstr "Consigue un diseño de píxel perfecto para cada tamaño de pantalla. Ahora puedes añadir hasta 6 puntos de ruptura personalizables más allá del ajuste de escritorio por defecto: móvil, móvil extra, tableta, tableta extra, portátil y pantalla panorámica."
 
@@ -5523,7 +5525,7 @@ msgid "Favorites"
 msgstr "Favoritos"
 
 #: core/common/modules/finder/categories/settings.php:74
-#: core/experiments/manager.php:501 assets/js/app.js:21205
+#: core/experiments/manager.php:519 assets/js/app.js:21205
 msgid "Features"
 msgstr "Caracteristicas"
 
@@ -5719,8 +5721,8 @@ msgstr "Redondeado"
 
 #: includes/controls/groups/background.php:464
 #: includes/widgets/common-base.php:1282 includes/widgets/common-base.php:1286
-#: assets/js/packages/editor-controls/editor-controls.js:11936
-#: assets/js/packages/editor-controls/editor-controls.js:11963
+#: assets/js/packages/editor-controls/editor-controls.js:11938
+#: assets/js/packages/editor-controls/editor-controls.js:11965
 #: assets/js/packages/editor-controls/editor-controls.strings.js:81
 #: assets/js/packages/editor-controls/editor-controls.strings.js:85
 #: assets/js/packages/editor-interactions/editor-interactions.js:792
@@ -5740,8 +5742,8 @@ msgstr "Posición X"
 
 #: includes/base/element-base.php:1107 includes/base/element-base.php:1130
 #: includes/widgets/common-base.php:1153
-#: assets/js/packages/editor-controls/editor-controls.js:13095
-#: assets/js/packages/editor-controls/editor-controls.js:13155
+#: assets/js/packages/editor-controls/editor-controls.js:13097
+#: assets/js/packages/editor-controls/editor-controls.js:13157
 #: assets/js/packages/editor-controls/editor-controls.strings.js:265
 #: assets/js/packages/editor-controls/editor-controls.strings.js:269
 #: assets/js/packages/editor-interactions/editor-interactions.js:1432
@@ -5800,21 +5802,21 @@ msgstr "%1$s <br> Los ajustes añadidos para dispositivo %1$s se aplicarán a la
 
 #: includes/controls/groups/background.php:465
 #: includes/widgets/common-base.php:1287
-#: assets/js/packages/editor-controls/editor-controls.js:11942
+#: assets/js/packages/editor-controls/editor-controls.js:11944
 #: assets/js/packages/editor-controls/editor-controls.strings.js:82
 msgid "Repeat-x"
 msgstr "Repetir en el eje x"
 
 #: includes/controls/groups/background.php:466
 #: includes/widgets/common-base.php:1288
-#: assets/js/packages/editor-controls/editor-controls.js:11948
+#: assets/js/packages/editor-controls/editor-controls.js:11950
 #: assets/js/packages/editor-controls/editor-controls.strings.js:83
 msgid "Repeat-y"
 msgstr "Repetir en el eje y"
 
 #: includes/controls/groups/background.php:463
 #: includes/widgets/common-base.php:1285
-#: assets/js/packages/editor-controls/editor-controls.js:11954
+#: assets/js/packages/editor-controls/editor-controls.js:11956
 #: assets/js/packages/editor-controls/editor-controls.strings.js:84
 msgid "No-repeat"
 msgstr "No repetir"
@@ -5883,9 +5885,9 @@ msgstr "Swap"
 
 #: app/modules/import-export-customization/module.php:214
 #: app/modules/import-export/module.php:207 core/admin/admin-notices.php:283
-#: core/admin/admin-notices.php:506 core/experiments/manager.php:330
-#: core/experiments/manager.php:346 core/experiments/manager.php:374
-#: core/experiments/manager.php:555 includes/controls/url.php:78
+#: core/admin/admin-notices.php:506 core/experiments/manager.php:348
+#: core/experiments/manager.php:364 core/experiments/manager.php:392
+#: core/experiments/manager.php:573 includes/controls/url.php:78
 #: includes/editor-templates/templates.php:841
 #: includes/elements/section.php:473 includes/settings/settings-page.php:400
 #: includes/widgets/video.php:606 modules/checklist/steps/step-base.php:102
@@ -6083,11 +6085,11 @@ msgstr "No se ha podido crear el archivo temporal."
 msgid "Privacy mode"
 msgstr "Modo de privacidad"
 
-#: core/experiments/manager.php:703
+#: core/experiments/manager.php:721
 msgid "Inactive by default"
 msgstr "Inactivo por defecto"
 
-#: core/experiments/manager.php:702
+#: core/experiments/manager.php:720
 msgid "Active by default"
 msgstr "Activo por defecto"
 
@@ -6096,7 +6098,7 @@ msgid "Install & Activate"
 msgstr "Instalar y activar"
 
 #. translators: %s Release status.
-#: core/experiments/manager.php:586
+#: core/experiments/manager.php:604
 msgid "Status: %s"
 msgstr "Estado: %s"
 
@@ -6104,19 +6106,19 @@ msgstr "Estado: %s"
 msgid "Experiments"
 msgstr "Experimentos"
 
-#: core/experiments/manager.php:489
+#: core/experiments/manager.php:507
 msgid "The current version of Elementor doesn't have any experimental features . if you're feeling curious make sure to come back in future versions."
 msgstr "La versión actual de Elementor no tiene características experimentales. Si tienes curiosidad, procura regresar en versiones futuras."
 
-#: core/experiments/manager.php:486
+#: core/experiments/manager.php:504
 msgid "No available experiments"
 msgstr "No hay experimentos disponibles"
 
-#: core/experiments/manager.php:428
+#: core/experiments/manager.php:446
 msgid "Stable"
 msgstr "Estable"
 
-#: core/experiments/manager.php:427 assets/js/ai-admin.js:3227
+#: core/experiments/manager.php:445 assets/js/ai-admin.js:3227
 #: assets/js/ai-admin.js:28114 assets/js/ai-gutenberg.js:3401
 #: assets/js/ai-gutenberg.js:28163 assets/js/ai-layout.js:3073
 #: assets/js/ai-layout.js:3267 assets/js/ai-media-library.js:3233
@@ -6128,11 +6130,11 @@ msgstr "Estable"
 msgid "Beta"
 msgstr "Beta"
 
-#: core/experiments/manager.php:426
+#: core/experiments/manager.php:444
 msgid "Alpha"
 msgstr "Alfa"
 
-#: core/experiments/manager.php:425
+#: core/experiments/manager.php:443
 msgid "Development"
 msgstr "En desarrollo"
 
@@ -6145,7 +6147,7 @@ msgstr "En desarrollo"
 msgid "Save Changes"
 msgstr "Guardar cambios"
 
-#: core/experiments/manager.php:554
+#: core/experiments/manager.php:572
 msgid "To use an experiment or feature on your site, simply click on the dropdown next to it and switch to Active. You can always deactivate them at any time."
 msgstr "Para probar un experimento o una nueva característica en tu sitio, simplemente haz clic en la sección desplegable junto a él y cámbialo a Activo. Puedes desactivarlos en cualquier momento."
 
@@ -6462,7 +6464,7 @@ msgstr "Haz clic aquí para ejecutarlo ahora"
 msgid "%s Widget"
 msgstr "Widget %s"
 
-#: core/experiments/manager.php:104 includes/editor-templates/global.php:27
+#: core/experiments/manager.php:106 includes/editor-templates/global.php:27
 #: includes/editor-templates/templates.php:259 assets/js/ai-admin.js:4926
 #: assets/js/ai-gutenberg.js:4989 assets/js/ai-media-library.js:4932
 #: assets/js/ai-unify-product-images.js:4948 assets/js/ai.js:5043
@@ -6550,7 +6552,7 @@ msgid "Meet Our Attributes"
 msgstr "Conoce nuestros atributos"
 
 #: includes/managers/controls.php:1204 modules/promotions/module.php:256
-#: assets/js/packages/editor-controls/editor-controls.js:35515
+#: assets/js/packages/editor-controls/editor-controls.js:35517
 #: assets/js/packages/editor-controls/editor-controls.strings.js:31
 msgid "Attributes"
 msgstr "Atributos"
@@ -6624,7 +6626,7 @@ msgstr "Posición del fondo"
 #: includes/controls/groups/background.php:486
 #: includes/controls/groups/background.php:691
 #: includes/widgets/image-box.php:413 includes/widgets/image.php:390
-#: assets/js/packages/editor-controls/editor-controls.js:11990
+#: assets/js/packages/editor-controls/editor-controls.js:11992
 #: assets/js/packages/editor-controls/editor-controls.strings.js:88
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4825
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:237
@@ -6636,7 +6638,7 @@ msgstr "Contener"
 #: includes/widgets/image-box.php:412 includes/widgets/image.php:389
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:923
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:978
-#: assets/js/packages/editor-controls/editor-controls.js:11984
+#: assets/js/packages/editor-controls/editor-controls.js:11986
 #: assets/js/packages/editor-controls/editor-controls.strings.js:87
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4821
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:236
@@ -6649,8 +6651,8 @@ msgstr "Cubrir"
 #: includes/elements/container.php:565 includes/widgets/social-icons.php:299
 #: includes/widgets/video.php:600
 #: modules/atomic-widgets/elements/atomic-self-hosted-video/atomic-self-hosted-video.php:40
-#: assets/js/packages/editor-controls/editor-controls.js:11296
-#: assets/js/packages/editor-controls/editor-controls.js:11978
+#: assets/js/packages/editor-controls/editor-controls.js:11298
+#: assets/js/packages/editor-controls/editor-controls.js:11980
 #: assets/js/packages/editor-controls/editor-controls.strings.js:55
 #: assets/js/packages/editor-controls/editor-controls.strings.js:86
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4862
@@ -6688,7 +6690,7 @@ msgid "Transition"
 msgstr "Transición"
 
 #: includes/controls/groups/background.php:645
-#: assets/js/packages/editor-controls/editor-controls.js:13961
+#: assets/js/packages/editor-controls/editor-controls.js:13963
 #: assets/js/packages/editor-controls/editor-controls.strings.js:337
 #: assets/js/packages/editor-interactions/editor-interactions.js:798
 #: assets/js/packages/editor-interactions/editor-interactions.strings.js:61
@@ -6884,8 +6886,8 @@ msgstr "Por favor, ten en cuenta que el proceso de actualización puede provocar
 #: includes/controls/media.php:302 includes/controls/media.php:304
 #: assets/js/editor.js:21118
 #: assets/js/packages/editor-controls/editor-controls.js:416
-#: assets/js/packages/editor-controls/editor-controls.js:11631
-#: assets/js/packages/editor-controls/editor-controls.js:11710
+#: assets/js/packages/editor-controls/editor-controls.js:11633
+#: assets/js/packages/editor-controls/editor-controls.js:11712
 #: assets/js/packages/editor-controls/editor-controls.strings.js:183
 #: assets/js/packages/editor-controls/editor-controls.strings.js:239
 #: assets/js/packages/editor-controls/editor-controls.strings.js:350
@@ -6893,7 +6895,7 @@ msgid "Upload"
 msgstr "Subir"
 
 #: core/editor/editor.php:204
-#: modules/mcp/abilities/get-structure-ability.php:339
+#: modules/mcp/abilities/get-structure-ability.php:359
 #: modules/mcp/abilities/publish-document-ability.php:85
 #: modules/mcp/abilities/update-settings-ability.php:79
 msgid "Document not found."
@@ -6989,7 +6991,7 @@ msgstr "Como probador de betas, recibirás una actualización que incluye una ve
 msgid "Get Beta Updates"
 msgstr "Consigue actualizaciones beta"
 
-#: core/experiments/manager.php:683 includes/base/widget-base.php:1055
+#: core/experiments/manager.php:701 includes/base/widget-base.php:1055
 msgid "Deprecated"
 msgstr "Obsoleto"
 
@@ -7077,7 +7079,7 @@ msgid "Horizontal Orientation"
 msgstr "Orientación horizontal"
 
 #: includes/elements/container.php:1540 includes/widgets/common-base.php:560
-#: assets/js/packages/editor-controls/editor-controls.js:11800
+#: assets/js/packages/editor-controls/editor-controls.js:11802
 #: assets/js/packages/editor-controls/editor-controls.strings.js:67
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4716
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:224
@@ -7220,7 +7222,7 @@ msgstr "Leer más"
 msgid "External URL"
 msgstr "URL externa"
 
-#: core/upgrade/manager.php:51
+#: core/upgrade/manager.php:53
 msgid "Elementor Data Updater"
 msgstr "Actualizador de datos de Elementor"
 
@@ -7330,7 +7332,7 @@ msgstr "Leyenda personalizada"
 msgid "Attachment Caption"
 msgstr "Leyenda del adjunto"
 
-#: core/base/document.php:2038
+#: core/base/document.php:2045
 msgid "Future"
 msgstr "Futuro"
 
@@ -7714,7 +7716,7 @@ msgstr "Añadir nueva %s"
 #: includes/widgets/image.php:446 includes/widgets/image.php:480
 #: modules/floating-buttons/base/widget-floating-bars-base.php:1010
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:1502
-#: assets/js/packages/editor-controls/editor-controls.js:13741
+#: assets/js/packages/editor-controls/editor-controls.js:13743
 #: assets/js/packages/editor-controls/editor-controls.strings.js:333
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3312
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:119
@@ -7739,8 +7741,8 @@ msgstr "Ancho máximo"
 #: modules/nested-accordion/widgets/nested-accordion.php:222
 #: modules/nested-tabs/widgets/nested-tabs.php:862
 #: assets/js/packages/editor-controls/editor-controls.js:8731
-#: assets/js/packages/editor-controls/editor-controls.js:11890
-#: assets/js/packages/editor-controls/editor-controls.js:13618
+#: assets/js/packages/editor-controls/editor-controls.js:11892
+#: assets/js/packages/editor-controls/editor-controls.js:13620
 #: assets/js/packages/editor-controls/editor-controls.strings.js:80
 #: assets/js/packages/editor-controls/editor-controls.strings.js:104
 #: assets/js/packages/editor-controls/editor-controls.strings.js:307
@@ -8114,7 +8116,7 @@ msgstr "Importar plantilla"
 #: assets/js/packages/editor-components/editor-components.strings.js:1
 #: assets/js/packages/editor-controls/editor-controls.js:10352
 #: assets/js/packages/editor-controls/editor-controls.js:10715
-#: assets/js/packages/editor-controls/editor-controls.js:11000
+#: assets/js/packages/editor-controls/editor-controls.js:11002
 #: assets/js/packages/editor-controls/editor-controls.strings.js:27
 #: assets/js/packages/editor-controls/editor-controls.strings.js:224
 #: assets/js/packages/editor-controls/editor-controls.strings.js:225
@@ -8140,7 +8142,7 @@ msgstr "Buscar"
 #: assets/js/ai-unify-product-images.js:28817 assets/js/ai.js:12358
 #: assets/js/ai.js:28897 assets/js/app.js:21341
 #: assets/js/packages/editor-controls/editor-controls.js:8600
-#: assets/js/packages/editor-controls/editor-controls.js:35699
+#: assets/js/packages/editor-controls/editor-controls.js:35701
 #: assets/js/packages/editor-controls/editor-controls.strings.js:4
 #: assets/js/packages/editor-controls/editor-controls.strings.js:37
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:1049
@@ -8152,7 +8154,7 @@ msgstr "Eliminar"
 #: includes/editor-templates/repeater.php:18 assets/js/editor.js:4360
 #: assets/js/editor.js:9569
 #: assets/js/packages/editor-controls/editor-controls.js:8574
-#: assets/js/packages/editor-controls/editor-controls.js:35697
+#: assets/js/packages/editor-controls/editor-controls.js:35699
 #: assets/js/packages/editor-controls/editor-controls.strings.js:3
 #: assets/js/packages/editor-controls/editor-controls.strings.js:34
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:837
@@ -8244,7 +8246,7 @@ msgstr "Favorita"
 msgid "Hurray! Your %s is live."
 msgstr "¡Hurra! Tu %s está en directo."
 
-#: core/experiments/manager.php:563 includes/controls/popover-toggle.php:71
+#: core/experiments/manager.php:581 includes/controls/popover-toggle.php:71
 #: includes/controls/popover-toggle.php:73
 msgid "Back to default"
 msgstr "Volver a los valores por defecto"
@@ -8612,7 +8614,7 @@ msgstr "Archivo externo"
 #: assets/js/ai.js:7160 assets/js/app-packages.js:4735 assets/js/app.js:9965
 #: assets/js/common.js:4627 assets/js/editor.js:22368
 #: assets/js/editor.strings.js:12
-#: assets/js/packages/editor-controls/editor-controls.js:11477
+#: assets/js/packages/editor-controls/editor-controls.js:11479
 #: assets/js/packages/editor-controls/editor-controls.strings.js:18
 msgid "Enable"
 msgstr "Activar"
@@ -8628,7 +8630,7 @@ msgstr "Activar"
 msgid "Disable"
 msgstr "Desactivar"
 
-#: core/base/document.php:2044 modules/ai/preferences.php:67
+#: core/base/document.php:2051 modules/ai/preferences.php:67
 #: modules/pro-install/connect-page-renderer.php:77
 #: assets/js/element-manager-admin.js:1955
 #: assets/js/element-manager-admin.js:2261
@@ -9540,7 +9542,7 @@ msgstr "Nombre de usuario"
 #: includes/elements/section.php:644
 #: modules/floating-buttons/base/widget-floating-bars-base.php:981
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:1483
-#: assets/js/packages/editor-controls/editor-controls.js:12178
+#: assets/js/packages/editor-controls/editor-controls.js:12180
 #: assets/js/packages/editor-controls/editor-controls.strings.js:96
 msgid "Background Overlay"
 msgstr "Capa de fondo"
@@ -9588,7 +9590,7 @@ msgstr "Más amplio"
 #: assets/js/ai-admin.js:5322 assets/js/ai-gutenberg.js:5385
 #: assets/js/ai-media-library.js:5328 assets/js/ai-unify-product-images.js:5344
 #: assets/js/ai.js:5439
-#: assets/js/packages/editor-controls/editor-controls.js:13690
+#: assets/js/packages/editor-controls/editor-controls.js:13692
 #: assets/js/packages/editor-controls/editor-controls.strings.js:323
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:2982
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:5457
@@ -9810,7 +9812,7 @@ msgstr "El listado de fuentes utilizadas si la fuente seleccionada no está disp
 #: assets/js/editor.js:51813
 #: assets/js/packages/editor-app-bar/editor-app-bar.js:1234
 #: assets/js/packages/editor-app-bar/editor-app-bar.strings.js:42
-#: assets/js/packages/editor-canvas/editor-canvas.js:9525
+#: assets/js/packages/editor-canvas/editor-canvas.js:9533
 #: assets/js/packages/editor-canvas/editor-canvas.strings.js:12
 #: assets/js/packages/editor-interactions/editor-interactions.js:1172
 #: assets/js/packages/editor-interactions/editor-interactions.strings.js:1
@@ -9856,7 +9858,7 @@ msgstr "Formulario"
 #: modules/atomic-widgets/elements/atomic-tabs/atomic-tabs-menu/atomic-tabs-menu.php:75
 #: modules/atomic-widgets/elements/atomic-tabs/atomic-tabs/atomic-tabs.php:98
 #: modules/atomic-widgets/elements/atomic-youtube/atomic-youtube.php:101
-#: modules/atomic-widgets/elements/div-block/div-block.php:95
+#: modules/atomic-widgets/elements/div-block/div-block.php:97
 #: modules/atomic-widgets/elements/flexbox/flexbox.php:99
 #: modules/atomic-widgets/elements/grid/grid.php:101
 #: modules/usage/settings-reporter.php:13 assets/js/editor.js:25374
@@ -10189,10 +10191,10 @@ msgstr "Estilo"
 #: modules/floating-buttons/base/widget-contact-button-base.php:2687
 #: modules/floating-buttons/base/widget-contact-button-base.php:2818
 #: modules/shapes/module.php:52 assets/js/editor.js:28605
-#: assets/js/packages/editor-controls/editor-controls.js:11396
-#: assets/js/packages/editor-controls/editor-controls.js:11864
-#: assets/js/packages/editor-controls/editor-controls.js:11996
-#: assets/js/packages/editor-controls/editor-controls.js:12619
+#: assets/js/packages/editor-controls/editor-controls.js:11398
+#: assets/js/packages/editor-controls/editor-controls.js:11866
+#: assets/js/packages/editor-controls/editor-controls.js:11998
+#: assets/js/packages/editor-controls/editor-controls.js:12621
 #: assets/js/packages/editor-controls/editor-controls.strings.js:56
 #: assets/js/packages/editor-controls/editor-controls.strings.js:79
 #: assets/js/packages/editor-controls/editor-controls.strings.js:89
@@ -10273,7 +10275,7 @@ msgstr "Avanzado"
 #: core/admin/admin.php:442 core/admin/admin.php:520
 #: core/admin/menu/main.php:13 core/admin/menu/main.php:14
 #: core/documents-manager.php:384 core/upgrade/custom-tasks-manager.php:29
-#: core/upgrade/manager.php:47 includes/editor-templates/navigator.php:94
+#: core/upgrade/manager.php:49 includes/editor-templates/navigator.php:94
 #: includes/editor-templates/panel-elements.php:127
 #: includes/editor-templates/panel.php:147
 #: includes/editor-templates/templates.php:247 includes/plugin.php:831
@@ -10281,7 +10283,7 @@ msgstr "Avanzado"
 #: includes/settings/settings.php:395 modules/compatibility-tag/module.php:36
 #: modules/history/views/history-panel-template.php:23
 #: modules/history/views/revisions-panel-template.php:38
-#: modules/mcp/module.php:77 assets/js/app-packages.js:3828
+#: modules/mcp/module.php:169 assets/js/app-packages.js:3828
 #: assets/js/app.js:2783 assets/js/packages/editor-audits/editor-audits.js:673
 #: assets/js/packages/editor-audits/editor-audits.strings.js:177
 msgid "Elementor"
@@ -10304,7 +10306,7 @@ msgstr "Sección"
 #: includes/controls/gaps.php:57
 #: includes/controls/groups/grid-container.php:119
 #: includes/elements/column.php:61
-#: assets/js/packages/editor-controls/editor-controls.js:11252
+#: assets/js/packages/editor-controls/editor-controls.js:11254
 #: assets/js/packages/editor-controls/editor-controls.strings.js:170
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3809
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4095
@@ -10322,7 +10324,7 @@ msgstr "Agregar"
 #: includes/controls/groups/typography.php:436 includes/elements/column.php:674
 #: includes/elements/section.php:1131 assets/js/editor-modules.js:696
 #: assets/js/editor.js:27144
-#: assets/js/packages/editor-controls/editor-controls.js:13649
+#: assets/js/packages/editor-controls/editor-controls.js:13651
 #: assets/js/packages/editor-controls/editor-controls.strings.js:315
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:5436
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:49
@@ -10380,7 +10382,7 @@ msgstr "Centro"
 #: core/document-types/page-base.php:132 includes/elements/column.php:777
 #: includes/elements/container.php:1380 includes/elements/section.php:1232
 #: includes/widgets/common-base.php:310
-#: assets/js/packages/editor-controls/editor-controls.js:13494
+#: assets/js/packages/editor-controls/editor-controls.js:13496
 #: assets/js/packages/editor-controls/editor-controls.strings.js:279
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4956
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:252
@@ -10430,7 +10432,7 @@ msgstr "Disposición"
 #: modules/nested-accordion/widgets/nested-accordion.php:547
 #: modules/nested-tabs/widgets/nested-tabs.php:706
 #: modules/nested-tabs/widgets/nested-tabs.php:1056
-#: assets/js/packages/editor-controls/editor-controls.js:13525
+#: assets/js/packages/editor-controls/editor-controls.js:13527
 #: assets/js/packages/editor-controls/editor-controls.strings.js:287
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4957
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:253
@@ -10449,7 +10451,7 @@ msgstr "Relleno"
 #: modules/nested-tabs/widgets/nested-tabs.php:317
 #: modules/shapes/widgets/text-path.php:540
 #: modules/shapes/widgets/text-path.php:611
-#: assets/js/packages/editor-controls/editor-controls.js:13586
+#: assets/js/packages/editor-controls/editor-controls.js:13588
 #: assets/js/packages/editor-controls/editor-controls.strings.js:301
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4879
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:244
@@ -10491,7 +10493,7 @@ msgstr "Ancho"
 #: includes/widgets/google-maps.php:192 includes/widgets/icon-list.php:367
 #: includes/widgets/image-box.php:395 includes/widgets/image.php:359
 #: includes/widgets/progress.php:331
-#: assets/js/packages/editor-controls/editor-controls.js:13591
+#: assets/js/packages/editor-controls/editor-controls.js:13593
 #: assets/js/packages/editor-controls/editor-controls.strings.js:302
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:4882
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:245
@@ -10565,7 +10567,7 @@ msgstr "Información del sistema"
 #: modules/shapes/widgets/text-path.php:304 assets/js/ai-admin.js:4972
 #: assets/js/ai-gutenberg.js:5035 assets/js/ai-media-library.js:4978
 #: assets/js/ai-unify-product-images.js:4994 assets/js/ai.js:5089
-#: assets/js/packages/editor-controls/editor-controls.js:12317
+#: assets/js/packages/editor-controls/editor-controls.js:12319
 #: assets/js/packages/editor-controls/editor-controls.strings.js:64
 msgid "Text"
 msgstr "Texto"
@@ -10700,8 +10702,8 @@ msgstr "Pequeño"
 #: modules/floating-buttons/base/widget-floating-bars-base.php:563
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:1094
 #: assets/js/editor.js:42885
-#: assets/js/packages/editor-controls/editor-controls.js:11118
-#: assets/js/packages/editor-controls/editor-controls.js:13960
+#: assets/js/packages/editor-controls/editor-controls.js:11120
+#: assets/js/packages/editor-controls/editor-controls.js:13962
 #: assets/js/packages/editor-controls/editor-controls.strings.js:229
 #: assets/js/packages/editor-controls/editor-controls.strings.js:336
 #: assets/js/packages/editor-interactions/editor-interactions.js:785
@@ -10731,13 +10733,13 @@ msgstr "Tipo"
 #: assets/js/element-manager-admin.js:1772
 #: assets/js/element-manager-admin.strings.js:38
 #: assets/js/packages/editor-controls/editor-controls.js:8551
-#: assets/js/packages/editor-controls/editor-controls.js:35698
+#: assets/js/packages/editor-controls/editor-controls.js:35700
 #: assets/js/packages/editor-controls/editor-controls.strings.js:1
 #: assets/js/packages/editor-controls/editor-controls.strings.js:35
 msgid "Show"
 msgstr "Mostrar"
 
-#: core/base/document.php:2022
+#: core/base/document.php:2029
 #: core/kits/documents/tabs/settings-lightbox.php:96
 #: core/kits/documents/tabs/settings-lightbox.php:100
 #: core/kits/documents/tabs/settings-lightbox.php:117
@@ -10878,8 +10880,8 @@ msgstr "Alineación"
 #: modules/nested-accordion/widgets/nested-accordion.php:612
 #: modules/nested-tabs/widgets/nested-tabs.php:900
 #: modules/shapes/widgets/text-path.php:251
-#: assets/js/packages/editor-controls/editor-controls.js:12022
-#: assets/js/packages/editor-controls/editor-controls.js:13582
+#: assets/js/packages/editor-controls/editor-controls.js:12024
+#: assets/js/packages/editor-controls/editor-controls.js:13584
 #: assets/js/packages/editor-controls/editor-controls.strings.js:90
 #: assets/js/packages/editor-controls/editor-controls.strings.js:300
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:5410
@@ -10929,7 +10931,7 @@ msgstr "Después"
 #: includes/elements/column.php:547 includes/elements/container.php:995
 #: includes/elements/section.php:831 includes/widgets/common-base.php:966
 #: modules/floating-buttons/base/widget-floating-bars-base.php:761
-#: assets/js/packages/editor-controls/editor-controls.js:13711
+#: assets/js/packages/editor-controls/editor-controls.js:13713
 #: assets/js/packages/editor-controls/editor-controls.strings.js:327
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:5463
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:51
@@ -10967,7 +10969,7 @@ msgstr "Sufijo de número"
 #: modules/atomic-widgets/elements/atomic-image/atomic-image.php:82
 #: modules/atomic-widgets/elements/atomic-self-hosted-video/atomic-self-hosted-video.php:166
 #: assets/js/packages/editor-controls/editor-controls.js:494
-#: assets/js/packages/editor-controls/editor-controls.js:12180
+#: assets/js/packages/editor-controls/editor-controls.js:12182
 #: assets/js/packages/editor-controls/editor-controls.strings.js:97
 #: assets/js/packages/editor-controls/editor-controls.strings.js:180
 msgid "Image"
@@ -10997,7 +10999,7 @@ msgstr "Editor de texto"
 #: modules/floating-buttons/base/widget-contact-button-base.php:2994
 #: modules/floating-buttons/base/widget-floating-bars-base.php:1437
 #: assets/js/packages/editor-controls/editor-controls.js:10286
-#: assets/js/packages/editor-controls/editor-controls.js:13622
+#: assets/js/packages/editor-controls/editor-controls.js:13624
 #: assets/js/packages/editor-controls/editor-controls.strings.js:195
 #: assets/js/packages/editor-controls/editor-controls.strings.js:308
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3159
@@ -11023,8 +11025,8 @@ msgstr "Arriba"
 #: modules/shapes/widgets/text-path.php:185
 #: assets/js/packages/editor-controls/editor-controls.js:10291
 #: assets/js/packages/editor-controls/editor-controls.js:10301
-#: assets/js/packages/editor-controls/editor-controls.js:13627
-#: assets/js/packages/editor-controls/editor-controls.js:13632
+#: assets/js/packages/editor-controls/editor-controls.js:13629
+#: assets/js/packages/editor-controls/editor-controls.js:13634
 #: assets/js/packages/editor-controls/editor-controls.strings.js:199
 #: assets/js/packages/editor-controls/editor-controls.strings.js:207
 #: assets/js/packages/editor-controls/editor-controls.strings.js:309
@@ -11050,7 +11052,7 @@ msgstr "Derecha"
 #: modules/floating-buttons/base/widget-contact-button-base.php:3002
 #: modules/floating-buttons/base/widget-floating-bars-base.php:1441
 #: assets/js/packages/editor-controls/editor-controls.js:10296
-#: assets/js/packages/editor-controls/editor-controls.js:13637
+#: assets/js/packages/editor-controls/editor-controls.js:13639
 #: assets/js/packages/editor-controls/editor-controls.strings.js:204
 #: assets/js/packages/editor-controls/editor-controls.strings.js:313
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:3171
@@ -11085,8 +11087,8 @@ msgstr "Google"
 #: modules/shapes/widgets/text-path.php:177
 #: assets/js/packages/editor-controls/editor-controls.js:10291
 #: assets/js/packages/editor-controls/editor-controls.js:10301
-#: assets/js/packages/editor-controls/editor-controls.js:13627
-#: assets/js/packages/editor-controls/editor-controls.js:13632
+#: assets/js/packages/editor-controls/editor-controls.js:13629
+#: assets/js/packages/editor-controls/editor-controls.js:13634
 #: assets/js/packages/editor-controls/editor-controls.strings.js:198
 #: assets/js/packages/editor-controls/editor-controls.strings.js:208
 #: assets/js/packages/editor-controls/editor-controls.strings.js:310
@@ -11118,7 +11120,7 @@ msgstr "Izquierda"
 #: modules/atomic-widgets/elements/atomic-image/atomic-image.php:95
 #: modules/atomic-widgets/elements/atomic-paragraph/atomic-paragraph.php:114
 #: modules/atomic-widgets/elements/atomic-svg/atomic-svg.php:90
-#: modules/atomic-widgets/elements/div-block/div-block.php:139
+#: modules/atomic-widgets/elements/div-block/div-block.php:141
 #: modules/atomic-widgets/elements/flexbox/flexbox.php:143
 #: modules/atomic-widgets/elements/grid/grid.php:137
 #: modules/floating-buttons/base/widget-contact-button-base.php:418
@@ -11133,7 +11135,7 @@ msgstr "Izquierda"
 #: modules/link-in-bio/base/widget-link-in-bio-base.php:1099
 #: modules/shapes/widgets/text-path.php:158
 #: assets/js/packages/editor-controls/editor-controls.js:10788
-#: assets/js/packages/editor-controls/editor-controls.js:35050
+#: assets/js/packages/editor-controls/editor-controls.js:35052
 #: assets/js/packages/editor-controls/editor-controls.strings.js:26
 #: assets/js/packages/editor-controls/editor-controls.strings.js:188
 msgid "Link"
@@ -11177,7 +11179,7 @@ msgstr "Enlace"
 #: assets/js/kit-elements-defaults-editor.strings.js:11
 #: assets/js/packages/editor-audits/editor-audits.js:617
 #: assets/js/packages/editor-audits/editor-audits.strings.js:153
-#: assets/js/packages/editor-controls/editor-controls.js:11471
+#: assets/js/packages/editor-controls/editor-controls.js:11473
 #: assets/js/packages/editor-controls/editor-controls.strings.js:17
 #: assets/js/packages/editor-design-system/editor-design-system.js:447
 #: assets/js/packages/editor-design-system/editor-design-system.strings.js:38
@@ -11545,7 +11547,7 @@ msgid "Heading"
 msgstr "Encabezado"
 
 #: includes/widgets/html.php:42
-#: assets/js/packages/editor-controls/editor-controls.js:35384
+#: assets/js/packages/editor-controls/editor-controls.js:35386
 #: assets/js/packages/editor-controls/editor-controls.strings.js:139
 msgid "HTML"
 msgstr "HTML"
@@ -11641,8 +11643,8 @@ msgstr "Color secundario"
 #: assets/js/editor.js:27850
 #: assets/js/packages/editor-controls/editor-controls.js:8728
 #: assets/js/packages/editor-controls/editor-controls.js:8959
-#: assets/js/packages/editor-controls/editor-controls.js:12186
-#: assets/js/packages/editor-controls/editor-controls.js:12321
+#: assets/js/packages/editor-controls/editor-controls.js:12188
+#: assets/js/packages/editor-controls/editor-controls.js:12323
 #: assets/js/packages/editor-controls/editor-controls.strings.js:65
 #: assets/js/packages/editor-controls/editor-controls.strings.js:99
 #: assets/js/packages/editor-controls/editor-controls.strings.js:103
@@ -11708,7 +11710,7 @@ msgstr "Seleccionar imagen"
 #: modules/floating-buttons/base/widget-floating-bars-base.php:231
 #: modules/floating-buttons/base/widget-floating-bars-base.php:298
 #: assets/js/packages/editor-controls/editor-controls.js:8551
-#: assets/js/packages/editor-controls/editor-controls.js:35698
+#: assets/js/packages/editor-controls/editor-controls.js:35700
 #: assets/js/packages/editor-controls/editor-controls.strings.js:2
 #: assets/js/packages/editor-controls/editor-controls.strings.js:36
 msgid "Hide"
@@ -11749,10 +11751,10 @@ msgstr "Google Maps"
 #: includes/elements/section.php:498 includes/widgets/divider.php:538
 #: includes/widgets/heading.php:234
 #: modules/atomic-widgets/elements/atomic-background-video/atomic-background-video.php:198
-#: modules/atomic-widgets/elements/div-block/div-block.php:136
+#: modules/atomic-widgets/elements/div-block/div-block.php:138
 #: modules/atomic-widgets/elements/flexbox/flexbox.php:137
 #: modules/atomic-widgets/elements/grid/grid.php:131
-#: assets/js/packages/editor-controls/editor-controls.js:10921
+#: assets/js/packages/editor-controls/editor-controls.js:10923
 #: assets/js/packages/editor-controls/editor-controls.strings.js:174
 msgid "HTML Tag"
 msgstr "Etiqueta HTML"
@@ -11841,8 +11843,8 @@ msgstr "Básico"
 #: includes/base/element-base.php:921 includes/base/element-base.php:933
 #: includes/widgets/divider.php:981 includes/widgets/icon-box.php:585
 #: includes/widgets/icon.php:376 modules/shapes/widgets/text-path.php:283
-#: assets/js/packages/editor-controls/editor-controls.js:13098
-#: assets/js/packages/editor-controls/editor-controls.js:13159
+#: assets/js/packages/editor-controls/editor-controls.js:13100
+#: assets/js/packages/editor-controls/editor-controls.js:13161
 #: assets/js/packages/editor-controls/editor-controls.strings.js:266
 #: assets/js/packages/editor-controls/editor-controls.strings.js:270
 msgid "Rotate"
@@ -11889,7 +11891,7 @@ msgstr "Por ejemplo: Acerca de"
 msgid "I am a description. Click the edit button to change this text."
 msgstr "Soy una descripción. Haz clic en el botón de editar para cambiar este texto."
 
-#: core/experiments/manager.php:411
+#: core/experiments/manager.php:429
 #: core/kits/documents/tabs/settings-background.php:78
 #: includes/base/widget-base.php:298 includes/controls/animation.php:154
 #: includes/controls/font.php:66 includes/controls/groups/background.php:319
@@ -11941,7 +11943,7 @@ msgstr "Soy una descripción. Haz clic en el botón de editar para cambiar este 
 #: modules/page-templates/module.php:299
 #: modules/shapes/widgets/text-path.php:203 assets/js/editor.js:28600
 #: assets/js/editor.js:28606
-#: assets/js/packages/editor-controls/editor-controls.js:13486
+#: assets/js/packages/editor-controls/editor-controls.js:13488
 #: assets/js/packages/editor-controls/editor-controls.strings.js:277
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.js:6436
 #: assets/js/packages/editor-editing-panel/editor-editing-panel.strings.js:321
@@ -12002,7 +12004,7 @@ msgstr "Este ID será el ID CSS que tendrás que usar en tu propia página, sin 
 msgid "Accent"
 msgstr "Énfasis"
 
-#: core/base/document.php:2014
+#: core/base/document.php:2021
 #: core/common/modules/finder/categories/settings.php:49
 msgid "General Settings"
 msgstr "Ajustes generales"
@@ -12111,14 +12113,14 @@ msgstr "Conmutador"
 msgid "London Eye, London, United Kingdom"
 msgstr "London Eye, Londres, Reino Unido"
 
-#: core/experiments/manager.php:413 core/experiments/manager.php:706
+#: core/experiments/manager.php:431 core/experiments/manager.php:724
 #: modules/element-cache/module.php:106 assets/js/editor.js:53358
 #: assets/js/element-manager-admin.js:1956
 #: assets/js/element-manager-admin.strings.js:32
 msgid "Inactive"
 msgstr "Inactivo"
 
-#: core/experiments/manager.php:412 core/experiments/manager.php:705
+#: core/experiments/manager.php:430 core/experiments/manager.php:723
 #: modules/element-cache/module.php:107
 #: modules/floating-buttons/base/widget-contact-button-base.php:1312
 #: modules/nested-accordion/widgets/nested-accordion.php:676

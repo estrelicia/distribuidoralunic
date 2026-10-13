@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.3\n"
+"X-Generator: GlotPress/4.1.0\n"
 "Language: es_AR\n"
 "Project-Id-Version: Themes - Twenty Twenty-Five\n"
 
@@ -110,7 +110,7 @@ msgctxt "Color name"
 msgid "Base"
 msgstr "Base"
 
-#: functions.php:114
+#: functions.php:109
 msgid "A collection of full page layouts."
 msgstr "Una colección de diseños de página completa."
 
@@ -205,7 +205,7 @@ msgstr "Facebook"
 msgid "Instagram"
 msgstr "Instagram"
 
-#: functions.php:84
+#: functions.php:80
 msgid "Checkmark"
 msgstr "Marca de comprobación"
 
