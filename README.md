@@ -7,9 +7,7 @@ Elementor Pro, JetEngine, Ivory Search y Product Filter están apagados. Element
 ## Dónde está cada cosa
 
 - Estado actual y reglas que siguen: `documentos/estado.md`
-- Plan del plugin de CMS y seguridad: `documentos/implementacion-plugin-cms.md`
-- Plugin Megadruid CMS (0.3.19, etapas 0–8 y UI de marca): `wp-content/plugins/megadruid-cms/README.md`
-- Paquete del plugin + documentación: `documentos/paquete-megadruid-cms/`
+- Megadruid CMS vive fuera de este repo (carpeta local `documentos/megadruid-cms/`; WordPress carga `wp-content/plugins/megadruid-cms/`)
 - Política REST: `documentos/rest-api-lunic.md`
 - Capturas de referencia: `documentos/linea-base/diseno/`
 - Plan y actas ya cerradas: `documentos/archivo/`

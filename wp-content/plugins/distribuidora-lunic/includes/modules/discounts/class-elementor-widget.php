@@ -48,28 +48,35 @@ class Elementor_Widget extends \Elementor\Widget_Base {
             echo '<div class="wcd-discount-text" data-product-id="' . esc_attr((string) $product_id) . '"></div>';
             $nonce = wp_create_nonce('wcd_ajax_nonce');
             $ajax = admin_url('admin-ajax.php');
-            $custom = esc_js($settings['custom_text'] ?? '');
+            $custom = isset($settings['custom_text']) ? (string) $settings['custom_text'] : '';
             add_action('wp_footer', static function () use ($product_id, $nonce, $ajax, $custom) {
                 ?>
                 <script>
                 jQuery(function ($) {
+                    var customText = <?php echo wp_json_encode($custom); ?>;
+                    function setDiscountText(text) {
+                        $('.wcd-discount-text').text(text || '');
+                    }
                     function update(id) {
-                        if (!id) { $('.wcd-discount-text').html(''); return; }
+                        if (!id) { setDiscountText(''); return; }
+                        if (customText) {
+                            setDiscountText(customText);
+                            return;
+                        }
                         $.post('<?php echo esc_url($ajax); ?>', {
                             action: 'lunic_get_variation_discount',
                             product_id: <?php echo (int) $product_id; ?>,
                             variation_id: id,
-                            custom_text: '<?php echo $custom; ?>',
                             nonce: '<?php echo esc_js($nonce); ?>'
                         }).done(function (response) {
-                            $('.wcd-discount-text').html(response.success ? response.data.discount_text : '');
+                            setDiscountText(response.success ? response.data.discount_text : '');
                         });
                     }
                     $(document).on('found_variation show_variation', 'form.variations_form', function (e, variation) {
                         update(variation.variation_id);
                     });
                     $(document).on('reset_data', 'form.variations_form', function () {
-                        $('.wcd-discount-text').html('');
+                        setDiscountText('');
                     });
                 });
                 </script>

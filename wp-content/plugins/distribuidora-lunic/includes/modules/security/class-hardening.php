@@ -11,8 +11,7 @@ class Hardening {
         add_action('init', [$this, 'init_cleanup'], 1);
         add_action('wp_footer', [$this, 'deregister_embed']);
         add_filter('xmlrpc_enabled', '__return_false');
-        add_filter('rest_authentication_errors', [$this, 'rest_require_login']);
-        add_filter('rest_endpoints', [$this, 'trim_wp_core_endpoints']);
+        add_filter('rest_endpoints', [$this, 'hide_user_endpoints']);
         add_filter('auto_plugin_update_send_email', '__return_false');
         add_filter('auto_theme_update_send_email', '__return_false');
         add_filter('pings_open', '__return_false');
@@ -31,8 +30,11 @@ class Hardening {
         header('X-XSS-Protection: 1;mode=block');
         header('Referrer-Policy: no-referrer-when-downgrade');
         header('Content-Security-Policy: upgrade-insecure-requests;');
-        header('Strict-Transport-Security: max-age=31536000;');
-        header('Permissions-Policy: geolocation=(); midi=();notifications=();push=();sync-xhr=();accelerometer=(); gyroscope=(); magnetometer=(); payment=(); camera=(); microphone=();usb=(); xr=();speaker=(self);vibrate=();fullscreen=(self);');
+        $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '') === '443');
+        if ($https || (function_exists('is_ssl') && is_ssl())) {
+            header('Strict-Transport-Security: max-age=31536000;');
+        }
+        header('Permissions-Policy: geolocation=(); midi=();notifications=();push=();sync-xhr=();accelerometer=(); gyroscope=(); magnetometer=(); camera=(); microphone=();usb=(); xr=();speaker=(self);vibrate=();fullscreen=(self);');
         header_remove('x-powered-by');
     }
 
@@ -56,36 +58,16 @@ class Hardening {
         wp_deregister_script('wp-embed');
     }
 
-    public function rest_require_login($result) {
-        if (is_user_logged_in() || $this->is_lunic_public_route()) {
-            return $result;
-        }
-        return new \WP_Error(
-            'rest_not_logged_in',
-            __('You are not currently logged in.', 'distribuidora-lunic'),
-            ['status' => 401]
-        );
-    }
-
-    public function trim_wp_core_endpoints($endpoints) {
+    public function hide_user_endpoints($endpoints) {
         if (is_user_logged_in()) {
             return $endpoints;
         }
         foreach ($endpoints as $route => $endpoint) {
-            if (stripos($route, '/wp/') === 0) {
+            if (stripos((string) $route, '/wp/v2/users') === 0) {
                 unset($endpoints[$route]);
             }
         }
         return $endpoints;
-    }
-
-    private function is_lunic_public_route(): bool {
-        $uri = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '';
-        return strpos($uri, '/wp-json/lunic/v1/') !== false;
-    }
-
-    public function sale_flash_oferta($text) {
-        return str_replace(__('Sale!', 'woocommerce'), 'Oferta', $text);
     }
 
     public function empty_generator() {

@@ -219,6 +219,33 @@ final class Elementor_Woo_Account_Widget extends Elementor_Woo_Widget {
     }
 }
 
+final class Elementor_Woo_Menu_Cart_Widget extends Elementor_Woo_Widget {
+
+    public function get_name(): string {
+        return 'woocommerce-menu-cart';
+    }
+
+    public function get_title(): string {
+        return 'Carrito (ícono)';
+    }
+
+    public function get_icon(): string {
+        return 'eicon-cart-medium';
+    }
+
+    protected function panel_title(): string {
+        return 'Carrito (ícono)';
+    }
+
+    protected function panel_help(): string {
+        return 'Ícono y contador del carrito de Lunic. En el editor se ve este recuadro; en la tienda se ve el enlace con el total.';
+    }
+
+    protected function frontend_html(): string {
+        return Elementor_Fallback::cart_link_shortcode();
+    }
+}
+
 final class Elementor_Woo_Notices_Widget extends Elementor_Woo_Widget {
 
     public function get_name(): string {

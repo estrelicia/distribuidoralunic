@@ -2,14 +2,14 @@
 
 namespace Distribuidora_Lunic\Modules\Search;
 
+use Distribuidora_Lunic\Visitor;
+
 defined('ABSPATH') || exit;
 
 class Suggestions {
 
     public function register(): void {
         add_action('rest_api_init', [$this, 'register_route']);
-        add_action('wp_ajax_lunic_search', [$this, 'ajax']);
-        add_action('wp_ajax_nopriv_lunic_search', [$this, 'ajax']);
     }
 
     public function register_route(): void {
@@ -27,19 +27,22 @@ class Suggestions {
     }
 
     public function rest(\WP_REST_Request $request): \WP_REST_Response {
+        if (Visitor::limited('search', 30, MINUTE_IN_SECONDS)) {
+            return new \WP_REST_Response(['items' => []], 429);
+        }
         return new \WP_REST_Response($this->query((string) $request->get_param('q')));
-    }
-
-    public function ajax(): void {
-        $q = isset($_GET['q']) ? sanitize_text_field(wp_unslash($_GET['q'])) : '';
-        wp_send_json($this->query($q));
     }
 
     /** @return array{items: array<int, array<string, string>>} */
     public function query(string $term): array {
         $term = trim($term);
-        if (mb_strlen($term) < 1) {
+        if (mb_strlen($term) < 2) {
             return ['items' => []];
+        }
+        $cache_key = 'lunic_search_' . md5(mb_strtolower($term));
+        $cached = get_transient($cache_key);
+        if (is_array($cached) && isset($cached['items']) && is_array($cached['items'])) {
+            return $cached;
         }
 
         $found = new \WP_Query([
@@ -68,7 +71,9 @@ class Suggestions {
             ];
         }
         wp_reset_postdata();
-        return ['items' => $items];
+        $result = ['items' => $items];
+        set_transient($cache_key, $result, 5 * MINUTE_IN_SECONDS);
+        return $result;
     }
 
     private static function plain(string $html): string {

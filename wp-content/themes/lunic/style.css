@@ -3,7 +3,7 @@ Theme Name: Lunic
 Theme URI: https://distribuidoralunic.com.ar/
 Author: Distribuidora Lunic
 Description: Tema de la tienda. Header, páginas institucionales y plantillas WooCommerce.
-Version: 0.3.61
+Version: 0.3.68
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: lunic
@@ -94,8 +94,9 @@ img { max-width: 100%; height: auto; }
 a { color: var(--lunic-green); }
 button, .button, input, textarea { font-family: var(--lunic-font); }
 
-body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-popup-modal,
-body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lightbox { display: none !important; }
+/* Popup 8261 (megamenú viejo de Elementor): el sitio usa #lunic-mega; sin esto se abrían los dos. */
+body:not(.elementor-editor-active):not(.elementor-editor-preview) #elementor-popup-modal-8261,
+body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-popup-modal[data-elementor-id="8261"] { display: none !important; }
 .lunic-header {
 	position: sticky;
 	top: 0;
@@ -180,7 +181,8 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 	flex-wrap: nowrap;
 }
 .lunic-header .elementor-widget-nav-menu { width: auto !important; max-width: none !important; flex: 1 1 auto; min-width: 0; }
-.lunic-header > .lunic-menu-btn { display: none; }
+.lunic-header > .lunic-menu-btn,
+.lunic-header > .lunic-header__cart { display: none; }
 .lunic-header .elementor-widget-woocommerce-menu-cart,
 .lunic-header .elementor-widget-icon { width: auto !important; max-width: none !important; flex: 0 0 auto; }
 .lunic-header__tools { display: flex; align-items: center; gap: 0; margin-left: 0.5rem; }
@@ -308,13 +310,13 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 .lunic-panel__cats a { font-weight: 700; }
 
 .lunic-footer,
-.elementor-7421 {
+.lunic-slot--footer {
 	background: var(--lunic-accent);
 	color: var(--lunic-green);
 	font-family: var(--lunic-font) !important;
 }
 .lunic-footer__bar,
-.elementor-7421 .elementor-top-section:first-child > .elementor-container {
+.lunic-slot--footer .elementor-top-section:first-child > .elementor-container {
 	display: grid !important;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: 1.5rem;
@@ -325,25 +327,25 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 	background: var(--lunic-accent);
 	color: var(--lunic-green);
 }
-.elementor-7421 .elementor-top-section:first-child {
+.lunic-slot--footer .elementor-top-section:first-child {
 	padding: 0 !important;
 	background: var(--lunic-accent) !important;
 }
-.elementor-7421 .elementor-top-section:first-child .elementor-column,
-.elementor-7421 .elementor-top-section:first-child .elementor-top-column {
+.lunic-slot--footer .elementor-top-section:first-child .elementor-column,
+.lunic-slot--footer .elementor-top-section:first-child .elementor-top-column {
 	width: auto !important;
 	min-width: 0;
 }
-.elementor-7421 .elementor-element-populated,
-.elementor-7421 .elementor-widget-wrap,
-.elementor-7421 .elementor-widget,
-.elementor-7421 .elementor-widget-container {
+.lunic-slot--footer .elementor-element-populated,
+.lunic-slot--footer .elementor-widget-wrap,
+.lunic-slot--footer .elementor-widget,
+.lunic-slot--footer .elementor-widget-container {
 	margin: 0 !important;
 	padding: 0 !important;
 }
 .lunic-footer h2,
-.elementor-7421 h2,
-.elementor-7421 .elementor-heading-title {
+.lunic-slot--footer h2,
+.lunic-slot--footer .elementor-heading-title {
 	margin: 0 0 0.5rem !important;
 	padding: 0 !important;
 	font-size: var(--lunic-title-block) !important;
@@ -354,11 +356,11 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 	color: var(--lunic-green) !important;
 }
 .lunic-footer p,
-.elementor-7421 p,
-.elementor-7421 .elementor-widget-text-editor,
-.elementor-7421 .elementor-icon-box-title,
-.elementor-7421 .elementor-icon-box-description,
-.elementor-7421 .elementor-icon-box-title span {
+.lunic-slot--footer p,
+.lunic-slot--footer .elementor-widget-text-editor,
+.lunic-slot--footer .elementor-icon-box-title,
+.lunic-slot--footer .elementor-icon-box-description,
+.lunic-slot--footer .elementor-icon-box-title span {
 	margin: 0 0 0.35rem !important;
 	color: var(--lunic-green) !important;
 	font-size: 1rem !important;
@@ -368,21 +370,21 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 	text-align: left !important;
 }
 .lunic-footer a,
-.elementor-7421 a {
+.lunic-slot--footer a {
 	color: var(--lunic-green) !important;
 	text-decoration: none;
 	font-family: var(--lunic-font) !important;
 }
 .lunic-footer__list,
-.elementor-7421 .lunic-footer__list,
-.elementor-7421 .elementor-nav-menu {
+.lunic-slot--footer .lunic-footer__list,
+.lunic-slot--footer .elementor-nav-menu {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 .lunic-footer__list a,
-.elementor-7421 .lunic-footer__list a,
-.elementor-7421 .elementor-nav-menu a {
+.lunic-slot--footer .lunic-footer__list a,
+.lunic-slot--footer .elementor-nav-menu a {
 	display: block;
 	min-height: 44px;
 	padding: 0.35rem 0;
@@ -396,27 +398,27 @@ body:not(.elementor-editor-active):not(.elementor-editor-preview) .elementor-lig
 }
 .lunic-footer__list a:hover,
 .lunic-footer__list a:focus,
-.elementor-7421 .lunic-footer__list a:hover,
-.elementor-7421 .lunic-footer__list a:focus { color: var(--lunic-text) !important; }
-.elementor-7421 .elementor-icon-box-wrapper {
+.lunic-slot--footer .lunic-footer__list a:hover,
+.lunic-slot--footer .lunic-footer__list a:focus { color: var(--lunic-text) !important; }
+.lunic-slot--footer .elementor-icon-box-wrapper {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 	margin: 0 0 0.35rem;
 }
-.elementor-7421 .elementor-icon-box-icon { margin: 0 !important; }
-.elementor-7421 .elementor-icon { color: var(--lunic-green) !important; font-size: 1.15rem; }
-.elementor-7421 .elementor-widget-theme-site-logo img,
+.lunic-slot--footer .elementor-icon-box-icon { margin: 0 !important; }
+.lunic-slot--footer .elementor-icon { color: var(--lunic-green) !important; font-size: 1.15rem; }
+.lunic-slot--footer .elementor-widget-theme-site-logo img,
 .lunic-footer__logo img { max-height: 72px; width: auto; }
 .lunic-footer__end,
-.elementor-7421 .elementor-top-section:last-child {
+.lunic-slot--footer .elementor-top-section:last-child {
 	height: 28px !important;
 	min-height: 28px !important;
 	padding: 0 !important;
 	background: #4a4a4a !important;
 }
-.elementor-7421 .elementor-top-section:last-child .elementor-container,
-.elementor-7421 .elementor-top-section:last-child .elementor-column { min-height: 0 !important; height: 28px; padding: 0 !important; }
+.lunic-slot--footer .elementor-top-section:last-child .elementor-container,
+.lunic-slot--footer .elementor-top-section:last-child .elementor-column { min-height: 0 !important; height: 28px; padding: 0 !important; }
 .lunic-footer__toggle { display: none; }
 .lunic-footer__phone,
 .lunic-footer__phone a { font-size: 1rem; font-weight: 400; color: var(--lunic-green); }
@@ -728,7 +730,7 @@ body.theme-lunic .lunic-search__btn svg path { fill: var(--lunic-green); }
 }
 .elementor-widget-shortcode .lunic-search { max-width: 100%; margin: 0.4rem 0 1rem; }
 @media (min-width: 782px) {
-	.elementor-7825 .elementor-widget-shortcode {
+	.lunic-slot--shop .elementor-widget-shortcode {
 		width: 75% !important;
 		max-width: 75% !important;
 		margin-left: auto !important;
@@ -877,11 +879,22 @@ body.theme-lunic .lunic-search__btn svg path { fill: var(--lunic-green); }
 .single-product .woocommerce-Tabs-panel--description img,
 .single-product .woocommerce-Tabs-panel--description table,
 .single-product .woocommerce-Tabs-panel--description iframe,
-.single-product .woocommerce-Tabs-panel--description video,
 .single-product .lunic-product-description img,
 .single-product .lunic-product-description table {
 	max-width: 100%;
 	height: auto;
+}
+.single-product .woocommerce-Tabs-panel--description video,
+.single-product .lunic-product-description .wp-video,
+.single-product .lunic-product-description video,
+.single-product .woocommerce-product-details__short-description .wp-video,
+.single-product .woocommerce-product-details__short-description video {
+	max-width: 100%;
+	width: 100%;
+	height: auto !important;
+}
+.single-product .lunic-product-description .wp-video {
+	max-width: 360px;
 }
 .single-product .woocommerce-product-details__short-description p,
 .single-product .woocommerce-Tabs-panel--description p,
@@ -1094,36 +1107,50 @@ body.theme-lunic .woocommerce-checkout #order_review_heading {
 		right: 4.6rem;
 		z-index: 30;
 	}
+	.lunic-header > .lunic-header__cart {
+		display: inline-flex;
+		position: absolute;
+		top: 13px;
+		right: 8.2rem;
+		z-index: 30;
+	}
+	.lunic-header > .lunic-header__cart .lunic-cart {
+		height: 44px;
+		min-height: 44px;
+		padding: 0 10px;
+		background: #fff;
+	}
+	.lunic-header > .lunic-header__cart .lunic-cart__total { display: none; }
 	ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-	.elementor-7421 .elementor-top-section:first-child > .elementor-container,
+	.lunic-slot--footer .elementor-top-section:first-child > .elementor-container,
 	.lunic-footer__bar {
 		grid-template-columns: 1fr 1fr;
 		gap: 1.5rem;
 		padding: 1.75rem 1rem !important;
 	}
-	.elementor-7421 .elementor-top-section:first-child .elementor-column,
-	.elementor-7421 .elementor-top-section:first-child .elementor-top-column { width: auto !important; }
+	.lunic-slot--footer .elementor-top-section:first-child .elementor-column,
+	.lunic-slot--footer .elementor-top-section:first-child .elementor-top-column { width: auto !important; }
 }
 @media (max-width: 781px) {
 	.lunic-nav--desktop { display: none; }
 	.lunic-menu-btn { display: flex; }
 	.lunic-header .elementor-widget-woocommerce-menu-cart { display: none !important; }
-	.elementor-7421 .elementor-top-section:first-child > .elementor-container,
+	.lunic-slot--footer .elementor-top-section:first-child > .elementor-container,
 	.lunic-footer__bar { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 1.75rem 1rem 2rem !important; }
-	.elementor-7421 h2,
-	.elementor-7421 .elementor-heading-title,
-	.elementor-7421 p,
-	.elementor-7421 .elementor-widget-text-editor,
-	.elementor-7421 .lunic-footer__list a,
-	.elementor-7421 .elementor-icon-box-title,
-	.elementor-7421 .elementor-icon-box-description { text-align: center !important; }
-	.elementor-7421 .elementor-widget-theme-site-logo,
-	.elementor-7421 .elementor-icon-box-wrapper,
+	.lunic-slot--footer h2,
+	.lunic-slot--footer .elementor-heading-title,
+	.lunic-slot--footer p,
+	.lunic-slot--footer .elementor-widget-text-editor,
+	.lunic-slot--footer .lunic-footer__list a,
+	.lunic-slot--footer .elementor-icon-box-title,
+	.lunic-slot--footer .elementor-icon-box-description { text-align: center !important; }
+	.lunic-slot--footer .elementor-widget-theme-site-logo,
+	.lunic-slot--footer .elementor-icon-box-wrapper,
 	.lunic-footer__logo { display: flex; justify-content: center; }
-	.elementor-7825 .elementor-container,
-	.elementor-7620 .elementor-container { display: block !important; }
-	.elementor-7825 .elementor-column,
-	.elementor-7620 .elementor-column { width: 100% !important; }
+	.lunic-slot--shop .elementor-container,
+	.lunic-slot--product .elementor-container { display: block !important; }
+	.lunic-slot--shop .elementor-column,
+	.lunic-slot--product .elementor-column { width: 100% !important; }
 	.elementor-widget-woocommerce-product-title .product_title { font-size: 1.35rem !important; }
 	body.theme-lunic .lunic-shop-page h1,
 	body.theme-lunic .lunic-shop-page .page-title,
@@ -1141,8 +1168,9 @@ body.theme-lunic .woocommerce-checkout #order_review_heading {
 	.lunic-header__bar { gap: 0.4rem; padding: 0.35rem 0.6rem; min-height: 72px; }
 	.lunic-header__logo { flex: 0 1 auto; min-width: 0; }
 	.lunic-header__logo img, .custom-logo { max-height: 48px; max-width: 150px; }
-	.lunic-header__tools { margin-left: auto; gap: 0; flex-shrink: 0; }
-	.lunic-header__bar .lunic-cart { display: none; }
+	.lunic-header__tools { margin-left: auto; gap: 0.35rem; flex-shrink: 0; }
+	.lunic-header__bar .lunic-cart { padding: 0 10px; }
+	.lunic-header__bar .lunic-cart__total { display: none; }
 	.lunic-whatsapp { margin-left: 10px; }
 	.lunic-slider { width: 100%; height: 56vh; }
 	.lunic-mega { display: none !important; }

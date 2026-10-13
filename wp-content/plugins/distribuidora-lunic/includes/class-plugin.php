@@ -19,7 +19,6 @@ final class Plugin {
     }
 
     public function init(): void {
-        $this->maybe_preview_theme();
         $this->load_includes();
         $this->load_modules();
 
@@ -30,31 +29,15 @@ final class Plugin {
         Page_Cache::capture();
     }
 
-    private function maybe_preview_theme(): void {
-        if (!isset($_GET['lunic_preview']) || $_GET['lunic_preview'] !== '1') {
-            return;
-        }
-        add_filter('pre_option_template', static function () {
-            return 'lunic';
-        });
-        add_filter('pre_option_stylesheet', static function () {
-            return 'lunic';
-        });
-        add_action('wp', static function () {
-            if (!class_exists('\ElementorPro\Modules\ThemeBuilder\Module')) {
-                return;
-            }
-            $manager = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager();
-            remove_filter('template_include', [$manager, 'template_include'], 11);
-        }, 0);
-    }
-
     private function load_includes(): void {
+        require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-visitor.php';
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-settings.php';
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-elementor-fallback.php';
         require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-csv-import.php';
+        require_once DISTRIBUIDORA_LUNIC_PATH . 'includes/class-elementor-access.php';
         Elementor_Fallback::register();
         (new Csv_Import())->register();
+        (new Elementor_Access())->register();
     }
 
     private function load_modules(): void {

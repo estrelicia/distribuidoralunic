@@ -10,6 +10,9 @@ defined('ABSPATH') || exit;
  */
 class Csv_Import {
 
+    /** Tamaño máximo de archivo CSV (10 MiB). */
+    private const MAX_BYTES = 10 * 1024 * 1024;
+
     public function register(): void {
         add_filter('wp_check_filetype_and_ext', [$this, 'accept_spreadsheet_csv'], 20, 5);
     }
@@ -20,7 +23,7 @@ class Csv_Import {
      * @return array<string, mixed>
      */
     public function accept_spreadsheet_csv($data, $file, $filename, $mimes, $real_mime) {
-        unset($file, $mimes);
+        unset($mimes);
         if (!is_array($data) || !current_user_can('manage_woocommerce')) {
             return $data;
         }
@@ -28,15 +31,16 @@ class Csv_Import {
         if (strtolower(pathinfo($name, PATHINFO_EXTENSION)) !== 'csv') {
             return $data;
         }
+        if (is_string($file) && is_readable($file)) {
+            $size = filesize($file);
+            if ($size !== false && $size > self::MAX_BYTES) {
+                return $data;
+            }
+        }
         $accepted = [
             'text/csv',
             'text/plain',
-            'text/html',
-            'text/x-csv',
-            'text/comma-separated-values',
-            'application/csv',
             'application/vnd.ms-excel',
-            'application/octet-stream',
         ];
         if (!in_array((string) $real_mime, $accepted, true)) {
             return $data;

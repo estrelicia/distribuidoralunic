@@ -17,6 +17,7 @@ class Admin {
         add_action('admin_init', [$this, 'register_setting']);
         add_action('admin_enqueue_scripts', [$this, 'assets']);
         add_action('update_option_' . self::OPTION, [$this, 'clear_cache']);
+        add_action('add_option_' . self::OPTION, [$this, 'clear_cache']);
     }
 
     public function menu(): void {
@@ -51,6 +52,9 @@ class Admin {
 
     public function clear_cache(): void {
         delete_transient('wcd_discount_rules_cache');
+        if (class_exists(\Distribuidora_Lunic\Page_Cache::class)) {
+            \Distribuidora_Lunic\Page_Cache::flush();
+        }
     }
 
     /**
@@ -110,7 +114,7 @@ class Admin {
         <div class="wrap">
             <h1><?php esc_html_e('Descuentos por Categoría', 'distribuidora-lunic'); ?></h1>
             <p class="description">
-                <?php esc_html_e('Agregá una categoría y definí si es un descuento o un recargo, en porcentaje o en pesos. Se aplica la primera regla que coincida, según la prioridad. Si marcás “Excluir descuentos individuales”, un producto que ya está en oferta no recibe esta regla.', 'distribuidora-lunic'); ?>
+                <?php esc_html_e('Agregá una categoría y definí si es un descuento o un recargo, en porcentaje o en pesos. Se aplica la primera regla que coincida, según la prioridad. El cálculo usa el precio normal: no se acumula sobre una oferta. Si marcás “Excluir descuentos individuales”, un producto en oferta queda con su precio de oferta. Si no lo marcás, esta regla reemplaza la oferta.', 'distribuidora-lunic'); ?>
             </p>
             <form method="post" action="options.php">
                 <?php settings_fields('wcd_settings_group'); ?>

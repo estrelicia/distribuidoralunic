@@ -10,6 +10,8 @@ final class Settings {
 
     public const MENU_SLUG = 'distribuidora-lunic';
 
+    public const SITE_OPTION = 'lunic_site';
+
     public static function instance(): self {
         if (self::$instance === null) {
             self::$instance = new self();
@@ -23,6 +25,8 @@ final class Settings {
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
         add_action('admin_post_lunic_save_settings', [$this, 'save']);
         add_action('admin_post_lunic_save_envios', [$this, 'save_envios']);
+        add_action('admin_menu', [$this, 'register_site_menu'], 20);
+        add_action('admin_post_lunic_save_site', [$this, 'save_site']);
     }
 
     public function register_menu(): void {
@@ -240,6 +244,108 @@ final class Settings {
         return $options;
     }
 
+    public function register_site_menu(): void {
+        add_submenu_page(
+            self::MENU_SLUG,
+            __('Datos del sitio', 'distribuidora-lunic'),
+            __('Datos del sitio', 'distribuidora-lunic'),
+            'manage_woocommerce',
+            'lunic-sitio',
+            [$this, 'render_site']
+        );
+    }
+
+    public function save_site(): void {
+        if (!current_user_can('manage_woocommerce')) {
+            wp_die(esc_html__('No tenés permiso.', 'distribuidora-lunic'));
+        }
+        check_admin_referer('lunic_save_site');
+        $whatsapp = isset($_POST['whatsapp']) ? preg_replace('/\D+/', '', wp_unslash((string) $_POST['whatsapp'])) : '';
+        $data = [
+            'whatsapp' => is_string($whatsapp) ? $whatsapp : '',
+            'whatsapp_label' => isset($_POST['whatsapp_label']) ? sanitize_text_field(wp_unslash((string) $_POST['whatsapp_label'])) : '',
+            'phone' => isset($_POST['phone']) ? sanitize_text_field(wp_unslash((string) $_POST['phone'])) : '',
+            'email' => isset($_POST['email']) ? sanitize_email(wp_unslash((string) $_POST['email'])) : '',
+            'address' => isset($_POST['address']) ? sanitize_textarea_field(wp_unslash((string) $_POST['address'])) : '',
+            'hours' => isset($_POST['hours']) ? sanitize_textarea_field(wp_unslash((string) $_POST['hours'])) : '',
+            'price_list_url' => isset($_POST['price_list_url']) ? esc_url_raw(wp_unslash((string) $_POST['price_list_url'])) : '',
+            'categories_page' => isset($_POST['categories_page']) ? absint($_POST['categories_page']) : 0,
+        ];
+        update_option(self::SITE_OPTION, $data, false);
+        Page_Cache::flush();
+        wp_safe_redirect(admin_url('admin.php?page=lunic-sitio&updated=1'));
+        exit;
+    }
+
+    public function render_site(): void {
+        if (!current_user_can('manage_woocommerce')) {
+            wp_die(esc_html__('No tenés permiso para ver esta página.', 'distribuidora-lunic'));
+        }
+        $data = get_option(self::SITE_OPTION, []);
+        if (!is_array($data)) {
+            $data = [];
+        }
+        $val = static function (string $key) use ($data): string {
+            return isset($data[$key]) ? (string) $data[$key] : '';
+        };
+        $pages = get_pages(['sort_column' => 'post_title']);
+        ?>
+        <div class="wrap">
+            <h1><?php esc_html_e('Datos del sitio', 'distribuidora-lunic'); ?></h1>
+            <?php if (!empty($_GET['updated'])) : ?>
+                <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Datos guardados.', 'distribuidora-lunic'); ?></p></div>
+            <?php endif; ?>
+            <p class="description"><?php esc_html_e('Teléfono, correo, dirección, lista de precios y la página de categorías. El logo se cambia en Apariencia → Personalizar → Identidad del sitio. Los menús, en Apariencia → Menús.', 'distribuidora-lunic'); ?></p>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <?php wp_nonce_field('lunic_save_site'); ?>
+                <input type="hidden" name="action" value="lunic_save_site" />
+                <table class="form-table">
+                    <tr>
+                        <th><label for="whatsapp"><?php esc_html_e('WhatsApp (solo números, con código de país)', 'distribuidora-lunic'); ?></label></th>
+                        <td><input class="regular-text" id="whatsapp" name="whatsapp" value="<?php echo esc_attr($val('whatsapp')); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="whatsapp_label"><?php esc_html_e('Texto del WhatsApp', 'distribuidora-lunic'); ?></label></th>
+                        <td><input class="regular-text" id="whatsapp_label" name="whatsapp_label" value="<?php echo esc_attr($val('whatsapp_label')); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="phone"><?php esc_html_e('Teléfono de contacto', 'distribuidora-lunic'); ?></label></th>
+                        <td><input class="regular-text" id="phone" name="phone" value="<?php echo esc_attr($val('phone')); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="email"><?php esc_html_e('Correo', 'distribuidora-lunic'); ?></label></th>
+                        <td><input class="regular-text" type="email" id="email" name="email" value="<?php echo esc_attr($val('email')); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="address"><?php esc_html_e('Dirección', 'distribuidora-lunic'); ?></label></th>
+                        <td><textarea class="large-text" rows="3" id="address" name="address"><?php echo esc_textarea($val('address')); ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <th><label for="hours"><?php esc_html_e('Horario', 'distribuidora-lunic'); ?></label></th>
+                        <td><textarea class="large-text" rows="3" id="hours" name="hours"><?php echo esc_textarea($val('hours')); ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <th><label for="price_list_url"><?php esc_html_e('Enlace de la lista de precios', 'distribuidora-lunic'); ?></label></th>
+                        <td><input class="large-text" type="url" id="price_list_url" name="price_list_url" value="<?php echo esc_attr($val('price_list_url')); ?>" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="categories_page"><?php esc_html_e('Página de categorías', 'distribuidora-lunic'); ?></label></th>
+                        <td>
+                            <select id="categories_page" name="categories_page">
+                                <option value="0"><?php esc_html_e('Ninguna', 'distribuidora-lunic'); ?></option>
+                                <?php foreach ($pages as $page) : ?>
+                                    <option value="<?php echo esc_attr((string) $page->ID); ?>" <?php selected((int) $val('categories_page'), (int) $page->ID); ?>><?php echo esc_html($page->post_title); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button(__('Guardar datos', 'distribuidora-lunic')); ?>
+            </form>
+        </div>
+        <?php
+    }
+
     public function register_envios_menu(): void {
         add_submenu_page(
             self::MENU_SLUG,
@@ -280,9 +386,20 @@ final class Settings {
             <?php if (!empty($_GET['updated'])) : ?>
                 <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Texto guardado.', 'distribuidora-lunic'); ?></p></div>
             <?php endif; ?>
-            <p class="description">
-                <?php esc_html_e('Este HTML es el contenido del acordeón «Envíos» en el inicio, el carrito y el checkout. Los importes de cada zona se editan aparte, en WooCommerce → Ajustes → Envío.', 'distribuidora-lunic'); ?>
-            </p>
+            <div class="notice notice-info">
+                <p>
+                    <?php
+                    echo wp_kses(
+                        sprintf(
+                            /* translators: %s: WooCommerce shipping settings URL */
+                            __('Acá se edita solo el texto del acordeón «Envíos» (inicio, carrito y checkout). Los importes de cada zona —precio, envío gratis y acarreo— se cambian en <a href="%s">WooCommerce → Ajustes → Envío</a>, en el método «Envío Personalizado» de cada zona. Ese importe se muestra debajo del total y el cliente lo abona aparte.', 'distribuidora-lunic'),
+                            esc_url(admin_url('admin.php?page=wc-settings&tab=shipping'))
+                        ),
+                        ['a' => ['href' => []]]
+                    );
+                    ?>
+                </p>
+            </div>
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <?php wp_nonce_field('lunic_save_envios'); ?>
                 <input type="hidden" name="action" value="lunic_save_envios" />

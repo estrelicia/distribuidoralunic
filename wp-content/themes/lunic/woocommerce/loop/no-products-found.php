@@ -1,4 +1,12 @@
 <?php
+/**
+ * Displayed when no products are found matching the current query
+ *
+ * @see     https://woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 7.8.0
+ */
+
 defined('ABSPATH') || exit;
 ?>
 <div class="lunic-empty">

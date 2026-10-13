@@ -1,17 +1,25 @@
 # Archivo
 
-Documentación cerrada el 28/09/2026. No es la guía para seguir el trabajo: esa es `documentos/estado.md`.
+No es la guía para seguir el trabajo: esa es `documentos/estado.md`. El manual de uso de la tienda es `documentos/manual-cliente-lunic.md`.
 
-Los textos de adentro siguen diciendo rutas `documentos/...`. Esas rutas eran las de cuando se escribieron. Las capturas de diseño que todavía se usan no se movieron: siguen en `documentos/linea-base/diseno/`.
+Los textos de adentro pueden citar rutas `documentos/...` de cuando se escribieron. Las capturas de diseño que todavía se usan no se movieron: siguen en `documentos/linea-base/diseno/`.
 
 | Carpeta o archivo | Qué es |
 | --- | --- |
-| `analisis-plugin-lunic.md` | Plan de migración (25–26/09/2026) y reglas de envío, descuento y corte. |
-| `acta-megadruid-cms-0.3.19.md` | UI Megadruid CMS 0.3.19 (03/10/2026): paleta, pestañas, paneles reales. |
-| `acta-megadruid-cms-0.3.20.md` | Megadruid CMS 0.3.20 (06/10/2026): el plugin solo lo ven los administradores tildados. |
-| `acta-ficha-producto-descripcion-0.3.59.md` | Ficha WooCommerce: la pestaña Descripción ya no anida Elementor (06/10/2026, tema 0.3.59). |
-| `etapa-*.md` | Actas de las etapas 0 a 13, ya cerradas. |
-| `pagespeed-despues.md` | Lighthouse después de la etapa 9 (26/09/2026). |
-| `linea-base/` | Recorrido de compra del 25/09/2026, capturas de esa fecha y JSON de Lighthouse. |
+| `auditoria-tema-y-plugin-lunic.md` | Auditoría y plan de tareas 1.1–6.2 (13/10/2026). Cerrado. |
+| `plan-etapas-lunic.md` | Tabla de etapas y modelos de Cursor. Cerrado. |
+| `acta-cierre-etapas-1-6-2026-10-13.md` | Cierre local 13/10/2026 y lista de subida al live. |
+| `subida-plugin-0.1.16-tarea-1.1.md` | Instrucciones del paquete 0.1.16 (superado por 0.1.27). |
+| `paquete-distribuidora-lunic-0.1.16.zip` | Paquete viejo de la tarea 1.1. |
+| `envios-donde-se-edita.md` | Dónde se editan texto e importes. Pasó al manual del cliente. |
+| `envios-diagnostico.md` | Diagnóstico de tarifas 13/10/2026. |
+| `seguridad-plantillas-elementor.md` | Roles y biblioteca Elementor. Pasó al manual del cliente. |
+| `analisis-plugin-lunic.md` | Plan de migración (25–26/09/2026). |
+| `acta-ficha-producto-descripcion-0.3.59.md` | Pestaña Descripción sin Elementor anidado. |
+| `etapa-*.md` | Actas de las etapas 0 a 13 (septiembre 2026). |
+| `pagespeed-despues.md` | Lighthouse después de la etapa 9. |
+| `linea-base/` | Recorrido de compra del 25/09/2026, capturas y JSON de Lighthouse. |
 | `export-envios-zonas.json` | Export de zonas de envío usado en la mudanza al plugin. |
-| `scripts/` | Utilidades de una corrida (`_lighthouse-run.mjs`, `_run-cleanup-9.3.php`). No forman parte del sitio. |
+| `scripts/` | Utilidades de una corrida. No forman parte del sitio. |
+
+Megadruid CMS (plugin, paquete 0.3.1, manual y actas) está en `documentos/megadruid-cms/` y **no se commitea**.

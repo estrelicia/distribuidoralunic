@@ -14,13 +14,10 @@ class Calculator {
     /** @var array<string, float|string> */
     private static array $price_cache = [];
 
-    private static bool $cart_processed = false;
-
     public static function init(): void {
         add_filter('woocommerce_product_get_price', [self::class, 'apply_category_discount'], 10, 2);
         add_filter('woocommerce_product_variation_get_price', [self::class, 'apply_category_discount'], 10, 2);
         add_filter('woocommerce_get_price_html', [self::class, 'display_discount_price'], 999, 2);
-        add_action('woocommerce_before_calculate_totals', [self::class, 'apply_cart_discounts'], 5);
         add_filter('woocommerce_variation_prices_price', [self::class, 'apply_variation_discount'], 10, 3);
         add_filter('woocommerce_show_variation_price', '__return_true');
         add_action('wp_ajax_wcd_get_variation_discount', [self::class, 'ajax_variation_discount']);
@@ -30,32 +27,16 @@ class Calculator {
     }
 
     public static function apply_category_discount($price, $product) {
-        if ($price === '' || $price === null || (float) $price <= 0) {
-            return $price;
-        }
-        if (self::$cart_processed && doing_action('woocommerce_before_calculate_totals')) {
+        if (!is_a($product, 'WC_Product') || $price === '' || $price === null || (float) $price <= 0) {
             return $price;
         }
         $product_id = $product->get_id();
         if (isset(self::$processing[$product_id])) {
             return $price;
         }
-        $cache_key = $product_id . '_' . $price;
-        if (isset(self::$price_cache[$cache_key])) {
-            return self::$price_cache[$cache_key];
-        }
-
         self::$processing[$product_id] = true;
-        $rules = self::rules();
-        $result = $price;
-        if ($rules && self::categories($product)) {
-            $rule = self::matching_rule($product, $rules);
-            if ($rule) {
-                $result = self::calculate((float) $price, $rule);
-            }
-        }
+        $result = self::category_price($product, $price);
         unset(self::$processing[$product_id]);
-        self::$price_cache[$cache_key] = $result;
         return $result;
     }
 
@@ -78,43 +59,38 @@ class Calculator {
         return '<del>' . wc_price($regular) . '</del> <ins>' . wc_price($current) . '</ins>';
     }
 
-    public static function apply_cart_discounts($cart): void {
-        if (is_admin() && !defined('DOING_AJAX')) {
-            return;
+    /**
+     * Un solo cálculo: el filtro de precio. La base es el precio normal.
+     * Si la regla excluye ofertas y el producto está en oferta, se deja el precio de oferta.
+     * Si no excluye, la regla reemplaza la oferta: no se suma sobre el precio de oferta.
+     *
+     * @param float|string $price
+     * @return float|string
+     */
+    private static function category_price($product, $price) {
+        $regular = (float) $product->get_regular_price();
+        $cache_key = $product->get_id() . '|' . $regular . '|' . $price;
+        if (isset(self::$price_cache[$cache_key])) {
+            return self::$price_cache[$cache_key];
         }
-        if (self::$cart_processed) {
-            return;
-        }
-        self::$cart_processed = true;
+        $result = $price;
         $rules = self::rules();
-        if (!$rules) {
-            self::$cart_processed = false;
-            return;
-        }
-        foreach ($cart->get_cart() as $item) {
-            $product = $item['data'];
-            if (self::has_individual_discount($product)) {
-                continue;
-            }
-            $regular = (float) $product->get_regular_price();
-            $discounted = (float) self::apply_category_discount($regular, $product);
-            if ($regular !== $discounted && $discounted > 0) {
-                $product->set_price($discounted);
+        if ($rules && $regular > 0 && self::categories($product)) {
+            $rule = self::matching_rule($product, $rules);
+            if ($rule) {
+                $result = self::calculate($regular, $rule);
             }
         }
-        self::$cart_processed = false;
+        self::$price_cache[$cache_key] = $result;
+        return $result;
     }
 
     public static function ajax_variation_discount(): void {
         check_ajax_referer('wcd_ajax_nonce', 'nonce');
         $variation_id = isset($_POST['variation_id']) ? absint($_POST['variation_id']) : 0;
-        $custom_text = isset($_POST['custom_text']) ? sanitize_text_field(wp_unslash($_POST['custom_text'])) : '';
         $variation = $variation_id ? wc_get_product($variation_id) : null;
         if (!$variation) {
             wp_send_json_error('Variación no encontrada');
-        }
-        if ($custom_text !== '') {
-            wp_send_json_success(['discount_text' => $custom_text]);
         }
         wp_send_json_success(['discount_text' => self::discount_label($variation)]);
     }

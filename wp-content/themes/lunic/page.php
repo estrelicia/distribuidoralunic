@@ -3,7 +3,7 @@ get_header();
 echo '<article class="lunic-page">';
 while (have_posts()) {
     the_post();
-    if ((int) get_the_ID() === 12340 && shortcode_exists('lunic_categorias')) {
+    if (function_exists('lunic_site_int') && lunic_site_int('categories_page') === (int) get_the_ID() && shortcode_exists('lunic_categorias')) {
         echo do_shortcode('[lunic_categorias]');
         continue;
     }
@@ -18,7 +18,13 @@ while (have_posts()) {
         echo '<h1 class="entry-title">' . esc_html(get_the_title()) . '</h1>';
     }
     if ($elementor) {
+        ob_start();
         the_content();
+        $html = (string) ob_get_clean();
+        echo $html;
+        if ($woo_screen && function_exists('lunic_woo_elementor_html_is_empty') && lunic_woo_elementor_html_is_empty($html)) {
+            echo lunic_woo_screen_fallback();
+        }
     } elseif (function_exists('is_cart') && is_cart()) {
         echo do_shortcode('[woocommerce_cart]');
     } elseif (function_exists('is_checkout') && is_checkout()) {

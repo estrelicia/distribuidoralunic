@@ -14,6 +14,8 @@ class Module {
             return;
         }
         require_once __DIR__ . '/class-fields.php';
+        require_once __DIR__ . '/class-shipping-address.php';
         (new Fields())->register();
+        (new Shipping_Address())->register();
     }
 }

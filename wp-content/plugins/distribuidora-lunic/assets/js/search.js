@@ -40,16 +40,24 @@
 	input.addEventListener('input', function () {
 		var q = input.value.trim();
 		clearTimeout(timer);
-		if (q.length < 1) {
+		if (q.length < 2) {
 			close();
 			return;
 		}
 		timer = setTimeout(function () {
 			fetch(lunicSearch.endpoint + '?q=' + encodeURIComponent(q))
-				.then(function (r) { return r.json(); })
-				.then(function (data) { render(data.items || []); })
+				.then(function (r) {
+					if (!r.ok) {
+						close();
+						return null;
+					}
+					return r.json();
+				})
+				.then(function (data) {
+					if (data) render(data.items || []);
+				})
 				.catch(close);
-		}, 200);
+		}, 300);
 	});
 
 	document.addEventListener('keydown', function (event) {

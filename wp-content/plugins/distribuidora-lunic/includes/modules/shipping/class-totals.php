@@ -27,10 +27,15 @@ class Totals {
         if ($label === '') {
             return;
         }
+        $rate = $this->chosen_custom_rate();
+        $cost = $rate ? (float) $rate->get_cost() : 0;
         echo '<tr class="shipping-after-total">';
         echo '<th>' . esc_html__('Envío', 'distribuidora-lunic') . '</th>';
-        echo '<td><strong>' . wp_kses_post($label) . '</strong></td>';
-        echo '</tr>';
+        echo '<td><strong>' . wp_kses_post($label) . '</strong>';
+        if ($cost > 0) {
+            echo ' <small>' . esc_html__('(se abona aparte)', 'distribuidora-lunic') . '</small>';
+        }
+        echo '</td></tr>';
     }
 
     public function adjust_calculated_total($total, $cart) {
@@ -74,7 +79,15 @@ class Totals {
         if (strpos((string) $method->get_method_id(), 'custom_shipping') === false) {
             return $total_rows;
         }
-        $total_rows['shipping']['value'] = '<strong>' . esc_html($method->get_name()) . '</strong>';
+        $real = (float) $order->get_meta('_real_shipping_total');
+        if ($real <= 0) {
+            $real = (float) $method->get_total();
+        }
+        if ($real > 0) {
+            $total_rows['shipping']['value'] = wp_kses_post(wc_price($real)) . ' <small>' . esc_html__('(se abona aparte)', 'distribuidora-lunic') . '</small>';
+        } else {
+            $total_rows['shipping']['value'] = '<strong>' . esc_html__('Gratuito', 'distribuidora-lunic') . '</strong>';
+        }
         return $total_rows;
     }
 
@@ -93,7 +106,10 @@ class Totals {
     }
 
     public function keep_rate_label($label, $method) {
-        if (!isset($method->method_id) || $method->method_id !== 'custom_shipping') {
+        $method_id = is_object($method) && method_exists($method, 'get_method_id')
+            ? $method->get_method_id()
+            : (isset($method->method_id) ? (string) $method->method_id : '');
+        if ($method_id !== 'custom_shipping') {
             return $label;
         }
         $own = $method->get_label();

@@ -6,12 +6,27 @@ defined('ABSPATH') || exit;
 
 class Method extends \WC_Shipping_Method {
 
+    /** @var float */
+    public $min_amount;
+
+    /** @var float */
+    public $cost;
+
+    /** @var float */
+    public $carry_cost;
+
+    /** @var float */
+    public $carry_min_amount;
+
+    /** @var string */
+    public $carry_enabled;
+
     public function __construct($instance_id = 0) {
         parent::__construct($instance_id);
         $this->id = 'custom_shipping';
         $this->instance_id = absint($instance_id);
         $this->method_title = __('Envío Personalizado', 'distribuidora-lunic');
-        $this->method_description = __('Envío con precio fijo o acarreo. El costo se muestra después del total y no se suma al total del pedido.', 'distribuidora-lunic');
+        $this->method_description = __('Envío con precio fijo o acarreo. El importe se muestra después del total y el cliente lo abona aparte: no entra en el total del pedido ni en una pasarela. El texto informativo del acordeón se edita en Lunic → Texto de envíos.', 'distribuidora-lunic');
         $this->title = $this->method_title;
         $this->supports = ['shipping-zones', 'instance-settings', 'instance-settings-modal'];
         $this->init();
@@ -77,7 +92,8 @@ class Method extends \WC_Shipping_Method {
     }
 
     public function calculate_shipping($package = []): void {
-        $cart_total = \WC()->cart ? (float) \WC()->cart->get_displayed_subtotal() : 0;
+        // Umbral de envío gratis: subtotal de productos sin IVA (ver estado.md / envios-donde-se-edita.md).
+        $cart_total = \WC()->cart ? (float) \WC()->cart->get_subtotal() : 0;
         if ($this->carry_enabled === 'yes') {
             $this->add_carry_rate($cart_total, $package);
             return;

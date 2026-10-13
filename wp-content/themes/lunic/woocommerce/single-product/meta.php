@@ -1,4 +1,12 @@
 <?php
+/**
+ * Single Product Meta
+ *
+ * @see     https://woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 11.2.0
+ */
+
 defined('ABSPATH') || exit;
 global $product;
 ?>

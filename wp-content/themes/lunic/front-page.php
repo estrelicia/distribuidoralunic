@@ -27,15 +27,17 @@ foreach ($slides as $index => $file) {
     echo '<img src="' . esc_url($src) . '" alt=""' . $wh . $priority . '>';
 }
 echo '</div></section>';
-$catalog = 'https://onedrive.live.com/:x:/g/personal/6c9e34c688d4059c/IQCcBdSIxjSeIIBsDAIAAAAAARHT_yfCI4UwYDsBRQP6MAA?rtime=r7B14PcB30g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy82YzllMzRjNjg4ZDQwNTljL0lRQ2NCZFNJeGpTZUlJQnNEQUlBQUFBQUFSSFRfeWZDSTRVd1lEc0JSUVA2TUFBP2U9NjhpUFow';
-echo '<p class="lunic-home-cta"><a href="' . esc_url($catalog) . '">Descargá la Lista de Precios</a></p>';
+$catalog = function_exists('lunic_site') ? lunic_site('price_list_url') : '';
+if ($catalog !== '') {
+    echo '<p class="lunic-home-cta"><a href="' . esc_url($catalog) . '">Descargá la Lista de Precios</a></p>';
+}
 lunic_envios_accordion();
 echo '<section class="lunic-home-intro"><h2>Productos de calidad</h2><h3>Siempre al mejor precio</h3>';
 the_widget('WC_Widget_Products', [
     'title' => 'En oferta',
     'number' => 5,
     'show' => 'onsale',
-    'orderby' => 'rand',
+    'orderby' => 'date',
     'order' => 'desc',
     'hide_free' => 1,
 ]);
